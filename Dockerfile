@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY Gemfile Gemfile.lock* ./
-RUN bundle install
 RUN bundle lock --add-platform x86_64-linux
+RUN bundle install
 
 COPY . .
 
