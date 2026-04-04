@@ -1,0 +1,17 @@
+services:
+  # Fast Jekyll dev server with live reload.
+  # Does not include the pdoc API reference.
+  # Open http://localhost:4000/robotic_failure_data/ after startup.
+  jekyll:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+      - "35729:35729"   # livereload
+    volumes:
+      - .:/site
+      - bundle_cache:/usr/local/bundle
+
+volumes:
+  bundle_cache:

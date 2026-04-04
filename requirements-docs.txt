@@ -1,0 +1,18 @@
+# Python dependencies for documentation generation (pdoc).
+# Install with: pip install -r docs/requirements-docs.txt
+#
+# These are separate from the package's own dependencies in pyproject.toml.
+# Pinned to a known-good version; update intentionally.
+
+pdoc==16.0.0
+
+# Base package deps that must be importable for pdoc to process the source.
+# Versions here should stay in sync with pyproject.toml [project.dependencies].
+h5py>=3.12.0
+numpy>=1.26.0
+pyyaml>=6.0.0
+imageio>=2.34.0
+flask>=3.0.0
+# Use headless variant in CI to avoid display requirements
+opencv-python-headless>=4.11.0.86
+moviepy>=1.0.3,<2.0

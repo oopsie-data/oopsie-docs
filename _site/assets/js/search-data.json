@@ -1,0 +1,324 @@
+{"0": {
+    "doc": "Annotation Tool",
+    "title": "Annotation Tool",
+    "content": "The annotation tool is the primary interface for labeling robotic rollout episodes as successes or failures. After each rollout, an operator reviews video footage from one or more cameras and answers a structured questionnaire. Annotations are written to a shared JSON file and optionally embedded back into the HDF5 episode file. Two backends are provided: a browser-based web UI for interactive sessions with video playback, and a CLI interface for headless or SSH environments. ",
+    "url": "/annotation/",
+    
+    "relUrl": "/annotation/"
+  },"1": {
+    "doc": "Annotation Tool",
+    "title": "Launching the tool",
+    "content": "Standalone (web UI) . The simplest way to annotate a batch of pre-recorded episodes: ./scripts/launch_annotator.sh --samples-dir ./samples --port 5001 # or directly: uv run python -m robotic_failure_data.annotation_tool.annotator \\ --samples-dir ./samples --port 5001 . Open http://localhost:5001 in a browser. The tool scans samples-dir for HDF5 files and MP4 videos, and presents them one at a time for annotation. In-the-loop (Web UI or CLI) . For instructions on launching the web tool for in-the-loop annotation, see our data collection instructions. ",
+    "url": "/annotation/#launching-the-tool",
+    
+    "relUrl": "/annotation/#launching-the-tool"
+  },"2": {
+    "doc": "Annotation Tool",
+    "title": "Web UI",
+    "content": "Overview . The main view has the following components: . The interface is divided into three panels: . | Left: video playback controls and camera selection | Center: the episode video player | Right: the annotation questionnaire and metadata fields | . Video panel . The video panel displays synchronized MP4 footage from all cameras recorded during the episode. Use the playback controls to review the rollout before annotating. For multi-camera setups, tabs or a dropdown switch between views. Each episode entry shows: . | Language instruction given to the policy | Policy name and ID | Number of timesteps recorded | Timestamp of the rollout | . Policy &amp; robot metadata . Before the first rollout of a session, the web UI prompts for session-level metadata: . | Annotator name — stored with every annotation in the session | Robot embodiment — selected from annotation_tool/robot_embodiments.txt | Policy — selected from annotation_tool/policies.txt | Camera names — which cameras are active in this session | . This information is written into the HDF5 episode_annotations group for every episode annotated in the session. If the web annotation tool is launched independently, the metadata can be added manually. To simplify bulk annotation, the tool provides a quick way to apply a given annotation to all hdf5 files in one sub-directory. It is therefore practical to group episode rollout files by robot embodiment and policy to simplify and speed up the annotation. ",
+    "url": "/annotation/#web-ui",
+    
+    "relUrl": "/annotation/#web-ui"
+  },"3": {
+    "doc": "Annotation Tool",
+    "title": "Questionnaire",
+    "content": ". After reviewing the video, the operator fills in the annotation questionnaire. The schema is defined in annotation_tool/questionnaire.yaml and can be customized without changing any Python code. Questions . | Question | Type | Required | Notes | . | Did the robot succeed? | Radio | Yes | Success or Failure | . | Failure categories | Checkbox | Yes (on failure) | Select all that apply — skipped on success | . | Describe what went wrong | Text area | Yes (on failure) | Free-text description — skipped on success | . | How severe is this failure? | Radio | No | Three severity levels | . | Additional notes | Text | No | Free-form field for any extra context | . Failure categories . The failure taxonomy distinguishes where in the manipulation pipeline the breakdown occurred: . | Category | Meaning | . | Reaching failure (pre-contact) | Robot fails to reach the target; no contact is made. If a grasp barely misses, classify as grasp failure instead. | . | Grasp failure (at contact) | Robot makes contact but fails to grasp correctly — slips, drops, or grasps incorrectly. | . | Manipulation failure (post-contact) | Robot grasps successfully but fails during subsequent manipulation (e.g. grasps a door handle but cannot open the door). | . | Sequencing or semantic failure | Wrong action or wrong object — executing a related but incorrect action such as picking the wrong item. | . | Collision failure | Failure due to collision with the environment or an obstacle. Can co-occur with other categories. | . | Hardware/mechanical issue | Failure caused by robot hardware rather than the policy. | . | Task not attempted | Robot makes no discernible attempt — use for stalling episodes. | . Multiple categories can be selected simultaneously. Severity . For failures, an optional severity rating helps downstream filtering: . | Low — no damage, can be immediately reset and reattempted | Medium — some damage or significant reset required, but reattemptable | Catastrophic — significant damage or risk; cannot be reattempted without repair | . ",
+    "url": "/annotation/#questionnaire",
+    
+    "relUrl": "/annotation/#questionnaire"
+  },"4": {
+    "doc": "Annotation Tool",
+    "title": "CLI",
+    "content": "You can run the CLI for annotating the data during collection in the loop, but we currently do not offer an option for running the CLI annotator on pre-collected episodes. The CLI annotator prompts for annotator name once at startup, then for each rollout prints the questionnaire questions with numbered options. Failure-only questions are automatically skipped when the episode is marked as a success. ",
+    "url": "/annotation/#cli",
+    
+    "relUrl": "/annotation/#cli"
+  },"5": {
+    "doc": "Annotation Tool",
+    "title": "Data output",
+    "content": "After each annotated rollout, the annotations are saved back in the original HDF5 file for each episode. ",
+    "url": "/annotation/#data-output",
+    
+    "relUrl": "/annotation/#data-output"
+  },"6": {
+    "doc": "Contributing",
+    "title": "Contributing",
+    "content": ". ",
+    "url": "/contributing/",
+    
+    "relUrl": "/contributing/"
+  },"7": {
+    "doc": "Contributing",
+    "title": "TL;DR",
+    "content": ". | Join the effort: Sign up to get upload credentials | Review the data format: See Dataset Format | Collect data and annotate data: Run your normal evaluations with the EpisodeRecorder and WebAnnotator tools. | Upload — Share failures instead of deleting them | . ",
+    "url": "/contributing/#tldr",
+    
+    "relUrl": "/contributing/#tldr"
+  },"8": {
+    "doc": "Contributing",
+    "title": "Contributing Data",
+    "content": "The Robotic Failure Dataset is a community effort. We are collecting failure data from diverse robots, tasks, and environments. Our core focus for the first iteration of the project is on single-arm and bi-arm manipulation settings. To ensure that the data is broadly useful across different labs, we are especially interested in data from standardized setups, such as the Franka-arm setup used in the Droid project, or the Aloha arms distributed by Trossen Robotics. However, if you have other systems that you believe will be useful for the community, please submit your data! Failure data on non-standard systems is still very useful for many research projects, such as building reliable failure detection or reward models. ",
+    "url": "/contributing/#contributing-data",
+    
+    "relUrl": "/contributing/#contributing-data"
+  },"9": {
+    "doc": "Contributing",
+    "title": "Steps to contribute",
+    "content": ". | Sign up: To coordinate data submission, we ask that all contributing groups sign up via our sign up form. We will review all sign-ups, clarify any questions, and then provide you with an API key to submit your data to our huggingface project. | Collect data: To collect data, we simply ask you to run policy evaluation as you normally would for your projects. Feel free to use the evaluation sessions you are running for on-going projects, for example CoRL submissions, to collect data. By using evaluation and data gathering sessions that you are running anyways, we hope that the additional effort necessary to contribute data is very low, and that we will get a diverse cross-section of tasks, policies, and setups. We are interested in policies that produce a mix of failures and successes, so we ask you to contribute examples of both. | Annotate data: We provide tools to annotate your data in our toolkit. We found that the easiest way to annotate the data is to integrate the tool directly into your inference script, where it will prompt you to annotate each episode after the robot has concluded it. However, since evaluation setups can be very diverse, we also provide tools for bulk annotating already collected data. | Validation and upload: To submit your data, we provide lightweight scripts that first validate the data format, and handle the huggingface upload. To get access to our huggingface organization, you will need to register so that we can provide you with an API key. Note that you retain full access to the data after upload, so you will be able to pull, edit, or even delete trajectories. | Postprocessing and early release: As we gather more data, we will regularly provide post-processed data from our project to all contributing labs for early testing. | . ",
+    "url": "/contributing/#steps-to-contribute",
+    
+    "relUrl": "/contributing/#steps-to-contribute"
+  },"10": {
+    "doc": "Contributing",
+    "title": "Who Can Contribute?",
+    "content": "Anyone running robot manipulation experiments! . If you are evaluating policies, you are already generating the data we need. Furthermore we want it to be as easy as possible for labs around the world to contribute. If you find that your workflow is currently not well-supported by the provided software, let us know. We will make sure to help you share your evaluation data. Finally, please contact us for any suggestions! We want to make this data useful for you and your research. Why should your lab contribute? . First and foremost, because open-data and cross-lab collaboration has proven to be one of the best ways for academics to collaborate on ambitious robotics projects. More specifically, all labs that are involved will get several benefits. First of all, we want to make this data useful for your projects, so we are happy to discuss adaptations that make our tool and data useful for your specific lab use-case. If you help us, you get a say in how the data is processed and what utilities we provide. Second, we will regularly share pre-release versions of the dataset with all contributors so that they can prototype and test ideas with the data. We are tentatively aiming for an alpha release by the CoRL deadline, until then you can use our data exclusively if you contribute. In addition, having your own robot in a major dataset can make future projects that build on this data much easier to deploy, as you have already provided lab-specific fine-tuning data. Finally, we are happy to invite all volunteers who collect data and provide feedback to us on our public release. Volunteering for data gathering is laborious and we acknowledge that by celebrating everybody who contribute significant time and effort to the project. ",
+    "url": "/contributing/#who-can-contribute",
+    
+    "relUrl": "/contributing/#who-can-contribute"
+  },"11": {
+    "doc": "Contributing",
+    "title": "What data do we need, specifically",
+    "content": "Do Include . We want data from policy executions that make a reasonable attempt at the task. We also specifically ask you to upload successes as well as failures. | Failed grasps | Dropped objects | Collisions (minor to moderate) | Misaligned placements | Recovery attempts (successful or not) | . Don’t Include . We only want data from rollouts where the policy has a chance of succeeding: . | Hardware malfunctions unrelated to policy | Setup failures (missing task-relevant objects) | Corrupted sensor data | Episodes with missing frames | E-stop triggers from external causes | . ",
+    "url": "/contributing/#what-data-do-we-need-specifically",
+    
+    "relUrl": "/contributing/#what-data-do-we-need-specifically"
+  },"12": {
+    "doc": "Contributing",
+    "title": "Privacy &amp; Attribution",
+    "content": "What We Store . | Robot data (images, states, actions) | Provided metadata | Lab/operator IDs and contact names | Contact information for further requests | . What We Release . At release, we will strip the data of all personally identifying data, and provide detailed information in the data release consent form. Please note that while we will be doing our best to remove or blur personal information like faces from all video data, we ask you to make sure to check your data uploads if you are concerned about personal information or privacy. Attribution . Contributors can choose: . | Full attribution (lab and operator names in dataset and paper release) | Anonymous contribution | . Contributors will be acknowledged in all released material. ",
+    "url": "/contributing/#privacy--attribution",
+    
+    "relUrl": "/contributing/#privacy--attribution"
+  },"13": {
+    "doc": "Data Collection",
+    "title": "Data Collection Workflow",
+    "content": "For this project, we are interested in collecting in-the-wild evaluation trajectories, both successes and failures. Every lab evaluates trained policies routinely during their day-to-day development process, but this data is rarely saved for future use. The core goal of this project is to make collection, annotation, and sharing of this data easy. For this, we provide several tools. The envisioned workflow follows a standard data collection and annotation pipeline. On this page we explain the different ways in which you can gather the data and launch the annotation tool. On the next page, we present the interface of the annotation tool and the annotation process in more detail. We support three workflows: . | In-the-loop collection and annotation: You can integrate our tool directly in your evaluation loop. The tool will open a browser or CLI prompt and ask you to directly annotate the episode with success/failure information after the robot completes an episode. | Bulk collection and annotation: If annotating in the loop does not fit your work style, you can also simply save your data using our EpisodeRecorder and launch the annotation tool as a stand-alone script after you are done with your evaluation runs on the robot. | Custom collection and bulk annotation: If your setup is incompatible with our EpisodeRecorder, you can still save your data in the format outlined in our data formatting guidelines. The web annotator tool can work with any dataset that is saved in the specified format. We keep a growing list of scripts to convert common data formats such as RLDS in our github repository. | . ",
+    "url": "/data-collection/#data-collection-workflow",
+    
+    "relUrl": "/data-collection/#data-collection-workflow"
+  },"14": {
+    "doc": "Data Collection",
+    "title": "Recording data with our Toolkit",
+    "content": "1. In-the-loop collection and annotation . 1a. Web UI . For interactive annotation after each rollout using the browser UI: . from robotic_failure_data.annotation_tool.rollout_annotator import WebRolloutAnnotator from pathlib import Path annotator = WebRolloutAnnotator( samples_dir=Path(\"./samples\"), policy_name=\"my_policy\", camera_names=[\"wrist\", \"overhead\"], ) annotator.start() # opens browser # policy initialization code # ... for _ in range(num_eval_episodes): # policy reset code # ... instruction = annotator.wait_for_task() # instruction is a str provided by the user via the interface annotator.start_rollout() for obs, action in run_policy(env, policy, instruction): # step policy and robot environment # ... annotator.record_step(observation=obs, action=action) success = annotator.finish_rollout( instruction=instruction, videos={}, # auto-extracted from record_step / only override if necessary t_step=len(trajectory), ) # success is saved automatically in the hdf5 file, we return it for further processing by the user script . 1b. CLI . If you have trouble using the web ui, or simply prefer a CLI utility, we also offer an in-the-loop option using the CLI: . from robotic_failure_data.annotation_tool.rollout_annotator import CLIRolloutAnnotator from pathlib import Path annotator = CLIRolloutAnnotator( policy_name=\"my_policy\", data_dir=Path(\"./episode_data\"), camera_names=[\"wrist\"], ) # policy initialization code # ... for _ in range(num_eval_episodes): # policy reset code # ... instruction = annotator.prompt_instruction() # instruction is a str provided by the user via the CLI directly annotator.start_rollout() for obs, action in run_policy(env, policy, instruction): # step policy and robot environment # ... annotator.record_step(observation=obs, action=action) success = annotator.finish_rollout( instruction=instruction, videos={}, # auto-extracted from record_step / only override if necessary t_step=len(trajectory), ) # success is saved automatically in the hdf5 file, we return it for further processing by the user script . 2. Bulk collection and annotation . from robotic_failure_data.annotation_tool.episode_recorder import EpisodeRecorder rec = EpisodeRecorder( output_dir=\"./episode_data\", policy_name=\"my_policy\", policy_id=\"my_policy_v2\", camera_names=[\"wrist\", \"overhead\"], robot_id=\"franka_01\", control_freq=\"10\", ) # policy initialization code # ... for _ in range(num_eval_episodes): # policy reset code # ... for obs, action in rollout: # step policy and robot environment # ... rec.record_step(observation=obs, action=action) rec.save({ \"language_instruction\": your_task_instruction, \"episode_annotations\": { \"operator_name\": your_name, }, }) . See the annotation explanation for instructions on how to launch and use the annotation tool. ",
+    "url": "/data-collection/#recording-data-with-our-toolkit",
+    
+    "relUrl": "/data-collection/#recording-data-with-our-toolkit"
+  },"15": {
+    "doc": "Data Collection",
+    "title": "Data Collection",
+    "content": " ",
+    "url": "/data-collection/",
+    
+    "relUrl": "/data-collection/"
+  },"16": {
+    "doc": "Frequently Asked Questions",
+    "title": "FAQ &amp; Debugging Help",
+    "content": " ",
+    "url": "/faq/#faq--debugging-help",
+    
+    "relUrl": "/faq/#faq--debugging-help"
+  },"17": {
+    "doc": "Frequently Asked Questions",
+    "title": "Data format",
+    "content": "What do I do if my policy provides a different action encoding? . If possible, provide absolute cartesian endeffector actions. For some embodiments, such as the DROID Franka arm, we provide utilities to translate actions. If your policy currently does not support cartesian end-effector actions, and you have no way of computing them from the generated actions, please let us know so that we can make sure your data is post-processed correctly. However, please ensure that all actions are still unnormalized, as we do not support saving and uploading custom normalization and denormalization schemes. ",
+    "url": "/faq/#data-format",
+    
+    "relUrl": "/faq/#data-format"
+  },"18": {
+    "doc": "Frequently Asked Questions",
+    "title": "Annotation tool",
+    "content": "The data annotation tool shows a MIME type error? . MP4 videos can be saved in different formats. To properly use the web viewer, you need to save the video in a browser compatible encoding. The episode recorder has utilities for this. The camera name is displayed, but the video is not? . This is likely because the path provided in the HDF5 file does not correspond to the video file path. Video file paths are encoded relative to the HDF5 file location, so if you moved the files, make sure that the relative positions are still correct. Common issues include having the video placed in the parent directory of the HDF5 file originally (as indicated by a leading ../). ",
+    "url": "/faq/#annotation-tool",
+    
+    "relUrl": "/faq/#annotation-tool"
+  },"19": {
+    "doc": "Frequently Asked Questions",
+    "title": "Data labelling, quality, and upload",
+    "content": "What should we count as a failure? . One issue with robotics evaluation is that the exact line between success and failure is blurry. However, instead of attempting to delineate clear cut criteria, which would not fit most use cases, the dataset captures human robot operators’ definitions of success and failure. This means it is up to the individual operator who sets the task to decide whether it was completed successfully. This reflects a data-centric philosophy, which will enable AI approaches to learn how humans perceive and describe failures, instead of attempting to impose a hard definition of failure a priori. We have bulk data that was gathered in the past, and we can’t annotate it. Can we still submit it? . The minimum labels we need are success and failure per trajectory. If you have bulk data for which filling out the whole questionnaire is too cumbersome, please let us know. We will find a good way for you to contribute the data. Can we use AI tools to annotate the data? . If you believe that you have a robust and reliable AI toolchain to label data, please let us know. We are currently evaluating open source tooling for this task, but have not found available models to be precise enough to describe failure modes. ",
+    "url": "/faq/#data-labelling-quality-and-upload",
+    
+    "relUrl": "/faq/#data-labelling-quality-and-upload"
+  },"20": {
+    "doc": "Frequently Asked Questions",
+    "title": "Robot embodiments and policies",
+    "content": "We want to contribute data on a different robot embodiment. How can we do that? . In general, we are happy to take data from a large variety of embodiments. However, we restrict the current version of the dataset to one or two-arm fixed tabletop setups with pincer grippers. If you have questions about supporting a specific robot arm, feel free reach out to us or open an issue on GitHub. In future iterations, we will consider encompassing more diverse embodiments such as complicated end-effectors or mobile manipulation platforms. However, since these complicate parts of the project, such as the data format standardization and failure annotation questionnaire, we currently limit data submission to fixed tabletop manipulation setups such as the DROID and Aloha systems. ",
+    "url": "/faq/#robot-embodiments-and-policies",
+    
+    "relUrl": "/faq/#robot-embodiments-and-policies"
+  },"21": {
+    "doc": "Frequently Asked Questions",
+    "title": "Frequently Asked Questions",
+    "content": " ",
+    "url": "/faq/",
+    
+    "relUrl": "/faq/"
+  },"22": {
+    "doc": "Dataset Format",
+    "title": "Dataset Format",
+    "content": "Episodes are stored as HDF5 files (.h5), one file per episode. This is the native format written by EpisodeRecorder and read by the annotation tool. For dataset distribution, episodes will be exported to RLDS-compatible format. We chose to use a file-per-episode format to make the annotation tool more flexible, as it allows us to group and bulk annotate episodes flexibly. For more details, see the explanation of the data annotation tool. ",
+    "url": "/format/",
+    
+    "relUrl": "/format/"
+  },"23": {
+    "doc": "Dataset Format",
+    "title": "HDF5 Episode Schema",
+    "content": "Each HDF5 file follows the robotic_failure_upload_data_format_v1 schema: . episode.h5 ├── [attr] schema = \"robotic_failure_upload_data_format_v1\" ├── [attr] language_instruction (str) │ ├── episode_annotations/ (group) │ ├── [attr] episode_id (str) # unique in submission group │ ├── [attr] lab_id (str) # assigned at sign_up │ ├── [attr] operator_name (str) # can be pseudonymized │ ├── [attr] policy_id (str) # drop-down options provided in web tool │ ├── [attr] robot_id (str) # drop-down options provided in web tool │ ├── [attr] control_freq (int) │ ├── [attr] success (bool) │ └── [attr] failure_annotation (str) # json of annotation questionnaire replies │ ├── image_observations/ (group) │ └── &lt;camera_name&gt; (dataset, str) # relative path to .mp4 file │ └── [attr] format = \"mp4_filepath\" │ ├── observation/ (group) │ ├── gripper_position (dataset, float64, shape [N, 1]) │ ├── eef_cartesian_position (dataset, float64, shape [N, 7]) │ └── joint_position (dataset, float64, shape [N, D]) │ └── action_dict/ (group) ├── joint_position (dataset, float64, shape [N, D]) ├── joint_velocity (dataset, float64, shape [N, D]) ├── eef_cartesian_position (dataset, float64, shape [N, 8/16]) └── eef_cartesian_velocity (dataset, float64, shape [N, 8/16]) . N is the number of recorded timesteps and D is the degrees of freedom for the robot. For bi-arm setups, please simply concatenate the actions of the left and right arm. We assume that many data collection setups will not make it possible to collect all action formats. We therefore only require one entry in the action_dict to be a valid tensor dataset, and the others can be set to none. Please ensure to provide unnormalized and absolute actions as this will make using the actions easier and reduce the amount of conversions. We furthermore assume that cartesian positions are encoded as as rotation quaternions. Tooling for converting most common representations into quaternions are provided in the episode recorder. The final action dimensions should be a binary 0/1 for the gripper. Note that we currently only support two-finger gripper setups. ",
+    "url": "/format/#hdf5-episode-schema",
+    
+    "relUrl": "/format/#hdf5-episode-schema"
+  },"24": {
+    "doc": "Dataset Format",
+    "title": "Field Reference",
+    "content": "Episode Annotations . | Field | Type | Required | Description | . | episode_id | str attr | Yes | Unique disambiguation ID per episode | . | lab_id | str attr | Yes | Lab identifier for multi-lab tracking | . | operator_name | str attr | No | Name of the operator who annotated the data | . | policy_id | str attr | Yes | String identifying the evaluated policy | . | robot_id | str attr | Yes | Robot platform identifier | . | control_freq | int attr | Yes | Controller frequency (e.g., \"10\" for 10 Hz) | . | success | bool attr | Yes | Success label | . | failure_annotation | str | No | Questionnaire answers (JSON string) | . The annotation tool provides a simple interface for editing these fields per episode, or in bulk across a group of episodes. Image Observations . Camera video files are stored as relative paths to MP4 files co-located with the HDF5 file. Camera names are user-defined; use descriptive names for consistency: . wrist_cam # Wrist-mounted camera overhead_cam # Top-down view left_shoulder_cam # Left over-shoulder view right_shoulder_cam # Right over-shoulder view front_cam # Frontal view . Keeping the videos in separate files as opposed to storing the raw pixel observations in the HDF5 file allows us to display and store high resolution videos without massive storage inflation during annotation. These files will be post-processed for the dataset release. Observations (per timestep) . | Field | Type | Shape | Description | . | gripper_position | float64 | (N, 1) | Gripper position state | . | eef_cartesian_position | float64 | (N, 6) | End-effector Cartesian pose | . | joint_position | float64 | (N, 7) | Joint position state | . Actions (per timestep) . | Field | Type | Shape | Description | . | eef_cartesian_position | float64 | (N, 6) | Commanded end-effector Cartesian position | . | gripper_position | float64 | (N, 1) | Commanded gripper position | . | eef_cartesian_velocity | float64 | (N, 6) | Commanded end-effector Cartesian velocity (optional) | . | gripper_velocity | float64 | (N, 1) | Commanded gripper velocity (optional) | . To make the dataset usable across embodiments, we ask that you save absolute end-effector position commands. However, we acknowledge that the best action space encoding can vary from policy to policy. For common embodiments, such as the Franka arm used in the standard Droid setup, and the Aloha bi-arm manipulator, we provide utilities to convert between joint and eef space representations. If you want to contribute data on a different embodiment, and your policy does not allow you to output eef positions, please let us know. ",
+    "url": "/format/#field-reference",
+    
+    "relUrl": "/format/#field-reference"
+  },"25": {
+    "doc": "Dataset Format",
+    "title": "Failure Annotation Schema",
+    "content": "The failure_annotation/question dataset contains a JSON string with questionnaire answers. The questionnaire is defined in robotic_failure_data/annotation_tool/questionnaire.yaml and can be filled out using the annotation tool. ",
+    "url": "/format/#failure-annotation-schema",
+    
+    "relUrl": "/format/#failure-annotation-schema"
+  },"26": {
+    "doc": "Dataset Format",
+    "title": "Directory layout",
+    "content": "We strongly recommend saving the data in a directory layout structured like this. samples_directory ├── evaluation_session_1 │ ├── episode_1.hdf5 │ ├── episode_1_camera1.mp4 │ ├── episode_1_camera2.mp4 │ ├── episode_2.hdf5 │ ├── episode_2_camera1.mp4 │ ├── episode_2_camera2.mp4 │ └── ... │ ├── evaluation_session_2 │ ├── episode_1.hdf5 │ ├── episode_1_camera1.mp4 │ ├── episode_1_camera2.mp4 │ └── ... │ └── ... By default, session names and episodes will contain the lab id and timestamp. Keeping all episodes from one evaluation session in one directory allows you to easily use the bulk annotation utilities in the data annotation tool. Note that we do not make any assumptions about file names, all of our tools simply look for all hdf5 files in a nested directory structure. The file paths of associated mp4 camera videos need to be saved in the hdf5 files directly, as described above. ",
+    "url": "/format/#directory-layout",
+    
+    "relUrl": "/format/#directory-layout"
+  },"27": {
+    "doc": "Dataset Format",
+    "title": "Additional data format constraints",
+    "content": "Video constraints (enforced by validate.py): . | Resolution: 180–1280 px on each side | Duration: 2–300 seconds | . ",
+    "url": "/format/#additional-data-format-constraints",
+    
+    "relUrl": "/format/#additional-data-format-constraints"
+  },"28": {
+    "doc": "Home",
+    "title": "Robotic Failure Data",
+    "content": ". Robotic Failure Dataset project’s software toolkit for collecting, annotating, and managing robotic manipulation failures. This website explains the software tools for contributing failure data to the dataset: a multi-lab effort to build a large-scale dataset of robotic manipulation failures for offline RL, policy steering, and failure prediction. The goal of this project is to enable research into how policy evaluation data, especially failures alongside successes, can improve robot policy training. Failed demonstrations are routinely collected during testing and evaluation, but immediately discarded as they provide no further use in common imitation learning pipelines. However, these failures contain crucial information about where current approaches break down, and can be used to train robots to recognize bottleneck states or request intervention from human operators. To support research into how robotic failures can be used effectively, we need a varied dataset spanning different robot policies, tasks, and setups. Therefore, we share our tooling for collecting and annotating policy evaluation trajectories together with a Call for Contributions. Share your policy evaluation data with us, successes and failures, so that we can build datasets to enable the robotics community to investigate how to make full use of the data we produce every day. ",
+    "url": "/#robotic-failure-data",
+    
+    "relUrl": "/#robotic-failure-data"
+  },"29": {
+    "doc": "Home",
+    "title": "What this website provides",
+    "content": "This website explains how to collect, annotate, and contribute data to our effort. Motivation provides a more in-depth overview of the research vision. Contributing describes how to sign up for contributing data, how to upload annotated and collected data, and what benefits are available for contributing labs. Dataset Format describes the format required for data submissions. Data Collection explains the workflow we recommend for collecting evaluation data, and the tools we provide to simplify collection and annotation. Annotation explains the interface of the annotation tool and provides detailed information on the annotation questions. Frequently Asked Questions is a collection of frequent issues and questions that might arise during the use of our workflow. This is being continually expanded, and we invite you to open issues on github for any unanswered questions. ",
+    "url": "/#what-this-website-provides",
+    
+    "relUrl": "/#what-this-website-provides"
+  },"30": {
+    "doc": "Home",
+    "title": "An example of a common evaluation failure",
+    "content": "Below are two example episodes from the initial dataset: one successful grasp and one failure on an Aloha robot using a diffusion policy. Recorded under similar conditions with the same policy, they highlight the fine-grained differences the dataset is designed to capture. Even in a simple ball-grasping task, a slight gripper offset can cause failure. Capturing these nuances (and other common failure modes) is a core goal of this project. Successful episode . The robot is able to pick up the ball and place it in the bowl. Failure episode . The robot fails to grasp the ball and instead pushes it to roll off the table. ",
+    "url": "/#an-example-of-a-common-evaluation-failure",
+    
+    "relUrl": "/#an-example-of-a-common-evaluation-failure"
+  },"31": {
+    "doc": "Home",
+    "title": "Links",
+    "content": ". | GitHub: cvoelcker/robotic_failure_data | Sign Up Form: Google Form | . ",
+    "url": "/#links",
+    
+    "relUrl": "/#links"
+  },"32": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"33": {
+    "doc": "Installation",
+    "title": "Installation",
+    "content": "To install our data collection and annotation tooling, you can use the following commands. We provide support for installing our tooling with both pip and uv. We have tested all of our tooling with python versions 3.8 and 3.12. In principle, other python versions should also work, please open an issue if you run into issues. Using venv/conda/pip . # Create your environment and activate it! # Clone and install base dependencies git clone https://github.com/cvoelcker/robotic_failure_data cd robotic_failure_data pip install -e . Optional extras for using the droid example scripts: . pip install -e \".[droid]\" # In-the-loop rollout annotation for droid . Using uv . # Clone and install base dependencies git clone https://github.com/cvoelcker/robotic_failure_data cd robotic_failure_data uv sync . Optional extras for using the droid example scripts: . uv sync --extra droid # In-the-loop rollout annotation for droid . ",
+    "url": "/installation/",
+    
+    "relUrl": "/installation/"
+  },"34": {
+    "doc": "Motivation",
+    "title": "Why collect failure data",
+    "content": " ",
+    "url": "/motivation/#why-collect-failure-data",
+    
+    "relUrl": "/motivation/#why-collect-failure-data"
+  },"35": {
+    "doc": "Motivation",
+    "title": "The Gap in Robot Learning",
+    "content": "Large-scale robotics datasets have transformed the field. Projects like DROID contain 76,000 demonstration trajectories across 564 scenes, enabling behavior cloning at unprecedented scale. But these datasets share a common trait: they only contain successes. Why Success-Only Data Falls Short . When robots learn only from successful demonstrations, they miss information about how much precision a task requires. Many manipulation tasks depend on bottleneck states such as grasps, where the margin of error is thin; and without failures those critical moments are difficult for a policy to recognize. In addition, existing works using failures often rely on post-hoc synthetic techniques such as corrupting demonstration actions with noise or relabelling episodes with different task commands than those actually achieved. While useful as data augmentation, these approaches lack signal on the types of failures which real robot policies actually make. ",
+    "url": "/motivation/#the-gap-in-robot-learning",
+    
+    "relUrl": "/motivation/#the-gap-in-robot-learning"
+  },"36": {
+    "doc": "Motivation",
+    "title": "Benefits of Failure Data",
+    "content": "Immediate Applications . | Offline Reinforcement Learning Train policies that understand both reward and penalty signals from real-world data. | Policy Steering Guide pretrained VLAs away from known failure modes without full retraining. | Failure Prediction Build classifiers that detect impending failures before they occur. | Early Intervention Systems Trigger human takeover or recovery behaviors when failure is likely. | Reward model training Reward models have recently become prominent, but they often need to rely on synthetic data to generate negative examples. | . Research Directions . | What visual features predict manipulation failure? | Can failure data improve sample efficiency in online RL? | How do different failure types (drops, collisions, stalls) cluster? | Can models learn recovery strategies from failure-with-recovery data? | . ",
+    "url": "/motivation/#benefits-of-failure-data",
+    
+    "relUrl": "/motivation/#benefits-of-failure-data"
+  },"37": {
+    "doc": "Motivation",
+    "title": "Why Now?",
+    "content": "Large open-source datasets are one of the major factors contributing to massive advancements in robotics at the moment. And every robotics lab already generates failure data. They just throw it away. | Policy evaluation generates failed rollouts constantly. | Teleoperation sessions include mistakes. | Real-world deployment encounters edge cases. | . The infrastructure for large-scale data sharing exists (see DROID, Open X-Embodiment). We just need to point it at failures. This project fills this gap, and it needs your help! . ",
+    "url": "/motivation/#why-now",
+    
+    "relUrl": "/motivation/#why-now"
+  },"38": {
+    "doc": "Motivation",
+    "title": "Motivation",
+    "content": " ",
+    "url": "/motivation/",
+    
+    "relUrl": "/motivation/"
+  },"39": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Folder contents",
+    "content": "| File | Purpose | . | upload.py | Validate → upload pipeline for already formatted episodes | . | validate.py | Standalone validator + gap analysis tool | . | convert_ar_aloha_data.py | Example converter: ACT/ALOHA format → required dataset format | . ",
+    "url": "/upload/#folder-contents",
+    
+    "relUrl": "/upload/#folder-contents"
+  },"40": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Step 1 — Get a HuggingFace token",
+    "content": ". | To get an access token to the dataset org, you have to register your lab and follow the provided instructions. | . ",
+    "url": "/upload/#step-1--get-a-huggingface-token",
+    
+    "relUrl": "/upload/#step-1--get-a-huggingface-token"
+  },"41": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Step 2 — Validate your episode",
+    "content": "Run validation to confirm your data matches the required format: . python robotic_failure_data/scripts/validate_and_upload/validate.py \\ --session /path/to/session . A passing run looks like: . Running tests: [████████████████████] 4/4 (100%) ✓ All validation tests passed for episode 000000 . If validation passes, proceed directly to Step 3 — Upload. If it fails, the error message will tell you exactly what is missing or malformed. See If your data needs conversion below. ",
+    "url": "/upload/#step-2--validate-your-episode",
+    
+    "relUrl": "/upload/#step-2--validate-your-episode"
+  },"42": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Step 3 — Upload to HuggingFace",
+    "content": "python upload.py \\ --output_dir /path/to/formatted_data \\ --episode_id 000000 \\ --token $HF_TOKEN . The script will: . | Check and install dependencies | Log in to HuggingFace | Validate the episode | Create the dataset repo if it doesn’t exist | Upload all files | . Uploads are additive — existing episodes in the repo are not deleted. Each run adds or updates only the files you push. All upload.py flags . | Flag | Default | Description | . | --output_dir / -o | formatted_data/ | Base directory containing formatted episode files | . | --episode_id / -e | 000000 | Episode to validate and upload | . | --repo / -r | UT-Robotics-Failure-Dataset/AR-ALOHA-Bin-Pick-and-Stack | HF dataset repo | . | --token | $HF_TOKEN env var | HuggingFace API token | . | --skip_validate | off | Skip validation before upload | . | --skip_upload | off | Validate only, do not upload | . ",
+    "url": "/upload/#step-3--upload-to-huggingface",
+    
+    "relUrl": "/upload/#step-3--upload-to-huggingface"
+  },"43": {
+    "doc": "Dataset Contribution Guide",
+    "title": "If your data needs conversion",
+    "content": "If validation fails because your source data is in a different format, you need to write a converter that transforms it into the required structure. convert_ar_aloha_data.py is provided as a reference — it converts ACT/ALOHA format HDF5 files and can be used as a template. Using the existing ACT/ALOHA converter . python convert_ar_aloha_data.py \\ --source /path/to/episode_0.hdf5 \\ --output_dir /path/to/formatted_data \\ --episode_id 000000 \\ --success 1.0 \\ --language_instruction \"your task description here\" . Then re-run validation and upload as normal. Writing a converter for a new format . | Create convert_&lt;format_name&gt;.py in this folder | Implement the following function signature: def convert( source_h5: str, output_dir: str, episode_id: str, fps: int, success: float, language_instruction: str, ) -&gt; str: \"\"\"Returns path to the output HDF5 file.\"\"\" ... | Run your converter first, then validate and upload: python convert_your_format.py \\ --source /path/to/data.hdf5 \\ --output_dir /path/to/formatted_data \\ --episode_id 000000 python upload.py \\ --output_dir /path/to/formatted_data \\ --episode_id 000000 . | . ",
+    "url": "/upload/#if-your-data-needs-conversion",
+    
+    "relUrl": "/upload/#if-your-data-needs-conversion"
+  },"44": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Troubleshooting",
+    "content": "| Error | Fix | . | H5 file does not exist | Check --base_path and --episode_id; file must be named &lt;episode_id&gt;_trajectory.h5 | . | Missing top-level key: X | Re-run your converter, or manually add the missing field | . | MP4 file does not exist | Video paths inside the HDF5 are relative to base_path; check they exist | . | Image size too large | Source frames exceed 1080px — convert_ar_aloha_data.py resizes automatically | . | Video duration too short/long | Episode is outside 2–300 second range; check frame count and FPS | . | Not logged in | Set export HF_TOKEN=hf_... or pass --token explicitly | . ",
+    "url": "/upload/#troubleshooting",
+    
+    "relUrl": "/upload/#troubleshooting"
+  },"45": {
+    "doc": "Dataset Contribution Guide",
+    "title": "Dataset Contribution Guide",
+    "content": "Data contribution to the projects can be made by submitting the data using our upload scripts to HuggingFace. As long as your data matches the required format and you have a HuggingFace access token, you can use these tools to contribute — regardless of robot platform, data collection setup, or institution. If you have not used our utilities to collect and annotate data, you can still provide it to the repository. An example converter (convert_ar_aloha_data.py) is included and tested on the AR-ALOHA-Bin-Pick-and-Stack dataset, which was collected on an Agilex bimanual robot running the ACT/ALOHA policy. The source data is in the standard ACT/ALOHA HDF5 format (14-DoF joint actions, raw image frames at 1280×720, 1500 timesteps at 30 fps). This converter can serve as a reference implementation for contributors working with similar robot setups or data formats. ",
+    "url": "/upload/",
+    
+    "relUrl": "/upload/"
+  }
+}
