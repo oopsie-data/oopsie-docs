@@ -1,5 +1,5 @@
-title: Robotic Failure Data
-description: Tools for collecting, annotating, and managing robotic manipulation failure data — part of the Robotic Failure Dataset project.
+title: Oopsie Data
+description: Tools for collecting, annotating, and managing robotic manipulation failure data — part of the Oopsie Data project.
 theme: just-the-docs
 
 url: https://cvoelcker.github.io
@@ -20,7 +20,7 @@ aux_links:
 
 aux_links_new_tab: true
 
-footer_content: "Robotic Failure Data — Tooling for the Robotic Failure Dataset."
+footer_content: "Oopsie Data — Tooling for the Oopsie Dataset."
 
 back_to_top: true
 back_to_top_text: "Back to top"

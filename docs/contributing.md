@@ -2,6 +2,7 @@
 title: Contributing
 layout: default
 nav_order: 3
+has_children: true
 permalink: /contributing/
 ---
 
@@ -20,7 +21,7 @@ permalink: /contributing/
 
 ## Contributing Data
 
-The Robotic Failure Dataset is a community effort. We are collecting failure data from diverse robots, tasks, and environments.
+The Oopsie Dataset is a community effort. We are collecting failure data from diverse robots, tasks, and environments.
 
 Our core focus for the first iteration of the project is on single-arm and bi-arm manipulation settings.
 To ensure that the data is broadly useful across different labs, we are especially interested in data from standardized setups, such as the Franka-arm setup used in the Droid project, or the Aloha arms distributed by Trossen Robotics.

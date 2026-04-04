@@ -5,11 +5,11 @@ nav_order: 1
 permalink: /
 ---
 
-# Robotic Failure Data
+# Oopsie Data
 
 ![Logo]({{ '/assets/images/logo.png' | relative_url }})
 
-**[Robotic Failure Dataset](https://github.com/cvoelcker/robotic_failure_data) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
+**[Oopsie Dataset](https://github.com/cvoelcker/robotic_failure_data) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
 
 This website explains the software tools for contributing failure data to the dataset: a multi-lab effort to build a large-scale dataset of robotic manipulation failures for offline RL, policy steering, and failure prediction.
 

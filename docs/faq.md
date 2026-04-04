@@ -1,7 +1,7 @@
 ---
 title: Frequently Asked Questions
 layout: default
-nav_order: 9
+nav_order: 4
 permalink: /faq/
 ---
 

@@ -1,7 +1,8 @@
 ---
-title: Dataset Contribution Guide
+title: Data Submission
 layout: default
-nav_order: 8
+nav_order: 6
+parent: Contributing
 permalink: /upload/
 ---
 
@@ -11,13 +12,7 @@ As long as your data matches the required [format](/format) and you have a
 HuggingFace access token, you can use these tools to contribute — regardless of robot
 platform, data collection setup, or institution.
 
-If you have not used our utilities to collect and annotate data, you can still provide it to the repository.
-An example converter (`convert_ar_aloha_data.py`) is included and tested on the
-[AR-ALOHA-Bin-Pick-and-Stack](https://huggingface.co/datasets/UT-Robotics-Failure-Dataset/AR-ALOHA-Bin-Pick-and-Stack)
-dataset, which was collected on an **Agilex bimanual robot** running the **ACT/ALOHA**
-policy. The source data is in the standard ACT/ALOHA HDF5 format (14-DoF joint actions,
-raw image frames at 1280×720, 1500 timesteps at 30 fps). This converter can serve as a
-reference implementation for contributors working with similar robot setups or data formats.
+If your data is not yet in the required format, see [Data Conversion](/conversion) first.
 
 ---
 
@@ -27,7 +22,6 @@ reference implementation for contributors working with similar robot setups or d
 |---|---|
 | `upload.py` | Validate → upload pipeline for already formatted episodes |
 | `validate.py` | Standalone validator + gap analysis tool |
-| `convert_ar_aloha_data.py` | Example converter: ACT/ALOHA format → required dataset format |
 
 
 ## Step 1 — Get a HuggingFace token
@@ -88,57 +82,6 @@ The script will:
 | `--token` | `$HF_TOKEN` env var | HuggingFace API token |
 | `--skip_validate` | off | Skip validation before upload |
 | `--skip_upload` | off | Validate only, do not upload |
-
----
-
-## If your data needs conversion
-
-If validation fails because your source data is in a different format, you need to write
-a converter that transforms it into the required structure.
-
-`convert_ar_aloha_data.py` is provided as a reference — it converts ACT/ALOHA format HDF5
-files and can be used as a template.
-
-### Using the existing ACT/ALOHA converter
-
-```bash
-python convert_ar_aloha_data.py \
-  --source     /path/to/episode_0.hdf5 \
-  --output_dir /path/to/formatted_data \
-  --episode_id 000000 \
-  --success    1.0 \
-  --language_instruction "your task description here"
-```
-
-Then re-run validation and upload as normal.
-
-### Writing a converter for a new format
-
-1. Create `convert_<format_name>.py` in this folder
-2. Implement the following function signature:
-   ```python
-   def convert(
-       source_h5: str,
-       output_dir: str,
-       episode_id: str,
-       fps: int,
-       success: float,
-       language_instruction: str,
-   ) -> str:
-       """Returns path to the output HDF5 file."""
-       ...
-   ```
-3. Run your converter first, then validate and upload:
-   ```bash
-   python convert_your_format.py \
-     --source /path/to/data.hdf5 \
-     --output_dir /path/to/formatted_data \
-     --episode_id 000000
-
-   python upload.py \
-     --output_dir /path/to/formatted_data \
-     --episode_id 000000
-   ```
 
 ---
 

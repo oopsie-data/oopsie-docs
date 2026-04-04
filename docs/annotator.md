@@ -1,7 +1,8 @@
 ---
 title: Annotation Tool
 layout: default
-nav_order: 7
+nav_order: 5
+parent: Contributing
 permalink: /annotation/
 ---
 
