@@ -43,6 +43,7 @@ jobs:
       - name: Build with Jekyll
         # Outputs to the './_site' directory by default
         run: |
+          cd docs
           bundle install
           bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
@@ -51,7 +52,7 @@ jobs:
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./_site
+          path: ./docs/_site
 
   # Deployment job
   deploy:
