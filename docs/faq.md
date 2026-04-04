@@ -10,9 +10,9 @@ permalink: /faq/
 ## Data format
 
 ### What do I do if my policy provides a different action encoding?
-If possible, provide **absolute cartesian endeffector actions**. For some embodiments, such as the DROID Franka arm, we provide utilities to translate actions.
+If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation](/data-format). For some embodiments, such as the DROID Franka arm, we provide utilities to translate actions.
 
-If your policy currently does not support cartesian end-effector actions, and you have no way of computing them from the generated actions, please let us know so that we can make sure your data is post-processed correctly. However, please ensure that all actions are still **unnormalized**, as we do not support saving and uploading custom normalization and denormalization schemes.
+If your policy currently does not support any of the supported action representations, and you have no way of computing them from the generated actions, please let us know. We are open to expand the action representations supported by this project. However, expanding the set of supported action representation requires some consideration to ensure that the data remains interoperable between different labs.
 
 ## Annotation tool
 
@@ -38,7 +38,10 @@ The minimum labels we need are success and failure per trajectory. If you have b
 
 ### Can we use AI tools to annotate the data?
 
+For now, we only accept human-written annotations.
 If you believe that you have a robust and reliable AI toolchain to label data, please let us know. We are currently evaluating open source tooling for this task, but have not found available models to be precise enough to describe failure modes.
+
+If you are interested in conducting further research on this topic, we would love to coordinate efforts.
 
 ## Robot embodiments and policies
 
