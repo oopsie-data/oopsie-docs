@@ -7,7 +7,7 @@ permalink: /upload/
 
 
 Data contribution to the projects can be made by submitting the data using our upload scripts to HuggingFace.
-As long as your data matches the required [format](/format/) and you have a
+As long as your data matches the required [format]({% link format.md %}) and you have a
 HuggingFace access token, you can use these tools to contribute — regardless of robot
 platform, data collection setup, or institution.
 
@@ -30,7 +30,7 @@ reference implementation for contributors working with similar robot setups or d
 
 ## Step 1 — Get a HuggingFace token
 
-1. To get an access token to the dataset org, you have to [register your lab](/contributing/) and follow the provided instructions.
+1. To get an access token to the dataset org, you have to [register your lab]({% link contributing.md %}) and follow the provided instructions.
 
 ---
 
