@@ -12,10 +12,7 @@ HuggingFace access token, you can use these tools to contribute — regardless o
 platform, data collection setup, or institution.
 
 If you have not used our utilities to collect and annotate data, you can still provide it to the repository.
-An example converter (`convert_ar_aloha_data.py`) is included and tested, which was collected on an **Agilex bimanual robot** running the **ACT/ALOHA**
-policy. The source data is in the standard ACT/ALOHA HDF5 format (14-DoF joint actions,
-raw image frames at 1280×720, 1500 timesteps at 30 fps). This converter can serve as a
-reference implementation for contributors working with similar robot setups or data formats.
+See the [Data Conversion](/conversion/) page for ready-made converters and instructions on writing your own.
 
 ---
 
@@ -25,7 +22,8 @@ reference implementation for contributors working with similar robot setups or d
 |---|---|
 | `scripts/validate_and_upload/upload.py` | Validate → upload pipeline for already formatted episodes |
 | `scripts/validate_and_upload/validate.py` | Standalone validator + gap analysis tool |
-| `scripts/dataset_conversion/convert_ar_aloha_data.py` | Example converter: ACT/ALOHA format → required dataset format |
+| `scripts/dataset_conversion/convert_ar_aloha_data.py` | Converter: ACT/ALOHA HDF5 → required dataset format |
+| `scripts/dataset_conversion/convert_rlds_to_hdf5.py` | Converter: RLDS/DROID TFDS → required dataset format |
 
 
 ## Step 1 — Get a HuggingFace token
@@ -102,52 +100,10 @@ The script will:
 
 ## If your data needs conversion
 
-If validation fails because your source data is in a different format, you need to write
-a converter that transforms it into the required structure.
+If validation fails because your source data is in a different format, convert it first.
+See the [Data Conversion](/conversion/) page for ready-made converters (ACT/ALOHA, RLDS/DROID) and instructions on writing your own.
 
-`convert_ar_aloha_data.py` is provided as a reference — it converts ACT/ALOHA format HDF5
-files and can be used as a template.
-
-### Using the existing ACT/ALOHA converter
-
-```bash
-python scripts/dataset_conversion/convert_ar_aloha_data.py \
-  --source     /path/to/episode_0.hdf5 \
-  --output_dir /path/to/formatted_data \
-  --episode_id 000000 \
-  --success    1.0 \
-  --language_instruction "your task description here"
-```
-
-Then re-run validation and upload as normal.
-
-### Writing a converter for a new format
-
-1. Create `convert_<format_name>.py` in `scripts/dataset_conversion/`
-2. Implement the following function signature:
-   ```python
-   def convert(
-       source_h5: str,
-       output_dir: str,
-       episode_id: str,
-       fps: int,
-       success: float,
-       language_instruction: str,
-   ) -> str:
-       """Returns path to the output HDF5 file."""
-       ...
-   ```
-3. Run your converter first, then validate and upload:
-   ```bash
-   python scripts/dataset_conversion/convert_your_format.py \
-     --source /path/to/data.hdf5 \
-     --output_dir /path/to/formatted_data \
-     --episode_id 000000
-
-   python scripts/validate_and_upload/upload.py \
-     --output_dir /path/to/formatted_data \
-     --episode_id 000000
-   ```
+After conversion, re-run validation and upload as normal.
 
 ---
 

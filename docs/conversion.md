@@ -98,10 +98,21 @@ The script maps DROID field names to the required schema via a `CONVERSION_DICT`
        source_h5: str,
        output_dir: str,
        episode_id: str,
-       fps: int,
+       control_freq: str,
        success: float,
        language_instruction: str,
-   ) -> str:
+   ) -> Path:
        """Returns path to the output HDF5 file."""
        ...
+   ```
+3. Run your converter first, then validate and upload:
+   ```bash
+   python scripts/dataset_conversion/convert_your_format.py \
+     --source /path/to/data.hdf5 \
+     --output-dir /path/to/formatted_data \
+     --episode-id 000000
+
+   python scripts/validate_and_upload/upload.py \
+     --output_dir /path/to/formatted_data \
+     --episode_id 000000
    ```
