@@ -47,6 +47,8 @@ episode.h5
     ├── joint_velocity           (dataset, float64, shape [N, D])
     |── gripper_position         (dataset, float64, shape [N, 1])
     |── gripper_velocity         (dataset, float64, shape [N, 1])
+    |── base_position            (dataset, float64, shape [N, 3])
+    |── base_velocity            (dataset, float64, shape [N, 3])
     ├── eef_cartesian_position   (dataset, float64, shape [N, 8/16])
     └── eef_cartesian_velocity   (dataset, float64, shape [N, 8/16])
 ```
