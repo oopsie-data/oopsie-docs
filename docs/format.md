@@ -45,6 +45,8 @@ episode.h5
 └── action_dict/                 (group)
     ├── joint_position           (dataset, float64, shape [N, D])
     ├── joint_velocity           (dataset, float64, shape [N, D])
+    |── gripper_position         (dataset, float64, shape [N, 1])
+    |── gripper_velocity         (dataset, float64, shape [N, 1])
     ├── eef_cartesian_position   (dataset, float64, shape [N, 8/16])
     └── eef_cartesian_velocity   (dataset, float64, shape [N, 8/16])
 ```
