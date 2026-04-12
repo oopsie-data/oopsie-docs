@@ -41,29 +41,30 @@ episode.h5
 │   ├── gripper_position         (dataset, float64, shape [N, 1])
 │   ├── eef_cartesian_position   (dataset, float64, shape [N, 7])
 │   └── joint_position           (dataset, float64, shape [N, D])
+|        └── [attr] joint_names   (list[str])    # ORDERED joint names
 │
 └── action_dict/                 (group)
     ├── joint_position           (dataset, float64, shape [N, D])
+    |    └── [attr] joint_names   (list[str])    # ORDERED joint names
     ├── joint_velocity           (dataset, float64, shape [N, D])
+    |    └── [attr] joint_names   (list[str])    # ORDERED joint names
+    |── gripper_binary           (dataset, float64, shape [N, 1])    
     |── gripper_position         (dataset, float64, shape [N, 1])
     |── gripper_velocity         (dataset, float64, shape [N, 1])
     |── base_position            (dataset, float64, shape [N, 3])
     |── base_velocity            (dataset, float64, shape [N, 3])
-    ├── eef_cartesian_position   (dataset, float64, shape [N, 8/16])
-    └── eef_cartesian_velocity   (dataset, float64, shape [N, 8/16])
+    ├── eef_cartesian_position   (dataset, float64, shape [N, 7/14])
+    └── eef_cartesian_velocity   (dataset, float64, shape [N, 6/12])
 ```
 
 `N` is the number of recorded timesteps and `D` is the degrees of freedom for the robot.
 For bi-arm setups, please simply concatenate the actions of the left and right arm.
 
-We assume that many data collection setups will not make it possible to collect all action formats. 
-We therefore only require **one** entry in the `action_dict` to be a valid tensor dataset, and the others can be set to none.
-Please ensure to provide unnormalized and absolute actions as this will make using the actions easier and reduce the amount of conversions.
-We furthermore assume that cartesian positions are encoded as as rotation quaternions.
-Tooling for converting most common representations into quaternions are provided in the episode recorder.
-
-The final action dimensions should be a binary 0/1 for the gripper.
-Note that we currently only support two-finger gripper setups.
+**Important Points**
+- We assume that many data collection setups will not make it possible to collect all action formats. We therefore only require **one** entry in the `action_dict` to be a valid tensor dataset, and the others can be set to none.
+- Please ensure to provide unnormalized and absolute actions as this will make using the actions easier and reduce the amount of conversions.
+- We furthermore assume that the rotation component of cartesian position action space are encoded as quaternions. Tooling for converting most common representations into quaternions are provided in the episode recorder.
+- The gripper action should be set in one of the three keys: gripper_binary, gripper_position or gripper_velocity. Note that we currently only support two-finger gripper setups.
 
 ---
 
@@ -105,16 +106,21 @@ These files will be post-processed for the dataset release.
 |:------|:-----|:------|:------------|
 | `gripper_position` | float64 | (N, 1) | Gripper position state |
 | `eef_cartesian_position` | float64 | (N, 6) | End-effector Cartesian pose |
-| `joint_position` | float64 | (N, 7) | Joint position state |
+| `joint_position` | float64 | (N, D) | Joint position state |
 
 ### Actions (per timestep)
 
 | Field | Type | Shape | Description |
 |:------|:-----|:------|:------------|
-| `eef_cartesian_position` | float64 | (N, 6) | Commanded end-effector Cartesian position |
+| `joint_position` | float64 | (N, D) | Commanded joint positions in absolute (unnormalized) space. Ordered by `joint_names`. |
+| `joint_velocity` | float64 | (N, D) | Commanded joint velocities. Ordered by `joint_names`. |
+| `eef_cartesian_position` | float64 | (N, 7/14) | Commanded end-effector Cartesian pose (position + quaternion-based rotation). |
+| `eef_cartesian_velocity` | float64 | (N, 6/12) | Commanded end-effector Cartesian velocity (first 3 linear velocities + next 3 angular velocities). |
+| `gripper_binary` | float64 | (N, 1) | Binary gripper command (open/close) |
 | `gripper_position` | float64 | (N, 1) | Commanded gripper position |
-| `eef_cartesian_velocity` | float64 | (N, 6) | Commanded end-effector Cartesian velocity (optional) |
-| `gripper_velocity` | float64 | (N, 1) | Commanded gripper velocity (optional) |
+| `gripper_velocity` | float64 | (N, 1) | Commanded gripper velocity |
+| `base_position` | float64 | (N, 3) | Commanded base position (deltas usually) |
+| `base_velocity` | float64 | (N, 3) | Commanded base linear velocity (x,y,yaw) |
 
 To make the dataset usable across embodiments, we ask that you save absolute end-effector position commands. 
 However, we acknowledge that the best action space encoding can vary from policy to policy. For common embodiments, such as the Franka arm used in the standard Droid setup, and the Aloha bi-arm manipulator, we provide utilities to convert between joint and eef space representations.
