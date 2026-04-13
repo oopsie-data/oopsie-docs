@@ -2,8 +2,8 @@ title: Oopsie Data
 description: Tools for collecting, annotating, and managing robotic manipulation failure data — part of the Oopsie Data project.
 theme: just-the-docs
 
-url: https://cvoelcker.github.io
-baseurl: /robotic_failure_data
+url: "https://oopsie-data.github.io"
+baseurl: ""
 
 color_scheme: light
 
