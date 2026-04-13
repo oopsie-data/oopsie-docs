@@ -15,12 +15,12 @@ search:
   preview_words_after: 10
 
 aux_links:
-  "GitHub": "https://github.com/cvoelcker/robotic_failure_data"
-  "Robotic Failure Dataset": "https://manipufail.github.io"
+  "GitHub": "https://github.com/oopsie-data/oopsie-docs"
+  "Oopsie-Tools": "https://github.com/oopsie-data/oopsie-tools"
 
 aux_links_new_tab: true
 
-footer_content: "Oopsie Data — Tooling for the Oopsie Dataset."
+footer_content: "Oopsie Tools & Data — Tooling for the Oopsie Dataset."
 
 back_to_top: true
 back_to_top_text: "Back to top"

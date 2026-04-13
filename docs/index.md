@@ -75,5 +75,5 @@ This website explains how to collect, annotate, and contribute data to our effor
 
 ## Links
 
-- **GitHub**: [cvoelcker/robotic_failure_data](https://github.com/cvoelcker/robotic_failure_data)
+- **GitHub**: [oopsie-data/oopsie-tools](https://github.com/oopsie-data/oopsie-tools)
 - **Sign Up Form**: [Google Form](https://forms.gle/9arwZHAvRjvbozoT7)
