@@ -7,6 +7,10 @@ permalink: /team/
 
 # Team Overview
 
+Contact information: [oopsie-team@googlegroups.com](oopsie-team@googlegroups.com)
+
+Please use the team mail for all inquiries. This simplifies communication for us.
+
 ## Team Lead
 
 <div style="display: grid; grid-template-columns: minmax(280px, 420px); gap: 1rem; margin: 1rem 0 2rem;">

@@ -1,7 +1,8 @@
 ---
-title: Dataset Contribution Guide
+title: Validation and Upload
 layout: default
 nav_order: 8
+parent: Contributing
 permalink: /upload/
 ---
 

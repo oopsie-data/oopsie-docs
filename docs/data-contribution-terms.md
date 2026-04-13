@@ -1,5 +1,5 @@
 ---
-title: Legal Guidelines and Licensing
+title: Privacy and Licensing
 layout: default
 nav_order: 10
 permalink: /license/

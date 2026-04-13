@@ -53,14 +53,13 @@ Finally, please contact us for any suggestions! We want to make this data useful
 
 ### Why should your lab contribute?
 
-
 First and foremost, because open-data and cross-lab collaboration has proven to be one of the best ways for academics to collaborate on ambitious robotics projects.
 
 More specifically, all labs that are involved will get several benefits. First of all, we want to make this data useful for your projects, so we are happy to discuss adaptations that make our tool and data useful for your specific lab use-case. If you help us, you get a say in how the data is processed and what utilities we provide.
 
 Second, we will regularly share pre-release versions of the dataset with all contributors so that they can prototype and test ideas with the data. We are tentatively aiming for an alpha release by the CoRL deadline, until then you can use our data exclusively if you contribute. In addition, having your own robot in a major dataset can make future projects that build on this data much easier to deploy, as you have already provided lab-specific fine-tuning data. 
 
-Finally, we are happy to invite all volunteers who collect data and provide feedback to us on our public release. 
+Finally, we are happy to invite all volunteers who collect data and provide feedback as co-authors on our public release. 
 Volunteering for data gathering is laborious and we acknowledge that by celebrating everybody who contribute significant time and effort to the project.
 
 ---
@@ -87,27 +86,3 @@ We only want data from rollouts where the policy has a chance of succeeding:
 - Corrupted sensor data
 - Episodes with missing frames
 - E-stop triggers from external causes
-
----
-
-## Privacy & Attribution
-
-### What We Store
-
-- Robot data (images, states, actions)
-- Provided metadata
-- Lab/operator IDs and contact names
-- Contact information for further requests
-
-### What We Release
-
-At release, we will strip the data of all personally identifying data, and provide detailed information in the data release consent form.
-Please note that while we will be doing our best to remove or blur personal information like faces from all video data, we ask you to make sure to check your data uploads if you are concerned about personal information or privacy.
-
-### Attribution
-
-Contributors can choose:
-- Full attribution (lab and operator names in dataset and paper release)
-- Anonymous contribution
-
-Contributors will be acknowledged in all released material.

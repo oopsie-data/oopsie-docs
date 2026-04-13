@@ -48,6 +48,4 @@ If you are interested in conducting further research on this topic, we would lov
 ### We want to contribute data on a different robot embodiment. How can we do that?
 
 In general, we are happy to take data from a large variety of embodiments. 
-However, we restrict the current version of the dataset to one or two-arm fixed tabletop setups with pincer grippers. If you have questions about supporting a specific robot arm, feel free reach out to us or open an issue on GitHub.
-
-In future iterations, we will consider encompassing more diverse embodiments such as complicated end-effectors or mobile manipulation platforms. However, since these complicate parts of the project, such as the data format standardization and failure annotation questionnaire, we currently limit data submission to fixed tabletop manipulation setups such as the DROID and Aloha systems.
+However, we restrict the current version of the dataset to one or two-arm manipulation setups. We have some support for mobile manipulation platforms, however our failure annotation taxonomy is focused on manipulation failures specifically. If you have questions about supporting a specific robot arm or embodiment, feel free reach out to us or open an issue on GitHub.
