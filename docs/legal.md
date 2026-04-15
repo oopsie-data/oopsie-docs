@@ -34,7 +34,7 @@ If your institution has restrictions on open data release, please consult your r
 
 ## 3. Privacy and Personally Identifiable Information (PII)
 
-### 3.1 Contributor responsibilities
+### 3.1 Contributor Responsibilities
 
 Contributors are responsible for reviewing their data before submission. You should not submit data in which:
 
@@ -44,7 +44,7 @@ Contributors are responsible for reviewing their data before submission. You sho
 
 While our curation pipeline includes a step to detect and blur faces and other identifiable information, **this processing is conducted on a best-effort basis**. It does not constitute a guarantee of complete anonymization, and the project team cannot be held responsible for residual PII that is not detected or removed.
 
-### 3.2 Project team processing
+### 3.2 Project Team Processing
 
 As part of the biweekly curation process, the project team will:
 
@@ -58,6 +58,10 @@ By submitting data, contributors acknowledge that:
 - Residual identifiable information may remain in publicly released data despite best-effort processing.
 - The project team will not be held liable for PII that is not detected during curation.
 - Contributors bear primary responsibility for ensuring their submissions are appropriate for open release.
+
+### 3.4 Pseudonomyzation
+
+We collect names of robot operators and annotators. This is relevant information to establish the [provenance](https://en.wikipedia.org/wiki/Provenance) of the data. However, if a contributor does not want to have their name published alongside the data, we are happy to accept pseudonyms. Please ensure that the pseudonym is consistent across all collected episodes and annotations.
 
 ---
 
@@ -81,13 +85,13 @@ Labs which contribute a significant amount of data will be invited to become co-
 
 ## 6. Data Withdrawal
 
-If you wish to withdraw previously submitted data, please contact the project team at **[contact email]**. Withdrawal requests will be processed in the next scheduled curation cycle. Note that data already included in a published, versioned dataset release cannot be retroactively removed from that version, but will be excluded from all future releases.
+If you wish to withdraw previously submitted data, please contact the project team at **oopsie-team@googlegroups.com**. Withdrawal requests will be processed in the next scheduled curation cycle. Note that data already included in a published, versioned dataset release cannot be retroactively removed from that version, but will be excluded from all future releases.
 
 ---
 
 ## 7. Questions
 
-If you have any questions about these terms, please open an issue on our [GitHub repository](https://github.com/oopsie-data/oopsie-infra) or contact the project team directly at **[contact email]**.
+If you have any questions about these terms, please open an issue on our [GitHub repository](https://github.com/oopsie-data/oopsie-infra) or contact the project team directly at **oopsie-team@googlegroups.com**.
 
 ---
 

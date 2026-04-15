@@ -9,7 +9,7 @@ permalink: /
 
 ![Logo]({{ '/assets/images/logo.png' | relative_url }})
 
-**[Oopsie Dataset](https://github.com/cvoelcker/robotic_failure_data) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
+**[Oopsie Dataset](https://github.com/oopsie-data/oopsie-tools) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
 
 This website explains the software tools for contributing failure data to the dataset: a multi-lab effort to build a large-scale dataset of robotic manipulation failures for offline RL, policy steering, and failure prediction.
 
@@ -21,6 +21,9 @@ To support research into how robotic failures can be used effectively, we need a
 Therefore, we share our tooling for collecting and annotating policy evaluation trajectories together with a **Call for Contributions**.
 Share your policy evaluation data with us, successes and failures, so that we can build datasets to enable the robotics community to investigate how to make full use of the data we produce every day.
 
+
+---
+
 ## What this website provides
 
 This website explains how to collect, annotate, and contribute data to our effort.
@@ -29,13 +32,12 @@ This website explains how to collect, annotate, and contribute data to our effor
 
 [Contributing]({% link contributing.md %}) describes how to sign up for contributing data, how to upload annotated and collected data, and what benefits are available for contributing labs.
 
-[Dataset Format]({% link format.md %}) describes the format required for data submissions.
-
-[Data Collection]({% link data-collection.md %}) explains the workflow we recommend for collecting evaluation data, and the tools we provide to simplify collection and annotation.
-
-[Annotation]({% link annotator.md %}) explains the interface of the annotation tool and provides detailed information on the annotation questions.
+[Oppsie ToolKit]({% link oopsie-tools.md %}) describes the provided toolkit for recording and annotating robot manipulation failures.
 
 [Frequently Asked Questions]({% link faq.md %}) is a collection of frequent issues and questions that might arise during the use of our workflow. This is being continually expanded, and we invite you to open issues on github for any unanswered questions.
+
+
+---
 
 ## An example of a common evaluation failure
 <div style="background: var(--sidebar-color, #f5f6fa); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 1.5rem 1.5rem 1rem; margin: 1.5rem 0;">

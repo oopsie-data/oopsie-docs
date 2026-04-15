@@ -5,7 +5,7 @@ nav_order: 9
 permalink: /team/
 ---
 
-# Team Overview
+# Team overview
 
 Contact information: [oopsie-team@googlegroups.com](oopsie-team@googlegroups.com)
 
@@ -25,6 +25,9 @@ Please use the team mail for all inquiries. This simplifies communication for us
 	</div>
 
 </div>
+
+
+---
 
 ## Team
 
@@ -98,6 +101,8 @@ Please use the team mail for all inquiries. This simplifies communication for us
 	</div>
 
 </div>
+
+---
 
 ## Faculty
 

@@ -40,7 +40,7 @@ Failure data on non-standard systems is still very useful for many research proj
 
 ---
 
-## Who Can Contribute?
+## Who can contribute?
 
 Anyone running robot manipulation experiments!
 
@@ -64,9 +64,9 @@ Volunteering for data gathering is laborious and we acknowledge that by celebrat
 
 ---
 
-## What data do we need, specifically
+## What data do we need, specifically?
 
-### Do Include
+### Do include
 
 We want data from policy executions that make a reasonable attempt at the task.
 We also specifically ask you to **upload successes** as well as failures.
@@ -77,7 +77,7 @@ We also specifically ask you to **upload successes** as well as failures.
 - Misaligned placements
 - Recovery attempts (successful or not)
 
-### Don't Include
+### Don't include
 
 We only want data from rollouts where the policy has a chance of succeeding:
 

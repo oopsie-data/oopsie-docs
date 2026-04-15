@@ -7,7 +7,7 @@ permalink: /motivation/
 
 # Why collect failure data
 
-## The Gap in Robot Learning
+## The gap in robot learning
 
 Large-scale robotics datasets have transformed the field. Projects like [DROID](https://droid-dataset.github.io/) contain **76,000 demonstration trajectories** across 564 scenes, enabling behavior cloning at unprecedented scale.
 
@@ -21,6 +21,8 @@ and without failures those critical moments are difficult for a policy to recogn
 
 In addition, existing works using failures often rely on post-hoc synthetic techniques such as corrupting demonstration actions with noise or relabelling episodes with different task commands than those actually achieved.
 While useful as data augmentation, these approaches lack signal on the types of failures which **real robot policies actually make**.
+
+### What is missing 
 
 ## Benefits of Failure Data
 

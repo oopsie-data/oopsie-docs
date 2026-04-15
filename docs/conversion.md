@@ -1,9 +1,8 @@
 ---
 title: Data Conversion
 layout: default
-nav_order: 1
-parent: Dataset Format
-grand_parent: Contributing
+nav_order: 8
+parent: Oopsie ToolKit
 permalink: /conversion/
 ---
 
@@ -20,7 +19,7 @@ Both converters handle video resizing (frames are downscaled to max 1080 px) and
 
 ---
 
-## ACT/ALOHA converter
+## ACT/ALOHA Converter
 
 Converts a single ACT/ALOHA HDF5 episode (the format used by Agilex/Trossen bimanual robots running ACT) into the required format. Source fields:
 
@@ -55,7 +54,7 @@ python scripts/dataset_conversion/convert_ar_aloha_data.py \
 
 ---
 
-## RLDS/DROID converter
+## RLDS/DROID Converter
 
 Converts a full RLDS TFDS dataset (TFRecord shards with a `dataset_info.json`) into per-episode HDF5 files. Requires the `tensorflow_datasets` extra:
 

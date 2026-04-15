@@ -25,6 +25,8 @@ footer_content: "Oopsie Tools & Data — Tooling for the Oopsie Dataset."
 back_to_top: true
 back_to_top_text: "Back to top"
 
+favicon_ico: /assets/images/favicon.ico
+
 callouts:
   highlight:
     color: yellow

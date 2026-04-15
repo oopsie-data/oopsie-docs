@@ -1,12 +1,12 @@
 ---
 title: Annotation Tool
 layout: default
-nav_order: 5
-parent: Contributing
+nav_order: 3
+parent: Oopsie ToolKit
 permalink: /annotation/
 ---
 
-# Annotation Tool
+# Annotation tool
 
 The annotation tool is the primary interface for labeling robotic rollout episodes as successes or failures. After each rollout, an operator reviews video footage from one or more cameras and answers a structured questionnaire. Annotations are written to a shared JSON file and optionally embedded back into the HDF5 episode file.
 
@@ -16,7 +16,7 @@ Two backends are provided: a **browser-based web UI** for interactive sessions w
 
 ## Launching the tool
 
-### Standalone (web UI)
+### Standalone (Web UI)
 
 The simplest way to annotate a batch of pre-recorded episodes:
 
@@ -51,7 +51,7 @@ The interface is divided into three panels:
 
 <div style="clear: both;"></div>
 
-### Video panel
+### Video Panel
 
 <img src="{{ '/assets/images/view_panel.png' | relative_url }}" alt="Video panel" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 
@@ -65,7 +65,7 @@ Each episode entry shows:
 
 <div style="clear: both;"></div>
 
-### Policy & robot metadata
+### Policy & Robot Metadata
 
 <img src="{{ '/assets/images/metadata.png' | relative_url }}" alt="Metadata" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 

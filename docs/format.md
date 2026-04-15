@@ -1,16 +1,23 @@
 ---
 title: Dataset Format
 layout: default
-nav_order: 2
-parent: Contributing
+nav_order: 5
+parent: Oopsie ToolKit
 has_children: true
 permalink: /format/
 ---
 
+{: .warning }
+> ### 🚧 Under Construction
+> This section is currently being updated. Some links or information may be missing.
+
 # Dataset Format
 
-Episodes are stored as **HDF5 files** (`.h5`), one file per episode. This is the native format written by `EpisodeRecorder` and read by the annotation tool. For dataset distribution, episodes will be exported to RLDS-compatible format.
+Episodes are stored as **HDF5 files** (`.h5`), one file per episode. This is the native format written by `EpisodeRecorder` and read by the annotation tool. For dataset distribution, episodes will be exported to RLDS-compatible format. If you use the provided toolkit, you will not have to worry about the data format, but if you write a separate converter, or if you simply want to know how the data looks under the hood, we explain it in detail here.
+
 We chose to use a file-per-episode format to make the annotation tool more flexible, as it allows us to group and bulk annotate episodes flexibly. For more details, see the [explanation of the data annotation tool]({% link annotator.md %}).
+
+Note that we save far more metadata than other projects such as the DROID dataset. This is on purpose, as our dataset is designed to make cross-embodiment training easier. For example, we explicitly collect information about joint names and rotation representation. For details, see the [robot config]({% link data-collection.md %}#robot-config).
 
 ---
 
@@ -135,7 +142,7 @@ The `failure_annotation/question` dataset contains a JSON string with questionna
 
 ---
 
-## Directory layout
+## Directory Layout
 
 We strongly recommend saving the data in a directory layout structured like this.
 
@@ -164,7 +171,9 @@ Keeping all episodes from one evaluation session in one directory allows you to 
 Note that we do not make any assumptions about file names, all of our tools simply look for all hdf5 files in a nested directory structure.
 The file paths of associated mp4 camera videos need to be saved in the hdf5 files directly, as described above.
 
-## Additional data format constraints
+---
+
+## Additional Data Format Constraints
 Video constraints (enforced by `validate.py`):
 - Resolution: 180–1280 px on each side
 - Duration: 2–300 seconds

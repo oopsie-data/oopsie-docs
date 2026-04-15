@@ -1,11 +1,12 @@
 ---
 title: Validation and Upload
 layout: default
-nav_order: 8
-parent: Contributing
+nav_order: 4
+parent: Oopsie ToolKit
 permalink: /upload/
 ---
 
+# Validation and Upload
 
 Data contribution to the projects can be made by submitting the data using our upload scripts to HuggingFace.
 As long as your data matches the required [format]({% link format.md %}) and you have a
@@ -15,25 +16,22 @@ platform, data collection setup, or institution.
 If you have not used our utilities to collect and annotate data, you can still provide it to the repository.
 See the [Data Conversion](/conversion/) page for ready-made converters and instructions on writing your own.
 
----
 
-## Folder contents
+**Overview of Provided Scripts**
 
 | File | Purpose |
 |---|---|
 | `scripts/validate_and_upload/upload.py` | Validate → upload pipeline for already formatted episodes |
 | `scripts/validate_and_upload/validate.py` | Standalone validator + gap analysis tool |
-| `scripts/dataset_conversion/convert_ar_aloha_data.py` | Converter: ACT/ALOHA HDF5 → required dataset format |
-| `scripts/dataset_conversion/convert_rlds_to_hdf5.py` | Converter: RLDS/DROID TFDS → required dataset format |
 
+## Full Upload Workflow
 
-## Step 1 — Get a HuggingFace token
+### Step 1 — Get a HuggingFace token
 
 1. To get an access token to the dataset org, you have to [register your lab]({% link contributing.md %}) and follow the provided instructions.
 
----
 
-## Step 2 — Validate your episode
+### Step 2 — Validate your episode
 
 Run validation to confirm your data matches the required format:
 
@@ -60,9 +58,8 @@ If validation passes, proceed directly to **Step 3 — Upload**.
 If it fails, the error message will tell you exactly what is missing or malformed.
 See [If your data needs conversion](#if-your-data-needs-conversion) below.
 
----
 
-## Step 3 — Upload to HuggingFace
+### Step 3 — Upload to HuggingFace
 
 ```bash
 # Upload all episodes in a directory
@@ -97,7 +94,9 @@ The script will:
 | `--skip_validate` | off | Skip validation before upload |
 | `--skip_upload` | off | Validate only, do not upload |
 
+
 ---
+
 
 ## If your data needs conversion
 
@@ -106,7 +105,9 @@ See the [Data Conversion](/conversion/) page for ready-made converters (ACT/ALOH
 
 After conversion, re-run validation and upload as normal.
 
+
 ---
+
 
 ## Troubleshooting
 

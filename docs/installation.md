@@ -2,7 +2,7 @@
 title: Installation
 layout: default
 nav_order: 1
-parent: Contributing
+parent: Oopsie ToolKit
 permalink: /installation/
 ---
 
@@ -43,4 +43,3 @@ Optional extras for using the droid example scripts:
 ```bash
 uv sync --extra droid   # In-the-loop rollout annotation for droid
 ```
-

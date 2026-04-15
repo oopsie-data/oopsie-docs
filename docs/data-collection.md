@@ -1,10 +1,14 @@
 ---
 title: Data Collection
 layout: default
-nav_order: 4
-parent: Contributing
+nav_order: 2
+parent: Oopsie ToolKit
 permalink: /data-collection/
 ---
+
+{: .warning }
+> ### 🚧 Under Construction
+> This section is currently being updated. Some links or information may be missing.
 
 # Data Collection Workflow
 
@@ -24,7 +28,7 @@ We support three workflows:
 
 ---
 
-## Recording data with our Toolkit
+## Recording data with our toolkit
 
 ### 1. In-the-loop collection and annotation
 
@@ -137,3 +141,95 @@ for _ in range(num_eval_episodes):
 ```
 
 See the [annotation explanation](/annotation) for instructions on how to launch and use the annotation tool.
+
+---
+
+## ToolKit API
+
+### `WebRolloutAnnotator`
+
+```python
+WebRolloutAnnotator(
+    robot_profile: RobotSetup,
+    samples_dir: Path,
+    operator_name: str,
+    port: int = 5001,
+    annotator_name: str | None = None,
+    wait_for_annotation: bool = True,
+    open_browser: bool = True,
+    resume_session_name: str | None = None,
+)
+```
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| `robot_profile` | `RobotSetup` | — | Robot and policy metadata (see [Robot Config](#robot-config)) |
+| `samples_dir` | `Path` | — | Directory where episode HDF5 and video files are written |
+| `operator_name` | `str` | — | Name of the person running the evaluation |
+| `port` | `int` | `5001` | Port for the local Flask annotation server |
+| `annotator_name` | `str | None` | None | Name of the person performing annotations (if it is different from the operator name) |
+| `wait_for_annotation` | `bool` | `True` | Block `finish_rollout()` until a human annotation is submitted |
+| `open_browser` | `bool` | `True` | Automatically open the annotation UI in the default browser |
+| `resume_session_name` | `str | None` | `None` | Resume a previous session by name instead of starting a new one |
+
+---
+
+## Robot Config
+
+To collect important robot and policy specific metadata, the `EpisodeRecorder` and `WebRolloutAnnotator` accept a `RobotSetup` config loaded from a JSON file.
+
+We provide example files for robot configs for several common embodiments and policy setups, and we encourage you to use those and adapt them to your usecase. 
+
+### Required fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `policy_name` | `str` | Name of the policy being evaluated |
+| `robot_name` | `str` | Identifier for the robot platform |
+| `gripper_name` | `str` | Identifier for the gripper |
+| `control_freq` | `int` | Control frequency in Hz |
+| `camera_names` | `list[str]` | Names of cameras to record |
+| `observation_keys` | `list[str]` | Observations recorded per step. Options: `joint_position`, `cartesian_position`, `gripper_position` |
+| `action_space` | `str` | Action representation. Options: `joint_velocity`, `joint_position`, `eef_cartesian_position`, `eef_cartesian_velocity` |
+
+### Optional fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `controller` | `str` | Controller type, e.g. `OSC controller`, `joint position controller`, `joint velocity controller` |
+| `observation_joint_names` | `list[str]` | Joint names corresponding to indices in `observation["joint_position"]` |
+| `action_joint_names` | `list[str]` | Joint names for joint-space action spaces (include `gripper` as last entry) |
+| `orientation_representation` | `str` | Required when `action_space` is `eef_cartesian_position`. Options: `euler_{format}` (e.g. `euler_xyz`, shape `(3,)`), `quat` (scalar-last, shape `(4,)`), `matrix` (shape `(3,3)`), `rot6d` (shape `(6,)`, used by openpi), `rotvec` (axis-angle, shape `(3,)`) |
+
+Note that the `observation_representation` key is mandatory if the action or observation spaces contain the endeffector cartesian positions.
+
+
+### Example
+
+```yaml
+policy_name: my_policy
+robot_name: franka
+gripper_name: franka_hand
+control_freq: 10
+camera_names:
+  - wrist
+  - overhead
+observation_keys:
+  - joint_position
+  - cartesian_position
+  - gripper_position
+observation_joint_names:
+  - joint_1
+  - ...
+action_space: joint_velocity
+action_joint_names:
+  - joint_1
+  - ...
+orientation_representation: rot6d
+```
+
+---
+
+## Possible Issues
+
+If you are running your policy evaluation script inside a docker or singularity container, and you want to use the WebAnnotator tool, please make sure that you have forwarded the relevant ports to your main machine.
