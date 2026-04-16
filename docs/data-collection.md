@@ -163,7 +163,7 @@ WebRolloutAnnotator(
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `robot_profile` | `RobotSetup` | — | Robot and policy metadata (see [Robot Config](#robot-config)) |
+| `robot_profile` | `RobotSetup` | — | Robot and policy metadata (see [Robot Setup](#robot-setup)) |
 | `samples_dir` | `Path` | — | Directory where episode HDF5 and video files are written |
 | `operator_name` | `str` | — | Name of the person running the evaluation |
 | `port` | `int` | `5001` | Port for the local Flask annotation server |
@@ -172,13 +172,73 @@ WebRolloutAnnotator(
 | `open_browser` | `bool` | `True` | Automatically open the annotation UI in the default browser |
 | `resume_session_name` | `str | None` | `None` | Resume a previous session by name instead of starting a new one |
 
+### `record_step(observation, action)`
+
+Append one rollout timestep to the in-memory buffers. No data is written to disk; all buffered data is only persisted later by calling `save()`.
+
+#### Parameters
+
+**`observation: dict[str, Any]`**
+
+Top-level observation payload for a single timestep. Must contain:
+
+| Key | Type | Description |
+|---|---|---|
+| `"robot_state"` | `dict` | Proprioceptive state of the robot (see sub-keys below) |
+| `"image_observation"` | `dict` | Per-camera frame data (see sub-keys below) |
+
+**`observation["robot_state"]`** — required keys are determined by `robot_profile.robot_state_keys`:
+
+| Key | Type | Description |
+|---|---|---|
+| `"cartesian_position"` | array-like | End-effector pose as `[x, y, z, <rotation>]` (single-arm) or doubled (bimanual). Rotation is converted to a quaternion format automatically based on the information in `robot_profile.robot_state_keys`. |
+| `"gripper_position"` | array-like | Current gripper opening width |
+| `"joint_position"` | array-like | Per-joint angular positions |
+
+**`observation["image_observation"]`** — required keys are determined by `robot_profile.camera_names`. For each camera `cam`, the frame is looked up under any of the following candidate keys (first match wins):
+
+| Candidate key | Example |
+|---|---|
+| `cam` | `"wrist"` |
+| `"image_{cam}"` | `"image_wrist"` |
+| `"{cam}_image"` | `"wrist_image"` |
+
+Frames must be `uint8` RGB arrays of shape `(H, W, 3)`.
+
 ---
 
-## Robot Config
+**`action: dict[str, np.ndarray]`**
+
+Dictionary of actions commanded at this timestep. All keys are optional; missing keys default to `None` and are stored as empty HDF5 datasets.
+
+At least one of `["eef_cartesian_position", "eef_cartesian_velocity", "joint_position", "joint_velocity"]` must be provided. In addition, one of `[:gripper_position", "gripper_velocity"]` must also be provided. This ensures that at least one command for the arm and one for the gripper is provided.  The base commands are optional and only required for wheeled mobile manipulation platforms. 
+
+| Key | Shape | Description |
+|---|---|---|
+| `"eef_cartesian_position"` | `(3 + ROT)` or `(2 x [3 + ROT])` | Target end-effector pose. If a rotation converter is configured on the `RobotSetup`, the orientation component is converted to quaternion before storage. |
+| `"eef_cartesian_velocity"` | `(6,)` or `(12,)` | End-effector Cartesian velocity |
+| `"joint_position"` | `(N,)` | Target joint angles |
+| `"joint_velocity"` | `(N,)` | Target joint velocities |
+| `"base_position"` | `(3,)` | Mobile base position command |
+| `"base_velocity"` | `(3,)` | Mobile base velocity command |
+| `"gripper_position"` | `(1,)` | Continuous gripper position target |
+| `"gripper_velocity"` | `(1,)` | Gripper velocity command |
+| `"gripper_binary"` | `(1,)` | Binary open/close gripper command |
+
+---
+
+#### Raises
+
+- `ValueError` — if `observation` is not a dict, required observation keys are missing, `robot_state` is missing profile-required keys, `image_observation` is missing expected camera keys, or all action values are `None`.
+- `ValueError` — if `eef_cartesian_position` is present but not shaped `(7,)` or `(14,)` (after rotation conversion).
+
+---
+
+## Robot Setup
 
 To collect important robot and policy specific metadata, the `EpisodeRecorder` and `WebRolloutAnnotator` accept a `RobotSetup` config loaded from a JSON file.
 
-We provide example files for robot configs for several common embodiments and policy setups, and we encourage you to use those and adapt them to your usecase. 
+We provide example files for robot setup files for several common embodiments and policy setups, and we encourage you to use those and adapt them to your usecase. 
 
 ### Required fields
 
