@@ -7,7 +7,7 @@ permalink: /
 
 # Oopsie Data
 
-![Logo]({{ '/assets/images/logo.png' | relative_url }})
+![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
 
 **[Oopsie Dataset](https://github.com/oopsie-data/oopsie-tools) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
 

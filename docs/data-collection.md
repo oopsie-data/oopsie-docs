@@ -209,6 +209,10 @@ Frames must be `uint8` RGB arrays of shape `(H, W, 3)`.
 
 **`action: dict[str, np.ndarray]`**
 
+{: .important }
+> Please ensure that the actions are provided as _absolute, non-normalized, single-step_ vectors.
+> Processing action chunks or normalization across different embodiments is difficult, so make sure you record every timestep of the robot execution together with the executed actions.
+
 Dictionary of actions commanded at this timestep. All keys are optional; missing keys default to `None` and are stored as empty HDF5 datasets.
 
 At least one of `["eef_cartesian_position", "eef_cartesian_velocity", "joint_position", "joint_velocity"]` must be provided. In addition, one of `[:gripper_position", "gripper_velocity"]` must also be provided. This ensures that at least one command for the arm and one for the gripper is provided.  The base commands are optional and only required for wheeled mobile manipulation platforms. 
