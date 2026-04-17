@@ -18,7 +18,7 @@ We have tested all of our tooling with python versions 3.8 and 3.12. In principl
 # Create your environment and activate it!
 
 # Clone and install base dependencies
-git clone https://github.com/cvoelcker/robotic_failure_data
+git clone https://github.com/oopsie-data/oopsie-tools
 cd robotic_failure_data
 
 pip install -e .
@@ -33,7 +33,7 @@ pip install -e ".[droid]"   # In-the-loop rollout annotation for droid
 ### Using uv
 ```bash
 # Clone and install base dependencies
-git clone https://github.com/cvoelcker/robotic_failure_data
+git clone https://github.com/oopsie-data/oopsie-tools
 cd robotic_failure_data
 uv sync
 ```

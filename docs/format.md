@@ -49,7 +49,7 @@ episode.h5
 │   │   └── <camera_name>          (dataset, str) # relative path to .mp4 file
 │   └── robot_states/              (group)
 │       ├── gripper_position       (dataset, float64, shape [N, 1])
-│       ├── eef_cartesian_position (dataset, float64, shape [N, D])
+│       ├── cartesian_position     (dataset, float64, shape [N, D])
 │       └── joint_position         (dataset, float64, shape [N, D])
 │
 └── actions/                       (group)
@@ -60,8 +60,8 @@ episode.h5
     ├── gripper_velocity           (dataset, float64, shape [N, 1])
     ├── base_position              (dataset, float64, shape [N, 3])
     ├── base_velocity              (dataset, float64, shape [N, 3])
-    ├── eef_cartesian_position     (dataset, float64, shape [N, 7/14])
-    └── eef_cartesian_velocity     (dataset, float64, shape [N, 6/12])
+    ├── cartesian_position     (dataset, float64, shape [N, 7/14])
+    └── cartesian_velocity     (dataset, float64, shape [N, 6/12])
 ```
 
 `N` is the number of recorded timesteps and `D` is the degrees of freedom for the robot.
@@ -126,7 +126,7 @@ Stored under `observations/robot_states/`.
 | Field | Type | Shape | Description |
 |:------|:-----|:------|:------------|
 | `gripper_position` | float64 | (N, 1) | Gripper position state |
-| `eef_cartesian_position` | float64 | (N, D) | End-effector Cartesian pose; shape depends on robot profile |
+| `cartesian_position` | float64 | (N, D) | End-effector Cartesian pose; shape depends on robot profile |
 | `joint_position` | float64 | (N, D) | Joint position state |
 
 ### Actions (per timestep)
@@ -137,8 +137,8 @@ Stored under `actions/`. Unused fields are written as empty HDF5 datasets.
 |:------|:-----|:------|:------------|
 | `joint_position` | float64 | (N, D) | Commanded joint positions in absolute (unnormalized) space |
 | `joint_velocity` | float64 | (N, D) | Commanded joint velocities |
-| `eef_cartesian_position` | float64 | (N, 7/14) | Commanded end-effector Cartesian pose (position + quaternion-based rotation) |
-| `eef_cartesian_velocity` | float64 | (N, 6/12) | Commanded end-effector Cartesian velocity (first 3 linear + next 3 angular) |
+| `cartesian_position` | float64 | (N, 7/14) | Commanded end-effector Cartesian pose (position + quaternion-based rotation) |
+| `cartesian_velocity` | float64 | (N, 6/12) | Commanded end-effector Cartesian velocity (first 3 linear + next 3 angular) |
 | `gripper_binary` | float64 | (N, 1) | Binary gripper command (open/close) |
 | `gripper_position` | float64 | (N, 1) | Commanded gripper position |
 | `gripper_velocity` | float64 | (N, 1) | Commanded gripper velocity |

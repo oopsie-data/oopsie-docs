@@ -59,5 +59,4 @@ And every robotics lab already generates failure data. They just throw it away.
 - **Teleoperation sessions** include mistakes.
 - **Real-world deployment** encounters edge cases.
 
-The infrastructure for large-scale data sharing exists (see DROID, Open X-Embodiment). We just need to point it at failures.
-This project fills this gap, and it needs **your** help!
+The infrastructure for training on large scale data exists (see OpenVLA, OpenPi, etc.). We just need to feed it more diverse data. This project fills this gap, and it needs **your** help!

@@ -21,13 +21,11 @@ Two backends are provided: a **browser-based web UI** for interactive sessions w
 The simplest way to annotate a batch of pre-recorded episodes:
 
 ```bash
-./scripts/launch_annotator.sh --samples-dir ./samples --port 5001
-# or directly:
-uv run python -m robotic_failure_data.annotation_tool.annotator \
-    --samples-dir ./samples --port 5001
+python -m robotic_failure_data.annotation_tool.annotator \
+    --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 
-Open `http://localhost:5001` in a browser. The tool scans `samples-dir` for HDF5 files and MP4 videos, and presents them one at a time for annotation.
+Open `http://localhost:<PORT>` in a browser. The tool scans `samples-dir` for HDF5 files and MP4 videos, and presents them one at a time for annotation.
 
 ### In-the-loop (Web UI or CLI)
 
