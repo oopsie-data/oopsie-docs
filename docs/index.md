@@ -7,9 +7,9 @@ permalink: /
 
 # Oopsie Data
 
-> All happy families are alike; each unhappy family is unhappy in its own way.
+> All successful robots are alike; each unsuccessful robot is unsuccessful in its own way.
 >
-> <cite>Leo Tolstoy, Anna Karenina</cite>
+> <cite>L30 Tolstoy, Anna Kareni-Bot</cite>
 
 ![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
 
