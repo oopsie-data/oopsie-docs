@@ -1,0 +1,38 @@
+// Custom blockquote styles
+blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-left: none;
+
+  background-color: rgba($link-color, 0.04);
+  border-radius: 0 6px 6px 0;
+  color: $body-text-color;
+
+  p {
+    margin: 0;
+    font-style: italic;
+
+    strong:first-child {
+      display: block;
+      font-style: normal;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: $link-color;
+      margin-bottom: 0.35rem;
+    }
+  }
+
+  cite {
+    display: block;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba($link-color, 0.2);
+    font-style: normal;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: $body-text-color;
+    text-align: right;
+    letter-spacing: 0.02em;
+  }
+}

@@ -7,6 +7,10 @@ permalink: /
 
 # Oopsie Data
 
+> All happy families are alike; each unhappy family is unhappy in its own way.
+>
+> <cite>Leo Tolstoy, Anna Karenina</cite>
+
 ![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
 
 **[Oopsie Dataset](https://github.com/oopsie-data/oopsie-tools) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
