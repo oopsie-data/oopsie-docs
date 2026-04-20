@@ -6,10 +6,6 @@ parent: Oopsie ToolKit
 permalink: /data-collection/
 ---
 
-{: .warning }
-> ### 🚧 Under Construction
-> This section is currently being updated. Some links or information may be missing.
-
 # Data Collection Workflow
 
 For this project, we are interested in collecting in-the-wild evaluation trajectories, both successes and failures.

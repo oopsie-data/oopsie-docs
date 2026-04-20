@@ -7,10 +7,6 @@ has_children: true
 permalink: /format/
 ---
 
-{: .warning }
-> ### 🚧 Under Construction
-> This section is currently being updated. Some links or information may be missing.
-
 # Dataset Format
 
 Episodes are stored as **HDF5 files** (`.h5`), one file per episode. This is the native format written by `EpisodeRecorder` and read by the annotation tool. For dataset distribution, episodes will be exported to training-ready formats, such as RLDS and LeRobot. If you use the provided toolkit, you will not have to worry about the data format, but if you write a separate converter, or if you simply want to know how the data looks under the hood, we explain it in detail here.

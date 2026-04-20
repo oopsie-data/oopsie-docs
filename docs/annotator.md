@@ -37,61 +37,54 @@ For instructions on launching the web tool for in-the-loop annotation, see our [
 
 ### Overview
 
+<img src="{{ '/assets/images/annotator/overview-colored.png' | relative_url }}" alt="Annotation tool overview" style="float: right; width: 100%; margin: 0 0 1rem 1.5rem;" />
+
 The main view has the following components:
-
-<img src="{{ '/assets/images/full_annotator.png' | relative_url }}" alt="Annotation tool overview" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
-
-The interface is divided into three panels:
-
-- **Left**: video playback controls and camera selection
-- **Center**: the episode video player
-- **Right**: the annotation questionnaire and metadata fields
+- **<span style="color:#FF0000">(1)</span> Video Panel**: Video playback controls
+- **<span style="color:#66CC00">(2)</span> Navigation Panel**: Controls for navigating between episodes
+- **<span style="color:#00FFFF">(3)</span> Annotation Panel**: Annotation questionnaire
+- **<span style="color:#FF8000">(4)</span> Info Panel**: Information on the current trajectory
 
 <div style="clear: both;"></div>
-
-### Video Panel
-
-<img src="{{ '/assets/images/view_panel.png' | relative_url }}" alt="Video panel" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
-
-The video panel displays synchronized MP4 footage from all cameras recorded during the episode. Use the playback controls to review the rollout before annotating. For multi-camera setups, tabs or a dropdown switch between views.
-
-Each episode entry shows:
-- Language instruction given to the policy
-- Policy name and ID
-- Number of timesteps recorded
-- Timestamp of the rollout
-
-<div style="clear: both;"></div>
-
-### Policy & Robot Metadata
-
-<img src="{{ '/assets/images/metadata.png' | relative_url }}" alt="Metadata" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
-
-Before the first rollout of a session, the web UI prompts for session-level metadata:
-
-- **Annotator name** — stored with every annotation in the session
-- **Robot embodiment** — selected from `annotation_tool/robot_embodiments.txt`
-- **Policy** — selected from `annotation_tool/policies.txt`
-- **Camera names** — which cameras are active in this session
-
-This information is written into the HDF5 `episode_annotations` group for every episode annotated in the session.
-
-If the web annotation tool is launched independently, the metadata can be added manually.
-To simplify bulk annotation, the tool provides a quick way to apply a given annotation to all hdf5 files in one sub-directory.
-
-It is therefore practical to group episode rollout files by robot embodiment and policy to simplify and speed up the annotation.
 
 ---
 
-## Questionnaire
+### **<span style="color:#FF0000">(1)</span> Video Panel**
 
-<img src="{{ '/assets/images/questionnaire.png' | relative_url }}" alt="Questionnaire" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+<img src="{{ '/assets/images/annotator/videos.png' | relative_url }}" alt="Video panel" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 
-After reviewing the video, the operator fills in the annotation questionnaire. The schema is defined in `annotation_tool/questionnaire.yaml` and can be customized without changing any Python code.
+The video panel displays MP4 footage from all cameras recorded during the episode. Use the playback controls to review the rollout before annotating.
 
 <div style="clear: both;"></div>
 
-### Questions
+---
+
+### **<span style="color:#66CC00">(2)</span> Navigation Panel**
+
+<img src="{{ '/assets/images/annotator/navigation.png' | relative_url }}" alt="Metadata" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+
+The navigation panels allows for navigation between different episodes. The files are arranged according to the directory structure of your samples directory. If you are using the data recording tools, they are arranged by session.
+
+Each fully annotated episode is marked with a small &#x2713; .
+
+<div style="clear: both;"></div>
+
+---
+
+### **<span style="color:#00FFFF">(3)</span> Annotation Panel**
+
+<img src="{{ '/assets/images/annotator/questionnaire.png' | relative_url }}" alt="Questionnaire" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+
+After reviewing the video, use the annotation panel to fill out the annotation questionnaire. 
+
+To display instructions and definitions for the failure categories, you can hover over the small question mark beside each category. 
+
+Please select all failures that appear during a trajectory. For example, if the robot fails to grasp an object, and knocks another object over, it would be appropriate to select both "Grasp failure" and "Collision failure". Sometimes it might also be ambiguous if a failed grasp should be classified as e.g. a reaching or a grasping failure. In these cases, please again mark all categories that could reasonably apply.
+Part of our project goal is to obtain data on inter-annotator disagreement on robotic failures, so we expect some variation and disagreement between different annotators.
+
+<div style="clear: both;"></div>
+
+#### Questions
 
 | Question | Type | Required | Notes |
 |:---------|:-----|:---------|:------|
@@ -101,7 +94,7 @@ After reviewing the video, the operator fills in the annotation questionnaire. T
 | **How severe is this failure?** | Radio | No | Three severity levels |
 | **Additional notes** | Text | No | Free-form field for any extra context |
 
-### Failure categories
+#### Failure categories
 
 The failure taxonomy distinguishes where in the manipulation pipeline the breakdown occurred:
 
@@ -117,7 +110,7 @@ The failure taxonomy distinguishes where in the manipulation pipeline the breakd
 
 Multiple categories can be selected simultaneously.
 
-### Severity
+#### Severity
 
 For failures, an optional severity rating helps downstream filtering:
 
@@ -127,10 +120,13 @@ For failures, an optional severity rating helps downstream filtering:
 
 ---
 
-## CLI
+## In-the-loop annotation
 
-You can run the CLI for annotating the data during collection in the loop, but we currently do not offer an option for running the CLI annotator on pre-collected episodes.
-The CLI annotator prompts for annotator name once at startup, then for each rollout prints the questionnaire questions with numbered options. Failure-only questions are automatically skipped when the episode is marked as a success.
+<img src="{{ '/assets/images/annotator/in-the-loop.png' | relative_url }}" alt="Annotation tool overview" style="float: right; width: 100%; margin: 0 0 1rem 1.5rem;" />
+
+If the rollout annotator is started in-the-loop during robot execution as described in the [data collection]({% link data-collection.md %}) instructions, an additional page is displayed before annotation. This page allows a user to input a natural language instruction for the task easily. After submitting the instructions, the page will display a waiting annotation while the robot is operating, and return to the annotation overview page after the rollout is finished.
+
+A new rollout will be automatically started after submitting the annotation, or by clicking the "Start new Rollout" button in the top right corner of the screen. 
 
 ---
 

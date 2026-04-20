@@ -36,7 +36,7 @@ This website explains how to collect, annotate, and contribute data to our effor
 
 [Contributing]({% link contributing.md %}) describes how to sign up for contributing data, how to upload annotated and collected data, and what benefits are available for contributing labs.
 
-[Oppsie ToolKit]({% link oopsie-tools.md %}) describes the provided toolkit for recording and annotating robot manipulation failures.
+[Oopsie ToolKit]({% link oopsie-tools.md %}) describes the provided toolkit for recording and annotating robot manipulation failures.
 
 [Frequently Asked Questions]({% link faq.md %}) is a collection of frequent issues and questions that might arise during the use of our workflow. This is being continually expanded, and we invite you to open issues on github for any unanswered questions.
 
