@@ -11,9 +11,9 @@ Contact information: [oopsie-team@googlegroups.com](oopsie-team@googlegroups.com
 
 Please use the team mail for all inquiries. This simplifies communication for us.
 
-## Team Lead
+## Team Leads
 
-<div style="display: grid; grid-template-columns: minmax(280px, 420px); gap: 1rem; margin: 1rem 0 2rem;">
+<div id="lead-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0 2rem;">
 
 	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
 		<img src="{{ '/assets/images/team/claas.jpg' | relative_url }}" alt="Claas Voelcker" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
@@ -24,6 +24,14 @@ Please use the team mail for all inquiries. This simplifies communication for us
 		</div>
 	</div>
 
+	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
+		<img src="{{ '/assets/images/team/arpit.jpg' | relative_url }}" alt="Arpit Bahety" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
+		<div>
+			<div style="font-weight: 600;">Arpit Bahety</div>
+			<div><a href="https://arpitrf.github.io/">Website</a></div>
+			<img src="{{ '/assets/images/institutions/ut_austin.svg.png' | relative_url }}" alt="UT Austin logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
+		</div>
+	</div>
 </div>
 
 
@@ -53,14 +61,6 @@ Please use the team mail for all inquiries. This simplifies communication for us
 		</div>
 	</div>
 
-	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
-		<img src="{{ '/assets/images/team/arpit.jpg' | relative_url }}" alt="Arpit Bahety" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
-		<div>
-			<div style="font-weight: 600;">Arpit Bahety</div>
-			<div><a href="https://arpitrf.github.io/">Website</a></div>
-			<img src="{{ '/assets/images/institutions/ut_austin.svg.png' | relative_url }}" alt="UT Austin logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
-		</div>
-	</div>
 
 	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
 		<img src="{{ '/assets/images/team/karen.PNG' | relative_url }}" alt="Jiahui (Karen) Chen" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
