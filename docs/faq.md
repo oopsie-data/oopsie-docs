@@ -10,9 +10,13 @@ permalink: /faq/
 ## Data Format
 
 ### What do I do if my policy provides a different action encoding?
-If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation](/data-format). For some embodiments, such as the DROID Franka arm, we provide utilities to translate actions.
+If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation]({% link format.md %}). For some embodiments, such as the DROID Franka arm, we are aiming to provide utilities to translate actions.
 
 If your policy currently does not support any of the supported action representations, and you have no way of computing them from the generated actions, please let us know. We are open to expand the action representations supported by this project. However, expanding the set of supported action representation requires some consideration to ensure that the data remains interoperable between different labs.
+
+### We already collected data. Can we just upload that?
+
+If you already have a large set of collected failures, you can follow the [guidelines]({% link conversion.md %}) on writing a conversion script. As each lab collects data in a different format, and conversion might be non-trivial, we are also very happy to help with your specific setup. Please just send us an [email]({% link team.md %}) and we will work with you to make your data submission ready in no time.
 
 ---
 
@@ -43,10 +47,10 @@ The minimum labels we need are success and failure per trajectory. If you have b
 
 ### Can we use AI tools to annotate the data?
 
-For now, we only accept human-written annotations.
+For now, we only accept _human-written_ annotations.
 If you believe that you have a robust and reliable AI toolchain to label data, please let us know. We are currently evaluating open source tooling for this task, but have not found available models to be precise enough to describe failure modes.
 
-If you are interested in conducting further research on this topic, we would love to coordinate efforts.
+If you are interested in conducting further research on this topic, we would love to coordinate efforts. Simply send us a mail on how we can best support your efforts.
 
 
 ---
@@ -56,4 +60,6 @@ If you are interested in conducting further research on this topic, we would lov
 ### We want to contribute data on a different robot embodiment. How can we do that?
 
 In general, we are happy to take data from a large variety of embodiments. 
-However, we restrict the current version of the dataset to one or two-arm manipulation setups. We have some support for mobile manipulation platforms, however our failure annotation taxonomy is focused on manipulation failures specifically. If you have questions about supporting a specific robot arm or embodiment, feel free reach out to us or open an issue on GitHub.
+However, we restrict the current version of the dataset to one or two-arm manipulation setups. We have some support for mobile manipulation platforms, however our failure annotation taxonomy is focused on manipulation failures specifically and does not address other issues such as navigation or human-robot interaction. If you have questions about supporting a specific robot arm or embodiment, feel free reach out to us or open an issue on GitHub.
+
+In the future, we are interested in broadening the categories of failures we consider, so get in touch with us if you work on a different aspect o0f robotics (social navigation, off-road navigation, agile locomotion, etc.).
