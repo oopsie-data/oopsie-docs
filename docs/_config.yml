@@ -2,7 +2,7 @@ title: Oopsie Data
 description: Tools for collecting, annotating, and managing robotic manipulation failure data — part of the Oopsie Data project.
 theme: just-the-docs
 
-url: "https://oopsie-data.github.io"
+url: "https://oopsie-data.com"
 baseurl: ""
 
 color_scheme: light
@@ -15,7 +15,6 @@ search:
   preview_words_after: 10
 
 aux_links:
-  "GitHub": "https://github.com/oopsie-data/oopsie-docs"
   "Oopsie-Tools": "https://github.com/oopsie-data/oopsie-tools"
 
 aux_links_new_tab: true
