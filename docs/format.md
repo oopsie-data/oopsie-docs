@@ -159,7 +159,7 @@ Annotations are written into the `episode_annotations/<annotator_name>/` subgrou
 }
 ```
 
-The questionnaire driving these fields is defined in `robotic_failure_data/annotation_tool/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
+The questionnaire driving these fields is defined in `oopsie_tools/annotation_tool/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
 
 ---
 

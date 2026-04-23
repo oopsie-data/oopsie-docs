@@ -31,8 +31,8 @@ We support three workflows:
 For interactive annotation after each rollout using the browser UI:
 
 ```python
-from robotic_failure_data.annotation_tool.rollout_annotator import WebRolloutAnnotator
-from robotic_failure_data.utils.robot_profile import *
+from oopsie_tools.annotation_tool.rollout_annotator import WebRolloutAnnotator
+from oopsie_tools.utils.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 rollout_annotator = WebRolloutAnnotator(
@@ -86,8 +86,8 @@ for _ in range(num_eval_episodes):
 ### 2. Bulk collection and annotation
 
 ```python
-from robotic_failure_data.annotation_tool.episode_recorder import EpisodeRecorder
-from robotic_failure_data.utils.robot_profile import *
+from oopsie_tools.annotation_tool.episode_recorder import EpisodeRecorder
+from oopsie_tools.utils.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 episode_recorder = EpisodeRecorder(

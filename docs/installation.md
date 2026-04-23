@@ -19,7 +19,7 @@ We have tested all of our tooling with python versions 3.8 and 3.12. In principl
 
 # Clone and install base dependencies
 git clone https://github.com/oopsie-data/oopsie-tools
-cd robotic_failure_data
+cd oopsie_tools
 
 pip install -e .
 ```
@@ -34,7 +34,7 @@ pip install -e ".[droid]"   # In-the-loop rollout annotation for droid
 ```bash
 # Clone and install base dependencies
 git clone https://github.com/oopsie-data/oopsie-tools
-cd robotic_failure_data
+cd oopsie_tools
 uv sync
 ```
 

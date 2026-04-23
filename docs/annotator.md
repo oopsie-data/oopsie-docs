@@ -21,7 +21,7 @@ Two backends are provided: a **browser-based web UI** for interactive sessions w
 The simplest way to annotate a batch of pre-recorded episodes:
 
 ```bash
-python -m robotic_failure_data.annotation_tool.annotator \
+python -m oopsie_tools.annotation_tool.annotator \
     --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 
