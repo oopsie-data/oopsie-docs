@@ -1,7 +1,7 @@
 ---
 title: Annotation Tool
 layout: default
-nav_order: 3
+nav_order: 40
 parent: Oopsie ToolKit
 permalink: /annotation/
 ---

@@ -7,7 +7,7 @@ permalink: /faq/
 
 # FAQ & Debugging Help
 
-## Data Format
+## Data & Format
 
 ### What do I do if my policy provides a different action encoding?
 If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation]({% link format.md %}). For some embodiments, such as the DROID Franka arm, we are aiming to provide utilities to translate actions.
@@ -17,6 +17,17 @@ If your policy currently does not support any of the supported action representa
 ### We already collected data. Can we just upload that?
 
 If you already have a large set of collected failures, you can follow the [guidelines]({% link conversion.md %}) on writing a conversion script. As each lab collects data in a different format, and conversion might be non-trivial, we are also very happy to help with your specific setup. Please just send us an [email]({% link team.md %}) and we will work with you to make your data submission ready in no time.
+
+### Is there any data we should not submit?
+
+We want data from rollouts where the policy has a chance of succeeding. This means the data should not include episodes with
+
+- Hardware malfunctions unrelated to the policy
+- Setup failures (missing task-relevant objects)
+- Corrupted sensor data
+- Episodes with missing frames
+
+Even though we generally ask you to exclude hardware failures, our failure taxonomy still includes them. This is both for completeness and also to capture cases where the hardware failure is caused by a policy action.
 
 ---
 
