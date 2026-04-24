@@ -1,7 +1,7 @@
 ---
-title: Motivation
+title: Project Motivation
 layout: default
-nav_order: 2
+nav_order: 3
 permalink: /motivation/
 ---
 
@@ -21,8 +21,6 @@ and without failures those critical moments are difficult for a policy to recogn
 
 In addition, existing works using failures often rely on post-hoc synthetic techniques such as corrupting demonstration actions with noise or relabelling episodes with different task commands than those actually achieved.
 While useful as data augmentation, these approaches lack signal on the types of failures which **real robot policies actually make**.
-
-### What is missing 
 
 ## Benefits of Failure Data
 

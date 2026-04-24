@@ -25,8 +25,8 @@ To support research into how robotic failures can be used effectively, we need a
 Therefore, we share our tooling for collecting and annotating policy evaluation trajectories together with a **Call for Contributions**.
 Share your policy evaluation data with us, successes and failures, so that we can build datasets to enable the robotics community to investigate how to make full use of the data we produce every day.
 
-
 ---
+
 
 ## What this website provides
 
@@ -34,7 +34,9 @@ This website explains how to collect, annotate, and contribute data to our effor
 
 [Motivation]({% link motivation.md %}) provides a more in-depth overview of the research vision.
 
-[Contributing]({% link contributing.md %}) describes how to sign up for contributing data, how to upload annotated and collected data, and what benefits are available for contributing labs.
+[Quickstart]({% link quickstart.md %}) provides an overview of the whole workflow with each individual step and links to detailed instructions for every step.
+
+[Contributing]({% link contributing.md %}) describes who can contribute and what benefits are available for contributing labs.
 
 [Oopsie ToolKit]({% link oopsie-tools.md %}) describes the provided toolkit for recording and annotating robot manipulation failures.
 
@@ -75,11 +77,3 @@ This website explains how to collect, annotate, and contribute data to our effor
     </div>
   </div>
 </div>
-
----
-
-
-## Links
-
-- **GitHub**: [oopsie-data/oopsie-tools](https://github.com/oopsie-data/oopsie-tools)
-- **Sign Up Form**: [Google Form](https://forms.gle/9arwZHAvRjvbozoT7)
