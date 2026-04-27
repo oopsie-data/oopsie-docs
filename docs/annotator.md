@@ -8,9 +8,7 @@ permalink: /annotation/
 
 # Annotation tool
 
-The annotation tool is the primary interface for labeling robotic rollout episodes as successes or failures. After each rollout, an operator reviews video footage from one or more cameras and answers a structured questionnaire. Annotations are written to a shared JSON file and optionally embedded back into the HDF5 episode file.
-
-Two backends are provided: a **browser-based web UI** for interactive sessions with video playback, and a **CLI interface** for headless or SSH environments.
+The annotation tool is the primary interface for labeling robotic rollout episodes as successes or failures. An operator reviews video footage from one or more cameras and answers a structured questionnaire. Annotations are embedded back into the HDF5 episode file.
 
 ---
 
@@ -25,9 +23,9 @@ python -m oopsie_tools.annotation_tool.annotator \
     --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 
-Open `http://localhost:<PORT>` in a browser. The tool scans `samples-dir` for HDF5 files and MP4 videos, and presents them one at a time for annotation.
+`samples_dir` should be the top level directory where your samples were recorded, `port` specifies on which port the webserver can be accessed (navigate to `localhost:<port>` to see the web interface) and `annotator_name` records who provided the annotation. Open `http://localhost:<PORT>` in a browser. The tool scans `samples-dir` for HDF5 files and MP4 videos, and presents them one at a time for annotation. 
 
-### In-the-loop (Web UI or CLI)
+### In-the-loop (Web UI)
 
 For instructions on launching the web tool for in-the-loop annotation, see our [data collection instructions](/data-collection).
 
