@@ -7,7 +7,9 @@ permalink: /quickstart/
 
 # Quickstart Guide
 
-This page provides a brief overview of all the necessary steps to contribute to the project:
+To contribute data to the Oopsie Dataset, we ask that you collect recordings of your robot policy evaluations, successes and failures. Our toolkit provides utilities for formatting robot evaluation data in a consistent manner across embodiments. Finally, use our annotation tool to quickly provide a brief description of each failed trajectory and upload your labeled data to the project repository.
+
+This page provides a brief overview of all the necessary steps to contribute to the project using our tooling:
 1. [Registration](#1-registration)
 2. [Installation and setup](#2-installation-and-setup)
 3. [Data recording and annotation](#3-data-recording-and-annotation)
