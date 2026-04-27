@@ -48,6 +48,8 @@ pip install -e .
 
 To record robot and policy metadata, we use a setup-specific yaml file, the robot profile. A template and example robot profiles can be found in `config/robot_profiles`. To start use the template or the closest existing profile and modify it with your specific information. For a full list of keys and detailed information, please refer to the full instructions.
 
+The robot profile captures both robot embodiment information as well as the policy. This means you have to overwrite the policy field or create a separate profile if you want to evaluate more than one policy. This is required as some keys, such as the action space, are policy -- and not just embodiment -- specific.
+
 ### 2.3 Setting up the contributor config
 To contribute data, you will need to put the lab id and huggingface token you received after registration in `config/contributor_config.yaml`. Please make sure that you use the exact provided lab id (including capitalization) otherwise you cannot access the lab-specific repository.
 

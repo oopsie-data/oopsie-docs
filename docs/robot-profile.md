@@ -1,11 +1,11 @@
 ---
-title: Robot Profile
+title: Robot & Policy Profile
 layout: default
 nav_order: 20
 parent: Oopsie ToolKit
 permalink: /robot-profile/
 ---
-# Robot Profile
+# Robot & Policy Profile
 
 The robot profile captures important metadata about the robot embodiment. It is also used to validate the data at collection time, by checking whether the passed information matches the fields specified in the robot profile.
 
