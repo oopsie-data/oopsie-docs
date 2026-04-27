@@ -46,8 +46,8 @@ This website explains how to collect, annotate, and contribute data to our effor
 ---
 
 ## An example of a common evaluation failure
-<div style="background: var(--sidebar-color, #f5f6fa); border: 1px solid var(--border-color, #e1e4e8); border-radius: 8px; padding: 1.5rem 1.5rem 1rem; margin: 1.5rem 0;">
-  <p style="margin: 0 0 1rem; font-size: 0.95rem; color: var(--body-text-color, #444);">
+<div class="example-box">
+  <p style="margin: 0 0 1rem; font-size: 0.95rem;">
     Below are two example episodes from the initial dataset: one successful grasp and one failure on an Aloha robot using a diffusion policy. Recorded under similar conditions with the same policy, they highlight the fine-grained differences the dataset is designed to capture.</p><p>
     Even in a simple ball-grasping task, a slight gripper offset can cause failure.
     Capturing these nuances (and other common failure modes) is a core goal of this project.

@@ -36,3 +36,40 @@ blockquote {
     letter-spacing: 0.02em;
   }
 }
+
+details.code-example {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: none;
+  background-color: rgba($link-color, 0.04);
+  border-radius: 6px;
+  color: $body-text-color;
+
+  &::before {
+    content: "CODE EXAMPLE";
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: rgba($body-text-color, 0.5);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 500;
+    outline: none;
+    user-select: none;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.example-box {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: none;
+  background-color: rgba($link-color, 0.04);
+  border-radius: 6px;
+  color: $body-text-color;
+}

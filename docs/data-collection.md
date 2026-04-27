@@ -28,7 +28,7 @@ For workflows 1. and 2., we provide example scripts in `examples/inference_examp
 
 For interactive annotation after each rollout using the browser UI, you can use the following code snippet as a template.
 
-<details>
+<details class="code-example">
 
   <summary>In-the-loop code template. Click to expand!</summary>
 
@@ -44,9 +44,9 @@ rollout_annotator = WebRolloutAnnotator(
     data_root_dir=<path_to_data_save_dir>,
     port=<port_for_web_annotator>,
     wait_for_annotation=<halt_robot_on_annotation>,
-    resume_session_name=<optional_existing_session_name>, # None for new session
-    operator_name=<robot_operator_name>,
-    annotator_name=<optional_annotator_name>, # defaults to operator_name if None
+    resume_session_name=<optional_existing_session_name>, # Optional: None for new session
+    operator_name=<robot_operator_name>, # The name of the person running the experiment
+    annotator_name=<optional_annotator_name>, # Optional: Defaults to operator_name if None
 )
 rollout_annotator.start()
 
@@ -95,7 +95,7 @@ for _ in range(num_eval_episodes):
 ### 2. Bulk collection
 Bulk collection will only record your session data in the oopsie-data format without launching the annotator. You can still annotate the collected data later by launching the annotation tool manually. This is detailed on the [annotation tool instruction page]({% link annotator.md %}). 
 
-<details>
+<details class="code-example">
 
   <summary>Bulk collection. Click to expand!</summary>
 
