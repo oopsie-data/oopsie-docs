@@ -16,7 +16,7 @@ You only need to set up a robot profile once for each robot + policy configurati
 ## Creating a Robot Profile
 
 
-We provide example files for robot setup files for several common embodiments and policy setups in `config/robot_profiles`. We encourage you to use those and adapt them to your use-case.  We are also happy to accept pull requests for additional common robot configurations!
+We provide example files for robot setup files for several common embodiments and policy setups in [config/robot_profiles](https://github.com/oopsie-data/oopsie-tools/tree/main/configs/robot_profiles). We encourage you to use those and adapt them to your use-case.  We are also happy to accept pull requests for additional common robot configurations!
 
 ### Required fields
 

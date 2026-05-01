@@ -46,7 +46,7 @@ pip install -e .
 ### 2.2 Creating a robot profile
 [Full instructions]({% link robot-profile.md %})
 
-To record robot and policy metadata, we use a setup-specific yaml file, the robot profile. A template and example robot profiles can be found in `config/robot_profiles`. To start use the template or the closest existing profile and modify it with your specific information. For a full list of keys and detailed information, please refer to the full instructions.
+To record robot and policy metadata, we use a setup-specific yaml file, the robot profile. A template and example robot profiles can be found in [config/robot_profiles](https://github.com/oopsie-data/oopsie-tools/tree/main/configs/robot_profiles). To start use the template or the closest existing profile and modify it with your specific information. For a full list of keys and detailed information, please refer to the full instructions.
 
 The robot profile captures both robot embodiment information as well as the policy. This means you have to overwrite the policy field or create a separate profile if you want to evaluate more than one policy. This is required as some keys, such as the action space, are policy -- and not just embodiment -- specific.
 
@@ -70,7 +70,8 @@ We envision three possible workflows for data collection:
 ### 3.2 Annotation
 [Full instructions]({% link annotator.md %})
 
-To make the data useful for downstream projects, we require that each episode is annotated with failure information. At minimum, each episode needs to be marked as a `success` or `failure` and the `Describe what went wrong` field needs to be filled. In addition, we allow each annotator to fill out a short failure questionnaire.
+To make the data useful for downstream projects, we require that each episode is annotated with failure information. 
+<!-- At minimum, each episode needs to be marked as a `success` or `failure` and the `Describe what went wrong` field needs to be filled. In addition, we allow each annotator to fill out a short failure questionnaire. -->
 
 <!-- To launch the tool in your browser after collecting data, simply run
 

@@ -19,7 +19,7 @@ The annotation tool is the primary interface for labeling robotic rollout episod
 The simplest way to annotate a batch of pre-recorded episodes:
 
 ```bash
-python -m oopsie_tools.annotation_tool.annotator \
+python -m oopsie_tools.annotation_tool.annotator_server \
     --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 
