@@ -1,0 +1,221 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-03T17:52:58Z",
+  "dataset_repo": "OopsieData-Submissions/*",
+  "totals": {
+    "episodes": 11,
+    "labs": 4,
+    "robots": 4,
+    "policies": 4,
+    "tasks": 7,
+    "duration_hours": 0.085,
+    "annotated_episodes": 1,
+    "successes": 0,
+    "failures": 1,
+    "failure_descriptions": 1,
+    "read_errors": 0
+  },
+  "per_lab": {
+    "UT-RobIn-openpi": {
+      "episodes": 1,
+      "successes": 0,
+      "failures": 1,
+      "annotated_episodes": 1,
+      "failure_descriptions": 1,
+      "duration_hours": 0.006,
+      "robots": [
+        "franka_droid"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 1,
+      "first_submission": "2026-04-22T22:09:12Z",
+      "last_submission": "2026-04-22T22:09:12Z"
+    },
+    "UT_RobIn": {
+      "episodes": 4,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.069,
+      "robots": [
+        "franka_robomme"
+      ],
+      "policies": [
+        "mme_vla_suite"
+      ],
+      "task_count": 4,
+      "first_submission": "2026-04-29T21:57:37Z",
+      "last_submission": "2026-04-29T22:00:47Z"
+    },
+    "UofT_RVL": {
+      "episodes": 1,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.01,
+      "robots": [
+        "franka_panda"
+      ],
+      "policies": [
+        "diffusion_policy"
+      ],
+      "task_count": 1,
+      "first_submission": "2026-04-30T22:02:42Z",
+      "last_submission": "2026-04-30T22:02:42Z"
+    },
+    "unknown_lab": {
+      "episodes": 5,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.0,
+      "robots": [
+        "unknown_robot"
+      ],
+      "policies": [
+        "unknown_policy"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    }
+  },
+  "per_robot": {
+    "franka_droid": {
+      "episodes": 1,
+      "labs": 1,
+      "duration_hours": 0.006
+    },
+    "franka_panda": {
+      "episodes": 1,
+      "labs": 1,
+      "duration_hours": 0.01
+    },
+    "franka_robomme": {
+      "episodes": 4,
+      "labs": 1,
+      "duration_hours": 0.069
+    },
+    "unknown_robot": {
+      "episodes": 5,
+      "labs": 1,
+      "duration_hours": 0.0
+    }
+  },
+  "per_policy": {
+    "diffusion_policy": {
+      "episodes": 1
+    },
+    "mme_vla_suite": {
+      "episodes": 4
+    },
+    "pi0.5": {
+      "episodes": 1
+    },
+    "unknown_policy": {
+      "episodes": 5
+    }
+  },
+  "top_tasks": [
+    {
+      "instruction": "Pick tote",
+      "episodes": 5
+    },
+    {
+      "instruction": "pick cup",
+      "episodes": 1
+    },
+    {
+      "instruction": "put one red cube into the bin, then press the button to stop",
+      "episodes": 1
+    },
+    {
+      "instruction": "put one green cube into the bin, then press the button to stop",
+      "episodes": 1
+    },
+    {
+      "instruction": "put four green cubes into the bin, then press the button to stop",
+      "episodes": 1
+    },
+    {
+      "instruction": "put three red cubes and one green cube into the bin, then press the button to stop",
+      "episodes": 1
+    },
+    {
+      "instruction": "Pick up the object and place it at in the bucket",
+      "episodes": 1
+    }
+  ],
+  "failure_categories": {
+    "['Manipulation failure (post contact)']": 1
+  },
+  "severity_distribution": {
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 1
+  },
+  "action_spaces": {
+    "gripper_position": 5,
+    "joint_position": 4,
+    "joint_velocity": 1,
+    "gripper_binary": 1,
+    "cartesian_position": 1
+  },
+  "camera_setups": {
+    "front, wrist": 4,
+    "left, right, wrist": 1,
+    "external, wrist": 1
+  },
+  "submission_timeline": [
+    {
+      "date": "2026-04-22",
+      "episodes": 1,
+      "cumulative": 1
+    },
+    {
+      "date": "2026-04-29",
+      "episodes": 4,
+      "cumulative": 5
+    },
+    {
+      "date": "2026-04-30",
+      "episodes": 1,
+      "cumulative": 6
+    },
+    {
+      "date": "unrecorded",
+      "episodes": 5,
+      "cumulative": 11
+    }
+  ],
+  "submission_timeline_per_lab": [
+    {
+      "date": "2026-04-22",
+      "lab_id": "UT-RobIn-openpi",
+      "episodes": 1
+    },
+    {
+      "date": "2026-04-29",
+      "lab_id": "UT_RobIn",
+      "episodes": 4
+    },
+    {
+      "date": "2026-04-30",
+      "lab_id": "UofT_RVL",
+      "episodes": 1
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "unknown_lab",
+      "episodes": 5
+    }
+  ],
+  "datasets_included": [
+    "OopsieData-Submissions/Amazon-MobileManipulationTeam",
+    "OopsieData-Submissions/UT_RobIn",
+    "OopsieData-Submissions/UofT_RVL"
+  ]
+}
