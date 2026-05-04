@@ -26,13 +26,13 @@ To upload your data, simply execute
 ```bash
 # Upload all episodes in a directory
 python scripts/validate_and_upload/upload.py \
-  --samples_dir /path/to/formatted_data \
+  --path /path/to/formatted_data \
   --token      $HF_TOKEN
 
 # Upload a single episode
 python scripts/validate_and_upload/upload.py \
-  --samples_dir /path/to/formatted_data \
-  --episode_id 000000 \
+  --path /path/to/formatted_data \
+  --episode_id 000000 \ 
   --token      $HF_TOKEN
 ```
 
@@ -49,8 +49,8 @@ The script will:
 
 | Flag | Default | Description |
 |---|---|---|
-| `--samples_dir` / `-o` | required | Base directory containing formatted episode files |
-| `--episode_id` / `-e` | none | Episode to validate and upload; if omitted, all *.h5 files in `samples_dir` are processed |
+| `--path` / `-o` | required | Base directory containing formatted episode files |
+| `--episode_id` / `-e` | none | Episode to validate and upload; if omitted, all *.h5 files in `path` are processed |
 
 ### Validation without upload
 
@@ -59,11 +59,11 @@ Run validation to confirm your data matches the required format:
 ```bash
 # Validate all episodes in a directory
 python scripts/validate_and_upload/validate.py \
-  --samples_dir /path/to/formatted_data
+  --path /path/to/formatted_data
 
 # Validate a single episode
 python scripts/validate_and_upload/validate.py \
-  --samples_dir /path/to/formatted_data \
+  --path /path/to/formatted_data \
   --episode_id 000000
 ```
 
@@ -99,9 +99,9 @@ After conversion, re-run validation and upload as normal.
 
 | Error | Fix |
 |---|---|
-| `H5 file does not exist` | Check `--samples_dir` and `--episode_id`; file must be named `<episode_id>_trajectory.h5` |
+| `H5 file does not exist` | Check `--path` and `--episode_id`; file must be named `<episode_id>_trajectory.h5` |
 | `Missing top-level key: X` | Re-run your converter, or manually add the missing field |
-| `MP4 file does not exist` | Video paths inside the HDF5 are relative to `samples_dir`; check they exist |
+| `MP4 file does not exist` | Video paths inside the HDF5 are relative to `path`; check they exist |
 | `Image size too large` | Source frames exceed 1080px — `convert_ar_aloha_data.py` resizes automatically |
 | `Video duration too short/long` | Episode is outside 2–300 second range; check frame count and FPS |
 | `Not logged in` | Set `export HF_TOKEN=hf_...` or pass `--token` explicitly |
