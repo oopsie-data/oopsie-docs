@@ -36,7 +36,7 @@ For interactive annotation after each rollout using the browser UI, you can use 
 
 ```python
 from oopsie_tools.annotation_tool.rollout_annotator import WebRolloutAnnotator
-from oopsie_tools.utils.robot_profile import *
+from oopsie_tools.utils.robot_profile.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 rollout_annotator = WebRolloutAnnotator(
@@ -79,6 +79,8 @@ for _ in range(num_eval_episodes):
             },
         )
 
+    # wrap up policy rollout
+    # ...
 
     annotation = annotator.finish_rollout(
         instruction=instruction,
@@ -103,7 +105,7 @@ Bulk collection will only record your session data in the oopsie-data format wit
 
 ```python
 from oopsie_tools.annotation_tool.episode_recorder import EpisodeRecorder
-from oopsie_tools.utils.robot_profile import *
+from oopsie_tools.utils.robot_profile.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 episode_recorder = EpisodeRecorder(
@@ -140,7 +142,11 @@ for _ in range(num_eval_episodes):
     # wrap up policy rollout
     # ...
 
-    episode_recorder.finish_rollout(instruction=instruction)
+    success = ... # record success as float 1.0 or 0.0
+    episode_recorder.finish_rollout(
+        instruction=instruction,
+        success=success
+    )
 ```
 </div>
 
@@ -201,7 +207,7 @@ Top-level observation payload for a single timestep. Must contain:
 |---|---|---|
 | `"cartesian_position"` | array-like | End-effector pose as `[x, y, z, <rotation>]` (single-arm) or doubled (bimanual). Rotation is converted to a quaternion format automatically based on the information in `robot_profile.orientation_representation`. |
 | `"gripper_position"` | array-like | Current gripper opening width |
-| `"joint_position"` | array-like | Per-joint angular positions |
+| `"joint_position"` | array-like | Per-joint angular positions (excluding gripper) |
 
 **`observation["image_observation"]`** — required keys are determined by `robot_profile.camera_names`. For each camera `cam`, the frame is looked up under any of the following candidate keys (first match wins):
 
@@ -228,8 +234,8 @@ Dictionary of actions commanded at this timestep. All keys are optional; missing
 |---|---|---|
 | `"cartesian_position"` | `(3 + ROT)` or `(2 x [3 + ROT])` | Target end-effector pose. Same as with the robot state, the rotation component is automatically transformed into a quaternion representation |
 | `"cartesian_velocity"` | `(6,)` or `(12,)` | End-effector Cartesian velocity |
-| `"joint_position"` | `(N,)` | Target joint angles |
-| `"joint_velocity"` | `(N,)` | Target joint velocities |
+| `"joint_position"` | `(N,)` | Target joint angles (excluding gripper) |
+| `"joint_velocity"` | `(N,)` | Target joint velocities (excluding gripper) |
 | `"base_position"` | `(3,)` | Mobile base position command |
 | `"base_velocity"` | `(3,)` | Mobile base velocity command |
 | `"gripper_position"` | `(1,)` | Continuous gripper position target |
