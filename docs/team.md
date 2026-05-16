@@ -32,6 +32,24 @@ Please use the team mail for all inquiries. This simplifies communication for us
 			<img src="{{ '/assets/images/institutions/ut_austin.svg.png' | relative_url }}" alt="UT Austin logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
 		</div>
 	</div>
+	
+	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
+		<img src="{{ '/assets/images/team/paul.png' | relative_url }}" alt="Zhiyuan Paul Zhou" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
+		<div>
+			<div style="font-weight: 600;">Zhiyuan Paul Zhou</div>
+			<div><a href="https://zhouzypaul.github.io/">Website</a></div>
+			<img src="{{ '/assets/images/institutions/berkeley.png' | relative_url }}" alt="UC Berkeley logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: cover;">
+		</div>
+	</div>
+	
+	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
+		<img src="{{ '/assets/images/team/ren.jpg' | relative_url }}" alt="Ren Wang" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
+		<div>
+			<div style="font-weight: 600;">Renhao Wang</div>
+			<div><a href="https://renwang435.github.io/">Website</a></div>
+			<img src="{{ '/assets/images/institutions/berkeley.png' | relative_url }}" alt="UC Berkeley logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
+		</div>
+	</div>
 </div>
 
 
