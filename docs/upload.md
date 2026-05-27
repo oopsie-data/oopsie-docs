@@ -21,19 +21,28 @@ HuggingFace access token, you can use these tools to contribute.
 
 ## Upload Workflow
 
+Before uploading, create a local contributor config in your `oopsie-tools` checkout at
+`configs/contributor_config.yaml`:
+
+```yaml
+lab_id: <EXACT_LAB_ID>
+huggingface_token: <HF_TOKEN>
+```
+
+This file will tell the upload script which HuggingFace dataset repo to upload your data to, and authenticate the push.  
+Keep it private and do not commit it.
+
 To upload your data, simply execute 
 
 ```bash
 # Upload all episodes in a directory
 python scripts/validate_and_upload/upload.py \
-  --path /path/to/formatted_data \
-  --token      $HF_TOKEN
+  --path /path/to/formatted_data
 
 # Upload a single episode
 python scripts/validate_and_upload/upload.py \
   --path /path/to/formatted_data \
-  --episode_id 000000 \ 
-  --token      $HF_TOKEN
+  --episode_id 000000
 ```
 
 The script will:
@@ -51,6 +60,8 @@ The script will:
 |---|---|---|
 | `--path` / `-o` | required | Base directory containing formatted episode files |
 | `--episode_id` / `-e` | none | Episode to validate and upload; if omitted, all *.h5 files in `path` are processed |
+| `--skip_validate` | false | Skip validation before uploading |
+| `--skip_upload` | false | Run validation only and do not upload |
 
 ### Validation without upload
 
@@ -63,8 +74,7 @@ python scripts/validate_and_upload/validate.py \
 
 # Validate a single episode
 python scripts/validate_and_upload/validate.py \
-  --path /path/to/formatted_data \
-  --episode_id 000000
+  --path /path/to/formatted_data/000000.h5
 ```
 
 A passing run looks like:
@@ -99,9 +109,9 @@ After conversion, re-run validation and upload as normal.
 
 | Error | Fix |
 |---|---|
-| `H5 file does not exist` | Check `--path` and `--episode_id`; file must be named `<episode_id>_trajectory.h5` |
+| `H5 file does not exist` | Check `--path` and `--episode_id`; single-episode uploads look for `<episode_id>.h5` |
 | `Missing top-level key: X` | Re-run your converter, or manually add the missing field |
 | `MP4 file does not exist` | Video paths inside the HDF5 are relative to `path`; check they exist |
 | `Image size too large` | Source frames exceed 1080px — `convert_ar_aloha_data.py` resizes automatically |
 | `Video duration too short/long` | Episode is outside 2–300 second range; check frame count and FPS |
-| `Not logged in` | Set `export HF_TOKEN=hf_...` or pass `--token` explicitly |
+| `Not logged in` | Add a valid `huggingface_token` to `configs/contributor_config.yaml` |

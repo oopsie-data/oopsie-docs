@@ -51,7 +51,12 @@ To record robot and policy metadata, we use a setup-specific yaml file, the robo
 The robot profile captures both robot embodiment information as well as the policy. This means you have to overwrite the policy field or create a separate profile if you want to evaluate more than one policy. This is required as some keys, such as the action space, are policy -- and not just embodiment -- specific.
 
 ### 2.3 Setting up the contributor config
-To contribute data, you will need to put the lab id and huggingface token you received after registration in `config/contributor_config.yaml`. Please make sure that you use the exact provided lab id (including capitalization) otherwise you cannot access the lab-specific repository.
+To contribute data, you will need to put the lab id and huggingface token you received after registration in `configs/contributor_config.yaml`. Please make sure that you use the exact provided lab id (including capitalization) otherwise you cannot access the lab-specific repository.
+
+```yaml
+lab_id: <EXACT_LAB_ID>
+huggingface_token: <HF_TOKEN>
+```
 
 ---
 
@@ -91,5 +96,5 @@ To submit your data, you need to ensure that you have provided the lab_id and hu
 After doing this, you can simply run
 ```
 python scripts/validate_and_upload/upload.py \
-  --samples_dir /path/to/formatted_data \
+  --path /path/to/formatted_data \
 ```
