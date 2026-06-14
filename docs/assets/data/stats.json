@@ -1,54 +1,384 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-05-03T17:52:58Z",
-  "dataset_repo": "OopsieData-Submissions/*",
+  "schema_version": 2,
+  "generated_at": {
+    "utc": "2026-06-14T16:49:39Z",
+    "cdt": "2026-06-14T11:49:39-05:00"
+  },
+  "dataset_repo": "local:/scratch/09666/abahety/oopsiedata",
   "totals": {
-    "episodes": 11,
-    "labs": 4,
-    "robots": 4,
-    "policies": 4,
-    "tasks": 7,
-    "duration_hours": 0.085,
-    "annotated_episodes": 1,
-    "successes": 0,
-    "failures": 1,
-    "failure_descriptions": 1,
+    "episodes": 10130,
+    "labs": 35,
+    "datasets": 8,
+    "robots": 6,
+    "policies": 21,
+    "tasks": 2492,
+    "duration_hours": 99.456,
+    "annotated_episodes": 10104,
+    "successes": 1190,
+    "failures": 8914,
+    "failure_descriptions": 262,
     "read_errors": 0
   },
   "per_lab": {
-    "UT-RobIn-openpi": {
-      "episodes": 1,
+    "AI2_MOLMOACT2": {
+      "episodes": 25,
       "successes": 0,
-      "failures": 1,
-      "annotated_episodes": 1,
-      "failure_descriptions": 1,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.277,
+      "robots": [
+        "bi_yam_follower"
+      ],
+      "policies": [
+        "molmoact2_eval"
+      ],
+      "task_count": 3,
+      "first_submission": "2026-05-26T20:49:38Z",
+      "last_submission": "2026-05-26T20:54:35Z"
+    },
+    "Amazon-MobileManipulationTeam": {
+      "episodes": 121,
+      "successes": 21,
+      "failures": 100,
+      "annotated_episodes": 121,
+      "failure_descriptions": 100,
+      "duration_hours": 0.941,
+      "robots": [
+        "aloha"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 4,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "BERKELEY": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Berkeley": {
+      "episodes": 942,
+      "successes": 139,
+      "failures": 803,
+      "annotated_episodes": 942,
+      "failure_descriptions": 0,
+      "duration_hours": 9.91,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 152,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "CIIRC, CTU in Prague": {
+      "episodes": 34,
+      "successes": 3,
+      "failures": 31,
+      "annotated_episodes": 34,
+      "failure_descriptions": 0,
+      "duration_hours": 0.378,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 17,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "CMU_Intent": {
+      "episodes": 55,
+      "successes": 0,
+      "failures": 55,
+      "annotated_episodes": 55,
+      "failure_descriptions": 55,
+      "duration_hours": 0.174,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "diffusion_policy_custom"
+      ],
+      "task_count": 1,
+      "first_submission": "2026-06-12T00:25:12Z",
+      "last_submission": "2026-06-12T00:43:26Z"
+    },
+    "CoRL 2025 Seoul": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
       "duration_hours": 0.006,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_vq_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "KAIST": {
+      "episodes": 64,
+      "successes": 5,
+      "failures": 59,
+      "annotated_episodes": 64,
+      "failure_descriptions": 0,
+      "duration_hours": 0.643,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 32,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Princeton_PRISM": {
+      "episodes": 71,
+      "successes": 0,
+      "failures": 71,
+      "annotated_episodes": 71,
+      "failure_descriptions": 71,
+      "duration_hours": 1.269,
+      "robots": [
+        "bi_yam_follower"
+      ],
+      "policies": [
+        "molmoact2_eval"
+      ],
+      "task_count": 16,
+      "first_submission": "2026-06-12T21:13:02Z",
+      "last_submission": "2026-06-13T04:17:23Z"
+    },
+    "Stanford": {
+      "episodes": 592,
+      "successes": 105,
+      "failures": 487,
+      "annotated_episodes": 592,
+      "failure_descriptions": 0,
+      "duration_hours": 4.956,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 111,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "UPenn": {
+      "episodes": 637,
+      "successes": 55,
+      "failures": 582,
+      "annotated_episodes": 637,
+      "failure_descriptions": 0,
+      "duration_hours": 4.71,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 90,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "UPenn_PAL": {
+      "episodes": 50,
+      "successes": 14,
+      "failures": 36,
+      "annotated_episodes": 50,
+      "failure_descriptions": 36,
+      "duration_hours": 0.48,
       "robots": [
         "franka_droid"
       ],
       "policies": [
         "pi0.5"
       ],
-      "task_count": 1,
-      "first_submission": "2026-04-22T22:09:12Z",
-      "last_submission": "2026-04-22T22:09:12Z"
+      "task_count": 35,
+      "first_submission": "2026-05-17T19:32:25Z",
+      "last_submission": "2026-05-19T19:48:47Z"
     },
-    "UT_RobIn": {
-      "episodes": 4,
-      "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
+    "UT Austin": {
+      "episodes": 1280,
+      "successes": 70,
+      "failures": 1210,
+      "annotated_episodes": 1280,
       "failure_descriptions": 0,
-      "duration_hours": 0.069,
+      "duration_hours": 11.235,
       "robots": [
-        "franka_robomme"
+        "franka_research_3"
       ],
       "policies": [
-        "mme_vla_suite"
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
       ],
-      "task_count": 4,
-      "first_submission": "2026-04-29T21:57:37Z",
-      "last_submission": "2026-04-29T22:00:47Z"
+      "task_count": 347,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University Montreal": {
+      "episodes": 707,
+      "successes": 112,
+      "failures": 595,
+      "annotated_episodes": 707,
+      "failure_descriptions": 0,
+      "duration_hours": 6.504,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 92,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University of Washginton": {
+      "episodes": 7,
+      "successes": 0,
+      "failures": 7,
+      "annotated_episodes": 7,
+      "failure_descriptions": 0,
+      "duration_hours": 0.078,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University of Washington": {
+      "episodes": 147,
+      "successes": 4,
+      "failures": 143,
+      "annotated_episodes": 147,
+      "failure_descriptions": 0,
+      "duration_hours": 1.594,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 21,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Unversity of Washington": {
+      "episodes": 7,
+      "successes": 2,
+      "failures": 5,
+      "annotated_episodes": 7,
+      "failure_descriptions": 0,
+      "duration_hours": 0.073,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
     },
     "UofT_RVL": {
       "episodes": 1,
@@ -67,155 +397,948 @@
       "first_submission": "2026-04-30T22:02:42Z",
       "last_submission": "2026-04-30T22:02:42Z"
     },
-    "unknown_lab": {
-      "episodes": 5,
-      "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
+    "UofT_TISL": {
+      "episodes": 220,
+      "successes": 95,
+      "failures": 125,
+      "annotated_episodes": 220,
       "failure_descriptions": 0,
-      "duration_hours": 0.0,
+      "duration_hours": 1.092,
       "robots": [
-        "unknown_robot"
+        "viperx_300"
       ],
       "policies": [
-        "unknown_policy"
+        "custom_diffusion",
+        "pi0.5_lora_sft"
+      ],
+      "task_count": 4,
+      "first_submission": "2026-05-09T03:10:03Z",
+      "last_submission": "2026-06-08T21:16:19Z"
+    },
+    "Yonsei": {
+      "episodes": 700,
+      "successes": 115,
+      "failures": 585,
+      "annotated_episodes": 700,
+      "failure_descriptions": 0,
+      "duration_hours": 5.687,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 92,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeeley": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi05_droid",
+        "pi0_fast_droid"
       ],
       "task_count": 1,
       "first_submission": null,
       "last_submission": null
+    },
+    "berkekey": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_vq_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkele": {
+      "episodes": 4,
+      "successes": 1,
+      "failures": 3,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.038,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_specialist_droid",
+        "pi05_droid",
+        "pi0_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkelehy": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleu": {
+      "episodes": 20,
+      "successes": 3,
+      "failures": 17,
+      "annotated_episodes": 20,
+      "failure_descriptions": 0,
+      "duration_hours": 0.218,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 10,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleuy": {
+      "episodes": 6,
+      "successes": 3,
+      "failures": 3,
+      "annotated_episodes": 6,
+      "failure_descriptions": 0,
+      "duration_hours": 0.067,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "pi05_droid",
+        "pi0_droid"
+      ],
+      "task_count": 3,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeley": {
+      "episodes": 660,
+      "successes": 81,
+      "failures": 579,
+      "annotated_episodes": 660,
+      "failure_descriptions": 0,
+      "duration_hours": 7.244,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 324,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleyu": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.019,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleyy": {
+      "episodes": 4,
+      "successes": 2,
+      "failures": 2,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.044,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_droid",
+        "pi05_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkely": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkley": {
+      "episodes": 4,
+      "successes": 1,
+      "failures": 3,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.044,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkreley": {
+      "episodes": 2,
+      "successes": 2,
+      "failures": 0,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi05_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "betkeley": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "frodobots": {
+      "episodes": 3586,
+      "successes": 331,
+      "failures": 3255,
+      "annotated_episodes": 3586,
+      "failure_descriptions": 0,
+      "duration_hours": 39.844,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "floppy_bagel_195k_temp1p0",
+        "floppy_bagel_285k_temp1p0",
+        "floppy_bagel_420k",
+        "floppy_bagel_525k_temp1p0",
+        "floppy_bagel_90k_temp1p0",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1061,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "nvidia": {
+      "episodes": 168,
+      "successes": 26,
+      "failures": 142,
+      "annotated_episodes": 168,
+      "failure_descriptions": 0,
+      "duration_hours": 1.765,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "floppy_bagel_195k_temp1p0",
+        "floppy_bagel_285k_temp1p0",
+        "floppy_bagel_420k",
+        "floppy_bagel_525k_temp1p0",
+        "floppy_bagel_90k_temp1p0",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 84,
+      "first_submission": null,
+      "last_submission": null
+    }
+  },
+  "per_dataset": {
+    "OopsieData-Submissions/AI2_MOLMOACT2": {
+      "episodes": 25,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.277,
+      "lab_ids": {
+        "AI2_MOLMOACT2": 25
+      }
+    },
+    "OopsieData-Submissions/Amazon-MobileManipulationTeam": {
+      "episodes": 121,
+      "successes": 21,
+      "failures": 100,
+      "annotated_episodes": 121,
+      "failure_descriptions": 100,
+      "duration_hours": 0.941,
+      "lab_ids": {
+        "Amazon-MobileManipulationTeam": 121
+      }
+    },
+    "OopsieData-Submissions/CMU_Intent": {
+      "episodes": 55,
+      "successes": 0,
+      "failures": 55,
+      "annotated_episodes": 55,
+      "failure_descriptions": 55,
+      "duration_hours": 0.174,
+      "lab_ids": {
+        "CMU_Intent": 55
+      }
+    },
+    "OopsieData-Submissions/Princeton_PRISM": {
+      "episodes": 71,
+      "successes": 0,
+      "failures": 71,
+      "annotated_episodes": 71,
+      "failure_descriptions": 71,
+      "duration_hours": 1.269,
+      "lab_ids": {
+        "Princeton_PRISM": 71
+      }
+    },
+    "OopsieData-Submissions/UPenn_PAL": {
+      "episodes": 50,
+      "successes": 14,
+      "failures": 36,
+      "annotated_episodes": 50,
+      "failure_descriptions": 36,
+      "duration_hours": 0.48,
+      "lab_ids": {
+        "UPenn_PAL": 50
+      }
+    },
+    "OopsieData-Submissions/UofT_RVL": {
+      "episodes": 1,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 0.01,
+      "lab_ids": {
+        "UofT_RVL": 1
+      }
+    },
+    "OopsieData-Submissions/UofT_TISL": {
+      "episodes": 220,
+      "successes": 95,
+      "failures": 125,
+      "annotated_episodes": 220,
+      "failure_descriptions": 0,
+      "duration_hours": 1.092,
+      "lab_ids": {
+        "UofT_TISL": 220
+      }
+    },
+    "OopsieData-Submissions/roboarena_upload": {
+      "episodes": 9587,
+      "successes": 1060,
+      "failures": 8527,
+      "annotated_episodes": 9587,
+      "failure_descriptions": 0,
+      "duration_hours": 95.214,
+      "lab_ids": {
+        "BERKELEY": 2,
+        "Berkeley": 942,
+        "CIIRC, CTU in Prague": 34,
+        "CoRL 2025 Seoul": 2,
+        "KAIST": 64,
+        "Stanford": 592,
+        "UPenn": 637,
+        "UT Austin": 1280,
+        "University Montreal": 707,
+        "University of Washginton": 7,
+        "University of Washington": 147,
+        "Unversity of Washington": 7,
+        "Yonsei": 700,
+        "berkeeley": 2,
+        "berkekey": 2,
+        "berkele": 4,
+        "berkelehy": 2,
+        "berkeleu": 20,
+        "berkeleuy": 6,
+        "berkeley": 660,
+        "berkeleyu": 2,
+        "berkeleyy": 4,
+        "berkely": 2,
+        "berkley": 4,
+        "berkreley": 2,
+        "betkeley": 2,
+        "frodobots": 3586,
+        "nvidia": 168
+      }
     }
   },
   "per_robot": {
-    "franka_droid": {
-      "episodes": 1,
+    "aloha": {
+      "episodes": 121,
       "labs": 1,
-      "duration_hours": 0.006
+      "duration_hours": 0.941
+    },
+    "bi_yam_follower": {
+      "episodes": 96,
+      "labs": 2,
+      "duration_hours": 1.545
+    },
+    "franka_droid": {
+      "episodes": 50,
+      "labs": 1,
+      "duration_hours": 0.48
     },
     "franka_panda": {
       "episodes": 1,
       "labs": 1,
       "duration_hours": 0.01
     },
-    "franka_robomme": {
-      "episodes": 4,
-      "labs": 1,
-      "duration_hours": 0.069
+    "franka_research_3": {
+      "episodes": 9642,
+      "labs": 29,
+      "duration_hours": 95.388
     },
-    "unknown_robot": {
-      "episodes": 5,
+    "viperx_300": {
+      "episodes": 220,
       "labs": 1,
-      "duration_hours": 0.0
+      "duration_hours": 1.092
     }
   },
   "per_policy": {
+    "custom_diffusion": {
+      "episodes": 120
+    },
+    "dam": {
+      "episodes": 60
+    },
     "diffusion_policy": {
       "episodes": 1
     },
-    "mme_vla_suite": {
-      "episodes": 4
+    "diffusion_policy_custom": {
+      "episodes": 55
+    },
+    "dreaming_zebra": {
+      "episodes": 58
+    },
+    "floppy_bagel_195k_temp1p0": {
+      "episodes": 8
+    },
+    "floppy_bagel_285k_temp1p0": {
+      "episodes": 12
+    },
+    "floppy_bagel_420k": {
+      "episodes": 29
+    },
+    "floppy_bagel_525k_temp1p0": {
+      "episodes": 33
+    },
+    "floppy_bagel_90k_temp1p0": {
+      "episodes": 10
+    },
+    "molmoact2_eval": {
+      "episodes": 96
+    },
+    "paligemma_binning_droid": {
+      "episodes": 1068
+    },
+    "paligemma_diffusion_droid": {
+      "episodes": 1171
+    },
+    "paligemma_fast_droid": {
+      "episodes": 1386
+    },
+    "paligemma_fast_specialist_droid": {
+      "episodes": 1392
+    },
+    "paligemma_vq_droid": {
+      "episodes": 1198
     },
     "pi0.5": {
-      "episodes": 1
+      "episodes": 171
     },
-    "unknown_policy": {
-      "episodes": 5
+    "pi0.5_lora_sft": {
+      "episodes": 100
+    },
+    "pi05_droid": {
+      "episodes": 564
+    },
+    "pi0_droid": {
+      "episodes": 1430
+    },
+    "pi0_fast_droid": {
+      "episodes": 1168
     }
   },
   "top_tasks": [
     {
+      "instruction": "open the book",
+      "episodes": 68
+    },
+    {
+      "instruction": "close the book",
+      "episodes": 62
+    },
+    {
+      "instruction": "pick up the bottle",
+      "episodes": 61
+    },
+    {
       "instruction": "Pick tote",
-      "episodes": 5
+      "episodes": 60
     },
     {
-      "instruction": "pick cup",
-      "episodes": 1
+      "instruction": "Pick up the green cup and stack it on the purple",
+      "episodes": 60
     },
     {
-      "instruction": "put one red cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "Pick up the pen cap with the right hand and the cap with the left and insert it on the pen",
+      "episodes": 60
     },
     {
-      "instruction": "put one green cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "Stack tote",
+      "episodes": 59
     },
     {
-      "instruction": "put four green cubes into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "close the drawer",
+      "episodes": 53
     },
     {
-      "instruction": "put three red cubes and one green cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "Pick up the block and place it on the cardboard",
+      "episodes": 50
     },
     {
-      "instruction": "Pick up the object and place it at in the bucket",
-      "episodes": 1
+      "instruction": "Pick up the green cup and stack it on the purple cup",
+      "episodes": 50
+    },
+    {
+      "instruction": "fold the towel in half",
+      "episodes": 50
+    },
+    {
+      "instruction": "pick up the shoe",
+      "episodes": 36
+    },
+    {
+      "instruction": "rotate the controller by 90 degrees",
+      "episodes": 32
+    },
+    {
+      "instruction": "turn the plate upside down",
+      "episodes": 28
+    },
+    {
+      "instruction": "rotate the marker pen by 90 degrees",
+      "episodes": 28
+    },
+    {
+      "instruction": "turn the controller upside down",
+      "episodes": 26
+    },
+    {
+      "instruction": "stack up the two cups",
+      "episodes": 24
+    },
+    {
+      "instruction": "rotate the banana by 90 degrees",
+      "episodes": 24
+    },
+    {
+      "instruction": "clean up the table",
+      "episodes": 23
+    },
+    {
+      "instruction": "stack the bowls",
+      "episodes": 23
     }
   ],
   "failure_categories": {
-    "['Manipulation failure (post contact)']": 1
+    "unknown": 8652,
+    "['Manipulation failure (post contact)']": 116,
+    "['Reaching failure (pre contact)']": 53,
+    "['Task not attempted']": 33,
+    "['Sequencing or semantic failure']": 33,
+    "['Grasp failure (at contact)']": 6,
+    "['Collision failure']": 6,
+    "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 3,
+    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 3,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 3,
+    "['Reaching failure (pre contact)', 'Task not attempted']": 1,
+    "['Grasp failure (at contact)', 'Collision failure']": 1,
+    "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 1,
+    "['Sequencing or semantic failure', 'Task not attempted']": 1,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 1,
+    "['Other']": 1
   },
   "severity_distribution": {
-    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 1
+    "unknown": 8652,
+    "low": 100,
+    "Low severity - no damage, can be reset and reattempted": 100,
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 62
   },
   "action_spaces": {
-    "gripper_position": 5,
-    "joint_position": 4,
-    "joint_velocity": 1,
-    "gripper_binary": 1,
-    "cartesian_position": 1
+    "gripper_position": 10025,
+    "joint_velocity": 9637,
+    "joint_position": 437,
+    "gripper_binary": 105,
+    "cartesian_position": 56
   },
   "camera_setups": {
-    "front, wrist": 4,
-    "left, right, wrist": 1,
+    "left, right, wrist": 4451,
+    "right, wrist": 3483,
+    "left, wrist": 1653,
+    "cam_high, cam_left_wrist, cam_right_wrist": 121,
+    "left_wrist, right_wrist, top": 120,
+    "camera_high, camera_wrist_left, camera_wrist_right": 100,
+    "left, right, top": 96,
+    "tactile, zed": 55,
+    "left, overhead, right, wrist": 50,
     "external, wrist": 1
   },
   "submission_timeline": [
     {
-      "date": "2026-04-22",
+      "date": "2026-04-30",
       "episodes": 1,
       "cumulative": 1
     },
     {
-      "date": "2026-04-29",
-      "episodes": 4,
-      "cumulative": 5
+      "date": "2026-05-09",
+      "episodes": 120,
+      "cumulative": 121
     },
     {
-      "date": "2026-04-30",
-      "episodes": 1,
-      "cumulative": 6
+      "date": "2026-05-17",
+      "episodes": 28,
+      "cumulative": 149
+    },
+    {
+      "date": "2026-05-19",
+      "episodes": 22,
+      "cumulative": 171
+    },
+    {
+      "date": "2026-05-26",
+      "episodes": 25,
+      "cumulative": 196
+    },
+    {
+      "date": "2026-06-08",
+      "episodes": 100,
+      "cumulative": 296
+    },
+    {
+      "date": "2026-06-12",
+      "episodes": 97,
+      "cumulative": 393
+    },
+    {
+      "date": "2026-06-13",
+      "episodes": 29,
+      "cumulative": 422
     },
     {
       "date": "unrecorded",
-      "episodes": 5,
-      "cumulative": 11
+      "episodes": 9708,
+      "cumulative": 10130
     }
   ],
   "submission_timeline_per_lab": [
-    {
-      "date": "2026-04-22",
-      "lab_id": "UT-RobIn-openpi",
-      "episodes": 1
-    },
-    {
-      "date": "2026-04-29",
-      "lab_id": "UT_RobIn",
-      "episodes": 4
-    },
     {
       "date": "2026-04-30",
       "lab_id": "UofT_RVL",
       "episodes": 1
     },
     {
+      "date": "2026-05-09",
+      "lab_id": "UofT_TISL",
+      "episodes": 120
+    },
+    {
+      "date": "2026-05-17",
+      "lab_id": "UPenn_PAL",
+      "episodes": 28
+    },
+    {
+      "date": "2026-05-19",
+      "lab_id": "UPenn_PAL",
+      "episodes": 22
+    },
+    {
+      "date": "2026-05-26",
+      "lab_id": "AI2_MOLMOACT2",
+      "episodes": 25
+    },
+    {
+      "date": "2026-06-08",
+      "lab_id": "UofT_TISL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "CMU_Intent",
+      "episodes": 55
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 42
+    },
+    {
+      "date": "2026-06-13",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 29
+    },
+    {
       "date": "unrecorded",
-      "lab_id": "unknown_lab",
-      "episodes": 5
+      "lab_id": "Amazon-MobileManipulationTeam",
+      "episodes": 121
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "BERKELEY",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "Berkeley",
+      "episodes": 942
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "CIIRC, CTU in Prague",
+      "episodes": 34
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "CoRL 2025 Seoul",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "KAIST",
+      "episodes": 64
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "Stanford",
+      "episodes": 592
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "UPenn",
+      "episodes": 637
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "UT Austin",
+      "episodes": 1280
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "University Montreal",
+      "episodes": 707
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "University of Washginton",
+      "episodes": 7
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "University of Washington",
+      "episodes": 147
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "Unversity of Washington",
+      "episodes": 7
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "Yonsei",
+      "episodes": 700
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeeley",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkekey",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkele",
+      "episodes": 4
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkelehy",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeleu",
+      "episodes": 20
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeleuy",
+      "episodes": 6
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeley",
+      "episodes": 660
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeleyu",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkeleyy",
+      "episodes": 4
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkely",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkley",
+      "episodes": 4
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "berkreley",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "betkeley",
+      "episodes": 2
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "frodobots",
+      "episodes": 3586
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "nvidia",
+      "episodes": 168
     }
   ],
   "datasets_included": [
+    "OopsieData-Submissions/AI2_MOLMOACT2",
     "OopsieData-Submissions/Amazon-MobileManipulationTeam",
-    "OopsieData-Submissions/UT_RobIn",
-    "OopsieData-Submissions/UofT_RVL"
+    "OopsieData-Submissions/CMU_Intent",
+    "OopsieData-Submissions/Princeton_PRISM",
+    "OopsieData-Submissions/UPenn_PAL",
+    "OopsieData-Submissions/UofT_RVL",
+    "OopsieData-Submissions/UofT_TISL",
+    "OopsieData-Submissions/roboarena_upload"
   ]
 }

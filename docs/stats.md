@@ -358,6 +358,7 @@ permalink: /stats/
     gap: 0.4rem 0.5rem;
   }
   .stats-lab-legend-item {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -369,6 +370,34 @@ permalink: /stats/
     color: var(--stats-ink-soft);
     font-variant-numeric: tabular-nums;
     transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .stats-lab-legend-item[data-stats-tip] {
+    cursor: default;
+  }
+  .stats-lab-legend-item[data-stats-tip]::after {
+    content: attr(data-stats-tip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.45rem);
+    transform: translateX(-50%);
+    padding: 0.35rem 0.55rem;
+    border-radius: var(--radius-sm);
+    background: rgba(15, 23, 42, 0.92);
+    color: #f8fafc;
+    font-size: 0.72rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgb(15 23 42 / 0.18);
+    transition: opacity var(--dur) var(--ease), visibility var(--dur) var(--ease);
+  }
+  .stats-lab-legend-item[data-stats-tip]:hover::after,
+  .stats-lab-legend-item[data-stats-tip]:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
   }
   .stats-lab-legend-item:hover {
     border-color: var(--stats-border-strong);
@@ -599,6 +628,19 @@ permalink: /stats/
       <div class="stats-fold-body-wrap">
         <div class="stats-fold-body" id="stats-body-contribution" role="region" aria-label="Contribution statistics">
           <div class="stats-fold-body-inner">
+            <h3>By dataset</h3>
+            <div class="stats-lab-charts">
+              <div class="stats-lab-pie-col">
+                <h4>Episodes per dataset</h4>
+                <p class="stats-pie-total" id="stats-pie-dataset-total">&nbsp;</p>
+                <canvas id="chart-dataset-episodes" height="280"></canvas>
+              </div>
+              <div class="stats-lab-legend-wrap">
+                <div class="stats-lab-legend-eyebrow">Datasets</div>
+                <div id="stats-dataset-legend" class="stats-lab-legend" role="list" aria-label="Datasets (colors match pie chart)"></div>
+              </div>
+            </div>
+
             <h3>By lab</h3>
             <div class="stats-lab-charts">
               <div class="oopsie-grid-2">
@@ -993,6 +1035,12 @@ permalink: /stats/
     return agg;
   }
 
+  function datasetShortName(key) {
+    var s = String(key || '');
+    var slash = s.lastIndexOf('/');
+    return slash !== -1 ? s.slice(slash + 1) : s;
+  }
+
   const charts = {};
   var statsData = null;
   var rendered = { contribution: false, dataset: false, annotation: false };
@@ -1138,14 +1186,27 @@ permalink: /stats/
     });
   }
 
-  function renderLabSharedLegend(containerId, labels) {
+  function renderLabSharedLegend(containerId, labels, values, opts) {
+    opts = opts || {};
     var root = document.getElementById(containerId);
     if (!root) return;
     while (root.firstChild) root.removeChild(root.firstChild);
+    var total = values
+      ? values.reduce(function (a, b) { return a + (Number(b) || 0); }, 0)
+      : 0;
+    var unit = opts.valueUnit || 'episodes';
     labels.forEach(function (lab, i) {
       var item = document.createElement('span');
       item.className = 'stats-lab-legend-item';
       item.setAttribute('role', 'listitem');
+      item.setAttribute('data-index', String(i));
+      if (values && values[i] != null) {
+        var n = Number(values[i]) || 0;
+        var tip = fmt(n) + ' ' + unit + ' (' + pct(n, total) + ')';
+        item.setAttribute('data-stats-tip', tip);
+        item.setAttribute('title', tip);
+        item.setAttribute('tabindex', '0');
+      }
       var sw = document.createElement('span');
       sw.className = 'stats-lab-legend-swatch';
       sw.setAttribute('aria-hidden', 'true');
@@ -1153,6 +1214,46 @@ permalink: /stats/
       item.appendChild(sw);
       item.appendChild(document.createTextNode(lab));
       root.appendChild(item);
+    });
+    if (opts.pieChartId) wireLegendPieHighlight(containerId, opts.pieChartId);
+  }
+
+  function wireLegendPieHighlight(legendContainerId, chartCanvasId) {
+    var root = document.getElementById(legendContainerId);
+    if (!root || root.getAttribute('data-pie-wired') === chartCanvasId) return;
+    root.setAttribute('data-pie-wired', chartCanvasId);
+
+    function clearHighlight() {
+      var chart = charts[chartCanvasId];
+      if (!chart) return;
+      chart.setActiveElements([]);
+      chart.update();
+    }
+
+    root.addEventListener('mouseover', function (e) {
+      var item = e.target.closest('.stats-lab-legend-item');
+      if (!item || !root.contains(item)) return;
+      var idx = parseInt(item.getAttribute('data-index'), 10);
+      if (isNaN(idx)) return;
+      var chart = charts[chartCanvasId];
+      if (!chart) return;
+      chart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+      chart.update();
+    });
+    root.addEventListener('mouseleave', clearHighlight);
+    root.addEventListener('focusin', function (e) {
+      var item = e.target.closest('.stats-lab-legend-item');
+      if (!item || !root.contains(item)) return;
+      var idx = parseInt(item.getAttribute('data-index'), 10);
+      if (isNaN(idx)) return;
+      var chart = charts[chartCanvasId];
+      if (!chart) return;
+      chart.setActiveElements([{ datasetIndex: 0, index: idx }]);
+      chart.update();
+    });
+    root.addEventListener('focusout', function (e) {
+      if (root.contains(e.relatedTarget)) return;
+      clearHighlight();
     });
   }
 
@@ -1358,6 +1459,24 @@ permalink: /stats/
   }
 
   function renderContribution(data) {
+    const perDataset = data.per_dataset || {};
+    const datasetKeys = Object.keys(perDataset).sort(function (a, b) {
+      return (perDataset[b].episodes || 0) - (perDataset[a].episodes || 0);
+    });
+    const datasetLabels = datasetKeys.map(datasetShortName);
+    const datasetValues = datasetKeys.map(function (k) { return perDataset[k].episodes || 0; });
+
+    pie('chart-dataset-episodes', datasetLabels, datasetValues, { legend: false });
+    renderLabSharedLegend('stats-dataset-legend', datasetLabels, datasetValues, {
+      pieChartId: 'chart-dataset-episodes',
+    });
+
+    var totalDatasetEps = datasetValues.reduce(function (a, b) { return a + b; }, 0);
+    var datasetTotalEl = document.getElementById('stats-pie-dataset-total');
+    if (datasetTotalEl) {
+      datasetTotalEl.textContent = fmt(totalDatasetEps) + ' episodes total';
+    }
+
     const perLab = data.per_lab || {};
     const labs = Object.keys(perLab).sort(function (a, b) {
       return (perLab[b].episodes || 0) - (perLab[a].episodes || 0);

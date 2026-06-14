@@ -1,3 +1,4 @@
 CLAUDE.md
 docs/_site/**
 .DS_Store
+**/Gemfile.lock
