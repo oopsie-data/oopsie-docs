@@ -4,3 +4,5 @@ docs/_site/**
 
 # Internal stats (operators, all HF repos) — not for public site
 docs/assets/data/internal/
+
+**/Gemfile.lock
