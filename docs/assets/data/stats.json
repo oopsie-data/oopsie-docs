@@ -1,22 +1,22 @@
 {
   "schema_version": 4,
   "generated_at": {
-    "utc": "2026-07-11T22:59:35Z",
-    "cdt": "2026-07-11T17:59:35-05:00"
+    "utc": "2026-07-11T23:04:41Z",
+    "cdt": "2026-07-11T18:04:41-05:00"
   },
-  "dataset_repo": "local:/media/arpit/2faaf81e-4247-445a-af59-ce2b3c62537c/oopsiedata/OopsieData-Submissions",
+  "dataset_repo": "local:/corral/utexas/IRI26024/oopsiedata",
   "totals": {
-    "episodes": 3912,
+    "episodes": 3978,
     "labs": 15,
     "datasets": 13,
     "robots": 13,
     "policies": 81,
-    "tasks": 580,
-    "duration_hours": 24.476,
-    "annotated_episodes": 2522,
-    "successes": 1201,
-    "failures": 1321,
-    "failure_descriptions": 1325,
+    "tasks": 594,
+    "duration_hours": 24.918,
+    "annotated_episodes": 2644,
+    "successes": 1217,
+    "failures": 1427,
+    "failure_descriptions": 1431,
     "read_errors": 0
   },
   "per_lab": {
@@ -40,10 +40,10 @@
     },
     "Berkeley_RAIL": {
       "episodes": 1499,
-      "successes": 473,
-      "failures": 93,
-      "annotated_episodes": 566,
-      "failure_descriptions": 94,
+      "successes": 460,
+      "failures": 169,
+      "annotated_episodes": 629,
+      "failure_descriptions": 170,
       "duration_hours": 5.55,
       "robots": [
         "widow_x",
@@ -282,19 +282,21 @@
       "last_submission": "2026-06-25T00:43:23Z"
     },
     "UdeM_REAL": {
-      "episodes": 11,
-      "successes": 4,
-      "failures": 7,
-      "annotated_episodes": 11,
-      "failure_descriptions": 7,
-      "duration_hours": 0.257,
+      "episodes": 77,
+      "successes": 33,
+      "failures": 37,
+      "annotated_episodes": 70,
+      "failure_descriptions": 37,
+      "duration_hours": 0.699,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "lap"
+        "lap",
+        "pi0.5",
+        "teleop"
       ],
-      "task_count": 10,
+      "task_count": 24,
       "first_submission": null,
       "last_submission": null
     },
@@ -367,10 +369,10 @@
     },
     "OopsieData-Submissions/Berkeley_RAIL": {
       "episodes": 1499,
-      "successes": 473,
-      "failures": 93,
-      "annotated_episodes": 566,
-      "failure_descriptions": 94,
+      "successes": 460,
+      "failures": 169,
+      "annotated_episodes": 629,
+      "failure_descriptions": 170,
       "duration_hours": 5.55,
       "lab_ids": {
         "Berkeley_RAIL": 1499
@@ -474,15 +476,15 @@
       "bulk_import": false
     },
     "OopsieData-Submissions/UdeM_REAL": {
-      "episodes": 74,
-      "successes": 24,
-      "failures": 49,
-      "annotated_episodes": 73,
-      "failure_descriptions": 49,
-      "duration_hours": 1.018,
+      "episodes": 140,
+      "successes": 53,
+      "failures": 79,
+      "annotated_episodes": 132,
+      "failure_descriptions": 79,
+      "duration_hours": 1.46,
       "lab_ids": {
         "MILA": 62,
-        "UdeM_REAL": 11,
+        "UdeM_REAL": 77,
         "example_institution": 1
       },
       "bulk_import": false
@@ -534,9 +536,9 @@
       "duration_hours": 1.5
     },
     "franka_research_3": {
-      "episodes": 954,
+      "episodes": 1020,
       "labs": 7,
-      "duration_hours": 5.525
+      "duration_hours": 5.967
     },
     "franka_xhand": {
       "episodes": 54,
@@ -632,7 +634,7 @@
       "episodes": 22
     },
     "lap": {
-      "episodes": 11
+      "episodes": 22
     },
     "memmelma/mnm_oopsie": {
       "episodes": 50
@@ -719,7 +721,7 @@
       "episodes": 5
     },
     "pi0.5": {
-      "episodes": 576
+      "episodes": 601
     },
     "pi0.5_lora_sft": {
       "episodes": 155
@@ -821,7 +823,7 @@
       "episodes": 419
     },
     "teleop": {
-      "episodes": 154
+      "episodes": 184
     }
   },
   "top_tasks": [
@@ -907,61 +909,62 @@
     }
   ],
   "failure_categories": {
-    "['Manipulation failure (post contact)']": 399,
-    "['Grasp failure (at contact)']": 202,
-    "['Sequencing or semantic failure']": 171,
+    "['Manipulation failure (post contact)']": 439,
+    "['Grasp failure (at contact)']": 209,
+    "['Sequencing or semantic failure']": 176,
     "['Task not attempted']": 158,
-    "['Reaching failure (pre contact)']": 107,
+    "['Reaching failure (pre contact)']": 143,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 45,
-    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 30,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 32,
     "['Grasp failure (at contact)', 'Collision failure']": 24,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 19,
     "['Manipulation failure (post contact)', 'Collision failure']": 19,
-    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 16,
+    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 17,
+    "['Sequencing or semantic failure', 'Other']": 13,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure']": 12,
-    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 12,
-    "['Sequencing or semantic failure', 'Other']": 11,
     "['Reaching failure (pre contact)', 'Collision failure']": 10,
     "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 9,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Collision failure']": 8,
+    "['Other']": 8,
     "['Hardware/mechanical issue']": 7,
-    "['Other']": 7,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Manipulation failure (post contact)']": 6,
     "['Reaching failure (pre contact)', 'Task not attempted']": 6,
     "['Collision failure']": 6,
     "['Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 6,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 5,
     "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 5,
-    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 4,
+    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 4,
     "['Task not attempted', 'Sequencing or semantic failure']": 4,
     "['Grasp failure (at contact)', 'Hardware/mechanical issue']": 3,
+    "['Grasp failure (at contact)', 'Other']": 3,
     "['Manipulation failure (post contact)', 'Task not attempted']": 3,
     "['Sequencing or semantic failure', 'Task not attempted']": 3,
     "['Manipulation failure (post contact)', 'Grasp failure (at contact)']": 3,
     "['Reaching failure (pre contact)', 'Hardware/mechanical issue']": 3,
-    "['Grasp failure (at contact)', 'Other']": 2,
     "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Task not attempted']": 2,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure', 'Collision failure']": 2,
     "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 2,
     "['Sequencing or semantic failure', 'Hardware/mechanical issue']": 2,
     "['Sequencing or semantic failure', 'Collision failure']": 2,
-    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 2,
     "['Grasp failure (at contact)', 'Task not attempted']": 2,
     "['Manipulation failure (post contact)', 'Hardware/mechanical issue']": 2,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 1,
     "['Sequencing or semantic failure', 'Grasp failure (at contact)']": 1,
     "['Collision failure', 'Manipulation failure (post contact)']": 1,
-    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Collision failure']": 1
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Collision failure']": 1,
+    "['Collision failure', 'Hardware/mechanical issue']": 1
   },
   "severity_distribution": {
-    "Low severity - no damage, can be reset and reattempted": 1004,
-    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 310,
+    "Low severity - no damage, can be reset and reattempted": 1109,
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 311,
     "Catastrophic - significant damage or risk of damage, cannot be reattempted without repair": 7
   },
   "action_spaces": {
-    "gripper_position": 3038,
-    "cartesian_position": 2062,
+    "gripper_position": 3079,
+    "cartesian_position": 2103,
     "joint_position": 1150,
-    "gripper_binary": 754,
-    "joint_velocity": 634,
+    "gripper_binary": 779,
+    "joint_velocity": 659,
     "cartesian_velocity": 120,
     "gripper_velocity": 120
   },
@@ -970,18 +973,18 @@
     "left_base_cam, right_base_cam, wrist_cam": 470,
     "image_primary": 419,
     "left, right, top": 336,
+    "left, wrist": 205,
     "head, left_wrist, right_wrist": 204,
-    "left, wrist": 169,
     "camera_high, camera_wrist_left, camera_wrist_right": 155,
     "exterior_image_1_left, wrist_image_left": 120,
     "left_wrist, right_wrist, top": 120,
     "left, overhead, right, wrist": 106,
+    "left, right, wrist": 84,
     "right, wrist": 63,
     "external, wrist": 63,
     "front, top, wrist": 60,
     "exterior, wrist": 58,
     "tactile, zed": 55,
-    "left, right, wrist": 54,
     "exterior": 54,
     "front, tactile, wrist": 51,
     "front, side, wrist": 50,
@@ -1135,8 +1138,8 @@
     },
     {
       "date": "unrecorded",
-      "episodes": 194,
-      "cumulative": 3912
+      "episodes": 260,
+      "cumulative": 3978
     }
   ],
   "submission_timeline_per_lab": [
@@ -1403,7 +1406,7 @@
     {
       "date": "unrecorded",
       "lab_id": "UdeM_REAL",
-      "episodes": 11
+      "episodes": 77
     },
     {
       "date": "unrecorded",
