@@ -1,206 +1,1182 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-05-03T17:52:58Z",
-  "dataset_repo": "OopsieData-Submissions/*",
+  "schema_version": 4,
+  "generated_at": {
+    "utc": "2026-06-29T23:32:47Z",
+    "cdt": "2026-06-29T18:32:47-05:00"
+  },
+  "dataset_repo": "local:/media/arpit/2faaf81e-4247-445a-af59-ce2b3c62537c/oopsiedata/OopsieData-Submissions",
   "totals": {
-    "episodes": 11,
-    "labs": 4,
-    "robots": 4,
-    "policies": 4,
-    "tasks": 7,
-    "duration_hours": 0.085,
-    "annotated_episodes": 1,
-    "successes": 0,
-    "failures": 1,
-    "failure_descriptions": 1,
+    "episodes": 3912,
+    "labs": 15,
+    "datasets": 13,
+    "robots": 13,
+    "policies": 81,
+    "tasks": 580,
+    "duration_hours": 24.476,
+    "annotated_episodes": 2428,
+    "successes": 1194,
+    "failures": 1234,
+    "failure_descriptions": 1237,
     "read_errors": 0
   },
   "per_lab": {
-    "UT-RobIn-openpi": {
-      "episodes": 1,
+    "Armnet": {
+      "episodes": 60,
       "successes": 0,
-      "failures": 1,
-      "annotated_episodes": 1,
-      "failure_descriptions": 1,
-      "duration_hours": 0.006,
+      "failures": 60,
+      "annotated_episodes": 60,
+      "failure_descriptions": 60,
+      "duration_hours": 0.767,
+      "robots": [
+        "so-101"
+      ],
+      "policies": [
+        "act",
+        "diffusion"
+      ],
+      "task_count": 1,
+      "first_submission": "2026-06-18T21:57:47Z",
+      "last_submission": "2026-06-18T22:09:02Z"
+    },
+    "Berkeley_RAIL": {
+      "episodes": 1499,
+      "successes": 472,
+      "failures": 0,
+      "annotated_episodes": 472,
+      "failure_descriptions": 0,
+      "duration_hours": 5.55,
+      "robots": [
+        "widow_x",
+        "widowx_250_s"
+      ],
+      "policies": [
+        "diffusion_policy_custom",
+        "steerable_pi0.5_finetune_bridge"
+      ],
+      "task_count": 11,
+      "first_submission": "2025-04-22T16:39:04Z",
+      "last_submission": "2026-06-16T04:29:32Z"
+    },
+    "CMU_Intent": {
+      "episodes": 240,
+      "successes": 72,
+      "failures": 155,
+      "annotated_episodes": 227,
+      "failure_descriptions": 155,
+      "duration_hours": 1.297,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "DROID",
+        "diffusion_policy_custom",
+        "human_teleoperation_failure_collection_coffee_bag",
+        "human_teleoperation_failure_collection_coffee_pour",
+        "human_teleoperation_failure_collection_knife_place",
+        "human_teleoperation_safety_filter"
+      ],
+      "task_count": 10,
+      "first_submission": "2026-03-15T21:22:20Z",
+      "last_submission": "2026-06-21T09:31:24Z"
+    },
+    "MILA": {
+      "episodes": 62,
+      "successes": 20,
+      "failures": 42,
+      "annotated_episodes": 62,
+      "failure_descriptions": 42,
+      "duration_hours": 0.748,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi0_fast_droid_jointpos"
+      ],
+      "task_count": 3,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Princeton_IRoM": {
+      "episodes": 470,
+      "successes": 244,
+      "failures": 0,
+      "annotated_episodes": 244,
+      "failure_descriptions": 0,
+      "duration_hours": 2.774,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 359,
+      "first_submission": "2026-06-18T23:21:29Z",
+      "last_submission": "2026-06-19T08:02:40Z"
+    },
+    "Princeton_PRISM": {
+      "episodes": 336,
+      "successes": 7,
+      "failures": 329,
+      "annotated_episodes": 336,
+      "failure_descriptions": 329,
+      "duration_hours": 6.176,
+      "robots": [
+        "bi_yam_follower"
+      ],
+      "policies": [
+        "molmoact2_eval"
+      ],
+      "task_count": 77,
+      "first_submission": "2026-06-12T21:13:02Z",
+      "last_submission": "2026-06-19T16:08:31Z"
+    },
+    "Princeton_VLL": {
+      "episodes": 54,
+      "successes": 26,
+      "failures": 28,
+      "annotated_episodes": 54,
+      "failure_descriptions": 28,
+      "duration_hours": 0.097,
+      "robots": [
+        "franka_xhand"
+      ],
+      "policies": [
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:45:16",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:46:23",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:47:06",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:57:55",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:59:22",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-19:00:12",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-18:44:09",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:17",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:33",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:31",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:25:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:16:34",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:17",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:46",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:25:20",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:26:45",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:28:21",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:32",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:30:00",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:31:28",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:00",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:28",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:58",
+        "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_1500.pt_2026-06-10-16:14:46",
+        "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_2500.pt_2026-06-10-16:13:56",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:57:57",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-23:05:20",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:11",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:22",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-23:05:37",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:59:42",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:26:17",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-11:25:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:25",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:53",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:53:15",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-23:06:20",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_2500.pt_2026-06-10-11:27:21",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-11:26:54",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:38",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:06:46",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:30",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:24:44",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:25:09",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_2500.pt_2026-06-10-12:24:14",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_4000.pt_2026-06-10-12:22:32",
+        "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_1500.pt_2026-06-10-11:32:30",
+        "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:31:56",
+        "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:33:26",
+        "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:36:04"
+      ],
+      "task_count": 4,
+      "first_submission": "2026-06-17T03:58:46Z",
+      "last_submission": "2026-06-17T03:58:57Z"
+    },
+    "Stanford_Iris": {
+      "episodes": 120,
+      "successes": 106,
+      "failures": 14,
+      "annotated_episodes": 120,
+      "failure_descriptions": 14,
+      "duration_hours": 0.146,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "expo_pi_pi0.5"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Stanford_REAL": {
+      "episodes": 53,
+      "successes": 3,
+      "failures": 50,
+      "annotated_episodes": 53,
+      "failure_descriptions": 50,
+      "duration_hours": 0.547,
+      "robots": [
+        "egoverse_bimanual"
+      ],
+      "policies": [
+        "bag_grocery_cotrain",
+        "cup_on_saucer_robot_only",
+        "obj_in_container_robot_only"
+      ],
+      "task_count": 3,
+      "first_submission": "2026-06-16T23:05:59Z",
+      "last_submission": "2026-06-19T18:16:25Z"
+    },
+    "UPenn_PAL": {
+      "episodes": 106,
+      "successes": 20,
+      "failures": 86,
+      "annotated_episodes": 106,
+      "failure_descriptions": 86,
+      "duration_hours": 0.998,
       "robots": [
         "franka_droid"
       ],
       "policies": [
         "pi0.5"
       ],
-      "task_count": 1,
-      "first_submission": "2026-04-22T22:09:12Z",
-      "last_submission": "2026-04-22T22:09:12Z"
+      "task_count": 78,
+      "first_submission": "2026-05-17T19:32:25Z",
+      "last_submission": "2026-06-10T23:03:26Z"
     },
-    "UT_RobIn": {
-      "episodes": 4,
+    "UW_REAL": {
+      "episodes": 562,
+      "successes": 99,
+      "failures": 463,
+      "annotated_episodes": 562,
+      "failure_descriptions": 466,
+      "duration_hours": 2.285,
+      "robots": [
+        "bi_yam_follower",
+        "franka_droid",
+        "franka_research_3",
+        "ur5e",
+        "ur5e_bimanual",
+        "yam"
+      ],
+      "policies": [
+        "act_layup",
+        "act_policy_custom",
+        "diffusion_policy",
+        "factory_v2_rgb_dagger_student",
+        "memmelma/mnm_oopsie",
+        "pi0_droid_dsrl",
+        "teleop"
+      ],
+      "task_count": 14,
+      "first_submission": "2026-06-11T23:56:19Z",
+      "last_submission": "2026-06-24T08:56:36Z"
+    },
+    "UdeM_REAL": {
+      "episodes": 11,
+      "successes": 4,
+      "failures": 7,
+      "annotated_episodes": 11,
+      "failure_descriptions": 7,
+      "duration_hours": 0.257,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "lap"
+      ],
+      "task_count": 10,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "UofT_RVL": {
+      "episodes": 63,
       "successes": 0,
       "failures": 0,
       "annotated_episodes": 0,
       "failure_descriptions": 0,
-      "duration_hours": 0.069,
+      "duration_hours": 1.5,
       "robots": [
-        "franka_robomme"
+        "franka_panda"
       ],
       "policies": [
-        "mme_vla_suite"
+        "acme",
+        "diffusion_policy"
       ],
       "task_count": 4,
-      "first_submission": "2026-04-29T21:57:37Z",
-      "last_submission": "2026-04-29T22:00:47Z"
+      "first_submission": "2026-04-30T22:02:42Z",
+      "last_submission": "2026-06-20T00:56:24Z"
     },
-    "UofT_RVL": {
+    "UofT_TISL": {
+      "episodes": 275,
+      "successes": 121,
+      "failures": 0,
+      "annotated_episodes": 121,
+      "failure_descriptions": 0,
+      "duration_hours": 1.321,
+      "robots": [
+        "viperx_300"
+      ],
+      "policies": [
+        "custom_diffusion",
+        "pi0.5_lora_sft"
+      ],
+      "task_count": 5,
+      "first_submission": "2026-05-09T03:10:03Z",
+      "last_submission": "2026-06-18T16:37:29Z"
+    },
+    "example_institution": {
       "episodes": 1,
       "successes": 0,
       "failures": 0,
       "annotated_episodes": 0,
       "failure_descriptions": 0,
-      "duration_hours": 0.01,
+      "duration_hours": 0.013,
       "robots": [
-        "franka_panda"
+        "franka_research_3"
       ],
       "policies": [
-        "diffusion_policy"
-      ],
-      "task_count": 1,
-      "first_submission": "2026-04-30T22:02:42Z",
-      "last_submission": "2026-04-30T22:02:42Z"
-    },
-    "unknown_lab": {
-      "episodes": 5,
-      "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
-      "failure_descriptions": 0,
-      "duration_hours": 0.0,
-      "robots": [
-        "unknown_robot"
-      ],
-      "policies": [
-        "unknown_policy"
+        "pi0_fast_droid_jointpos"
       ],
       "task_count": 1,
       "first_submission": null,
       "last_submission": null
     }
   },
+  "per_dataset": {
+    "OopsieData-Submissions/Armnet": {
+      "episodes": 60,
+      "successes": 0,
+      "failures": 60,
+      "annotated_episodes": 60,
+      "failure_descriptions": 60,
+      "duration_hours": 0.767,
+      "lab_ids": {
+        "Armnet": 60
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Berkeley_RAIL": {
+      "episodes": 1499,
+      "successes": 472,
+      "failures": 0,
+      "annotated_episodes": 472,
+      "failure_descriptions": 0,
+      "duration_hours": 5.55,
+      "lab_ids": {
+        "Berkeley_RAIL": 1499
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/CMU_Intent": {
+      "episodes": 240,
+      "successes": 72,
+      "failures": 155,
+      "annotated_episodes": 227,
+      "failure_descriptions": 155,
+      "duration_hours": 1.297,
+      "lab_ids": {
+        "CMU_Intent": 240
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_IRoM": {
+      "episodes": 470,
+      "successes": 244,
+      "failures": 0,
+      "annotated_episodes": 244,
+      "failure_descriptions": 0,
+      "duration_hours": 2.774,
+      "lab_ids": {
+        "Princeton_IRoM": 470
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_PRISM": {
+      "episodes": 336,
+      "successes": 7,
+      "failures": 329,
+      "annotated_episodes": 336,
+      "failure_descriptions": 329,
+      "duration_hours": 6.176,
+      "lab_ids": {
+        "Princeton_PRISM": 336
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_VLL": {
+      "episodes": 54,
+      "successes": 26,
+      "failures": 28,
+      "annotated_episodes": 54,
+      "failure_descriptions": 28,
+      "duration_hours": 0.097,
+      "lab_ids": {
+        "Princeton_VLL": 54
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Stanford_Iris": {
+      "episodes": 120,
+      "successes": 106,
+      "failures": 14,
+      "annotated_episodes": 120,
+      "failure_descriptions": 14,
+      "duration_hours": 0.146,
+      "lab_ids": {
+        "Stanford_Iris": 120
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Stanford_REAL": {
+      "episodes": 53,
+      "successes": 3,
+      "failures": 50,
+      "annotated_episodes": 53,
+      "failure_descriptions": 50,
+      "duration_hours": 0.547,
+      "lab_ids": {
+        "Stanford_REAL": 53
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UPenn_PAL": {
+      "episodes": 106,
+      "successes": 20,
+      "failures": 86,
+      "annotated_episodes": 106,
+      "failure_descriptions": 86,
+      "duration_hours": 0.998,
+      "lab_ids": {
+        "UPenn_PAL": 106
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UW_REAL": {
+      "episodes": 562,
+      "successes": 99,
+      "failures": 463,
+      "annotated_episodes": 562,
+      "failure_descriptions": 466,
+      "duration_hours": 2.285,
+      "lab_ids": {
+        "UW_REAL": 562
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UdeM_REAL": {
+      "episodes": 74,
+      "successes": 24,
+      "failures": 49,
+      "annotated_episodes": 73,
+      "failure_descriptions": 49,
+      "duration_hours": 1.018,
+      "lab_ids": {
+        "MILA": 62,
+        "UdeM_REAL": 11,
+        "example_institution": 1
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UofT_RVL": {
+      "episodes": 63,
+      "successes": 0,
+      "failures": 0,
+      "annotated_episodes": 0,
+      "failure_descriptions": 0,
+      "duration_hours": 1.5,
+      "lab_ids": {
+        "UofT_RVL": 63
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UofT_TISL": {
+      "episodes": 275,
+      "successes": 121,
+      "failures": 0,
+      "annotated_episodes": 121,
+      "failure_descriptions": 0,
+      "duration_hours": 1.321,
+      "lab_ids": {
+        "UofT_TISL": 275
+      },
+      "bulk_import": false
+    }
+  },
   "per_robot": {
-    "franka_droid": {
-      "episodes": 1,
+    "bi_yam_follower": {
+      "episodes": 386,
+      "labs": 2,
+      "duration_hours": 6.388
+    },
+    "egoverse_bimanual": {
+      "episodes": 53,
       "labs": 1,
-      "duration_hours": 0.006
+      "duration_hours": 0.547
+    },
+    "franka_droid": {
+      "episodes": 264,
+      "labs": 2,
+      "duration_hours": 1.432
     },
     "franka_panda": {
-      "episodes": 1,
+      "episodes": 63,
       "labs": 1,
-      "duration_hours": 0.01
+      "duration_hours": 1.5
     },
-    "franka_robomme": {
-      "episodes": 4,
-      "labs": 1,
-      "duration_hours": 0.069
+    "franka_research_3": {
+      "episodes": 954,
+      "labs": 7,
+      "duration_hours": 5.525
     },
-    "unknown_robot": {
-      "episodes": 5,
+    "franka_xhand": {
+      "episodes": 54,
       "labs": 1,
-      "duration_hours": 0.0
+      "duration_hours": 0.097
+    },
+    "so-101": {
+      "episodes": 60,
+      "labs": 1,
+      "duration_hours": 0.767
+    },
+    "ur5e": {
+      "episodes": 100,
+      "labs": 1,
+      "duration_hours": 0.518
+    },
+    "ur5e_bimanual": {
+      "episodes": 50,
+      "labs": 1,
+      "duration_hours": 0.254
+    },
+    "viperx_300": {
+      "episodes": 275,
+      "labs": 1,
+      "duration_hours": 1.321
+    },
+    "widow_x": {
+      "episodes": 1080,
+      "labs": 1,
+      "duration_hours": 3.236
+    },
+    "widowx_250_s": {
+      "episodes": 419,
+      "labs": 1,
+      "duration_hours": 2.314
+    },
+    "yam": {
+      "episodes": 154,
+      "labs": 1,
+      "duration_hours": 0.578
     }
   },
   "per_policy": {
+    "DROID": {
+      "episodes": 58
+    },
+    "acme": {
+      "episodes": 62
+    },
+    "act": {
+      "episodes": 30
+    },
+    "act_layup": {
+      "episodes": 50
+    },
+    "act_policy_custom": {
+      "episodes": 50
+    },
+    "bag_grocery_cotrain": {
+      "episodes": 23
+    },
+    "cup_on_saucer_robot_only": {
+      "episodes": 25
+    },
+    "custom_diffusion": {
+      "episodes": 120
+    },
+    "diffusion": {
+      "episodes": 30
+    },
     "diffusion_policy": {
+      "episodes": 51
+    },
+    "diffusion_policy_custom": {
+      "episodes": 1186
+    },
+    "expo_pi_pi0.5": {
+      "episodes": 120
+    },
+    "factory_v2_rgb_dagger_student": {
+      "episodes": 50
+    },
+    "human_teleoperation_failure_collection_coffee_bag": {
+      "episodes": 21
+    },
+    "human_teleoperation_failure_collection_coffee_pour": {
+      "episodes": 18
+    },
+    "human_teleoperation_failure_collection_knife_place": {
+      "episodes": 15
+    },
+    "human_teleoperation_safety_filter": {
+      "episodes": 22
+    },
+    "lap": {
+      "episodes": 11
+    },
+    "memmelma/mnm_oopsie": {
+      "episodes": 50
+    },
+    "molmoact2_eval": {
+      "episodes": 336
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:45:16": {
       "episodes": 1
     },
-    "mme_vla_suite": {
-      "episodes": 4
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:46:23": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:47:06": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:57:55": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:59:22": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-19:00:12": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-18:44:09": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:17": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:33": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:31": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:25:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:16:34": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:17": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:46": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:25:20": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:26:45": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:28:21": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:32": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:30:00": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:31:28": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:00": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:28": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:58": {
+      "episodes": 1
+    },
+    "obj_in_container_robot_only": {
+      "episodes": 5
     },
     "pi0.5": {
+      "episodes": 576
+    },
+    "pi0.5_lora_sft": {
+      "episodes": 155
+    },
+    "pi0_droid_dsrl": {
+      "episodes": 158
+    },
+    "pi0_fast_droid_jointpos": {
+      "episodes": 63
+    },
+    "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_1500.pt_2026-06-10-16:14:46": {
       "episodes": 1
     },
-    "unknown_policy": {
-      "episodes": 5
+    "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_2500.pt_2026-06-10-16:13:56": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:57:57": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-23:05:20": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:11": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:22": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-23:05:37": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:59:42": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:26:17": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-11:25:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:25": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:53": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:53:15": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-23:06:20": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_2500.pt_2026-06-10-11:27:21": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-11:26:54": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:38": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:06:46": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:30": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:24:44": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:25:09": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_2500.pt_2026-06-10-12:24:14": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_4000.pt_2026-06-10-12:22:32": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_1500.pt_2026-06-10-11:32:30": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:31:56": {
+      "episodes": 1
+    },
+    "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:33:26": {
+      "episodes": 1
+    },
+    "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:36:04": {
+      "episodes": 1
+    },
+    "steerable_pi0.5_finetune_bridge": {
+      "episodes": 419
+    },
+    "teleop": {
+      "episodes": 154
     }
   },
   "top_tasks": [
     {
-      "instruction": "Pick tote",
-      "episodes": 5
+      "instruction": "Move the left stuffed toy to the largest bowl.",
+      "episodes": 318
     },
     {
-      "instruction": "pick cup",
-      "episodes": 1
+      "instruction": "close the drawer",
+      "episodes": 236
     },
     {
-      "instruction": "put one red cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "put the corn on the green cloth",
+      "episodes": 189
     },
     {
-      "instruction": "put one green cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "stack the yellow block on the blue blocks",
+      "episodes": 173
     },
     {
-      "instruction": "put four green cubes into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "remove the blue cloth from the yellow block",
+      "episodes": 141
     },
     {
-      "instruction": "put three red cubes and one green cube into the bin, then press the button to stop",
-      "episodes": 1
+      "instruction": "pick up the cube",
+      "episodes": 120
     },
     {
-      "instruction": "Pick up the object and place it at in the bucket",
-      "episodes": 1
+      "instruction": "put the corn in the pot",
+      "episodes": 100
+    },
+    {
+      "instruction": "set the mushroom on the green cloth",
+      "episodes": 89
+    },
+    {
+      "instruction": "pick up the corn",
+      "episodes": 82
+    },
+    {
+      "instruction": "put the sushi in the pot",
+      "episodes": 72
+    },
+    {
+      "instruction": "stack the blue block on the yellow block",
+      "episodes": 70
+    },
+    {
+      "instruction": "Push the Displayport cable into the cable holder on the white block",
+      "episodes": 60
+    },
+    {
+      "instruction": "Pick up the green cup and stack it on the purple",
+      "episodes": 60
+    },
+    {
+      "instruction": "Pick up the pen cap with the right hand and the cap with the left and insert it on the pen",
+      "episodes": 60
+    },
+    {
+      "instruction": "put the purple mug in the basket",
+      "episodes": 58
+    },
+    {
+      "instruction": "put the bowl on the table",
+      "episodes": 57
+    },
+    {
+      "instruction": "pick up the bottle",
+      "episodes": 55
+    },
+    {
+      "instruction": "Pick up the ball and place it in the bowl",
+      "episodes": 55
+    },
+    {
+      "instruction": "stack the cups",
+      "episodes": 54
+    },
+    {
+      "instruction": "pick up the cup on the table, and hang it on the mug tree.",
+      "episodes": 54
     }
   ],
   "failure_categories": {
-    "['Manipulation failure (post contact)']": 1
+    "['Manipulation failure (post contact)']": 391,
+    "['Grasp failure (at contact)']": 173,
+    "['Task not attempted']": 158,
+    "['Sequencing or semantic failure']": 146,
+    "['Reaching failure (pre contact)']": 105,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 43,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 30,
+    "['Grasp failure (at contact)', 'Collision failure']": 24,
+    "['Manipulation failure (post contact)', 'Collision failure']": 13,
+    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 12,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 12,
+    "['Other']": 11,
+    "['Reaching failure (pre contact)', 'Collision failure']": 10,
+    "['Sequencing or semantic failure', 'Other']": 10,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure']": 10,
+    "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 9,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Collision failure']": 7,
+    "['Reaching failure (pre contact)', 'Task not attempted']": 6,
+    "['Collision failure']": 6,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 6,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 5,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 4,
+    "['Task not attempted', 'Sequencing or semantic failure']": 4,
+    "['Hardware/mechanical issue']": 4,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Manipulation failure (post contact)']": 3,
+    "['Manipulation failure (post contact)', 'Task not attempted']": 3,
+    "['Sequencing or semantic failure', 'Task not attempted']": 3,
+    "['Manipulation failure (post contact)', 'Grasp failure (at contact)']": 3,
+    "['Reaching failure (pre contact)', 'Hardware/mechanical issue']": 3,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Task not attempted']": 2,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure', 'Collision failure']": 2,
+    "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 2,
+    "['Sequencing or semantic failure', 'Hardware/mechanical issue']": 2,
+    "['Sequencing or semantic failure', 'Collision failure']": 2,
+    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 2,
+    "['Grasp failure (at contact)', 'Task not attempted']": 2,
+    "['Manipulation failure (post contact)', 'Hardware/mechanical issue']": 2,
+    "['Sequencing or semantic failure', 'Grasp failure (at contact)']": 1,
+    "['Collision failure', 'Manipulation failure (post contact)']": 1,
+    "['Grasp failure (at contact)', 'Hardware/mechanical issue']": 1,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Collision failure']": 1
   },
   "severity_distribution": {
-    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 1
+    "Low severity - no damage, can be reset and reattempted": 973,
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 260,
+    "Catastrophic - significant damage or risk of damage, cannot be reattempted without repair": 1
   },
   "action_spaces": {
-    "gripper_position": 5,
-    "joint_position": 4,
-    "joint_velocity": 1,
-    "gripper_binary": 1,
-    "cartesian_position": 1
+    "gripper_position": 3038,
+    "cartesian_position": 2062,
+    "joint_position": 1150,
+    "gripper_binary": 754,
+    "joint_velocity": 634,
+    "cartesian_velocity": 120,
+    "gripper_velocity": 120
   },
   "camera_setups": {
-    "front, wrist": 4,
-    "left, right, wrist": 1,
-    "external, wrist": 1
+    "right_shoulder_cam": 1080,
+    "left_base_cam, right_base_cam, wrist_cam": 470,
+    "image_primary": 419,
+    "left, right, top": 336,
+    "head, left_wrist, right_wrist": 204,
+    "left, wrist": 169,
+    "camera_high, camera_wrist_left, camera_wrist_right": 155,
+    "exterior_image_1_left, wrist_image_left": 120,
+    "left_wrist, right_wrist, top": 120,
+    "left, overhead, right, wrist": 106,
+    "right, wrist": 63,
+    "external, wrist": 63,
+    "front, top, wrist": 60,
+    "exterior, wrist": 58,
+    "tactile, zed": 55,
+    "left, right, wrist": 54,
+    "exterior": 54,
+    "front, tactile, wrist": 51,
+    "front, side, wrist": 50,
+    "cam_2_scene, cam_3_wrist, cam_4_wrist": 50,
+    "side, wrist": 50,
+    "camera_0, wrist_cam_0, wrist_cam_1": 50,
+    "aria, left_wrist, right_wrist": 48,
+    "front, wrist": 22,
+    "aria, right_wrist": 5
   },
   "submission_timeline": [
     {
-      "date": "2026-04-22",
-      "episodes": 1,
-      "cumulative": 1
+      "date": "2025-04-22",
+      "episodes": 189,
+      "cumulative": 189
     },
     {
-      "date": "2026-04-29",
-      "episodes": 4,
-      "cumulative": 5
+      "date": "2025-04-24",
+      "episodes": 196,
+      "cumulative": 385
+    },
+    {
+      "date": "2025-04-25",
+      "episodes": 251,
+      "cumulative": 636
+    },
+    {
+      "date": "2025-04-28",
+      "episodes": 173,
+      "cumulative": 809
+    },
+    {
+      "date": "2025-05-09",
+      "episodes": 89,
+      "cumulative": 898
+    },
+    {
+      "date": "2025-11-26",
+      "episodes": 82,
+      "cumulative": 980
+    },
+    {
+      "date": "2025-12-03",
+      "episodes": 100,
+      "cumulative": 1080
+    },
+    {
+      "date": "2026-03-15",
+      "episodes": 22,
+      "cumulative": 1102
     },
     {
       "date": "2026-04-30",
       "episodes": 1,
-      "cumulative": 6
+      "cumulative": 1103
+    },
+    {
+      "date": "2026-05-09",
+      "episodes": 120,
+      "cumulative": 1223
+    },
+    {
+      "date": "2026-05-17",
+      "episodes": 28,
+      "cumulative": 1251
+    },
+    {
+      "date": "2026-05-19",
+      "episodes": 22,
+      "cumulative": 1273
+    },
+    {
+      "date": "2026-06-08",
+      "episodes": 101,
+      "cumulative": 1374
+    },
+    {
+      "date": "2026-06-10",
+      "episodes": 55,
+      "cumulative": 1429
+    },
+    {
+      "date": "2026-06-11",
+      "episodes": 2,
+      "cumulative": 1431
+    },
+    {
+      "date": "2026-06-12",
+      "episodes": 204,
+      "cumulative": 1635
+    },
+    {
+      "date": "2026-06-13",
+      "episodes": 29,
+      "cumulative": 1664
+    },
+    {
+      "date": "2026-06-14",
+      "episodes": 226,
+      "cumulative": 1890
+    },
+    {
+      "date": "2026-06-15",
+      "episodes": 201,
+      "cumulative": 2091
+    },
+    {
+      "date": "2026-06-16",
+      "episodes": 182,
+      "cumulative": 2273
+    },
+    {
+      "date": "2026-06-17",
+      "episodes": 352,
+      "cumulative": 2625
+    },
+    {
+      "date": "2026-06-18",
+      "episodes": 309,
+      "cumulative": 2934
+    },
+    {
+      "date": "2026-06-19",
+      "episodes": 535,
+      "cumulative": 3469
+    },
+    {
+      "date": "2026-06-20",
+      "episodes": 116,
+      "cumulative": 3585
+    },
+    {
+      "date": "2026-06-21",
+      "episodes": 30,
+      "cumulative": 3615
+    },
+    {
+      "date": "2026-06-22",
+      "episodes": 50,
+      "cumulative": 3665
+    },
+    {
+      "date": "2026-06-23",
+      "episodes": 50,
+      "cumulative": 3715
+    },
+    {
+      "date": "2026-06-24",
+      "episodes": 3,
+      "cumulative": 3718
     },
     {
       "date": "unrecorded",
-      "episodes": 5,
-      "cumulative": 11
+      "episodes": 194,
+      "cumulative": 3912
     }
   ],
   "submission_timeline_per_lab": [
     {
-      "date": "2026-04-22",
-      "lab_id": "UT-RobIn-openpi",
-      "episodes": 1
+      "date": "2025-04-22",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 189
     },
     {
-      "date": "2026-04-29",
-      "lab_id": "UT_RobIn",
-      "episodes": 4
+      "date": "2025-04-24",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 196
+    },
+    {
+      "date": "2025-04-25",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 251
+    },
+    {
+      "date": "2025-04-28",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 173
+    },
+    {
+      "date": "2025-05-09",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 89
+    },
+    {
+      "date": "2025-11-26",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 82
+    },
+    {
+      "date": "2025-12-03",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-03-15",
+      "lab_id": "CMU_Intent",
+      "episodes": 22
     },
     {
       "date": "2026-04-30",
@@ -208,14 +1184,244 @@
       "episodes": 1
     },
     {
-      "date": "unrecorded",
-      "lab_id": "unknown_lab",
+      "date": "2026-05-09",
+      "lab_id": "UofT_TISL",
+      "episodes": 120
+    },
+    {
+      "date": "2026-05-17",
+      "lab_id": "UPenn_PAL",
+      "episodes": 28
+    },
+    {
+      "date": "2026-05-19",
+      "lab_id": "UPenn_PAL",
+      "episodes": 22
+    },
+    {
+      "date": "2026-06-08",
+      "lab_id": "UPenn_PAL",
+      "episodes": 1
+    },
+    {
+      "date": "2026-06-08",
+      "lab_id": "UofT_TISL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-06-10",
+      "lab_id": "UPenn_PAL",
+      "episodes": 55
+    },
+    {
+      "date": "2026-06-11",
+      "lab_id": "UW_REAL",
+      "episodes": 2
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "CMU_Intent",
+      "episodes": 109
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 42
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "UW_REAL",
+      "episodes": 25
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "UofT_RVL",
+      "episodes": 28
+    },
+    {
+      "date": "2026-06-13",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 29
+    },
+    {
+      "date": "2026-06-14",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 216
+    },
+    {
+      "date": "2026-06-14",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 10
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 110
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 90
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "UofT_RVL",
+      "episodes": 1
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 93
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "Stanford_REAL",
+      "episodes": 23
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "UW_REAL",
+      "episodes": 66
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 136
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "Princeton_VLL",
+      "episodes": 54
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "UW_REAL",
+      "episodes": 157
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "UofT_RVL",
       "episodes": 5
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "Armnet",
+      "episodes": 60
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "Princeton_IRoM",
+      "episodes": 134
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UW_REAL",
+      "episodes": 59
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UofT_RVL",
+      "episodes": 1
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UofT_TISL",
+      "episodes": 55
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "CMU_Intent",
+      "episodes": 79
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Princeton_IRoM",
+      "episodes": 336
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 29
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Stanford_REAL",
+      "episodes": 30
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "UofT_RVL",
+      "episodes": 11
+    },
+    {
+      "date": "2026-06-20",
+      "lab_id": "UW_REAL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-06-20",
+      "lab_id": "UofT_RVL",
+      "episodes": 16
+    },
+    {
+      "date": "2026-06-21",
+      "lab_id": "CMU_Intent",
+      "episodes": 30
+    },
+    {
+      "date": "2026-06-22",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-06-23",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-06-24",
+      "lab_id": "UW_REAL",
+      "episodes": 3
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "MILA",
+      "episodes": 62
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "Stanford_Iris",
+      "episodes": 120
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "UdeM_REAL",
+      "episodes": 11
+    },
+    {
+      "date": "unrecorded",
+      "lab_id": "example_institution",
+      "episodes": 1
     }
   ],
   "datasets_included": [
-    "OopsieData-Submissions/Amazon-MobileManipulationTeam",
-    "OopsieData-Submissions/UT_RobIn",
-    "OopsieData-Submissions/UofT_RVL"
+    "OopsieData-Submissions/Armnet",
+    "OopsieData-Submissions/Berkeley_RAIL",
+    "OopsieData-Submissions/CMU_Intent",
+    "OopsieData-Submissions/Princeton_IRoM",
+    "OopsieData-Submissions/Princeton_PRISM",
+    "OopsieData-Submissions/Princeton_VLL",
+    "OopsieData-Submissions/Stanford_Iris",
+    "OopsieData-Submissions/Stanford_REAL",
+    "OopsieData-Submissions/UPenn_PAL",
+    "OopsieData-Submissions/UW_REAL",
+    "OopsieData-Submissions/UdeM_REAL",
+    "OopsieData-Submissions/UofT_RVL",
+    "OopsieData-Submissions/UofT_TISL"
   ]
 }

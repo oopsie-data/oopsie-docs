@@ -1,3 +1,6 @@
 CLAUDE.md
 docs/_site/**
 .DS_Store
+
+# Internal stats (operators, all HF repos) — not for public site
+docs/assets/data/internal/
