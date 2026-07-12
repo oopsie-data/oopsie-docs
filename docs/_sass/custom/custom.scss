@@ -1,3 +1,84 @@
+// Site-wide announcement banner (see _includes/announcement.html)
+// Sticky, full-width, above the whole layout. Because it's sticky (not fixed)
+// it reserves its own height in normal flow, so the sidebar and content are
+// pushed down automatically on every breakpoint — no JS/height math needed.
+:root {
+  // Only used to offset the fixed desktop sidebar (see below). On desktop the
+  // banner is a single line, so this constant matches its height; the include's
+  // script refines it for the rare case the banner wraps on a narrow desktop.
+  --announcement-h: 4.5rem;
+}
+
+.announcement-banner {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.1rem;
+  padding: 0.95rem 1.5rem;
+  border-bottom: 1px solid rgba($link-color, 0.3);
+  background: linear-gradient(90deg, rgba($link-color, 0.12), rgba($link-color, 0.05)),
+    $body-background-color;
+  font-size: 1.05rem;
+  line-height: 1.45;
+
+  &__badge {
+    flex: 0 0 auto;
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    background-color: $link-color;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  &__text {
+    flex: 1 1 auto;
+    min-width: 0; // allow the text to shrink and wrap instead of overflowing
+    color: $body-text-color;
+    font-weight: 500;
+  }
+
+  &__cta {
+    flex: 0 0 auto;
+    margin-left: auto;
+    padding: 0.5rem 1.1rem;
+    border-radius: 6px;
+    background-color: $link-color;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+
+    &:hover {
+      background-color: darken($link-color, 8%);
+      text-decoration: none;
+    }
+  }
+}
+
+// On desktop the sidebar is position: fixed, so it's taken out of flow and the
+// sticky banner can't push it — offset it down explicitly and trim its height.
+// (On mobile the sidebar is in normal flow, so the sticky banner pushes it for
+// free and no offset is needed.)
+.side-bar {
+  @include mq(md) {
+    top: var(--announcement-h);
+    height: calc(100% - var(--announcement-h));
+  }
+}
+
+@media (max-width: 50rem) {
+  .announcement-banner__cta {
+    margin-left: 0;
+  }
+}
+
 // Custom blockquote styles
 blockquote {
   margin: 1.5rem 0;

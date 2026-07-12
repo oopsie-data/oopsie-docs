@@ -7,6 +7,14 @@ baseurl: ""
 
 color_scheme: light
 
+# Site-wide announcement banner (rendered via _includes/header_custom.html)
+announcement:
+  enabled: true
+  badge: "Coming soon"
+  text: "The Oopsie Data open beta launches soon — we're now accepting lab registrations."
+  cta_text: "Register your lab"
+  cta_link: "https://forms.gle/9arwZHAvRjvbozoT7"
+
 search_enabled: true
 search:
   heading_level: 2
