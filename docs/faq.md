@@ -10,8 +10,7 @@ permalink: /faq/
 ## Data & Format
 
 ### What do I do if my policy provides a different action encoding?
-If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation]({% link format.md %}). For some embodiments, such as the DROID Franka arm, we are aiming to provide utilities to translate actions.
-
+Please provide [accepted action representation]({% link format.md %}).
 If your policy currently does not support any of the supported action representations, and you have no way of computing them from the generated actions, please let us know. We are open to expand the action representations supported by this project. However, expanding the set of supported action representation requires some consideration to ensure that the data remains interoperable between different labs.
 
 ### We already collected data. Can we just upload that?

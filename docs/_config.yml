@@ -37,6 +37,8 @@ favicon_ico: /assets/images/favicon.ico
 callouts:
   highlight:
     color: yellow
+  note:
+    color: blue
   important:
     title: Important
     color: blue

@@ -17,6 +17,9 @@ This page provides a brief overview of all the necessary steps to contribute to 
 
 For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-tools) or contact the [team]({% link team.md %}).
 
+{: .note }
+> **Using a coding agent?** Point Claude Code, Codex, or Cursor at [`AI_CONTEXT.md`](https://github.com/oopsie-data/oopsie-tools/blob/main/AI_CONTEXT.md) and it can integrate the Oopsie toolkit into your existing rollout code for you.
+
 ---
 
 ## 1. Registration
