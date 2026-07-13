@@ -6,3 +6,7 @@ docs/_site/**
 docs/assets/data/internal/
 
 **/Gemfile.lock
+docs/.bundle/
+docs/vendor/
+
+.private.md

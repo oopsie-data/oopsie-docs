@@ -5,56 +5,26 @@ nav_order: 3
 permalink: /motivation/
 ---
 
-# Why collect failure data
+# Why collect suboptimal and failure data
 
 ## The gap in robot learning
 
-Large-scale robotics datasets have transformed the field. Projects like [DROID](https://droid-dataset.github.io/) contain **76,000 demonstration trajectories** across 564 scenes, enabling behavior cloning at unprecedented scale.
+Large-scale datasets have transformed robot learning by enabling behavior cloning at scale. [BridgeData V2](https://rail-berkeley.github.io/bridgedata/) showed that a single policy could generalize across tasks and scenes; [Open X-Embodiment](https://robotics-transformer-x.github.io/) pooled data across labs and robot embodiments; [DROID](https://droid-dataset.github.io/) brought in the scene diversity that lead to the emergence of open-world generalization. But these datasets share a common trait: **they only contain successful teleoperated demonstrations.**
 
-But these datasets share a common trait: **they only contain successes.**
+A policy learns what to do from them, but never what *not* to do. It cannot tell where a task is unforgiving, because it has never seen the thin margin at a grasp or an insertion actually violated, and it cannot learn to avoid a failure it has never been shown. That ignorance compounds: clean demonstrations trace a narrow corridor through state space, so the first slipped grasp or nudged object puts the policy somewhere it has never been, with no example of how to recover.
 
-### Why Success-Only Data Falls Short
+## What failure data unlocks
 
-When robots learn only from successful demonstrations, they miss information about how much precision a task requires.
-Many manipulation tasks depend on bottleneck states such as grasps, where the margin of error is thin;
-and without failures those critical moments are difficult for a policy to recognize.
+- **Offline RL.** Value functions need to know what a bad state is worth, and that requires penalty signal and counterfactual actions — the branches the policy could have taken and what happened when it did. Success-only data has neither: every action is optimal, so there is nothing to compare against.
+- **Reward modeling.** Reward models are learned from contrast, and real failures and near-misses supply the negative half that is currently synthesized with noise or relabelling.
+- **Failure prediction and policy steering.** Failure data helps train classifiers on when failures occur, and unlocks the ability to steer policies away from known failure modes during execution time.
+- **World modeling.** Action-conditioned dynamics prediction relies on broad coverage of the state and action spaces. Failures and subotpimal data contains contact events and object configurations that clean teleoperation never visits.
+- **Intervention systems.** Once you can predict failure, you can act on it: hand control back to a human, or trigger a recovery behavior, before the rollout is lost.
 
-In addition, existing works using failures often rely on post-hoc synthetic techniques such as corrupting demonstration actions with noise or relabelling episodes with different task commands than those actually achieved.
-While useful as data augmentation, these approaches lack signal on the types of failures which **real robot policies actually make**.
+## Why now?
 
-## Benefits of Failure Data
+Over the past 1-2 years, the community has built the training and inference infrastructure for generalist robot policies (OpenVLA, openpi, and others). As a result, labs everywhere are running policy inference on real robots far more than they were a few years ago.
 
-### Immediate Applications
+Those rollouts are the data. **Every one of them is a real robot acting under a real policy, succeeding and failing in exactly the ways we need to capture** — and almost all of them are deleted the moment the success rate is written down. The bottleneck is not collection anymore. It is that nobody is keeping what is already being collected.
 
-1. **Offline Reinforcement Learning** 
-   Train policies that understand both reward and penalty signals from real-world data.
-
-2. **Policy Steering**
-   Guide pretrained VLAs away from known failure modes without full retraining.
-
-3. **Failure Prediction**
-   Build classifiers that detect impending failures before they occur.
-
-4. **Early Intervention Systems**
-   Trigger human takeover or recovery behaviors when failure is likely.
-
-5. **Reward model training**
-   Reward models have recently become prominent, but they often need to rely on synthetic data to generate negative examples.
-
-### Research Directions
-
-- What visual features predict manipulation failure?
-- Can failure data improve sample efficiency in online RL?
-- How do different failure types (drops, collisions, stalls) cluster?
-- Can models learn recovery strategies from failure-with-recovery data?
-
-## Why Now?
-
-Large open-source datasets are one of the major factors contributing to massive advancements in robotics at the moment. 
-And every robotics lab already generates failure data. They just throw it away.
-
-- **Policy evaluation** generates failed rollouts constantly.
-- **Teleoperation sessions** include mistakes.
-- **Real-world deployment** encounters edge cases.
-
-The infrastructure for training on large scale data exists (see OpenVLA, OpenPi, etc.). We just need to feed it more diverse data. This project fills this gap, and it needs **your** help!
+That is the gap this project fills, and it needs **your** help.

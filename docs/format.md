@@ -65,9 +65,8 @@ For bi-arm setups, please simply concatenate the actions of the left and right a
 
 **Important Points**
 - We assume that many data collection setups will not make it possible to collect all action formats. We therefore only require **one** entry in `actions/` to be a valid tensor dataset; the others are stored as empty HDF5 datasets.
-- Please ensure to provide unnormalized and absolute actions as this will make using the actions easier and reduce the amount of conversions.
-- We furthermore assume that the rotation component of cartesian position action space are encoded as quaternions. Tooling for converting most common representations into quaternions are provided in the episode recorder.
-- The gripper action should be set in one of the three keys: gripper_binary, gripper_position or gripper_velocity. Note that we currently only support two-finger gripper setups.
+- Please provide unnormalized and absolute actions.
+- The gripper action should be set in one of the three keys: gripper_binary, gripper_position or gripper_velocity. We currently only support two-finger gripper setups.
 
 ---
 

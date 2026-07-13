@@ -13,35 +13,22 @@ permalink: /
 
 ![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
 
-**[Oopsie Dataset](https://github.com/oopsie-data/oopsie-tools) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
+**Oopsie is a multi-lab effort to build the first large-scale dataset of *real* robot manipulation failures.**
 
-This website explains the software tools for contributing failure data to the dataset: a multi-lab effort to build a large-scale dataset of robotic manipulation failures for offline RL, policy steering, and failure prediction.
+Today's robotics datasets contain only successes. But a policy that has only seen things go right never learns what a bad grasp looks like and how to avoid failures. The failures scenarios that would teach it this are produced constantly, during policy rollouts in every lab, but are ignored and thrown away.
 
-The goal of this project is to enable research into how policy evaluation data, especially failures alongside successes, can improve robot policy training.
-Failed demonstrations are routinely collected during testing and evaluation, but immediately discarded as they provide no further use in common imitation learning pipelines.
-However, these failures contain crucial information about where current approaches break down, and can be used to train robots to recognize bottleneck states or request intervention from human operators.
+We want to stop throwing them away. Real failures and suboptimal behavior are the missing ingredient for reinforcement learning, reward modeling, failure prediction, and world modeling, and no amount of synthetic noise injection substitutes for them. Getting there takes data spanning many robots, tasks, and setups, which is more than any single lab can collect.
 
-To support research into how robotic failures can be used effectively, we need a varied dataset spanning different robot policies, tasks, and setups.
-Therefore, we share our tooling for collecting and annotating policy evaluation trajectories together with a **Call for Contributions**.
-Share your policy evaluation data with us, successes and failures, so that we can build datasets to enable the robotics community to investigate how to make full use of the data we produce every day.
+**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide the [toolkit]({% link oopsie-tools.md %}) to record and annotate them, and contributing labs get early access to the dataset and co-authorship on the public release.
 
 ---
 
 
-## What this website provides
+## Details
 
-This website explains how to collect, annotate, and contribute data to our effort.
+This website is everything you need to start contributing. For a longer introduction to why suboptimal and failure data matters in robotics, see the [motivation]({% link motivation.md %}) and why you should [contribute]({% link contributing.md %}). If you are ready, the [quickstart guide]({% link quickstart.md %}) walks through the workflow end to end and links out to the details of each step, and the [Oopsie toolkit]({% link oopsie-tools.md %}) is what you will use to record and annotate the rollouts. Please refer to the [FAQ]({% link faq.md %}) for any questions you might have.
 
-[Motivation]({% link motivation.md %}) provides a more in-depth overview of the research vision.
-
-[Quickstart]({% link quickstart.md %}) provides an overview of the whole workflow with each individual step and links to detailed instructions for every step.
-
-[Contributing]({% link contributing.md %}) describes who can contribute and what benefits are available for contributing labs.
-
-[Oopsie ToolKit]({% link oopsie-tools.md %}) describes the provided toolkit for recording and annotating robot manipulation failures.
-
-[Frequently Asked Questions]({% link faq.md %}) is a collection of frequent issues and questions that might arise during the use of our workflow. This is being continually expanded, and we invite you to open issues on github for any unanswered questions.
-
+If our software does not fit your workflow, tell us and we will help you share your data anyway — and reach out with any suggestions, because we want this dataset to be useful for **you and your research**.
 
 ---
 

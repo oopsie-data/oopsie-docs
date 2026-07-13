@@ -92,16 +92,19 @@ blockquote {
   p {
     margin: 0;
     font-style: italic;
+  }
 
-    strong:first-child {
-      display: block;
-      font-style: normal;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: $link-color;
-      margin-bottom: 0.35rem;
-    }
+  // Opt-in via {: .quote-label }. Not automatic on `strong:first-child`, because
+  // :first-child ignores text nodes: bold appearing mid-sentence is still the
+  // paragraph's first *element* child, and would get turned into a block label.
+  &.quote-label p strong:first-child {
+    display: block;
+    font-style: normal;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: $link-color;
+    margin-bottom: 0.35rem;
   }
 
   cite {
