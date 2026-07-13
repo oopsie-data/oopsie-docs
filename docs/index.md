@@ -28,6 +28,7 @@ We want to stop throwing them away. Real failures and suboptimal behavior are th
 
 This website is everything you need to start contributing. For a longer introduction to why suboptimal and failure data matters in robotics, see the [motivation]({% link motivation.md %}) and why you should [contribute]({% link contributing.md %}). If you are ready, the [quickstart guide]({% link quickstart.md %}) walks through the workflow end to end and links out to the details of each step, and the [Oopsie toolkit]({% link oopsie-tools.md %}) is what you will use to record and annotate the rollouts. Please refer to the [FAQ]({% link faq.md %}) for any questions you might have.
 
+If our software does not fit your workflow, tell us and we will help you share your data anyway — and reach out with any suggestions, because we want this dataset to be useful for **you and your research**.
 
 ---
 
