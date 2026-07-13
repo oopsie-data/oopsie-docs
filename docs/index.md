@@ -13,17 +13,13 @@ permalink: /
 
 ![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
 
-**[Oopsie Dataset](https://github.com/oopsie-data/oopsie-tools) project's software toolkit for collecting, annotating, and managing robotic manipulation failures.**
+**Oopsie is a multi-lab effort to build the first large-scale dataset of *real* robot manipulation failures.**
 
-This website explains the software tools for contributing failure data to the dataset: a multi-lab effort to build a large-scale dataset of robotic manipulation failures for offline RL, policy steering, and failure prediction.
+Today's robotics datasets contain only successes. But a policy that has only seen things go right never learns where the margin of error is thin, what a bad grasp looks like, how to avoid failures, or when to ask a human for help. The failures that would teach it this are produced constantly, during every policy rollout in every lab, and then thrown away.
 
-The goal of this project is to enable research into how policy evaluation data, especially failures alongside successes, can improve robot policy training.
-Failed demonstrations are routinely collected during testing and evaluation, but immediately discarded as they provide no further use in common imitation learning pipelines.
-However, these failures contain crucial information about where current approaches break down, and can be used to train robots to recognize bottleneck states or request intervention from human operators.
+We want to stop throwing them away. Real failures from real policies are the missing ingredient for reinforcement learning, reward models, failure prediction, and world modeling, and no amount of synthetic noise injection substitutes for them. Getting there takes data spanning many robots, tasks, and setups, which is more than any single lab can collect.
 
-To support research into how robotic failures can be used effectively, we need a varied dataset spanning different robot policies, tasks, and setups.
-Therefore, we share our tooling for collecting and annotating policy evaluation trajectories together with a **Call for Contributions**.
-Share your policy evaluation data with us, successes and failures, so that we can build datasets to enable the robotics community to investigate how to make full use of the data we produce every day.
+**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide the [toolkit]({% link oopsie-tools.md %}) to record and annotate them, and contributing labs get early access to the dataset and co-authorship on the public release.
 
 ---
 
