@@ -1,22 +1,22 @@
 {
   "schema_version": 4,
   "generated_at": {
-    "utc": "2026-07-11T23:04:41Z",
-    "cdt": "2026-07-11T18:04:41-05:00"
+    "utc": "2026-07-15T05:44:29Z",
+    "cdt": "2026-07-15T00:44:29-05:00"
   },
   "dataset_repo": "local:/corral/utexas/IRI26024/oopsiedata",
   "totals": {
-    "episodes": 3978,
-    "labs": 15,
-    "datasets": 13,
-    "robots": 13,
+    "episodes": 4351,
+    "labs": 16,
+    "datasets": 14,
+    "robots": 15,
     "policies": 81,
-    "tasks": 594,
-    "duration_hours": 24.918,
-    "annotated_episodes": 2644,
-    "successes": 1217,
-    "failures": 1427,
-    "failure_descriptions": 1431,
+    "tasks": 599,
+    "duration_hours": 27.655,
+    "annotated_episodes": 3017,
+    "successes": 1515,
+    "failures": 1502,
+    "failure_descriptions": 1506,
     "read_errors": 0
   },
   "per_lab": {
@@ -78,6 +78,24 @@
       "task_count": 10,
       "first_submission": "2026-03-15T21:22:20Z",
       "last_submission": "2026-06-21T09:31:24Z"
+    },
+    "Enactic_OpenArm": {
+      "episodes": 373,
+      "successes": 298,
+      "failures": 75,
+      "annotated_episodes": 373,
+      "failure_descriptions": 75,
+      "duration_hours": 2.737,
+      "robots": [
+        "OpenArm_2.0",
+        "OpenArm_2.0_beta"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 5,
+      "first_submission": "2026-03-16T20:32:04Z",
+      "last_submission": "2026-07-09T11:00:08Z"
     },
     "MILA": {
       "episodes": 62,
@@ -391,6 +409,18 @@
       },
       "bulk_import": false
     },
+    "OopsieData-Submissions/Enatic_OpenArm": {
+      "episodes": 373,
+      "successes": 298,
+      "failures": 75,
+      "annotated_episodes": 373,
+      "failure_descriptions": 75,
+      "duration_hours": 2.737,
+      "lab_ids": {
+        "Enactic_OpenArm": 373
+      },
+      "bulk_import": false
+    },
     "OopsieData-Submissions/Princeton_IRoM": {
       "episodes": 470,
       "successes": 244,
@@ -515,6 +545,16 @@
     }
   },
   "per_robot": {
+    "OpenArm_2.0": {
+      "episodes": 78,
+      "labs": 1,
+      "duration_hours": 1.489
+    },
+    "OpenArm_2.0_beta": {
+      "episodes": 295,
+      "labs": 1,
+      "duration_hours": 1.248
+    },
     "bi_yam_follower": {
       "episodes": 386,
       "labs": 2,
@@ -721,7 +761,7 @@
       "episodes": 5
     },
     "pi0.5": {
-      "episodes": 601
+      "episodes": 974
     },
     "pi0.5_lora_sft": {
       "episodes": 155
@@ -832,6 +872,10 @@
       "episodes": 318
     },
     {
+      "instruction": "Pick up the spoon and place it into the box.",
+      "episodes": 295
+    },
+    {
       "instruction": "close the drawer",
       "episodes": 236
     },
@@ -902,42 +946,39 @@
     {
       "instruction": "stack the cups",
       "episodes": 54
-    },
-    {
-      "instruction": "pick up the cup on the table, and hang it on the mug tree.",
-      "episodes": 54
     }
   ],
   "failure_categories": {
-    "['Manipulation failure (post contact)']": 439,
-    "['Grasp failure (at contact)']": 209,
-    "['Sequencing or semantic failure']": 176,
-    "['Task not attempted']": 158,
-    "['Reaching failure (pre contact)']": 143,
-    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 45,
-    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 32,
+    "['Manipulation failure (post contact)']": 451,
+    "['Grasp failure (at contact)']": 223,
+    "['Sequencing or semantic failure']": 177,
+    "['Reaching failure (pre contact)']": 167,
+    "['Task not attempted']": 162,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 49,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 33,
     "['Grasp failure (at contact)', 'Collision failure']": 24,
-    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 19,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 23,
     "['Manipulation failure (post contact)', 'Collision failure']": 19,
     "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 17,
     "['Sequencing or semantic failure', 'Other']": 13,
+    "['Reaching failure (pre contact)', 'Collision failure']": 12,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure']": 12,
-    "['Reaching failure (pre contact)', 'Collision failure']": 10,
+    "['Reaching failure (pre contact)', 'Task not attempted']": 11,
     "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 9,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Collision failure']": 8,
     "['Other']": 8,
     "['Hardware/mechanical issue']": 7,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Manipulation failure (post contact)']": 6,
-    "['Reaching failure (pre contact)', 'Task not attempted']": 6,
     "['Collision failure']": 6,
     "['Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 6,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 5,
+    "['Grasp failure (at contact)', 'Task not attempted']": 5,
     "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 5,
     "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 4,
+    "['Manipulation failure (post contact)', 'Task not attempted']": 4,
     "['Task not attempted', 'Sequencing or semantic failure']": 4,
     "['Grasp failure (at contact)', 'Hardware/mechanical issue']": 3,
     "['Grasp failure (at contact)', 'Other']": 3,
-    "['Manipulation failure (post contact)', 'Task not attempted']": 3,
     "['Sequencing or semantic failure', 'Task not attempted']": 3,
     "['Manipulation failure (post contact)', 'Grasp failure (at contact)']": 3,
     "['Reaching failure (pre contact)', 'Hardware/mechanical issue']": 3,
@@ -946,7 +987,6 @@
     "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 2,
     "['Sequencing or semantic failure', 'Hardware/mechanical issue']": 2,
     "['Sequencing or semantic failure', 'Collision failure']": 2,
-    "['Grasp failure (at contact)', 'Task not attempted']": 2,
     "['Manipulation failure (post contact)', 'Hardware/mechanical issue']": 2,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 1,
     "['Sequencing or semantic failure', 'Grasp failure (at contact)']": 1,
@@ -955,14 +995,14 @@
     "['Collision failure', 'Hardware/mechanical issue']": 1
   },
   "severity_distribution": {
-    "Low severity - no damage, can be reset and reattempted": 1109,
+    "Low severity - no damage, can be reset and reattempted": 1184,
     "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 311,
     "Catastrophic - significant damage or risk of damage, cannot be reattempted without repair": 7
   },
   "action_spaces": {
-    "gripper_position": 3079,
+    "gripper_position": 3452,
     "cartesian_position": 2103,
-    "joint_position": 1150,
+    "joint_position": 1523,
     "gripper_binary": 779,
     "joint_velocity": 659,
     "cartesian_velocity": 120,
@@ -973,6 +1013,7 @@
     "left_base_cam, right_base_cam, wrist_cam": 470,
     "image_primary": 419,
     "left, right, top": 336,
+    "ceiling, wrist_left, wrist_right": 295,
     "left, wrist": 205,
     "head, left_wrist, right_wrist": 204,
     "camera_high, camera_wrist_left, camera_wrist_right": 155,
@@ -980,6 +1021,7 @@
     "left_wrist, right_wrist, top": 120,
     "left, overhead, right, wrist": 106,
     "left, right, wrist": 84,
+    "ceiling, head_left, head_right, wrist_left, wrist_right": 78,
     "right, wrist": 63,
     "external, wrist": 63,
     "front, top, wrist": 60,
@@ -1037,109 +1079,129 @@
       "cumulative": 1102
     },
     {
+      "date": "2026-03-16",
+      "episodes": 18,
+      "cumulative": 1120
+    },
+    {
+      "date": "2026-03-18",
+      "episodes": 243,
+      "cumulative": 1363
+    },
+    {
+      "date": "2026-03-19",
+      "episodes": 34,
+      "cumulative": 1397
+    },
+    {
       "date": "2026-04-30",
       "episodes": 1,
-      "cumulative": 1103
+      "cumulative": 1398
     },
     {
       "date": "2026-05-09",
       "episodes": 120,
-      "cumulative": 1223
+      "cumulative": 1518
     },
     {
       "date": "2026-05-17",
       "episodes": 28,
-      "cumulative": 1251
+      "cumulative": 1546
     },
     {
       "date": "2026-05-19",
       "episodes": 22,
-      "cumulative": 1273
+      "cumulative": 1568
     },
     {
       "date": "2026-06-08",
       "episodes": 101,
-      "cumulative": 1374
+      "cumulative": 1669
     },
     {
       "date": "2026-06-10",
       "episodes": 55,
-      "cumulative": 1429
+      "cumulative": 1724
     },
     {
       "date": "2026-06-11",
       "episodes": 2,
-      "cumulative": 1431
+      "cumulative": 1726
     },
     {
       "date": "2026-06-12",
       "episodes": 204,
-      "cumulative": 1635
+      "cumulative": 1930
     },
     {
       "date": "2026-06-13",
       "episodes": 29,
-      "cumulative": 1664
+      "cumulative": 1959
     },
     {
       "date": "2026-06-14",
       "episodes": 226,
-      "cumulative": 1890
+      "cumulative": 2185
     },
     {
       "date": "2026-06-15",
       "episodes": 201,
-      "cumulative": 2091
+      "cumulative": 2386
     },
     {
       "date": "2026-06-16",
       "episodes": 182,
-      "cumulative": 2273
+      "cumulative": 2568
     },
     {
       "date": "2026-06-17",
       "episodes": 352,
-      "cumulative": 2625
+      "cumulative": 2920
     },
     {
       "date": "2026-06-18",
       "episodes": 309,
-      "cumulative": 2934
+      "cumulative": 3229
     },
     {
       "date": "2026-06-19",
       "episodes": 535,
-      "cumulative": 3469
+      "cumulative": 3764
     },
     {
       "date": "2026-06-20",
       "episodes": 116,
-      "cumulative": 3585
+      "cumulative": 3880
     },
     {
       "date": "2026-06-21",
       "episodes": 30,
-      "cumulative": 3615
+      "cumulative": 3910
     },
     {
       "date": "2026-06-22",
       "episodes": 50,
-      "cumulative": 3665
+      "cumulative": 3960
     },
     {
       "date": "2026-06-24",
       "episodes": 3,
-      "cumulative": 3668
+      "cumulative": 3963
     },
     {
       "date": "2026-06-25",
       "episodes": 50,
-      "cumulative": 3718
+      "cumulative": 4013
+    },
+    {
+      "date": "2026-07-09",
+      "episodes": 78,
+      "cumulative": 4091
     },
     {
       "date": "unrecorded",
       "episodes": 260,
-      "cumulative": 3978
+      "cumulative": 4351
     }
   ],
   "submission_timeline_per_lab": [
@@ -1182,6 +1244,21 @@
       "date": "2026-03-15",
       "lab_id": "CMU_Intent",
       "episodes": 22
+    },
+    {
+      "date": "2026-03-16",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 18
+    },
+    {
+      "date": "2026-03-18",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 243
+    },
+    {
+      "date": "2026-03-19",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 34
     },
     {
       "date": "2026-04-30",
@@ -1394,6 +1471,11 @@
       "episodes": 50
     },
     {
+      "date": "2026-07-09",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 78
+    },
+    {
       "date": "unrecorded",
       "lab_id": "MILA",
       "episodes": 62
@@ -1418,6 +1500,7 @@
     "OopsieData-Submissions/Armnet",
     "OopsieData-Submissions/Berkeley_RAIL",
     "OopsieData-Submissions/CMU_Intent",
+    "OopsieData-Submissions/Enatic_OpenArm",
     "OopsieData-Submissions/Princeton_IRoM",
     "OopsieData-Submissions/Princeton_PRISM",
     "OopsieData-Submissions/Princeton_VLL",
