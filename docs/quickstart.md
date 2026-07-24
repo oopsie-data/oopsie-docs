@@ -41,7 +41,7 @@ To download and install the `oopsie-tools` package, simply activate your environ
 
 ```
 git clone https://github.com/oopsie-data/oopsie-tools
-cd oopsie_tools
+cd oopsie-tools
 
 pip install -e .
 ```
