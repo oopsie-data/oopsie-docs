@@ -43,3 +43,8 @@ Optional extras for using the droid example scripts:
 ```bash
 uv sync --extra droid   # In-the-loop rollout annotation for droid
 ```
+
+## Known issues
+
+### FFMPEG / Python 3.8
+When using python version 3.8, ffmpeg is not automatically installed together with the python package. A system-wide ffmpeg needs to be installed via your system package manager.
