@@ -82,7 +82,7 @@ for _ in range(num_eval_episodes):
     # wrap up policy rollout
     # ...
 
-    annotation = annotator.finish_rollout(
+    annotation = rollout_annotator.finish_rollout(
         instruction=instruction,
     )
     # annotation is saved automatically in the hdf5 file, we simply return 
@@ -162,10 +162,10 @@ for _ in range(num_eval_episodes):
 ```python
 WebRolloutAnnotator(
     robot_profile: RobotProfile,
-    data_root_dir Path,
+    data_root_dir: Path,
     operator_name: str,
-    port: int = 5001,
     annotator_name: str | None = None,
+    port: int = 5001,
     wait_for_annotation: bool = True,
     open_browser: bool = True,
     resume_session_name: str | None = None,
@@ -177,8 +177,8 @@ WebRolloutAnnotator(
 | `robot_profile` | `RobotProfile` | — | Robot and policy metadata (see [Robot Profile]({% link robot-profile.md %})) |
 | `data_root_dir` | `Path` | — | Directory where episode HDF5 and video files are written |
 | `operator_name` | `str` | — | Name of the person running the evaluation |
-| `port` | `int` | `5001` | Port for the local Flask annotation server |
 | `annotator_name` | `str | None` | None | Name of the person performing annotations (if it is different from the operator name) |
+| `port` | `int` | `5001` | Port for the local Flask annotation server |
 | `wait_for_annotation` | `bool` | `True` | Block `finish_rollout()` until a human annotation is submitted |
 | `open_browser` | `bool` | `True` | Automatically open the annotation UI in the default browser |
 | `resume_session_name` | `str | None` | `None` | Resume a previous session by name instead of starting a new one |
@@ -188,7 +188,7 @@ To collect important robot and policy specific metadata, the `EpisodeRecorder` a
 
 ### `record_step(observation, action)`
 
-Append one rollout timestep to the in-memory buffers. No data is written to disk; all buffered data is only persisted later by calling `save()`.
+Append one rollout timestep to the in-memory buffers. No data is written to disk; the buffers are only persisted when you call `finish_rollout()` at the end of the episode. Call `reset_episode_recorder()` before each new episode to clear them.
 
 #### Parameters
 
@@ -209,13 +209,7 @@ Top-level observation payload for a single timestep. Must contain:
 | `"gripper_position"` | array-like | Current gripper opening width |
 | `"joint_position"` | array-like | Per-joint angular positions (excluding gripper) |
 
-**`observation["image_observation"]`** — required keys are determined by `robot_profile.camera_names`. For each camera `cam`, the frame is looked up under any of the following candidate keys (first match wins):
-
-| Candidate key | Example |
-|---|---|
-| `cam` | `"wrist"` |
-| `"image_{cam}"` | `"image_wrist"` |
-| `"{cam}_image"` | `"wrist_image"` |
+**`observation["image_observation"]`** — must contain one key per camera in `robot_profile.camera_names`, named exactly as in the profile (e.g. a profile listing `wrist` requires the key `"wrist"`; `"image_wrist"` or `"wrist_image"` will be rejected).
 
 Frames must be `uint8` RGB arrays of shape `(H, W, 3)`.
 
@@ -227,7 +221,7 @@ Frames must be `uint8` RGB arrays of shape `(H, W, 3)`.
 > Please ensure that the actions are provided as _absolute, non-normalized, single-step_ vectors.
 > Processing action chunks or normalization across different embodiments is difficult, so make sure you record every timestep of the robot execution together with the executed actions.
 
-Dictionary of actions commanded at this timestep. All keys are optional; missing keys default to `None` and are stored as empty HDF5 datasets.
+Dictionary of actions commanded at this timestep. The keys must match `robot_profile.action_space` **exactly** and no value may be `None`. Every other key in the table below is written to the episode as an empty HDF5 dataset.
 
 
 | Key | Shape | Description |
@@ -246,7 +240,8 @@ Dictionary of actions commanded at this timestep. All keys are optional; missing
 
 #### Raises
 
-- `ValueError` — if `observation` is not a dict, required observation keys are missing, `robot_state` is missing profile-required keys, `image_observation` is missing expected camera keys, or all action values are `None`.
+- `ValueError` — if `observation` is not a dict, required observation keys are missing, `robot_state` is missing profile-required keys, or `image_observation` is missing a camera named in the profile.
+- `ValueError` — if `action` is empty, contains a key outside the table above, does not match `robot_profile.action_space` exactly, or contains a `None` value.
 - `ValueError` — if `cartesian_position` is present but not shaped `(7,)` or `(14,)` (after rotation conversion).
 
 ---

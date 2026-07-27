@@ -33,11 +33,13 @@ episode.h5
 │
 ├── episode_annotations/           (group)      # written by annotation tool after rollout
 │   └── <annotator_name>/          (group)      # one subgroup per annotator
+│       ├── [attr] schema              (str)    # "oopsie_failure_taxonomy_v1"
 │       ├── [attr] source              (str)    # e.g. "human"
 │       ├── [attr] timestamp           (str)    # ISO timestamp of annotation
 │       ├── [attr] success             (float)  # 1.0 = success, 0.0 = failure
 │       ├── [attr] failure_description (str)
-│       ├── [attr] taxonomy            (str)    # json: {failure_category, severity}
+│       ├── [attr] taxonomy_schema     (str)    # "oopsiedata_taxonomy_schema_v1"
+│       ├── [attr] taxonomy            (str)    # json, see below
 │       └── [attr] additional_notes    (str)
 │
 ├── observations/                  (group)
@@ -90,11 +92,13 @@ The `episode_annotations/` group is written by the annotation tool after rollout
 
 | Field | Type | Description |
 |:------|:-----|:------------|
+| `schema` | str attr | Annotation schema version, `"oopsie_failure_taxonomy_v1"` |
 | `source` | str attr | Annotation source, e.g. `"human"` |
 | `timestamp` | str attr | ISO timestamp of when the annotation was made |
 | `success` | float attr | `1.0` = success, `0.0` = failure |
 | `failure_description` | str attr | Free-text description of the failure |
-| `taxonomy` | str attr | JSON string: `{"failure_category": ..., "severity": ...}` |
+| `taxonomy_schema` | str attr | Taxonomy version, `"oopsiedata_taxonomy_schema_v1"` |
+| `taxonomy` | str attr | JSON string with the structured labels (see below) |
 | `additional_notes` | str attr | Any other annotator notes |
 
 The annotation tool provides a simple interface for editing these fields per episode, or in bulk across a group of episodes.
@@ -149,16 +153,19 @@ If you want to contribute data on a different embodiment, and your policy does n
 
 ## Failure Annotation Schema
 
-Annotations are written into the `episode_annotations/<annotator_name>/` subgroup by the annotation tool. The `taxonomy` attribute holds a JSON string with structured failure labels:
+Annotations are written into the `episode_annotations/<annotator_name>/` subgroup by the annotation tool. The `taxonomy` attribute holds a JSON string with the structured labels:
 
 ```json
 {
-  "failure_category": "<category>",
-  "severity": "<severity>"
+  "failure_category": ["<category>", "..."],
+  "severity": "<severity>",
+  "success_category": "<success_category>"
 }
 ```
 
-The questionnaire driving these fields is defined in `oopsie_data_tools/annotation_tool/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
+`failure_category` is always a list, since an episode can exhibit several failure modes at once; it is empty for successes. `severity` applies to both failures (impact) and successes (side-effects), and is `""` when unset. `success_category` is only present when the episode was marked a success *and* a quality category was chosen.
+
+The questionnaire driving these fields is defined in `oopsie_data_tools/annotation_tool/templates/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
 
 ---
 
@@ -194,7 +201,14 @@ The file paths of associated mp4 camera videos need to be saved in the hdf5 file
 ---
 
 ## Additional Data Format Constraints
-Video constraints (enforced by `validate.py`):
-- Resolution: 180–1280 px on each side
-- Duration: 2–300 seconds
+
+Enforced by `validate.py` (via `oopsie_data_tools/utils/validation/episode_validator.py`):
+
+- **Episode duration**: 1–300 seconds, computed as `trajectory_length / control_freq`
+- **Video resolution**: 180–1280 px on each side
+- **Frame count**: each video must be within `max(5, 10%)` frames of the trajectory length
+- **Video duration**: must match `trajectory_length / control_freq` to within 0.5 s
+- **Multi-camera consistency**: frame counts across cameras may differ by at most 1
+
+Videos must also be in a browser-compatible encoding so the annotation tool can play them; `EpisodeRecorder` handles this for you.
 

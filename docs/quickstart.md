@@ -101,5 +101,5 @@ To submit your data, you need to ensure that you have provided the lab_id and hu
 After doing this, you can simply run
 ```
 python scripts/validate_and_upload/upload.py \
-  --path /path/to/formatted_data \
+  --path /path/to/formatted_data
 ```
