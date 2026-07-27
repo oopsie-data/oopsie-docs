@@ -16,7 +16,7 @@ On the [next page]({% link annotator.md %}), we present the interface of the ann
 We support three workflows:
 1. **In-the-loop collection and annotation**: You can integrate our tool directly in your evaluation loop. The tool will open a browser prompt and ask you to directly annotate the episode with success/failure information after the robot completes an episode.
 2. **Bulk collection and annotation**: If annotating in the loop does not fit your work style, you can also simply save your data using our EpisodeRecorder and launch the annotation tool as a stand-alone script after you are done with your evaluation runs on the robot.
-3. **Custom collection and bulk annotation**: If your setup is incompatible with our EpisodeRecorder, or if you have already collected data and simply want to format it into the Oopsie Data format for annotation and submission, please see the detailed information on [data formatting]({% link format.md %}) and [data conversion]({% link conversion.md %}). The web annotator tool can work with any dataset that is saved in the specified format. We keep a growing list of scripts to convert common data formats such as RLDS in our [github repository](https://github.com/oopsie-data/oopsie-tools/tree/main/scripts/dataset_conversion).
+3. **Custom collection and bulk annotation**: If your setup is incompatible with our EpisodeRecorder, or if you have already collected data and simply want to format it into the Oopsie Data format for annotation and submission, please see the detailed information on [data formatting]({% link format.md %}) and [data conversion]({% link conversion.md %}). The web annotator tool can work with any dataset that is saved in the specified format. We keep a growing list of scripts to convert common data formats such as RLDS in our [github repository](https://github.com/oopsie-data/oopsie-data-tools/tree/main/scripts/dataset_conversion).
 
 For workflows 1. and 2., we provide example scripts in `examples/inference_examples`. These are derived from evaluation scripts in popular frameworks. If the one you would like to use is missing, please feel free to create an issue or pull request to add it.
 
@@ -35,8 +35,8 @@ For interactive annotation after each rollout using the browser UI, you can use 
 <div markdown="1">
 
 ```python
-from oopsie_tools.annotation_tool.rollout_annotator import WebRolloutAnnotator
-from oopsie_tools.utils.robot_profile.robot_profile import *
+from oopsie_data_tools.annotation_tool.rollout_annotator import WebRolloutAnnotator
+from oopsie_data_tools.utils.robot_profile.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 rollout_annotator = WebRolloutAnnotator(
@@ -104,8 +104,8 @@ Bulk collection will only record your session data in the oopsie-data format wit
 <div markdown="1">
 
 ```python
-from oopsie_tools.annotation_tool.episode_recorder import EpisodeRecorder
-from oopsie_tools.utils.robot_profile.robot_profile import *
+from oopsie_data_tools.annotation_tool.episode_recorder import EpisodeRecorder
+from oopsie_data_tools.utils.robot_profile.robot_profile import *
 
 robot_profile = load_robot_profile(<path_to_robot_profile>)
 episode_recorder = EpisodeRecorder(

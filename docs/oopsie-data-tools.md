@@ -8,7 +8,7 @@ permalink: /tool/
 
 # Oopsie ToolKit
 
-You can download the Oopsie ToolKit from [our github](https://github.com/oopsie-data/oopsie-tools). The toolkit provides utilities for the main workflow:
+You can download the Oopsie ToolKit from [our github](https://github.com/oopsie-data/oopsie-data-tools). The toolkit provides utilities for the main workflow:
 
 **[Data Collection]({% link data-collection.md %})**: Recording the data in the expected format
 

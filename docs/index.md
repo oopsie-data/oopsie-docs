@@ -19,14 +19,14 @@ Today's robotics datasets contain only successes. But a policy that has only see
 
 We want to stop throwing them away. Real failures and suboptimal behavior are the missing ingredient for reinforcement learning, reward modeling, failure prediction, and world modeling, and no amount of synthetic noise injection substitutes for them. Getting there takes data spanning many robots, tasks, and setups, which is more than any single lab can collect.
 
-**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide the [toolkit]({% link oopsie-tools.md %}) to record and annotate them, and contributing labs get early access to the dataset and co-authorship on the public release.
+**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide the [toolkit]({% link oopsie-data-tools.md %}) to record and annotate them, and contributing labs get early access to the dataset and co-authorship on the public release.
 
 ---
 
 
 ## Details
 
-This website is everything you need to start contributing. For a longer introduction to why suboptimal and failure data matters in robotics, see the [motivation]({% link motivation.md %}) and why you should [contribute]({% link contributing.md %}). If you are ready, the [quickstart guide]({% link quickstart.md %}) walks through the workflow end to end and links out to the details of each step, and the [Oopsie toolkit]({% link oopsie-tools.md %}) is what you will use to record and annotate the rollouts. Please refer to the [FAQ]({% link faq.md %}) for any questions you might have.
+This website is everything you need to start contributing. For a longer introduction to why suboptimal and failure data matters in robotics, see the [motivation]({% link motivation.md %}) and why you should [contribute]({% link contributing.md %}). If you are ready, the [quickstart guide]({% link quickstart.md %}) walks through the workflow end to end and links out to the details of each step, and the [Oopsie toolkit]({% link oopsie-data-tools.md %}) is what you will use to record and annotate the rollouts. Please refer to the [FAQ]({% link faq.md %}) for any questions you might have.
 
 If our software does not fit your workflow, tell us and we will help you share your data anyway — and reach out with any suggestions, because we want this dataset to be useful for **you and your research**.
 

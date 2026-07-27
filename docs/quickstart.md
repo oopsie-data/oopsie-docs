@@ -15,10 +15,10 @@ This page provides a brief overview of all the necessary steps to contribute to 
 3. [Data recording and annotation](#3-data-recording-and-annotation)
 4. [Data submission](#4-data-submission)
 
-For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-tools) or contact the [team]({% link team.md %}).
+For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-data-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-data-tools) or contact the [team]({% link team.md %}).
 
 {: .note }
-> **Using a coding agent?** Point Claude Code, Codex, or Cursor at [`AI_CONTEXT.md`](https://github.com/oopsie-data/oopsie-tools/blob/main/AI_CONTEXT.md) and it can integrate the Oopsie toolkit into your existing rollout code for you.
+> **Using a coding agent?** Point Claude Code, Codex, or Cursor at [`AI_CONTEXT.md`](https://github.com/oopsie-data/oopsie-data-tools/blob/main/AI_CONTEXT.md) and it can integrate the Oopsie toolkit into your existing rollout code for you.
 
 ---
 
@@ -37,11 +37,11 @@ To register, please use the [registration form](https://forms.gle/9arwZHAvRjvboz
 
 To install our data collection and annotation tooling, we recommend using `uv` or `pip`. We tested our toolkit with python versions 3.8 and 3.12, please contact us if you run into trouble with another version.
 
-To download and install the `oopsie-tools` package, simply activate your environment and run
+To download and install the `oopsie-data-tools` package, simply activate your environment and run
 
 ```
-git clone https://github.com/oopsie-data/oopsie-tools
-cd oopsie-tools
+git clone https://github.com/oopsie-data/oopsie-data-tools
+cd oopsie-data-tools
 
 pip install -e .
 ```
@@ -52,7 +52,7 @@ pip install -e .
 Oopsie-data is a cross-embodiment dataset, and we use a robot profile to detail the specific robot and controller setup used from each contribution.
 The robot profile also captures the policy used for the rollout, since some keys, such as the action space, can be different for different policies on the same robot embodiment. This means you should overwrite the policy field or create a separate profile for policies with different action spaces.
 
-A template and example robot profiles can be found in [config/robot_profiles](https://github.com/oopsie-data/oopsie-tools/tree/main/configs/robot_profiles). 
+A template and example robot profiles can be found in [config/robot_profiles](https://github.com/oopsie-data/oopsie-data-tools/tree/main/configs/robot_profiles). 
 Start by modifying the template (or the closest existing profile) to reflect your robot and controller setup. For details on the robot profile format, please refer to the full instructions.
 
 ### 2.3 Setting up the contributor config
@@ -70,7 +70,7 @@ huggingface_token: <HF_TOKEN>
 ### 3.1 Data collection
 [Full instructions]({% link data-collection.md %})
 
-If you are using a standard framework for policy execution and evaluation, check the examples provided in [`examples/inference_examples`](https://github.com/oopsie-data/oopsie-tools/tree/main/examples/inference_examples) for a growing list of ready-to-use scripts.
+If you are using a standard framework for policy execution and evaluation, check the examples provided in [`examples/inference_examples`](https://github.com/oopsie-data/oopsie-data-tools/tree/main/examples/inference_examples) for a growing list of ready-to-use scripts.
 
 Oopsie-tools supports three workflows for data collection and annotation:
 1. **In-the-loop collection and annotation**: As the policy rollout each episode on the robot, collect the data and annotate as each episode finishes. For a minimal code example, see option 1 [here]({% link data-collection.md %}#1-in-the-loop-collection-and-annotation).
@@ -86,7 +86,7 @@ We provide a web-based annotation tool that allows you to quickly annotate your 
 <!-- To launch the tool in your browser after collecting data, simply run
 
 ```
-python -m oopsie_tools.annotation_tool.annotator \
+python -m oopsie_data_tools.annotation_tool.annotator \
     --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 

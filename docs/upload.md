@@ -21,7 +21,7 @@ HuggingFace access token, you can use these tools to contribute.
 
 ## Upload Workflow
 
-Before uploading, create a local contributor config in your `oopsie-tools` checkout at
+Before uploading, create a local contributor config in your `oopsie-data-tools` checkout at
 `configs/contributor_config.yaml`:
 
 ```yaml

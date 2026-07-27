@@ -23,7 +23,7 @@ search:
   preview_words_after: 10
 
 aux_links:
-  "Oopsie-Tools": "https://github.com/oopsie-data/oopsie-tools"
+  "Oopsie-Data-Tools": "https://github.com/oopsie-data/oopsie-data-tools"
 
 aux_links_new_tab: true
 

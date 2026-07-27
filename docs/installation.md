@@ -18,8 +18,8 @@ We have tested all of our tooling with python versions 3.8 and 3.12. In principl
 # Create your environment and activate it!
 
 # Clone and install base dependencies
-git clone https://github.com/oopsie-data/oopsie-tools
-cd oopsie_tools
+git clone https://github.com/oopsie-data/oopsie-data-tools
+cd oopsie-data-tools
 
 pip install -e .
 ```
@@ -33,8 +33,8 @@ pip install -e ".[droid]"   # In-the-loop rollout annotation for droid
 ### Using uv
 ```bash
 # Clone and install base dependencies
-git clone https://github.com/oopsie-data/oopsie-tools
-cd oopsie_tools
+git clone https://github.com/oopsie-data/oopsie-data-tools
+cd oopsie-data-tools
 uv sync
 ```
 
