@@ -256,15 +256,27 @@ permalink: /visualizer/
 
   .viz-modal {
     position: fixed;
-    inset: 0;
-    z-index: 100;
+    top: var(--announcement-h, 0px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 950;
     display: none;
     place-items: center;
     padding: 1.25rem;
+    overscroll-behavior: contain;
   }
 
   .viz-modal.is-visible {
     display: grid;
+  }
+
+  body.viz-modal-open {
+    position: fixed;
+    right: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .viz-modal-backdrop {
@@ -279,8 +291,9 @@ permalink: /visualizer/
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
     width: min(1120px, 100%);
-    max-height: calc(100vh - 2.5rem);
+    max-height: calc(100% - 2.5rem);
     overflow: hidden;
+    overscroll-behavior: contain;
     border: 1px solid var(--viz-border);
     border-radius: 10px;
     background: var(--viz-surface);
@@ -410,7 +423,11 @@ permalink: /visualizer/
 
     .viz-modal-panel {
       grid-template-columns: 1fr;
+      height: 100%;
+      max-height: 100%;
       overflow: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
 
     .viz-modal-media {
@@ -422,6 +439,7 @@ permalink: /visualizer/
     }
 
     .viz-modal-details {
+      overflow: visible;
       border-left: 0;
       border-top: 1px solid var(--viz-border);
     }
@@ -517,6 +535,7 @@ permalink: /visualizer/
   let excludedRepos = new Set();
   let isModalOpen = false;
   let modalRequestId = 0;
+  let pageScrollY = 0;
   const selected = {};
   const checkboxRefs = {};
   const previewCandidates = new Set();
@@ -913,6 +932,9 @@ permalink: /visualizer/
   async function showDetails(video) {
     const requestId = ++modalRequestId;
     isModalOpen = true;
+    pageScrollY = window.scrollY;
+    document.body.style.top = `-${pageScrollY}px`;
+    document.body.classList.add("viz-modal-open");
     gridEl.querySelectorAll("video").forEach(unloadPreview);
 
     modalVideo.pause();
@@ -974,6 +996,9 @@ permalink: /visualizer/
     modalVideo.pause();
     modalVideo.removeAttribute("src");
     modalVideo.load();
+    document.body.classList.remove("viz-modal-open");
+    document.body.style.removeProperty("top");
+    window.scrollTo(0, pageScrollY);
     syncPreviewPlayback();
   }
 

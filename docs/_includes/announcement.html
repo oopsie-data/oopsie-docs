@@ -11,8 +11,8 @@
   {% endif %}
 </aside>
 <script>
-  // The banner is position: sticky; publish its height as --announcement-h so the
-  // sidebar and sticky headers can sit just below it (banner wraps on narrow screens).
+  /* The banner is position: sticky; publish its height as --announcement-h so the
+     sidebar and sticky headers can sit just below it when the banner wraps. */
   (function () {
     var banner = document.getElementById('announcement-banner');
     if (!banner) return;
