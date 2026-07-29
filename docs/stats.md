@@ -10,4 +10,5 @@ permalink: /stats/
   window.__OOPSIE_STATS_URL__ = "{{ '/assets/data/stats.json' | relative_url }}?v=3";
 </script>
 
+{% include docs-nav-collapse.html %}
 {% include stats-dashboard.html %}

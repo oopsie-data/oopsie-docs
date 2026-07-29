@@ -14,28 +14,38 @@
     transition: transform 180ms ease, margin-left 180ms ease, width 180ms ease, max-width 180ms ease;
   }
 
-  /* Keep the hamburger clear of the Just the Docs search bar. */
-  body:has([data-docs-nav-toggle]) .main-header {
-    padding-left: 3.25rem;
+  /* Sit in the Just the Docs header flex row — no fixed offsets.
+     Stick below the announcement so the row is never covered by it. */
+  body.docs-nav-collapse-page #main-header {
+    position: sticky;
+    top: var(--announcement-h, 0px);
+    z-index: 900;
+    align-items: center;
+    gap: 0.65rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    background-color: #ffffff;
+  }
+
+  body.docs-nav-collapse-page #main-header .search {
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .docs-nav-toggle {
-    --docs-nav-toggle-size: 2.25rem;
-    position: fixed;
-    top: calc(var(--announcement-h, 0px) + 0.7rem);
-    left: 0.75rem;
-    z-index: 101;
+    flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: var(--docs-nav-toggle-size);
-    height: var(--docs-nav-toggle-size);
+    width: 2.25rem;
+    height: 2.25rem;
+    margin: 0;
     padding: 0;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
     background: #ffffff;
     color: #0f172a;
-    box-shadow: 0 1px 2px rgb(15 23 42 / 0.06), 0 4px 12px rgb(15 23 42 / 0.08);
+    box-shadow: 0 1px 2px rgb(15 23 42 / 0.05);
     cursor: pointer;
   }
 
@@ -67,34 +77,29 @@
     display: block;
   }
 
-  @media (min-width: 50rem) {
-    body:not(.docs-nav-collapsed) .docs-nav-toggle {
-      left: calc(15.5rem + 0.65rem);
+  /* Mobile: Just the Docs owns the menu/search chrome. Don't slide the
+     sidebar away or show our desktop toggle under the announcement. */
+  @media (max-width: 49.99rem) {
+    body.docs-nav-collapsed .side-bar {
+      transform: none;
+    }
+
+    .docs-nav-toggle {
+      display: none;
+    }
+
+    body.docs-nav-collapse-page #main-header {
+      position: static;
+      top: auto;
     }
   }
 </style>
-
-<button
-  class="docs-nav-toggle"
-  type="button"
-  data-docs-nav-toggle
-  aria-controls="site-nav"
-  aria-expanded="false"
-  aria-label="Show navigation"
-  title="Show navigation"
->
-  <svg class="docs-nav-icon-menu" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-  <svg class="docs-nav-icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-  </svg>
-</button>
 
 <script>
 (function () {
   var STORAGE_KEY = "oopsieDocsNavCollapsed";
   var LEGACY_KEY = "oopsieVisualizerNavCollapsed";
+  var DESKTOP_MQ = window.matchMedia("(min-width: 50rem)");
 
   function readStored() {
     var stored = localStorage.getItem(STORAGE_KEY);
@@ -109,33 +114,61 @@
 
   var stored = readStored();
   var collapsed = stored === null ? true : stored === "true";
-  document.body.classList.toggle("docs-nav-collapsed", collapsed);
+  document.body.classList.add("docs-nav-collapse-page");
 
-  function syncButtons() {
+  function applyCollapsedClass() {
+    document.body.classList.toggle("docs-nav-collapsed", collapsed && DESKTOP_MQ.matches);
+  }
+
+  applyCollapsedClass();
+
+  function syncButton(button) {
     var label = collapsed ? "Show navigation" : "Hide navigation";
-    document.querySelectorAll("[data-docs-nav-toggle]").forEach(function (button) {
-      button.setAttribute("aria-expanded", collapsed ? "false" : "true");
-      button.setAttribute("aria-label", label);
-      button.setAttribute("title", label);
-    });
+    button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+    button.setAttribute("aria-label", label);
+    button.setAttribute("title", label);
   }
 
   function setNavigationCollapsed(next) {
     collapsed = next;
-    document.body.classList.toggle("docs-nav-collapsed", collapsed);
+    applyCollapsedClass();
     localStorage.setItem(STORAGE_KEY, collapsed ? "true" : "false");
-    syncButtons();
+    document.querySelectorAll("[data-docs-nav-toggle]").forEach(syncButton);
+  }
+
+  function createToggleButton() {
+    var button = document.createElement("button");
+    button.className = "docs-nav-toggle";
+    button.type = "button";
+    button.setAttribute("data-docs-nav-toggle", "");
+    button.innerHTML =
+      '<svg class="docs-nav-icon-menu" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      "</svg>" +
+      '<svg class="docs-nav-icon-close" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+      '<path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>' +
+      "</svg>";
+    return button;
   }
 
   function bind() {
-    var buttons = document.querySelectorAll("[data-docs-nav-toggle]");
-    if (!buttons.length) return;
-    syncButtons();
-    buttons.forEach(function (button) {
-      button.addEventListener("click", function () {
-        setNavigationCollapsed(!document.body.classList.contains("docs-nav-collapsed"));
-      });
+    if (document.querySelector("[data-docs-nav-toggle]")) return;
+
+    var header = document.getElementById("main-header");
+    if (!header) return;
+
+    var button = createToggleButton();
+    header.insertBefore(button, header.firstChild);
+    syncButton(button);
+    button.addEventListener("click", function () {
+      setNavigationCollapsed(!collapsed);
     });
+
+    if (typeof DESKTOP_MQ.addEventListener === "function") {
+      DESKTOP_MQ.addEventListener("change", applyCollapsedClass);
+    } else if (typeof DESKTOP_MQ.addListener === "function") {
+      DESKTOP_MQ.addListener(applyCollapsedClass);
+    }
   }
 
   if (document.readyState === "loading") {
