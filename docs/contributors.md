@@ -7,6 +7,8 @@ permalink: /contributors/
 
 # Alpha Contributors
 
+## Academic
+
 | Contributor | Affiliation |
 | --- | --- |
 | Jagdeep Bhatia | UC Berkeley |
@@ -41,7 +43,7 @@ permalink: /contributors/
 | Yuzhi Fan | University of Washington |
 | Skand Peri | University of Texas at Austin |
 
-## Industry contributors
+## Industry
 
 | Ville Kuosmanen | SafeRobotics |
 | Yue Yin | OpenArms |
