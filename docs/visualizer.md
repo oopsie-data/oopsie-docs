@@ -457,7 +457,7 @@ permalink: /visualizer/
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="viz-modal-media">
-        <video class="viz-modal-video" id="viz-modal-video" controls muted loop playsinline></video>
+        <video class="viz-modal-video" id="viz-modal-video" controls muted loop playsinline webkit-playsinline preload="metadata"></video>
       </div>
       <div class="viz-modal-details" id="viz-modal-details"></div>
     </section>
@@ -480,6 +480,7 @@ permalink: /visualizer/
     : localMetadataUrl;
   const isPublicVisualizer = useRemoteAssets;
   const maxVisibleVideos = 40;
+  const maxPlayingPreviews = 8;
   const allFilterDefs = [
     { key: "scene", title: "Datasets", idField: "scene_id", labelField: "scene_label" },
     { key: "camera", title: "Cameras", idField: "camera_id", labelField: "camera_label" },
@@ -514,18 +515,117 @@ permalink: /visualizer/
   let searchQuery = "";
   let includeBulkImport = false;
   let excludedRepos = new Set();
+  let isModalOpen = false;
+  let modalRequestId = 0;
   const selected = {};
   const checkboxRefs = {};
+  const previewCandidates = new Set();
+  const videoObjectUrls = new Map();
+  const pendingVideoObjectUrls = new Map();
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const video = entry.target;
-      video.src = video.dataset.src;
-      video.load();
-      observer.unobserve(video);
+      const media = entry.target;
+      if (entry.isIntersecting) {
+        previewCandidates.add(media);
+      } else {
+        previewCandidates.delete(media);
+        unloadPreview(media);
+      }
     });
-  }, { rootMargin: "240px" });
+    syncPreviewPlayback();
+  }, { rootMargin: "120px", threshold: 0.1 });
+
+  /* Safari can reject byte-range playback across Hugging Face's signed Xet redirect.
+     These previews are small, so fetch each one once and play it from a local Blob URL. */
+  async function playableVideoUrl(sourceUrl) {
+    if (videoObjectUrls.has(sourceUrl)) {
+      return videoObjectUrls.get(sourceUrl);
+    }
+
+    if (!pendingVideoObjectUrls.has(sourceUrl)) {
+      const request = fetch(sourceUrl, {
+        mode: "cors",
+        credentials: "omit",
+        cache: "force-cache",
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Video request failed with HTTP ${response.status}`);
+          return Promise.all([response.arrayBuffer(), response.headers.get("content-type")]);
+        })
+        .then(([bytes, contentType]) => {
+          const mimeType = contentType && contentType.startsWith("video/")
+            ? contentType.split(";", 1)[0]
+            : "video/mp4";
+          const objectUrl = URL.createObjectURL(new Blob([bytes], { type: mimeType }));
+          videoObjectUrls.set(sourceUrl, objectUrl);
+          return objectUrl;
+        })
+        .finally(() => {
+          pendingVideoObjectUrls.delete(sourceUrl);
+        });
+      pendingVideoObjectUrls.set(sourceUrl, request);
+    }
+
+    return pendingVideoObjectUrls.get(sourceUrl);
+  }
+
+  async function playPreview(media) {
+    if (isModalOpen) return;
+
+    if (!media.hasAttribute("src")) {
+      if (media.dataset.loading === "true") return;
+      media.dataset.loading = "true";
+
+      try {
+        const objectUrl = await playableVideoUrl(media.dataset.src);
+        if (isModalOpen || !media.isConnected || !previewCandidates.has(media)) return;
+        media.src = objectUrl;
+        media.load();
+      } catch (error) {
+        console.error("Preview video could not be loaded:", error);
+        return;
+      } finally {
+        delete media.dataset.loading;
+      }
+    }
+
+    const playback = media.play();
+    if (playback) {
+      playback.catch((error) => {
+        if (error.name !== "AbortError") {
+          console.debug("Preview playback was blocked:", error);
+        }
+      });
+    }
+  }
+
+  function unloadPreview(media) {
+    media.pause();
+    if (media.hasAttribute("src")) {
+      media.removeAttribute("src");
+      media.load();
+    }
+  }
+
+  function syncPreviewPlayback() {
+    const viewportCenter = window.innerHeight / 2;
+    const candidates = Array.from(previewCandidates)
+      .filter((media) => media.isConnected)
+      .sort((left, right) => {
+        const leftBounds = left.getBoundingClientRect();
+        const rightBounds = right.getBoundingClientRect();
+        const leftCenter = leftBounds.top + leftBounds.height / 2;
+        const rightCenter = rightBounds.top + rightBounds.height / 2;
+        return Math.abs(leftCenter - viewportCenter) - Math.abs(rightCenter - viewportCenter);
+      });
+    const playing = new Set(isModalOpen ? [] : candidates.slice(0, maxPlayingPreviews));
+
+    candidates.forEach((media) => {
+      if (playing.has(media)) playPreview(media);
+      else unloadPreview(media);
+    });
+  }
 
   function shuffle(array) {
     for (let index = array.length - 1; index > 0; index -= 1) {
@@ -810,13 +910,16 @@ permalink: /visualizer/
     return `<span class="viz-chip">${escapeHtml(value)}</span>`;
   }
 
-  function showDetails(video) {
+  async function showDetails(video) {
+    const requestId = ++modalRequestId;
+    isModalOpen = true;
+    gridEl.querySelectorAll("video").forEach(unloadPreview);
+
     modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.load();
     if (video.poster) modalVideo.poster = assetUrl(video.poster);
     else modalVideo.removeAttribute("poster");
-    modalVideo.src = assetUrl(video.src);
-    modalVideo.load();
-    modalVideo.play().catch(() => {});
 
     modalDetails.innerHTML = `
       <h2 class="viz-modal-title" id="viz-modal-title">${escapeHtml(videoTitle(video))}</h2>
@@ -838,18 +941,46 @@ permalink: /visualizer/
     modalEl.classList.add("is-visible");
     modalEl.setAttribute("aria-hidden", "false");
     modalCloseButton.focus();
+
+    try {
+      const objectUrl = await playableVideoUrl(assetUrl(video.src));
+      if (!isModalOpen || requestId !== modalRequestId) return;
+
+      modalVideo.src = objectUrl;
+      modalVideo.load();
+      const playback = modalVideo.play();
+      if (playback) await playback;
+    } catch (error) {
+      if (!isModalOpen || requestId !== modalRequestId) return;
+      if (error.name === "NotAllowedError") {
+        console.debug("Modal autoplay was blocked; native controls remain available:", error);
+        return;
+      }
+
+      console.error("Modal video playback failed:", error, modalVideo.error);
+      const playbackError = document.createElement("div");
+      playbackError.className = "viz-error";
+      playbackError.textContent =
+        "This video could not be loaded. Reload the page and try again.";
+      modalDetails.prepend(playbackError);
+    }
   }
 
   function closeDetails() {
+    modalRequestId += 1;
+    isModalOpen = false;
     modalEl.classList.remove("is-visible");
     modalEl.setAttribute("aria-hidden", "true");
     modalVideo.pause();
     modalVideo.removeAttribute("src");
     modalVideo.load();
+    syncPreviewPlayback();
   }
 
   function render() {
     observer.disconnect();
+    previewCandidates.forEach(unloadPreview);
+    previewCandidates.clear();
     gridEl.textContent = "";
 
     const matches = [];
@@ -877,10 +1008,14 @@ permalink: /visualizer/
 
       const media = document.createElement("video");
       media.muted = true;
+      media.defaultMuted = true;
       media.loop = true;
-      media.autoplay = true;
       media.playsInline = true;
+      media.preload = "metadata";
       media.controls = false;
+      media.setAttribute("muted", "");
+      media.setAttribute("playsinline", "");
+      media.setAttribute("webkit-playsinline", "");
       if (video.poster) media.poster = assetUrl(video.poster);
       media.dataset.src = assetUrl(video.src);
 
@@ -911,6 +1046,11 @@ permalink: /visualizer/
     if (event.key === "Escape" && modalEl.classList.contains("is-visible")) {
       closeDetails();
     }
+  });
+
+  window.addEventListener("pagehide", () => {
+    videoObjectUrls.forEach((objectUrl) => URL.revokeObjectURL(objectUrl));
+    videoObjectUrls.clear();
   });
 
   searchInput.addEventListener("input", () => {
