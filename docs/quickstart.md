@@ -1,13 +1,13 @@
 ---
 title: Quickstart
 layout: default
-nav_order: 2
+nav_order: 4
 permalink: /quickstart/
 ---
 
 # Quickstart Guide
 
-To contribute data to the Oopsie Dataset, we ask that you collect recordings of your robot policy evaluations, successes and failures. Our toolkit provides utilities for formatting robot evaluation data in a consistent manner across embodiments. Finally, use our annotation tool to quickly provide a brief description of each failed trajectory and upload your labeled data to the project repository.
+To contribute data to the Oopsie Dataset, we ask that you collect recordings of your robot policy rollouts (e.g. policy evaluation, play data collection, online RL training), successes and failures. Our toolkit provides utilities for formatting such robot data in a consistent manner across different manipulator setups. Finally, use our annotation tool to quickly provide a brief description of each failed trajectory and upload your labeled data to the project repository.
 
 This page provides a brief overview of all the necessary steps to contribute to the project using our tooling:
 1. [Registration](#1-registration)
@@ -15,7 +15,7 @@ This page provides a brief overview of all the necessary steps to contribute to 
 3. [Data recording and annotation](#3-data-recording-and-annotation)
 4. [Data submission](#4-data-submission)
 
-For each step, we provide more detailed instructions on the code and API documentation in the [Oopsie Toolkit]({% link oopsie-tools.md %}) section of this website. If you run into any trouble, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-tools) or contact the [team]({% link team.md %}).
+For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-data-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-data-tools) or contact the [team]({% link team.md %}).
 
 ---
 
@@ -30,33 +30,57 @@ To register, please use the [registration form](https://forms.gle/9arwZHAvRjvboz
 ## 2. Installation and setup
 
 ### 2.1 Installation
-[Full instructions]({% link installation.md %})
+[(Full instructions)]({% link installation.md %})
 
 To install our data collection and annotation tooling, we recommend using `uv` or `pip`. We tested our toolkit with python versions 3.8 and 3.12, please contact us if you run into trouble with another version.
 
-To download and install the `oopsie-tools` package, simply activate your environment and run
+The package is on PyPI, so to install `oopsie-data-tools`, simply activate your environment and run
 
 ```
-git clone https://github.com/oopsie-data/oopsie-tools
-cd oopsie_tools
+pip install oopsie-data-tools
+# or, in a uv project: uv add oopsie-data-tools
+```
+### 2.1.5 Setting up a coding agent (optional)
 
-pip install -e .
+If you drive the toolkit through a coding agent such as
+[Claude Code](https://claude.com/claude-code), the package ships a skill that can help with integration and setup.
+Nothing else in the toolkit needs an agent, and no files are written anywhere unless you run:
+
+```bash
+oopsie-data install-skill          # into ./skills/oopsie-data/
+oopsie-data install-skill --user   # into ~/.claude/skills/, active in every project
 ```
 
-### 2.2 Creating a robot profile
-[Full instructions]({% link robot-profile.md %})
+The default installs into a plain `./skills/` directory in your project, so you can read and
+edit it before anything picks it up, and commit it for the rest of your lab. Claude Code only
+scans `.claude/skills/`, so the command prints the one-line symlink that activates it:
 
-To record robot and policy metadata, we use a setup-specific yaml file, the robot profile. A template and example robot profiles can be found in [config/robot_profiles](https://github.com/oopsie-data/oopsie-tools/tree/main/configs/robot_profiles). To start use the template or the closest existing profile and modify it with your specific information. For a full list of keys and detailed information, please refer to the full instructions.
+```bash
+mkdir -p .claude/skills && mv -r /skills/oopsie-data .claude/skills/
+```
 
-The robot profile captures both robot embodiment information as well as the policy. This means you have to overwrite the policy field or create a separate profile if you want to evaluate more than one policy. This is required as some keys, such as the action space, are policy -- and not just embodiment -- specific.
+With `--user` it is active immediately in every project, after you start a new session.
 
-### 2.3 Setting up the contributor config
-To contribute data, you will need to put the lab id and huggingface token you received after registration in `configs/contributor_config.yaml`. Please make sure that you use the exact provided lab id (including capitalization) otherwise you cannot access the lab-specific repository.
+
+### 2.2 Setting up the contributor config
+Run `oopsie-data init`. It prompts for the lab id and huggingface token you received after
+registration, checks the token, and writes the file where the other commands will find it.
+
+To do it by hand instead, put those values in `contributor_config.yaml`. If you cloned the repository, that file lives in `configs/`; if you installed the package without a clone, create it at `~/.config/oopsie-data/contributor_config.yaml` (see [where credentials live]({% link installation.md %}#your-credentials)). Please make sure that you use the exact provided lab id (including capitalization) otherwise you cannot access the lab-specific repository.
 
 ```yaml
 lab_id: <EXACT_LAB_ID>
 huggingface_token: <HF_TOKEN>
 ```
+
+### 2.3 Creating a robot profile
+[(Full instructions)]({% link robot-profile.md %})
+
+Oopsie-data is a cross-embodiment dataset, and we use a robot profile to detail the specific robot and controller setup used from each contribution.
+The robot profile also captures the policy used for the rollout, since some keys, such as the action space, can be different for different policies on the same robot embodiment. This means you should overwrite the policy field or create a separate profile for policies with different action spaces.
+
+A template and example robot profiles can be generated by running `oopsie-data new-profile` or found in [config/robot_profiles](https://github.com/oopsie-data/oopsie-data-tools/tree/main/configs/robot_profiles). Keep your own profile next to your robot code and load it by path. 
+Start by modifying the template (or the closest existing profile) to reflect your robot and controller setup. For details on the robot profile format, please refer to the full instructions.
 
 ---
 
@@ -65,27 +89,25 @@ huggingface_token: <HF_TOKEN>
 ### 3.1 Data collection
 [Full instructions]({% link data-collection.md %})
 
-We provide several tools to collect data and save it in the required format for annotation and submission. If you are using a standard framework for policy execution and evaluation, check the examples provided in `examples/inference_examples` for a growing list of ready-to-use scripts.
+If you are using a standard framework for policy execution and evaluation, check the examples provided in [`examples/inference_examples`](https://github.com/oopsie-data/oopsie-data-tools/tree/main/examples/inference_examples) for a growing list of ready-to-use scripts.
 
-We envision three possible workflows for data collection:
-1. **In-the-loop collection and annotation**: If you want to collect data and annotate each episode with success and failure and the failure description immediately, we provide an all-in-one tool that automatically saves your evaluation data and launches a browser tool for annotation. For a minimal code example, see [here]({% link data-collection.md %}#1-in-the-loop-collection-and-annotation).
-2. **Bulk collection and annotation**: If you only want to record the data, and annotate each episode later, we provide a stand-alone tool for recording. For a minimal code example, see [here]({% link data-collection.md %}#2-bulk-collection)
+Oopsie-tools supports three workflows for data collection and annotation:
+1. **In-the-loop collection and annotation**: As the policy rollout each episode on the robot, collect the data and annotate as each episode finishes. For a minimal code example, see option 1 [here]({% link data-collection.md %}#1-in-the-loop-collection-and-annotation).
+2. **Bulk collection and annotation**: Use the tool to record many rollout episodes data at once, then annotate the data in a separate step after all rollout data is collected. For a minimal code example, see option 2 [here]({% link data-collection.md %}#2-bulk-collection).
 3. **Custom collection and bulk annotation**: If your setup is incompatible with our EpisodeRecorder, or if you have already collected data and simply want to format it into the Oopsie Data format for annotation and submission, see option 3 [here]({% link data-collection.md %}#3-custom-collection-and-bulk-annotation).
 
 ### 3.2 Annotation
-[Full instructions]({% link annotator.md %})
+[(Full instructions)]({% link annotator.md %})
 
-To make the data useful for downstream projects, we require that each episode is annotated with failure information. 
-<!-- At minimum, each episode needs to be marked as a `success` or `failure` and the `Describe what went wrong` field needs to be filled. In addition, we allow each annotator to fill out a short failure questionnaire. -->
+We provide a web-based annotation tool that allows you to quickly annotate your data with information about the suboptimalities or failures that occurred during the rollout.
 
-<!-- To launch the tool in your browser after collecting data, simply run
+To launch the tool in your browser after collecting data, simply run
 
 ```
-python -m oopsie_tools.annotation_tool.annotator \
-    --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
+oopsie-data annotate --samples-dir <DIR> --port <PORT> --annotator-name <YOUR_NAME>
 ```
 
-The `samples_dir` should be the top level directory where your samples were recorded, the `port` specifies on which port the webserver can be accessed (navigate to `localhost:<port>` to see the web interface) and `annotator_name` records who provided the annotation. -->
+The `samples_dir` should be the top level directory where your samples were recorded, the `port` specifies on which port the webserver can be accessed (navigate to `localhost:<port>` to see the web interface) and `annotator_name` records who provided the annotation.
 
 ---
 
@@ -95,6 +117,5 @@ The `samples_dir` should be the top level directory where your samples were reco
 To submit your data, you need to ensure that you have provided the lab_id and huggingface token, and that your data is properly annotated.
 After doing this, you can simply run
 ```
-python scripts/validate_and_upload/upload.py \
-  --path /path/to/formatted_data \
+oopsie-data upload --path /path/to/formatted_data
 ```

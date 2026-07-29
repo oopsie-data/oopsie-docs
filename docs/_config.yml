@@ -7,6 +7,14 @@ baseurl: ""
 
 color_scheme: light
 
+# Site-wide announcement banner (rendered via _includes/header_custom.html)
+announcement:
+  enabled: true
+  badge: "Coming soon"
+  text: "The Oopsie Data open beta launches soon — we're now accepting lab registrations."
+  cta_text: "Register your lab"
+  cta_link: "https://forms.gle/9arwZHAvRjvbozoT7"
+
 search_enabled: true
 search:
   heading_level: 2
@@ -15,11 +23,11 @@ search:
   preview_words_after: 10
 
 aux_links:
-  "Oopsie-Tools": "https://github.com/oopsie-data/oopsie-tools"
+  "Oopsie-Data-Tools": "https://github.com/oopsie-data/oopsie-data-tools"
 
 aux_links_new_tab: true
 
-footer_content: "Oopsie Tools & Data — Tooling for the Oopsie Dataset."
+footer_content: "Oopsie Data — A large-scale dataset of robotic manipulation failures and suboptimal behavior."
 
 back_to_top: true
 back_to_top_text: "Back to top"
@@ -29,6 +37,8 @@ favicon_ico: /assets/images/favicon.ico
 callouts:
   highlight:
     color: yellow
+  note:
+    color: blue
   important:
     title: Important
     color: blue

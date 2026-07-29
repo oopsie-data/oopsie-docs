@@ -1,409 +1,348 @@
 {
-  "schema_version": 2,
+  "schema_version": 4,
   "generated_at": {
-    "utc": "2026-06-14T16:49:39Z",
-    "cdt": "2026-06-14T11:49:39-05:00"
+    "utc": "2026-07-15T05:44:29Z",
+    "cdt": "2026-07-15T00:44:29-05:00"
   },
-  "dataset_repo": "local:/scratch/09666/abahety/oopsiedata",
+  "dataset_repo": "local:/corral/utexas/IRI26024/oopsiedata",
   "totals": {
-    "episodes": 10130,
-    "labs": 35,
-    "datasets": 8,
-    "robots": 6,
-    "policies": 21,
-    "tasks": 2492,
-    "duration_hours": 99.456,
-    "annotated_episodes": 10104,
-    "successes": 1190,
-    "failures": 8914,
-    "failure_descriptions": 262,
+    "episodes": 4351,
+    "labs": 16,
+    "datasets": 14,
+    "robots": 15,
+    "policies": 81,
+    "tasks": 599,
+    "duration_hours": 27.655,
+    "annotated_episodes": 3017,
+    "successes": 1515,
+    "failures": 1502,
+    "failure_descriptions": 1506,
     "read_errors": 0
   },
   "per_lab": {
-    "AI2_MOLMOACT2": {
-      "episodes": 25,
+    "Armnet": {
+      "episodes": 60,
       "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
-      "failure_descriptions": 0,
-      "duration_hours": 0.277,
+      "failures": 60,
+      "annotated_episodes": 60,
+      "failure_descriptions": 60,
+      "duration_hours": 0.767,
       "robots": [
-        "bi_yam_follower"
+        "so-101"
       ],
       "policies": [
-        "molmoact2_eval"
+        "act",
+        "diffusion"
       ],
-      "task_count": 3,
-      "first_submission": "2026-05-26T20:49:38Z",
-      "last_submission": "2026-05-26T20:54:35Z"
+      "task_count": 1,
+      "first_submission": "2026-06-18T21:57:47Z",
+      "last_submission": "2026-06-18T22:09:02Z"
     },
-    "Amazon-MobileManipulationTeam": {
-      "episodes": 121,
-      "successes": 21,
-      "failures": 100,
-      "annotated_episodes": 121,
-      "failure_descriptions": 100,
-      "duration_hours": 0.941,
+    "Berkeley_RAIL": {
+      "episodes": 1499,
+      "successes": 460,
+      "failures": 169,
+      "annotated_episodes": 629,
+      "failure_descriptions": 170,
+      "duration_hours": 5.55,
       "robots": [
-        "aloha"
+        "widow_x",
+        "widowx_250_s"
+      ],
+      "policies": [
+        "diffusion_policy_custom",
+        "steerable_pi0.5_finetune_bridge"
+      ],
+      "task_count": 11,
+      "first_submission": "2025-04-22T16:39:04Z",
+      "last_submission": "2026-06-16T04:29:32Z"
+    },
+    "CMU_Intent": {
+      "episodes": 240,
+      "successes": 72,
+      "failures": 155,
+      "annotated_episodes": 227,
+      "failure_descriptions": 155,
+      "duration_hours": 1.297,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "DROID",
+        "diffusion_policy_custom",
+        "human_teleoperation_failure_collection_coffee_bag",
+        "human_teleoperation_failure_collection_coffee_pour",
+        "human_teleoperation_failure_collection_knife_place",
+        "human_teleoperation_safety_filter"
+      ],
+      "task_count": 10,
+      "first_submission": "2026-03-15T21:22:20Z",
+      "last_submission": "2026-06-21T09:31:24Z"
+    },
+    "Enactic_OpenArm": {
+      "episodes": 373,
+      "successes": 298,
+      "failures": 75,
+      "annotated_episodes": 373,
+      "failure_descriptions": 75,
+      "duration_hours": 2.737,
+      "robots": [
+        "OpenArm_2.0",
+        "OpenArm_2.0_beta"
       ],
       "policies": [
         "pi0.5"
       ],
-      "task_count": 4,
+      "task_count": 5,
+      "first_submission": "2026-03-16T20:32:04Z",
+      "last_submission": "2026-07-09T11:00:08Z"
+    },
+    "MILA": {
+      "episodes": 62,
+      "successes": 20,
+      "failures": 42,
+      "annotated_episodes": 62,
+      "failure_descriptions": 42,
+      "duration_hours": 0.748,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi0_fast_droid_jointpos"
+      ],
+      "task_count": 3,
       "first_submission": null,
       "last_submission": null
     },
-    "BERKELEY": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
+    "Princeton_IRoM": {
+      "episodes": 470,
+      "successes": 244,
+      "failures": 0,
+      "annotated_episodes": 244,
       "failure_descriptions": 0,
-      "duration_hours": 0.022,
+      "duration_hours": 2.774,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "paligemma_fast_droid",
-        "pi0_droid"
+        "pi0.5"
       ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "Berkeley": {
-      "episodes": 942,
-      "successes": 139,
-      "failures": 803,
-      "annotated_episodes": 942,
-      "failure_descriptions": 0,
-      "duration_hours": 9.91,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dam",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 152,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "CIIRC, CTU in Prague": {
-      "episodes": 34,
-      "successes": 3,
-      "failures": 31,
-      "annotated_episodes": 34,
-      "failure_descriptions": 0,
-      "duration_hours": 0.378,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dreaming_zebra",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 17,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "CMU_Intent": {
-      "episodes": 55,
-      "successes": 0,
-      "failures": 55,
-      "annotated_episodes": 55,
-      "failure_descriptions": 55,
-      "duration_hours": 0.174,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "diffusion_policy_custom"
-      ],
-      "task_count": 1,
-      "first_submission": "2026-06-12T00:25:12Z",
-      "last_submission": "2026-06-12T00:43:26Z"
-    },
-    "CoRL 2025 Seoul": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.006,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_vq_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "KAIST": {
-      "episodes": 64,
-      "successes": 5,
-      "failures": 59,
-      "annotated_episodes": 64,
-      "failure_descriptions": 0,
-      "duration_hours": 0.643,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dreaming_zebra",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 32,
-      "first_submission": null,
-      "last_submission": null
+      "task_count": 359,
+      "first_submission": "2026-06-18T23:21:29Z",
+      "last_submission": "2026-06-19T08:02:40Z"
     },
     "Princeton_PRISM": {
-      "episodes": 71,
-      "successes": 0,
-      "failures": 71,
-      "annotated_episodes": 71,
-      "failure_descriptions": 71,
-      "duration_hours": 1.269,
+      "episodes": 336,
+      "successes": 7,
+      "failures": 329,
+      "annotated_episodes": 336,
+      "failure_descriptions": 329,
+      "duration_hours": 6.176,
       "robots": [
         "bi_yam_follower"
       ],
       "policies": [
         "molmoact2_eval"
       ],
-      "task_count": 16,
+      "task_count": 77,
       "first_submission": "2026-06-12T21:13:02Z",
-      "last_submission": "2026-06-13T04:17:23Z"
+      "last_submission": "2026-06-19T16:08:31Z"
     },
-    "Stanford": {
-      "episodes": 592,
-      "successes": 105,
-      "failures": 487,
-      "annotated_episodes": 592,
-      "failure_descriptions": 0,
-      "duration_hours": 4.956,
+    "Princeton_VLL": {
+      "episodes": 54,
+      "successes": 26,
+      "failures": 28,
+      "annotated_episodes": 54,
+      "failure_descriptions": 28,
+      "duration_hours": 0.097,
+      "robots": [
+        "franka_xhand"
+      ],
+      "policies": [
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:45:16",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:46:23",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:47:06",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:57:55",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:59:22",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-19:00:12",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-18:44:09",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:17",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:33",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:31",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:25:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:16:34",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:17",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:46",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:25:20",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:26:45",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:28:21",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:02",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:32",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:30:00",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:31:28",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:00",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:28",
+        "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:58",
+        "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_1500.pt_2026-06-10-16:14:46",
+        "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_2500.pt_2026-06-10-16:13:56",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:57:57",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-23:05:20",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:11",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:22",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-23:05:37",
+        "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:59:42",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:26:17",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-11:25:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:25",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:53",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:53:15",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-23:06:20",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_2500.pt_2026-06-10-11:27:21",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-11:26:54",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:38",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:06:46",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:30",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:58",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:24:44",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:25:09",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_2500.pt_2026-06-10-12:24:14",
+        "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_4000.pt_2026-06-10-12:22:32",
+        "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_1500.pt_2026-06-10-11:32:30",
+        "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:31:56",
+        "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:33:26",
+        "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:36:04"
+      ],
+      "task_count": 4,
+      "first_submission": "2026-06-17T03:58:46Z",
+      "last_submission": "2026-06-17T03:58:57Z"
+    },
+    "Stanford_Iris": {
+      "episodes": 120,
+      "successes": 106,
+      "failures": 14,
+      "annotated_episodes": 120,
+      "failure_descriptions": 14,
+      "duration_hours": 0.146,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
+        "expo_pi_pi0.5"
       ],
-      "task_count": 111,
+      "task_count": 1,
       "first_submission": null,
       "last_submission": null
     },
-    "UPenn": {
-      "episodes": 637,
-      "successes": 55,
-      "failures": 582,
-      "annotated_episodes": 637,
-      "failure_descriptions": 0,
-      "duration_hours": 4.71,
+    "Stanford_REAL": {
+      "episodes": 53,
+      "successes": 3,
+      "failures": 50,
+      "annotated_episodes": 53,
+      "failure_descriptions": 50,
+      "duration_hours": 0.547,
       "robots": [
-        "franka_research_3"
+        "egoverse_bimanual"
       ],
       "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
+        "bag_grocery_cotrain",
+        "cup_on_saucer_robot_only",
+        "obj_in_container_robot_only"
       ],
-      "task_count": 90,
-      "first_submission": null,
-      "last_submission": null
+      "task_count": 3,
+      "first_submission": "2026-06-16T23:05:59Z",
+      "last_submission": "2026-06-19T18:16:25Z"
     },
     "UPenn_PAL": {
-      "episodes": 50,
-      "successes": 14,
-      "failures": 36,
-      "annotated_episodes": 50,
-      "failure_descriptions": 36,
-      "duration_hours": 0.48,
+      "episodes": 106,
+      "successes": 20,
+      "failures": 86,
+      "annotated_episodes": 106,
+      "failure_descriptions": 86,
+      "duration_hours": 0.998,
       "robots": [
         "franka_droid"
       ],
       "policies": [
         "pi0.5"
       ],
-      "task_count": 35,
+      "task_count": 78,
       "first_submission": "2026-05-17T19:32:25Z",
-      "last_submission": "2026-05-19T19:48:47Z"
+      "last_submission": "2026-06-10T23:03:26Z"
     },
-    "UT Austin": {
-      "episodes": 1280,
-      "successes": 70,
-      "failures": 1210,
-      "annotated_episodes": 1280,
-      "failure_descriptions": 0,
-      "duration_hours": 11.235,
+    "UW_REAL": {
+      "episodes": 562,
+      "successes": 105,
+      "failures": 457,
+      "annotated_episodes": 562,
+      "failure_descriptions": 460,
+      "duration_hours": 2.285,
+      "robots": [
+        "bi_yam_follower",
+        "franka_droid",
+        "franka_research_3",
+        "ur5e",
+        "ur5e_bimanual",
+        "yam"
+      ],
+      "policies": [
+        "act_layup",
+        "act_policy_custom",
+        "diffusion_policy",
+        "factory_v2_rgb_dagger_student",
+        "memmelma/mnm_oopsie",
+        "pi0_droid_dsrl",
+        "teleop"
+      ],
+      "task_count": 14,
+      "first_submission": "2026-06-11T23:56:19Z",
+      "last_submission": "2026-06-25T00:43:23Z"
+    },
+    "UdeM_REAL": {
+      "episodes": 77,
+      "successes": 33,
+      "failures": 37,
+      "annotated_episodes": 70,
+      "failure_descriptions": 37,
+      "duration_hours": 0.699,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "dam",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
+        "lap",
+        "pi0.5",
+        "teleop"
       ],
-      "task_count": 347,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "University Montreal": {
-      "episodes": 707,
-      "successes": 112,
-      "failures": 595,
-      "annotated_episodes": 707,
-      "failure_descriptions": 0,
-      "duration_hours": 6.504,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 92,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "University of Washginton": {
-      "episodes": 7,
-      "successes": 0,
-      "failures": 7,
-      "annotated_episodes": 7,
-      "failure_descriptions": 0,
-      "duration_hours": 0.078,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "University of Washington": {
-      "episodes": 147,
-      "successes": 4,
-      "failures": 143,
-      "annotated_episodes": 147,
-      "failure_descriptions": 0,
-      "duration_hours": 1.594,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 21,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "Unversity of Washington": {
-      "episodes": 7,
-      "successes": 2,
-      "failures": 5,
-      "annotated_episodes": 7,
-      "failure_descriptions": 0,
-      "duration_hours": 0.073,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 1,
+      "task_count": 24,
       "first_submission": null,
       "last_submission": null
     },
     "UofT_RVL": {
-      "episodes": 1,
+      "episodes": 63,
       "successes": 0,
       "failures": 0,
       "annotated_episodes": 0,
       "failure_descriptions": 0,
-      "duration_hours": 0.01,
+      "duration_hours": 1.5,
       "robots": [
         "franka_panda"
       ],
       "policies": [
+        "acme",
         "diffusion_policy"
       ],
-      "task_count": 1,
+      "task_count": 4,
       "first_submission": "2026-04-30T22:02:42Z",
-      "last_submission": "2026-04-30T22:02:42Z"
+      "last_submission": "2026-06-20T00:56:24Z"
     },
     "UofT_TISL": {
-      "episodes": 220,
-      "successes": 95,
-      "failures": 125,
-      "annotated_episodes": 220,
+      "episodes": 275,
+      "successes": 121,
+      "failures": 0,
+      "annotated_episodes": 121,
       "failure_descriptions": 0,
-      "duration_hours": 1.092,
+      "duration_hours": 1.321,
       "robots": [
         "viperx_300"
       ],
@@ -411,577 +350,573 @@
         "custom_diffusion",
         "pi0.5_lora_sft"
       ],
-      "task_count": 4,
+      "task_count": 5,
       "first_submission": "2026-05-09T03:10:03Z",
-      "last_submission": "2026-06-08T21:16:19Z"
+      "last_submission": "2026-06-18T16:37:29Z"
     },
-    "Yonsei": {
-      "episodes": 700,
-      "successes": 115,
-      "failures": 585,
-      "annotated_episodes": 700,
-      "failure_descriptions": 0,
-      "duration_hours": 5.687,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 92,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeeley": {
-      "episodes": 2,
+    "example_institution": {
+      "episodes": 1,
       "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.022,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "pi05_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkekey": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.022,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_vq_droid",
-        "pi0_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkele": {
-      "episodes": 4,
-      "successes": 1,
-      "failures": 3,
-      "annotated_episodes": 4,
-      "failure_descriptions": 0,
-      "duration_hours": 0.038,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_fast_specialist_droid",
-        "pi05_droid",
-        "pi0_droid"
-      ],
-      "task_count": 2,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkelehy": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.022,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_fast_droid",
-        "pi0_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeleu": {
-      "episodes": 20,
-      "successes": 3,
-      "failures": 17,
-      "annotated_episodes": 20,
-      "failure_descriptions": 0,
-      "duration_hours": 0.218,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 10,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeleuy": {
-      "episodes": 6,
-      "successes": 3,
-      "failures": 3,
-      "annotated_episodes": 6,
-      "failure_descriptions": 0,
-      "duration_hours": 0.067,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dam",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "pi05_droid",
-        "pi0_droid"
-      ],
-      "task_count": 3,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeley": {
-      "episodes": 660,
-      "successes": 81,
-      "failures": 579,
-      "annotated_episodes": 660,
-      "failure_descriptions": 0,
-      "duration_hours": 7.244,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dam",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 324,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeleyu": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.019,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_fast_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkeleyy": {
-      "episodes": 4,
-      "successes": 2,
-      "failures": 2,
-      "annotated_episodes": 4,
-      "failure_descriptions": 0,
-      "duration_hours": 0.044,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_binning_droid",
-        "paligemma_fast_droid",
-        "pi05_droid"
-      ],
-      "task_count": 2,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkely": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.022,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_fast_droid",
-        "pi0_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkley": {
-      "episodes": 4,
-      "successes": 1,
-      "failures": 3,
-      "annotated_episodes": 4,
-      "failure_descriptions": 0,
-      "duration_hours": 0.044,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_fast_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 2,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "berkreley": {
-      "episodes": 2,
-      "successes": 2,
       "failures": 0,
-      "annotated_episodes": 2,
+      "annotated_episodes": 0,
       "failure_descriptions": 0,
-      "duration_hours": 0.022,
+      "duration_hours": 0.013,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "pi05_droid",
-        "pi0_fast_droid"
+        "pi0_fast_droid_jointpos"
       ],
       "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "betkeley": {
-      "episodes": 2,
-      "successes": 0,
-      "failures": 2,
-      "annotated_episodes": 2,
-      "failure_descriptions": 0,
-      "duration_hours": 0.022,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "paligemma_fast_droid",
-        "pi0_droid"
-      ],
-      "task_count": 1,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "frodobots": {
-      "episodes": 3586,
-      "successes": 331,
-      "failures": 3255,
-      "annotated_episodes": 3586,
-      "failure_descriptions": 0,
-      "duration_hours": 39.844,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dam",
-        "floppy_bagel_195k_temp1p0",
-        "floppy_bagel_285k_temp1p0",
-        "floppy_bagel_420k",
-        "floppy_bagel_525k_temp1p0",
-        "floppy_bagel_90k_temp1p0",
-        "paligemma_binning_droid",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 1061,
-      "first_submission": null,
-      "last_submission": null
-    },
-    "nvidia": {
-      "episodes": 168,
-      "successes": 26,
-      "failures": 142,
-      "annotated_episodes": 168,
-      "failure_descriptions": 0,
-      "duration_hours": 1.765,
-      "robots": [
-        "franka_research_3"
-      ],
-      "policies": [
-        "dreaming_zebra",
-        "floppy_bagel_195k_temp1p0",
-        "floppy_bagel_285k_temp1p0",
-        "floppy_bagel_420k",
-        "floppy_bagel_525k_temp1p0",
-        "floppy_bagel_90k_temp1p0",
-        "paligemma_diffusion_droid",
-        "paligemma_fast_droid",
-        "paligemma_fast_specialist_droid",
-        "paligemma_vq_droid",
-        "pi05_droid",
-        "pi0_droid",
-        "pi0_fast_droid"
-      ],
-      "task_count": 84,
       "first_submission": null,
       "last_submission": null
     }
   },
   "per_dataset": {
-    "OopsieData-Submissions/AI2_MOLMOACT2": {
-      "episodes": 25,
+    "OopsieData-Submissions/Armnet": {
+      "episodes": 60,
       "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
-      "failure_descriptions": 0,
-      "duration_hours": 0.277,
+      "failures": 60,
+      "annotated_episodes": 60,
+      "failure_descriptions": 60,
+      "duration_hours": 0.767,
       "lab_ids": {
-        "AI2_MOLMOACT2": 25
-      }
+        "Armnet": 60
+      },
+      "bulk_import": false
     },
-    "OopsieData-Submissions/Amazon-MobileManipulationTeam": {
-      "episodes": 121,
-      "successes": 21,
-      "failures": 100,
-      "annotated_episodes": 121,
-      "failure_descriptions": 100,
-      "duration_hours": 0.941,
+    "OopsieData-Submissions/Berkeley_RAIL": {
+      "episodes": 1499,
+      "successes": 460,
+      "failures": 169,
+      "annotated_episodes": 629,
+      "failure_descriptions": 170,
+      "duration_hours": 5.55,
       "lab_ids": {
-        "Amazon-MobileManipulationTeam": 121
-      }
+        "Berkeley_RAIL": 1499
+      },
+      "bulk_import": false
     },
     "OopsieData-Submissions/CMU_Intent": {
-      "episodes": 55,
-      "successes": 0,
-      "failures": 55,
-      "annotated_episodes": 55,
-      "failure_descriptions": 55,
-      "duration_hours": 0.174,
+      "episodes": 240,
+      "successes": 72,
+      "failures": 155,
+      "annotated_episodes": 227,
+      "failure_descriptions": 155,
+      "duration_hours": 1.297,
       "lab_ids": {
-        "CMU_Intent": 55
-      }
+        "CMU_Intent": 240
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Enatic_OpenArm": {
+      "episodes": 373,
+      "successes": 298,
+      "failures": 75,
+      "annotated_episodes": 373,
+      "failure_descriptions": 75,
+      "duration_hours": 2.737,
+      "lab_ids": {
+        "Enactic_OpenArm": 373
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_IRoM": {
+      "episodes": 470,
+      "successes": 244,
+      "failures": 0,
+      "annotated_episodes": 244,
+      "failure_descriptions": 0,
+      "duration_hours": 2.774,
+      "lab_ids": {
+        "Princeton_IRoM": 470
+      },
+      "bulk_import": false
     },
     "OopsieData-Submissions/Princeton_PRISM": {
-      "episodes": 71,
-      "successes": 0,
-      "failures": 71,
-      "annotated_episodes": 71,
-      "failure_descriptions": 71,
-      "duration_hours": 1.269,
+      "episodes": 336,
+      "successes": 7,
+      "failures": 329,
+      "annotated_episodes": 336,
+      "failure_descriptions": 329,
+      "duration_hours": 6.176,
       "lab_ids": {
-        "Princeton_PRISM": 71
-      }
+        "Princeton_PRISM": 336
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_VLL": {
+      "episodes": 54,
+      "successes": 26,
+      "failures": 28,
+      "annotated_episodes": 54,
+      "failure_descriptions": 28,
+      "duration_hours": 0.097,
+      "lab_ids": {
+        "Princeton_VLL": 54
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Stanford_Iris": {
+      "episodes": 120,
+      "successes": 106,
+      "failures": 14,
+      "annotated_episodes": 120,
+      "failure_descriptions": 14,
+      "duration_hours": 0.146,
+      "lab_ids": {
+        "Stanford_Iris": 120
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Stanford_REAL": {
+      "episodes": 53,
+      "successes": 3,
+      "failures": 50,
+      "annotated_episodes": 53,
+      "failure_descriptions": 50,
+      "duration_hours": 0.547,
+      "lab_ids": {
+        "Stanford_REAL": 53
+      },
+      "bulk_import": false
     },
     "OopsieData-Submissions/UPenn_PAL": {
-      "episodes": 50,
-      "successes": 14,
-      "failures": 36,
-      "annotated_episodes": 50,
-      "failure_descriptions": 36,
-      "duration_hours": 0.48,
+      "episodes": 106,
+      "successes": 20,
+      "failures": 86,
+      "annotated_episodes": 106,
+      "failure_descriptions": 86,
+      "duration_hours": 0.998,
       "lab_ids": {
-        "UPenn_PAL": 50
-      }
+        "UPenn_PAL": 106
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UW_REAL": {
+      "episodes": 562,
+      "successes": 105,
+      "failures": 457,
+      "annotated_episodes": 562,
+      "failure_descriptions": 460,
+      "duration_hours": 2.285,
+      "lab_ids": {
+        "UW_REAL": 562
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UdeM_REAL": {
+      "episodes": 140,
+      "successes": 53,
+      "failures": 79,
+      "annotated_episodes": 132,
+      "failure_descriptions": 79,
+      "duration_hours": 1.46,
+      "lab_ids": {
+        "MILA": 62,
+        "UdeM_REAL": 77,
+        "example_institution": 1
+      },
+      "bulk_import": false
     },
     "OopsieData-Submissions/UofT_RVL": {
-      "episodes": 1,
+      "episodes": 63,
       "successes": 0,
       "failures": 0,
       "annotated_episodes": 0,
       "failure_descriptions": 0,
-      "duration_hours": 0.01,
+      "duration_hours": 1.5,
       "lab_ids": {
-        "UofT_RVL": 1
-      }
+        "UofT_RVL": 63
+      },
+      "bulk_import": false
     },
     "OopsieData-Submissions/UofT_TISL": {
-      "episodes": 220,
-      "successes": 95,
-      "failures": 125,
-      "annotated_episodes": 220,
+      "episodes": 275,
+      "successes": 121,
+      "failures": 0,
+      "annotated_episodes": 121,
       "failure_descriptions": 0,
-      "duration_hours": 1.092,
+      "duration_hours": 1.321,
       "lab_ids": {
-        "UofT_TISL": 220
-      }
-    },
-    "OopsieData-Submissions/roboarena_upload": {
-      "episodes": 9587,
-      "successes": 1060,
-      "failures": 8527,
-      "annotated_episodes": 9587,
-      "failure_descriptions": 0,
-      "duration_hours": 95.214,
-      "lab_ids": {
-        "BERKELEY": 2,
-        "Berkeley": 942,
-        "CIIRC, CTU in Prague": 34,
-        "CoRL 2025 Seoul": 2,
-        "KAIST": 64,
-        "Stanford": 592,
-        "UPenn": 637,
-        "UT Austin": 1280,
-        "University Montreal": 707,
-        "University of Washginton": 7,
-        "University of Washington": 147,
-        "Unversity of Washington": 7,
-        "Yonsei": 700,
-        "berkeeley": 2,
-        "berkekey": 2,
-        "berkele": 4,
-        "berkelehy": 2,
-        "berkeleu": 20,
-        "berkeleuy": 6,
-        "berkeley": 660,
-        "berkeleyu": 2,
-        "berkeleyy": 4,
-        "berkely": 2,
-        "berkley": 4,
-        "berkreley": 2,
-        "betkeley": 2,
-        "frodobots": 3586,
-        "nvidia": 168
-      }
+        "UofT_TISL": 275
+      },
+      "bulk_import": false
     }
   },
   "per_robot": {
-    "aloha": {
-      "episodes": 121,
+    "OpenArm_2.0": {
+      "episodes": 78,
       "labs": 1,
-      "duration_hours": 0.941
+      "duration_hours": 1.489
+    },
+    "OpenArm_2.0_beta": {
+      "episodes": 295,
+      "labs": 1,
+      "duration_hours": 1.248
     },
     "bi_yam_follower": {
-      "episodes": 96,
+      "episodes": 386,
       "labs": 2,
-      "duration_hours": 1.545
+      "duration_hours": 6.388
+    },
+    "egoverse_bimanual": {
+      "episodes": 53,
+      "labs": 1,
+      "duration_hours": 0.547
     },
     "franka_droid": {
-      "episodes": 50,
-      "labs": 1,
-      "duration_hours": 0.48
+      "episodes": 264,
+      "labs": 2,
+      "duration_hours": 1.432
     },
     "franka_panda": {
-      "episodes": 1,
+      "episodes": 63,
       "labs": 1,
-      "duration_hours": 0.01
+      "duration_hours": 1.5
     },
     "franka_research_3": {
-      "episodes": 9642,
-      "labs": 29,
-      "duration_hours": 95.388
+      "episodes": 1020,
+      "labs": 7,
+      "duration_hours": 5.967
+    },
+    "franka_xhand": {
+      "episodes": 54,
+      "labs": 1,
+      "duration_hours": 0.097
+    },
+    "so-101": {
+      "episodes": 60,
+      "labs": 1,
+      "duration_hours": 0.767
+    },
+    "ur5e": {
+      "episodes": 100,
+      "labs": 1,
+      "duration_hours": 0.518
+    },
+    "ur5e_bimanual": {
+      "episodes": 50,
+      "labs": 1,
+      "duration_hours": 0.254
     },
     "viperx_300": {
-      "episodes": 220,
+      "episodes": 275,
       "labs": 1,
-      "duration_hours": 1.092
+      "duration_hours": 1.321
+    },
+    "widow_x": {
+      "episodes": 1080,
+      "labs": 1,
+      "duration_hours": 3.236
+    },
+    "widowx_250_s": {
+      "episodes": 419,
+      "labs": 1,
+      "duration_hours": 2.314
+    },
+    "yam": {
+      "episodes": 154,
+      "labs": 1,
+      "duration_hours": 0.578
     }
   },
   "per_policy": {
+    "DROID": {
+      "episodes": 58
+    },
+    "acme": {
+      "episodes": 62
+    },
+    "act": {
+      "episodes": 30
+    },
+    "act_layup": {
+      "episodes": 50
+    },
+    "act_policy_custom": {
+      "episodes": 50
+    },
+    "bag_grocery_cotrain": {
+      "episodes": 23
+    },
+    "cup_on_saucer_robot_only": {
+      "episodes": 25
+    },
     "custom_diffusion": {
       "episodes": 120
     },
-    "dam": {
-      "episodes": 60
+    "diffusion": {
+      "episodes": 30
     },
     "diffusion_policy": {
-      "episodes": 1
+      "episodes": 51
     },
     "diffusion_policy_custom": {
-      "episodes": 55
+      "episodes": 1186
     },
-    "dreaming_zebra": {
-      "episodes": 58
+    "expo_pi_pi0.5": {
+      "episodes": 120
     },
-    "floppy_bagel_195k_temp1p0": {
-      "episodes": 8
+    "factory_v2_rgb_dagger_student": {
+      "episodes": 50
     },
-    "floppy_bagel_285k_temp1p0": {
-      "episodes": 12
+    "human_teleoperation_failure_collection_coffee_bag": {
+      "episodes": 21
     },
-    "floppy_bagel_420k": {
-      "episodes": 29
+    "human_teleoperation_failure_collection_coffee_pour": {
+      "episodes": 18
     },
-    "floppy_bagel_525k_temp1p0": {
-      "episodes": 33
+    "human_teleoperation_failure_collection_knife_place": {
+      "episodes": 15
     },
-    "floppy_bagel_90k_temp1p0": {
-      "episodes": 10
+    "human_teleoperation_safety_filter": {
+      "episodes": 22
+    },
+    "lap": {
+      "episodes": 22
+    },
+    "memmelma/mnm_oopsie": {
+      "episodes": 50
     },
     "molmoact2_eval": {
-      "episodes": 96
+      "episodes": 336
     },
-    "paligemma_binning_droid": {
-      "episodes": 1068
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:45:16": {
+      "episodes": 1
     },
-    "paligemma_diffusion_droid": {
-      "episodes": 1171
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:46:23": {
+      "episodes": 1
     },
-    "paligemma_fast_droid": {
-      "episodes": 1386
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:47:06": {
+      "episodes": 1
     },
-    "paligemma_fast_specialist_droid": {
-      "episodes": 1392
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:57:55": {
+      "episodes": 1
     },
-    "paligemma_vq_droid": {
-      "episodes": 1198
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:59:22": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-19:00:12": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-18:44:09": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:17": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:23:33": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:24:31": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_950.pt_2026-06-10-22:25:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:16:34": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:17": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:24:46": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:25:20": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:26:45": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:28:21": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:02": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:29:32": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:30:00": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:31:28": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:00": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:28": {
+      "episodes": 1
+    },
+    "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-25-51_dexhand_mouse_franka_dapg_v6_step20.0_contact20.0_model:4225_noise:0.4_model_950.pt_2026-06-10-18:32:58": {
+      "episodes": 1
+    },
+    "obj_in_container_robot_only": {
+      "episodes": 5
     },
     "pi0.5": {
-      "episodes": 171
+      "episodes": 974
     },
     "pi0.5_lora_sft": {
-      "episodes": 100
+      "episodes": 155
     },
-    "pi05_droid": {
-      "episodes": 564
+    "pi0_droid_dsrl": {
+      "episodes": 158
     },
-    "pi0_droid": {
-      "episodes": 1430
+    "pi0_fast_droid_jointpos": {
+      "episodes": 63
     },
-    "pi0_fast_droid": {
-      "episodes": 1168
+    "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_1500.pt_2026-06-10-16:14:46": {
+      "episodes": 1
+    },
+    "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_2500.pt_2026-06-10-16:13:56": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:57:57": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-23:05:20": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:11": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-22:57:22": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_900.pt_2026-06-10-23:05:37": {
+      "episodes": 1
+    },
+    "scoop_2026-06-10_01-26-36_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_900.pt_2026-06-10-22:59:42": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:26:17": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-11:25:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:25": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:52:53": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-22:53:15": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_4000.pt_2026-06-10-23:06:20": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_2500.pt_2026-06-10-11:27:21": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-11:26:54": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:38": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-22:51:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:06:46": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:30": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.4_model_4000.pt_2026-06-10-23:07:58": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:24:44": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.1_model_4000.pt_2026-06-10-12:25:09": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_2500.pt_2026-06-10-12:24:14": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v0_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task4.0_model:7450_noise:0.4_model_4000.pt_2026-06-10-12:22:32": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_1500.pt_2026-06-10-11:32:30": {
+      "episodes": 1
+    },
+    "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:31:56": {
+      "episodes": 1
+    },
+    "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:33:26": {
+      "episodes": 1
+    },
+    "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:36:04": {
+      "episodes": 1
+    },
+    "steerable_pi0.5_finetune_bridge": {
+      "episodes": 419
+    },
+    "teleop": {
+      "episodes": 184
     }
   },
   "top_tasks": [
     {
-      "instruction": "open the book",
-      "episodes": 68
+      "instruction": "Move the left stuffed toy to the largest bowl.",
+      "episodes": 318
     },
     {
-      "instruction": "close the book",
-      "episodes": 62
+      "instruction": "Pick up the spoon and place it into the box.",
+      "episodes": 295
     },
     {
-      "instruction": "pick up the bottle",
-      "episodes": 61
+      "instruction": "close the drawer",
+      "episodes": 236
     },
     {
-      "instruction": "Pick tote",
+      "instruction": "put the corn on the green cloth",
+      "episodes": 189
+    },
+    {
+      "instruction": "stack the yellow block on the blue blocks",
+      "episodes": 173
+    },
+    {
+      "instruction": "remove the blue cloth from the yellow block",
+      "episodes": 141
+    },
+    {
+      "instruction": "pick up the cube",
+      "episodes": 120
+    },
+    {
+      "instruction": "put the corn in the pot",
+      "episodes": 100
+    },
+    {
+      "instruction": "set the mushroom on the green cloth",
+      "episodes": 89
+    },
+    {
+      "instruction": "pick up the corn",
+      "episodes": 82
+    },
+    {
+      "instruction": "put the sushi in the pot",
+      "episodes": 72
+    },
+    {
+      "instruction": "stack the blue block on the yellow block",
+      "episodes": 70
+    },
+    {
+      "instruction": "Push the Displayport cable into the cable holder on the white block",
       "episodes": 60
     },
     {
@@ -993,153 +928,338 @@
       "episodes": 60
     },
     {
-      "instruction": "Stack tote",
-      "episodes": 59
+      "instruction": "put the purple mug in the basket",
+      "episodes": 58
     },
     {
-      "instruction": "close the drawer",
-      "episodes": 53
+      "instruction": "put the bowl on the table",
+      "episodes": 57
     },
     {
-      "instruction": "Pick up the block and place it on the cardboard",
-      "episodes": 50
+      "instruction": "pick up the bottle",
+      "episodes": 55
     },
     {
-      "instruction": "Pick up the green cup and stack it on the purple cup",
-      "episodes": 50
+      "instruction": "Pick up the ball and place it in the bowl",
+      "episodes": 55
     },
     {
-      "instruction": "fold the towel in half",
-      "episodes": 50
-    },
-    {
-      "instruction": "pick up the shoe",
-      "episodes": 36
-    },
-    {
-      "instruction": "rotate the controller by 90 degrees",
-      "episodes": 32
-    },
-    {
-      "instruction": "turn the plate upside down",
-      "episodes": 28
-    },
-    {
-      "instruction": "rotate the marker pen by 90 degrees",
-      "episodes": 28
-    },
-    {
-      "instruction": "turn the controller upside down",
-      "episodes": 26
-    },
-    {
-      "instruction": "stack up the two cups",
-      "episodes": 24
-    },
-    {
-      "instruction": "rotate the banana by 90 degrees",
-      "episodes": 24
-    },
-    {
-      "instruction": "clean up the table",
-      "episodes": 23
-    },
-    {
-      "instruction": "stack the bowls",
-      "episodes": 23
+      "instruction": "stack the cups",
+      "episodes": 54
     }
   ],
   "failure_categories": {
-    "unknown": 8652,
-    "['Manipulation failure (post contact)']": 116,
-    "['Reaching failure (pre contact)']": 53,
-    "['Task not attempted']": 33,
-    "['Sequencing or semantic failure']": 33,
-    "['Grasp failure (at contact)']": 6,
+    "['Manipulation failure (post contact)']": 451,
+    "['Grasp failure (at contact)']": 223,
+    "['Sequencing or semantic failure']": 177,
+    "['Reaching failure (pre contact)']": 167,
+    "['Task not attempted']": 162,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 49,
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 33,
+    "['Grasp failure (at contact)', 'Collision failure']": 24,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 23,
+    "['Manipulation failure (post contact)', 'Collision failure']": 19,
+    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 17,
+    "['Sequencing or semantic failure', 'Other']": 13,
+    "['Reaching failure (pre contact)', 'Collision failure']": 12,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure']": 12,
+    "['Reaching failure (pre contact)', 'Task not attempted']": 11,
+    "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 9,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Collision failure']": 8,
+    "['Other']": 8,
+    "['Hardware/mechanical issue']": 7,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Manipulation failure (post contact)']": 6,
     "['Collision failure']": 6,
-    "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 3,
-    "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 3,
-    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 3,
-    "['Reaching failure (pre contact)', 'Task not attempted']": 1,
-    "['Grasp failure (at contact)', 'Collision failure']": 1,
-    "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 1,
-    "['Sequencing or semantic failure', 'Task not attempted']": 1,
-    "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 1,
-    "['Other']": 1
+    "['Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 6,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 5,
+    "['Grasp failure (at contact)', 'Task not attempted']": 5,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 5,
+    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 4,
+    "['Manipulation failure (post contact)', 'Task not attempted']": 4,
+    "['Task not attempted', 'Sequencing or semantic failure']": 4,
+    "['Grasp failure (at contact)', 'Hardware/mechanical issue']": 3,
+    "['Grasp failure (at contact)', 'Other']": 3,
+    "['Sequencing or semantic failure', 'Task not attempted']": 3,
+    "['Manipulation failure (post contact)', 'Grasp failure (at contact)']": 3,
+    "['Reaching failure (pre contact)', 'Hardware/mechanical issue']": 3,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Task not attempted']": 2,
+    "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure', 'Collision failure']": 2,
+    "['Sequencing or semantic failure', 'Reaching failure (pre contact)']": 2,
+    "['Sequencing or semantic failure', 'Hardware/mechanical issue']": 2,
+    "['Sequencing or semantic failure', 'Collision failure']": 2,
+    "['Manipulation failure (post contact)', 'Hardware/mechanical issue']": 2,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 1,
+    "['Sequencing or semantic failure', 'Grasp failure (at contact)']": 1,
+    "['Collision failure', 'Manipulation failure (post contact)']": 1,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure', 'Collision failure']": 1,
+    "['Collision failure', 'Hardware/mechanical issue']": 1
   },
   "severity_distribution": {
-    "unknown": 8652,
-    "low": 100,
-    "Low severity - no damage, can be reset and reattempted": 100,
-    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 62
+    "Low severity - no damage, can be reset and reattempted": 1184,
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 311,
+    "Catastrophic - significant damage or risk of damage, cannot be reattempted without repair": 7
   },
   "action_spaces": {
-    "gripper_position": 10025,
-    "joint_velocity": 9637,
-    "joint_position": 437,
-    "gripper_binary": 105,
-    "cartesian_position": 56
+    "gripper_position": 3452,
+    "cartesian_position": 2103,
+    "joint_position": 1523,
+    "gripper_binary": 779,
+    "joint_velocity": 659,
+    "cartesian_velocity": 120,
+    "gripper_velocity": 120
   },
   "camera_setups": {
-    "left, right, wrist": 4451,
-    "right, wrist": 3483,
-    "left, wrist": 1653,
-    "cam_high, cam_left_wrist, cam_right_wrist": 121,
+    "right_shoulder_cam": 1080,
+    "left_base_cam, right_base_cam, wrist_cam": 470,
+    "image_primary": 419,
+    "left, right, top": 336,
+    "ceiling, wrist_left, wrist_right": 295,
+    "left, wrist": 205,
+    "head, left_wrist, right_wrist": 204,
+    "camera_high, camera_wrist_left, camera_wrist_right": 155,
+    "exterior_image_1_left, wrist_image_left": 120,
     "left_wrist, right_wrist, top": 120,
-    "camera_high, camera_wrist_left, camera_wrist_right": 100,
-    "left, right, top": 96,
+    "left, overhead, right, wrist": 106,
+    "left, right, wrist": 84,
+    "ceiling, head_left, head_right, wrist_left, wrist_right": 78,
+    "right, wrist": 63,
+    "external, wrist": 63,
+    "front, top, wrist": 60,
+    "exterior, wrist": 58,
     "tactile, zed": 55,
-    "left, overhead, right, wrist": 50,
-    "external, wrist": 1
+    "exterior": 54,
+    "front, tactile, wrist": 51,
+    "front, side, wrist": 50,
+    "cam_2_scene, cam_3_wrist, cam_4_wrist": 50,
+    "side, wrist": 50,
+    "camera_0, wrist_cam_0, wrist_cam_1": 50,
+    "aria, left_wrist, right_wrist": 48,
+    "front, wrist": 22,
+    "aria, right_wrist": 5
   },
   "submission_timeline": [
     {
+      "date": "2025-04-22",
+      "episodes": 189,
+      "cumulative": 189
+    },
+    {
+      "date": "2025-04-24",
+      "episodes": 196,
+      "cumulative": 385
+    },
+    {
+      "date": "2025-04-25",
+      "episodes": 251,
+      "cumulative": 636
+    },
+    {
+      "date": "2025-04-28",
+      "episodes": 173,
+      "cumulative": 809
+    },
+    {
+      "date": "2025-05-09",
+      "episodes": 89,
+      "cumulative": 898
+    },
+    {
+      "date": "2025-11-26",
+      "episodes": 82,
+      "cumulative": 980
+    },
+    {
+      "date": "2025-12-03",
+      "episodes": 100,
+      "cumulative": 1080
+    },
+    {
+      "date": "2026-03-15",
+      "episodes": 22,
+      "cumulative": 1102
+    },
+    {
+      "date": "2026-03-16",
+      "episodes": 18,
+      "cumulative": 1120
+    },
+    {
+      "date": "2026-03-18",
+      "episodes": 243,
+      "cumulative": 1363
+    },
+    {
+      "date": "2026-03-19",
+      "episodes": 34,
+      "cumulative": 1397
+    },
+    {
       "date": "2026-04-30",
       "episodes": 1,
-      "cumulative": 1
+      "cumulative": 1398
     },
     {
       "date": "2026-05-09",
       "episodes": 120,
-      "cumulative": 121
+      "cumulative": 1518
     },
     {
       "date": "2026-05-17",
       "episodes": 28,
-      "cumulative": 149
+      "cumulative": 1546
     },
     {
       "date": "2026-05-19",
       "episodes": 22,
-      "cumulative": 171
-    },
-    {
-      "date": "2026-05-26",
-      "episodes": 25,
-      "cumulative": 196
+      "cumulative": 1568
     },
     {
       "date": "2026-06-08",
-      "episodes": 100,
-      "cumulative": 296
+      "episodes": 101,
+      "cumulative": 1669
+    },
+    {
+      "date": "2026-06-10",
+      "episodes": 55,
+      "cumulative": 1724
+    },
+    {
+      "date": "2026-06-11",
+      "episodes": 2,
+      "cumulative": 1726
     },
     {
       "date": "2026-06-12",
-      "episodes": 97,
-      "cumulative": 393
+      "episodes": 204,
+      "cumulative": 1930
     },
     {
       "date": "2026-06-13",
       "episodes": 29,
-      "cumulative": 422
+      "cumulative": 1959
+    },
+    {
+      "date": "2026-06-14",
+      "episodes": 226,
+      "cumulative": 2185
+    },
+    {
+      "date": "2026-06-15",
+      "episodes": 201,
+      "cumulative": 2386
+    },
+    {
+      "date": "2026-06-16",
+      "episodes": 182,
+      "cumulative": 2568
+    },
+    {
+      "date": "2026-06-17",
+      "episodes": 352,
+      "cumulative": 2920
+    },
+    {
+      "date": "2026-06-18",
+      "episodes": 309,
+      "cumulative": 3229
+    },
+    {
+      "date": "2026-06-19",
+      "episodes": 535,
+      "cumulative": 3764
+    },
+    {
+      "date": "2026-06-20",
+      "episodes": 116,
+      "cumulative": 3880
+    },
+    {
+      "date": "2026-06-21",
+      "episodes": 30,
+      "cumulative": 3910
+    },
+    {
+      "date": "2026-06-22",
+      "episodes": 50,
+      "cumulative": 3960
+    },
+    {
+      "date": "2026-06-24",
+      "episodes": 3,
+      "cumulative": 3963
+    },
+    {
+      "date": "2026-06-25",
+      "episodes": 50,
+      "cumulative": 4013
+    },
+    {
+      "date": "2026-07-09",
+      "episodes": 78,
+      "cumulative": 4091
     },
     {
       "date": "unrecorded",
-      "episodes": 9708,
-      "cumulative": 10130
+      "episodes": 260,
+      "cumulative": 4351
     }
   ],
   "submission_timeline_per_lab": [
+    {
+      "date": "2025-04-22",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 189
+    },
+    {
+      "date": "2025-04-24",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 196
+    },
+    {
+      "date": "2025-04-25",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 251
+    },
+    {
+      "date": "2025-04-28",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 173
+    },
+    {
+      "date": "2025-05-09",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 89
+    },
+    {
+      "date": "2025-11-26",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 82
+    },
+    {
+      "date": "2025-12-03",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-03-15",
+      "lab_id": "CMU_Intent",
+      "episodes": 22
+    },
+    {
+      "date": "2026-03-16",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 18
+    },
+    {
+      "date": "2026-03-18",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 243
+    },
+    {
+      "date": "2026-03-19",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 34
+    },
     {
       "date": "2026-04-30",
       "lab_id": "UofT_RVL",
@@ -1161,9 +1281,9 @@
       "episodes": 22
     },
     {
-      "date": "2026-05-26",
-      "lab_id": "AI2_MOLMOACT2",
-      "episodes": 25
+      "date": "2026-06-08",
+      "lab_id": "UPenn_PAL",
+      "episodes": 1
     },
     {
       "date": "2026-06-08",
@@ -1171,9 +1291,19 @@
       "episodes": 100
     },
     {
+      "date": "2026-06-10",
+      "lab_id": "UPenn_PAL",
+      "episodes": 55
+    },
+    {
+      "date": "2026-06-11",
+      "lab_id": "UW_REAL",
+      "episodes": 2
+    },
+    {
       "date": "2026-06-12",
       "lab_id": "CMU_Intent",
-      "episodes": 55
+      "episodes": 109
     },
     {
       "date": "2026-06-12",
@@ -1181,164 +1311,205 @@
       "episodes": 42
     },
     {
+      "date": "2026-06-12",
+      "lab_id": "UW_REAL",
+      "episodes": 25
+    },
+    {
+      "date": "2026-06-12",
+      "lab_id": "UofT_RVL",
+      "episodes": 28
+    },
+    {
       "date": "2026-06-13",
       "lab_id": "Princeton_PRISM",
       "episodes": 29
     },
     {
-      "date": "unrecorded",
-      "lab_id": "Amazon-MobileManipulationTeam",
-      "episodes": 121
+      "date": "2026-06-14",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 216
+    },
+    {
+      "date": "2026-06-14",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 10
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 110
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 90
+    },
+    {
+      "date": "2026-06-15",
+      "lab_id": "UofT_RVL",
+      "episodes": 1
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "Berkeley_RAIL",
+      "episodes": 93
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "Stanford_REAL",
+      "episodes": 23
+    },
+    {
+      "date": "2026-06-16",
+      "lab_id": "UW_REAL",
+      "episodes": 66
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 136
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "Princeton_VLL",
+      "episodes": 54
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "UW_REAL",
+      "episodes": 157
+    },
+    {
+      "date": "2026-06-17",
+      "lab_id": "UofT_RVL",
+      "episodes": 5
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "Armnet",
+      "episodes": 60
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "Princeton_IRoM",
+      "episodes": 134
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UW_REAL",
+      "episodes": 59
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UofT_RVL",
+      "episodes": 1
+    },
+    {
+      "date": "2026-06-18",
+      "lab_id": "UofT_TISL",
+      "episodes": 55
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "CMU_Intent",
+      "episodes": 79
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Princeton_IRoM",
+      "episodes": 336
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Princeton_PRISM",
+      "episodes": 29
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "Stanford_REAL",
+      "episodes": 30
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "UofT_RVL",
+      "episodes": 11
+    },
+    {
+      "date": "2026-06-20",
+      "lab_id": "UW_REAL",
+      "episodes": 100
+    },
+    {
+      "date": "2026-06-20",
+      "lab_id": "UofT_RVL",
+      "episodes": 16
+    },
+    {
+      "date": "2026-06-21",
+      "lab_id": "CMU_Intent",
+      "episodes": 30
+    },
+    {
+      "date": "2026-06-22",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-06-24",
+      "lab_id": "UW_REAL",
+      "episodes": 3
+    },
+    {
+      "date": "2026-06-25",
+      "lab_id": "UW_REAL",
+      "episodes": 50
+    },
+    {
+      "date": "2026-07-09",
+      "lab_id": "Enactic_OpenArm",
+      "episodes": 78
     },
     {
       "date": "unrecorded",
-      "lab_id": "BERKELEY",
-      "episodes": 2
+      "lab_id": "MILA",
+      "episodes": 62
     },
     {
       "date": "unrecorded",
-      "lab_id": "Berkeley",
-      "episodes": 942
+      "lab_id": "Stanford_Iris",
+      "episodes": 120
     },
     {
       "date": "unrecorded",
-      "lab_id": "CIIRC, CTU in Prague",
-      "episodes": 34
+      "lab_id": "UdeM_REAL",
+      "episodes": 77
     },
     {
       "date": "unrecorded",
-      "lab_id": "CoRL 2025 Seoul",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "KAIST",
-      "episodes": 64
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "Stanford",
-      "episodes": 592
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "UPenn",
-      "episodes": 637
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "UT Austin",
-      "episodes": 1280
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "University Montreal",
-      "episodes": 707
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "University of Washginton",
-      "episodes": 7
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "University of Washington",
-      "episodes": 147
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "Unversity of Washington",
-      "episodes": 7
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "Yonsei",
-      "episodes": 700
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeeley",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkekey",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkele",
-      "episodes": 4
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkelehy",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeleu",
-      "episodes": 20
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeleuy",
-      "episodes": 6
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeley",
-      "episodes": 660
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeleyu",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkeleyy",
-      "episodes": 4
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkely",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkley",
-      "episodes": 4
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "berkreley",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "betkeley",
-      "episodes": 2
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "frodobots",
-      "episodes": 3586
-    },
-    {
-      "date": "unrecorded",
-      "lab_id": "nvidia",
-      "episodes": 168
+      "lab_id": "example_institution",
+      "episodes": 1
     }
   ],
   "datasets_included": [
-    "OopsieData-Submissions/AI2_MOLMOACT2",
-    "OopsieData-Submissions/Amazon-MobileManipulationTeam",
+    "OopsieData-Submissions/Armnet",
+    "OopsieData-Submissions/Berkeley_RAIL",
     "OopsieData-Submissions/CMU_Intent",
+    "OopsieData-Submissions/Enatic_OpenArm",
+    "OopsieData-Submissions/Princeton_IRoM",
     "OopsieData-Submissions/Princeton_PRISM",
+    "OopsieData-Submissions/Princeton_VLL",
+    "OopsieData-Submissions/Stanford_Iris",
+    "OopsieData-Submissions/Stanford_REAL",
     "OopsieData-Submissions/UPenn_PAL",
+    "OopsieData-Submissions/UW_REAL",
+    "OopsieData-Submissions/UdeM_REAL",
     "OopsieData-Submissions/UofT_RVL",
-    "OopsieData-Submissions/UofT_TISL",
-    "OopsieData-Submissions/roboarena_upload"
+    "OopsieData-Submissions/UofT_TISL"
   ]
 }

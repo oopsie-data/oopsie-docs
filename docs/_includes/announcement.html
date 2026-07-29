@@ -1,0 +1,28 @@
+{% if site.announcement.enabled %}
+<aside class="announcement-banner" id="announcement-banner" role="region" aria-label="Announcement">
+  {% if site.announcement.badge %}
+  <span class="announcement-banner__badge">{{ site.announcement.badge }}</span>
+  {% endif %}
+  <span class="announcement-banner__text">{{ site.announcement.text }}</span>
+  {% if site.announcement.cta_link %}
+  <a class="announcement-banner__cta" href="{{ site.announcement.cta_link }}" target="_blank" rel="noopener">
+    {{ site.announcement.cta_text }} <span aria-hidden="true">&rarr;</span>
+  </a>
+  {% endif %}
+</aside>
+<script>
+  // The banner is position: fixed; publish its height as --announcement-h so the
+  // sidebar and content can be offset to make room (banner wraps on narrow screens).
+  (function () {
+    var banner = document.getElementById('announcement-banner');
+    if (!banner) return;
+    function sync() {
+      document.documentElement.style.setProperty('--announcement-h', banner.offsetHeight + 'px');
+    }
+    sync();
+    window.addEventListener('load', sync);
+    window.addEventListener('resize', sync);
+    if (window.ResizeObserver) { new ResizeObserver(sync).observe(banner); }
+  })();
+</script>
+{% endif %}

@@ -10,36 +10,38 @@ permalink: /contributing/
 
 ![We want you]({{ '/assets/images/we_want_you.png' | relative_url }})
 
-## Why contribute?
 
-The Oopsie Dataset is a community effort. We are collecting failure data from diverse robots, tasks, and environments.
+The Oopsie Dataset is a **community effort**. We are collecting failure data from diverse robots, tasks, and environments.
 
-Our core focus for the first iteration of the project is on single-arm and bi-arm manipulation settings.
-To ensure that the data is broadly useful across different labs, we are especially interested in data from standardized setups, such as the Franka-arm setup used in the Droid project, or the Aloha arms distributed by Trossen Robotics.
-However, if you have other systems that you believe will be useful for the community, please submit your data!
-Failure data on non-standard systems is still very useful for many research projects, such as building reliable failure detection or reward models.
-
-### Why should **YOU** contribute?
-
-First and foremost, because open-data and cross-lab collaboration has proven to be one of the best ways for academics to collaborate on ambitious robotics projects.
-But we acknowledge that data collection needs some additional incentives.
-
-Specifically, all labs that are involved will get several benefits. First of all, we want to make this data useful for your projects, so we are happy to discuss adaptations that make our tool and data useful for your specific lab use-case. If you help us, you get a say in how the data is processed and what utilities we provide.
-
-Second, we will regularly share pre-release versions of the dataset with all contributors so that they can prototype and test ideas with the data. We are tentatively aiming for an alpha release by the CoRL deadline, until then you can use our data exclusively if you contribute. In addition, having your own robot in a major dataset can make future projects that build on this data much easier to deploy, as you have already provided lab-specific fine-tuning data. 
-
-Finally, we are happy to invite all volunteers who collect substantial amounts of data and provide feedback as co-authors on our public release. 
-Volunteering for data gathering is laborious and we acknowledge that by celebrating everybody who contribute significant time and effort to the project.
+Currently, we focus on **single-arm and bi-arm manipulator robots**. To ensure the collected data is broadly useful across different labs, we are especially interested in data from standardized setups, such as the **DROID Franka** setup, the **SERL Franka** setup, the **Trossen Aloha** setup, the **Trossen WidowX Bridgev2** setup, **YAM** or **ARX** bimanual setups, etc.
+However, if you have other systems that you believe will be useful for the community, please also submit your data!
+Failure data on non-standard systems is still very useful for many research directions.
 
 ---
 
 ## Who can contribute?
 
-Anyone running robot manipulation experiments!
+**Anyone who rolls out a policy on a real robot.** If the robot is moving under a policy, you are already generating the data we need:
 
-If you are evaluating policies, you are already generating the data we need.
-Furthermore we want it to be as easy as possible for labs around the world to contribute.
-If you find that your workflow is currently not well-supported by the provided software, let us know.
-We will make sure to help you share your evaluation data.
+- **Policy evaluation.** Every eval run produces exactly the mix of successes and failures we are after.
+- **RL experiments.** Online training rollouts are full of the suboptimal behavior that is missing from every other dataset.
+- **Play data collection.** Unscripted interaction, including the parts that go wrong.
 
-Finally, please contact us for any suggestions! We want to make this data useful for **you and your research**.
+You do not necessarily have to run anything extra; you just have to keep what you would otherwise throw away.
+
+---
+
+## Why should **YOU** contribute?
+
+Open data and cross-lab collaboration are how academics take on ambitious robotics projects. Beyond that, contributing labs get:
+
+- **A say in the dataset.** Take part in shaping the dataset and adapting the tooling, the data format, and the utilities we build around it for your use-case.
+- **Early access.** Contributors get pre-release versions of the dataset for their research. Having your own robot in the dataset also means future work built on it comes with lab-specific fine-tuning data for free.
+- **Co-authorship.** Everyone who collects a substantial amount of data and gives us feedback is invited as a co-author on the public release.
+
+
+---
+
+## Contribution Requirements
+
+We welcome all levels of contribution from the community. For significant contributors, we will recognize you as a co-author on the public release and paper. Formal requirements coming soon!

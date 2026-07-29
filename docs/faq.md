@@ -10,8 +10,7 @@ permalink: /faq/
 ## Data & Format
 
 ### What do I do if my policy provides a different action encoding?
-If possible, please provide **absolute cartesian endeffector actions** or another [accepted action representation]({% link format.md %}). For some embodiments, such as the DROID Franka arm, we are aiming to provide utilities to translate actions.
-
+Please provide [accepted action representation]({% link format.md %}).
 If your policy currently does not support any of the supported action representations, and you have no way of computing them from the generated actions, please let us know. We are open to expand the action representations supported by this project. However, expanding the set of supported action representation requires some consideration to ensure that the data remains interoperable between different labs.
 
 ### We already collected data. Can we just upload that?
@@ -54,7 +53,7 @@ This reflects a data-centric philosophy, which will enable AI approaches to lear
 
 ### We have bulk data that was gathered in the past, and we can't annotate it. Can we still submit it?
 
-The minimum labels we need are success and failure per trajectory. If you have bulk data for which filling out the whole questionnaire is too cumbersome, please let us know. We will find a good way for you to contribute the data.
+The minimum label we need is the outcome per trajectory — success or failure. Everything beyond that is optional, so a bulk dataset carrying only success/failure flags is already contributable. If even that is too cumbersome for the volume you have, please let us know. We will find a good way for you to contribute the data.
 
 ### Can we use AI tools to annotate the data?
 

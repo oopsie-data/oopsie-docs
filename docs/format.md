@@ -13,7 +13,7 @@ Episodes are stored as **HDF5 files** (`.h5`), one file per episode. This is the
 
 We chose to use a file-per-episode format to make the annotation tool more flexible, as it allows us to group and bulk annotate episodes flexibly. For more details, see the [explanation of the data annotation tool]({% link annotator.md %}).
 
-Note that we save far more metadata than other projects such as the DROID dataset. This is on purpose, as our dataset is designed to make cross-embodiment training easier. For example, we explicitly collect information about joint names and rotation representation. For details, see the [Robot Setup]({% link data-collection.md %}#robot-setup).
+Note that we save far more metadata than other projects such as the DROID dataset. This is on purpose, as our dataset is designed to make cross-embodiment training easier. For example, we explicitly collect information about joint names and rotation representation. For details, see the [Robot & Policy Profile]({% link robot-profile.md %}).
 
 ---
 
@@ -33,11 +33,13 @@ episode.h5
 │
 ├── episode_annotations/           (group)      # written by annotation tool after rollout
 │   └── <annotator_name>/          (group)      # one subgroup per annotator
+│       ├── [attr] schema              (str)    # "oopsie_failure_taxonomy_v2"
 │       ├── [attr] source              (str)    # e.g. "human"
 │       ├── [attr] timestamp           (str)    # ISO timestamp of annotation
 │       ├── [attr] success             (float)  # 1.0 = success, 0.0 = failure
-│       ├── [attr] failure_description (str)
-│       ├── [attr] taxonomy            (str)    # json: {failure_category, severity}
+│       ├── [attr] episode_description (str)
+│       ├── [attr] taxonomy_schema     (str)    # "oopsiedata_taxonomy_schema_v2"
+│       ├── [attr] taxonomy            (str)    # json, see below
 │       └── [attr] additional_notes    (str)
 │
 ├── observations/                  (group)
@@ -65,9 +67,8 @@ For bi-arm setups, please simply concatenate the actions of the left and right a
 
 **Important Points**
 - We assume that many data collection setups will not make it possible to collect all action formats. We therefore only require **one** entry in `actions/` to be a valid tensor dataset; the others are stored as empty HDF5 datasets.
-- Please ensure to provide unnormalized and absolute actions as this will make using the actions easier and reduce the amount of conversions.
-- We furthermore assume that the rotation component of cartesian position action space are encoded as quaternions. Tooling for converting most common representations into quaternions are provided in the episode recorder.
-- The gripper action should be set in one of the three keys: gripper_binary, gripper_position or gripper_velocity. Note that we currently only support two-finger gripper setups.
+- Please provide unnormalized and absolute actions.
+- The gripper action should be set in one of the three keys: gripper_binary, gripper_position or gripper_velocity. We currently only support two-finger gripper setups.
 
 ---
 
@@ -91,11 +92,13 @@ The `episode_annotations/` group is written by the annotation tool after rollout
 
 | Field | Type | Description |
 |:------|:-----|:------------|
+| `schema` | str attr | Annotation schema version, `"oopsie_failure_taxonomy_v2"` |
 | `source` | str attr | Annotation source, e.g. `"human"` |
 | `timestamp` | str attr | ISO timestamp of when the annotation was made |
 | `success` | float attr | `1.0` = success, `0.0` = failure |
-| `failure_description` | str attr | Free-text description of the failure |
-| `taxonomy` | str attr | JSON string: `{"failure_category": ..., "severity": ...}` |
+| `episode_description` | str attr | Free-text description of what happened |
+| `taxonomy_schema` | str attr | Taxonomy version, `"oopsiedata_taxonomy_schema_v2"` |
+| `taxonomy` | str attr | JSON string with the structured labels (see below) |
 | `additional_notes` | str attr | Any other annotator notes |
 
 The annotation tool provides a simple interface for editing these fields per episode, or in bulk across a group of episodes.
@@ -148,18 +151,43 @@ If you want to contribute data on a different embodiment, and your policy does n
 
 ---
 
-## Failure Annotation Schema
+## Annotation Schema
 
-Annotations are written into the `episode_annotations/<annotator_name>/` subgroup by the annotation tool. The `taxonomy` attribute holds a JSON string with structured failure labels:
+Annotations are written into the `episode_annotations/<annotator_name>/` subgroup by the annotation tool. The `taxonomy` attribute holds a JSON string with the structured labels:
 
 ```json
 {
-  "failure_category": "<category>",
-  "severity": "<severity>"
+  "outcome": "success_side_effect",
+  "side_effect_category": ["collision"],
+  "severity": "low"
 }
 ```
 
-The questionnaire driving these fields is defined in `oopsie_tools/annotation_tool/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
+These values are **stable slugs**, not the prose the annotation form displays. The wording in
+the UI can be improved without changing what is already stored.
+
+`outcome` is the one required field, and is exactly one of:
+
+| Slug | `success` | Meaning |
+|:-----|:----------|:--------|
+| `success` | `1.0` | Task completed cleanly |
+| `success_suboptimal` | `1.0` | Task completed, but inefficiently or awkwardly |
+| `success_side_effect` | `1.0` | Task completed, but something unintended happened along the way |
+| `failure` | `0.0` | Task not completed |
+
+All three `success_*` outcomes store `success = 1.0`, so a consumer that only reads the float
+still sees every success as one; `outcome` is what distinguishes them.
+
+`side_effect_category` is always a list, since an episode can exhibit several modes at once.
+Valid slugs: `reaching`, `grasp`, `manipulation`, `sequencing_semantic`, `collision`,
+`hardware`, `not_attempted`, `other`.
+
+`severity` is one of `low`, `medium`, `catastrophic`.
+
+Both apply to failures and to successes with side-effects. Everything except `outcome` is
+optional — a partial annotation is valid, and absent fields are simply omitted. See the
+[annotation tool]({% link annotator.md %}) page for what each value means and how the form
+collects them.
 
 ---
 
@@ -195,7 +223,14 @@ The file paths of associated mp4 camera videos need to be saved in the hdf5 file
 ---
 
 ## Additional Data Format Constraints
-Video constraints (enforced by `validate.py`):
-- Resolution: 180–1280 px on each side
-- Duration: 2–300 seconds
+
+Enforced by `oopsie-data validate` (via `oopsie_data_tools/utils/validation/episode_validator.py`):
+
+- **Episode duration**: 1–600 seconds, computed as `trajectory_length / control_freq`
+- **Video resolution**: 180–1280 px on each side
+- **Frame count**: each video must be within `max(5, 10%)` frames of the trajectory length
+- **Video duration**: must match `trajectory_length / control_freq` to within 0.5 s
+- **Multi-camera consistency**: frame counts across cameras may differ by at most 1
+
+Videos must also be in a browser-compatible encoding so the annotation tool can play them; `EpisodeRecorder` handles this for you.
 
