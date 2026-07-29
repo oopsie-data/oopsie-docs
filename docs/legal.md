@@ -3,6 +3,7 @@ title: Privacy and Licensing
 layout: default
 nav_order: 11
 permalink: /license/
+parent: Contributing
 ---
 
 # Data Contribution Terms

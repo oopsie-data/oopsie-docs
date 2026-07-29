@@ -1,0 +1,41 @@
+// Theme variable overrides. Imported by just-the-docs after `support/support`
+// (which defines the defaults) and before the color scheme, so plain
+// assignments here win over the theme's `!default` values.
+
+// Brand ramp. $blue-000 is the site accent; the darker steps drive hovers,
+// primary buttons and callout titles.
+$blue-000: #1b6e94;
+$blue-100: #175d7e;
+$blue-200: #124b66;
+$blue-300: #0d384d;
+
+// Semantic pass/fail pair. The darkest step is the brand value; the lighter
+// steps are for callout borders and tints.
+$green-000: #8fc472;
+$green-100: #6aab45;
+$green-200: #519428;
+$green-300: #3e801e;
+$red-000: #e79b94;
+$red-100: #d05b50;
+$red-200: #bb2f24;
+$red-300: #aa1910;
+
+// Neutrals, retuned from the theme's purple-tinted greys to a cool blue-grey.
+$grey-dk-000: #8d939b;
+$grey-dk-100: #55606b;
+$grey-dk-200: #3e4952;
+$grey-dk-250: #2b343c;
+$grey-dk-300: #1f272e;
+$grey-lt-000: #f2f6f9;
+$grey-lt-100: #e6ecf0;
+$grey-lt-200: #e3e9ee;
+$grey-lt-300: #d8e1e8;
+
+// Derived in support/_variables.scss before the greys above are set, so it
+// needs restating.
+$border-color: $grey-lt-100;
+
+$link-color: $blue-000;
+$btn-primary-color: $blue-100;
+$base-button-color: #f4f7f9;
+$code-background-color: $grey-lt-000;

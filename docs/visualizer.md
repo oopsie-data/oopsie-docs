@@ -16,7 +16,7 @@ permalink: /visualizer/
     --viz-surface-soft: #f8fafc;
     --viz-ink: #0f172a;
     --viz-muted: #64748b;
-    --viz-accent: #2563eb;
+    --viz-accent: #1b6e94;
   }
 
   .oopsie-visualizer * {
@@ -59,7 +59,7 @@ permalink: /visualizer/
   }
 
   .viz-search:focus {
-    outline: 2px solid rgba(37, 99, 235, 0.2);
+    outline: 2px solid rgba(27, 110, 148, 0.25);
     border-color: var(--viz-accent);
   }
 
@@ -86,12 +86,60 @@ permalink: /visualizer/
     align-items: start;
   }
 
+  /* Filters come first in the DOM so they sit above the grid on narrow
+     viewports; on desktop they are placed back into the right-hand column. */
+  .viz-grid {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .viz-filters {
-    position: sticky;
-    top: 1rem;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  /* Distance from the viewport top to the first free pixel: the fixed
+     announcement plus the sticky docs header (both published by script). */
+  .oopsie-visualizer {
+    --viz-sticky-top: calc(var(--announcement-h, 0px) + var(--viz-header-h, 0px) + 0.75rem);
+  }
+
+  .viz-filters-body {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  .viz-filters-toggle {
+    display: none;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--viz-border-strong);
+    border-radius: 8px;
+    background: var(--viz-surface);
+    color: var(--viz-ink);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .viz-filters-toggle-count {
+    color: var(--viz-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .viz-filters-toggle-chevron {
+    margin-left: auto;
+    transition: transform 150ms ease;
+  }
+
+  .viz-filters.is-open .viz-filters-toggle-chevron {
+    transform: rotate(180deg);
   }
 
   .viz-filter-group {
@@ -248,10 +296,10 @@ permalink: /visualizer/
 
   .viz-error {
     padding: 0.85rem 1rem;
-    border: 1px solid #fecaca;
+    border: 1px solid #eec9c5;
     border-radius: 8px;
-    background: #fef2f2;
-    color: #991b1b;
+    background: #fdf3f2;
+    color: #aa1910;
   }
 
   .viz-modal {
@@ -412,13 +460,43 @@ permalink: /visualizer/
     line-height: 1;
   }
 
+  /* Pin the filter column and let it scroll inside itself, so the page always
+     scrolls as one and the column never slides out of reach. */
+  @media (min-width: 901px) {
+    .viz-filters {
+      position: sticky;
+      top: var(--viz-sticky-top);
+      max-height: calc(100vh - var(--viz-sticky-top) - 0.75rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
   @media (max-width: 900px) {
     .viz-layout {
       grid-template-columns: 1fr;
     }
 
+    .viz-grid,
     .viz-filters {
-      position: static;
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .viz-filters-toggle {
+      display: flex;
+    }
+
+    .viz-filters-body {
+      display: none;
+      max-height: 65vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .viz-filters.is-open .viz-filters-body {
+      display: flex;
     }
 
     .viz-modal-panel {
@@ -464,8 +542,15 @@ permalink: /visualizer/
 {% include docs-nav-collapse.html %}
 
   <div class="viz-layout">
+    <aside class="viz-filters" id="viz-filters-panel" aria-label="Dataset filters">
+      <button class="viz-filters-toggle" id="viz-filters-toggle" type="button" aria-expanded="false" aria-controls="viz-filters">
+        <span>Filters</span>
+        <span class="viz-filters-toggle-count" id="viz-filters-toggle-count"></span>
+        <span class="viz-filters-toggle-chevron" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="viz-filters-body" id="viz-filters"></div>
+    </aside>
     <section class="viz-grid" id="viz-grid" aria-live="polite"></section>
-    <aside class="viz-filters" id="viz-filters" aria-label="Dataset filters"></aside>
   </div>
 
   <div class="viz-modal" id="viz-modal" aria-hidden="true">
@@ -519,6 +604,9 @@ permalink: /visualizer/
 
   const countEl = document.getElementById("viz-count");
   const filtersEl = document.getElementById("viz-filters");
+  const filtersPanel = document.getElementById("viz-filters-panel");
+  const filtersToggle = document.getElementById("viz-filters-toggle");
+  const filtersToggleCount = document.getElementById("viz-filters-toggle-count");
   const gridEl = document.getElementById("viz-grid");
   const resampleButton = document.getElementById("viz-resample");
   const searchInput = document.getElementById("viz-search");
@@ -866,6 +954,14 @@ permalink: /visualizer/
     });
   }
 
+  function updateFilterSummary() {
+    const active = filterDefs.reduce(
+      (total, filter) => total + (selected[filter.key] ? selected[filter.key].size : 0),
+      0,
+    );
+    filtersToggleCount.textContent = active === 0 ? "" : `${active} selected`;
+  }
+
   function updateFilterCounts() {
     filterDefs.forEach((filter) => {
       const counts = {};
@@ -1058,7 +1154,25 @@ permalink: /visualizer/
     resampleButton.style.display = matches.length > maxVisibleVideos ? "" : "none";
 
     updateFilterCounts();
+    updateFilterSummary();
   }
+
+  /* The docs header is sticky under the announcement; publish its height so the
+     filter column can stick just below it. */
+  function syncStickyOffset() {
+    const header = document.getElementById("main-header");
+    const height = header && getComputedStyle(header).position === "sticky" ? header.offsetHeight : 0;
+    document.documentElement.style.setProperty("--viz-header-h", height + "px");
+  }
+
+  syncStickyOffset();
+  window.addEventListener("load", syncStickyOffset);
+  window.addEventListener("resize", syncStickyOffset);
+
+  filtersToggle.addEventListener("click", () => {
+    const open = filtersPanel.classList.toggle("is-open");
+    filtersToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
 
   resampleButton.addEventListener("click", () => {
     shuffle(shuffledIndices);

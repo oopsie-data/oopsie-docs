@@ -2,6 +2,7 @@
 title: Project Motivation
 layout: default
 nav_order: 2
+parent: Contributing
 permalink: /motivation/
 ---
 
@@ -15,16 +16,16 @@ A policy learns what to do from them, but never what *not* to do. It cannot tell
 
 ## What failure data unlocks
 
-- **Offline RL.** Value functions need to know what a bad state is worth, and that requires penalty signal and counterfactual actions — the branches the policy could have taken and what happened when it did. Success-only data has neither: every action is optimal, so there is nothing to compare against.
-- **Reward modeling.** Reward models are learned from contrast, and real failures and near-misses supply the negative half that is currently synthesized with noise or relabelling.
-- **Failure prediction and policy steering.** Failure data helps train classifiers on when failures occur, and unlocks the ability to steer policies away from known failure modes during execution time.
-- **World modeling.** Action-conditioned dynamics prediction relies on broad coverage of the state and action spaces. Failures and subotpimal data contains contact events and object configurations that clean teleoperation never visits.
-- **Intervention systems.** Once you can predict failure, you can act on it: hand control back to a human, or trigger a recovery behavior, before the rollout is lost.
+- **Offline RL.** Value functions need to know how bad a state is, and that requires outcome labels and counterfactual actions -- alternative paths the policy could have taken and their outcomes. Success-only data has neither: every action is optimal, so there is nothing to compare against.
+- **Reward modeling.** Reward models are trained from contrast, and real failures and near-misses supply the negative half that is currently synthesized with noise or relabelling.
+- **Failure prediction and policy steering.** Failure data helps train classifiers to predict when failures occur, and unlocks the ability to steer policies away from known failure modes during execution.
+- **World modeling.** Action-conditioned dynamics prediction relies on broad coverage of the state and action spaces. Failures and suboptimal data contains contact events and object configurations that clean tele-operation never visits.
+- **Intervention systems.** Once you can predict failure, you can act on it: hand control back to a human, or trigger a recovery behavior before the rollout is lost.
 
 ## Why now?
 
-Over the past 1-2 years, the community has built the training and inference infrastructure for generalist robot policies (OpenVLA, openpi, and others). As a result, labs everywhere are running policy inference on real robots far more than they were a few years ago.
+Over the past 1-2 years, the community has built the training and inference infrastructure for generalist robot policies (OpenVLA, openpi, and others) and started building datasets to support these training efforts (OXE, Droid, and many more). As a result, labs everywhere are running policy inference on real robots far more often than they were a few years ago.
 
-Those rollouts are the data. **Every one of them is a real robot acting under a real policy, succeeding and failing in exactly the ways we need to capture** — and almost all of them are deleted the moment the success rate is written down. The bottleneck is not collection anymore. It is that nobody is keeping what is already being collected.
+Those rollouts are valuable data. **Every one of them is a real robot acting under a real policy, succeeding and failing in exactly the ways we need to capture** — and almost all of them are deleted the moment the success rate is written down. We are not lacking data, we are just not keeping what is already being collected.
 
-That is the gap this project fills, and it needs **your** help.
+Many projects can use all of this data, but to gather it, Oopsie-Data needs **your** help.
