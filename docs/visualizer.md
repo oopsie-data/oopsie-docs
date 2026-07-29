@@ -1,7 +1,8 @@
 ---
 title: Dataset Visualizer
 layout: default
-nav_order: 6
+nav_order: 2
+parent: Dataset
 permalink: /visualizer/
 ---
 
@@ -101,11 +102,19 @@ permalink: /visualizer/
     min-width: 0;
   }
 
+  .oopsie-visualizer h2.viz-filter-title,
   .viz-filter-title {
     margin: 0 0 0.5rem;
+    padding: 0;
     font-size: 0.9rem;
     font-weight: 700;
     color: var(--viz-ink);
+    line-height: 1.25;
+    border: 0;
+  }
+
+  .viz-filter-title .anchor-heading {
+    display: none;
   }
 
   .viz-check {
@@ -161,25 +170,10 @@ permalink: /visualizer/
     gap: 0.75rem;
   }
 
-  body.viz-nav-collapsed .side-bar {
-    transform: translateX(-100%);
-  }
-
-  body.viz-nav-collapsed .main {
-    width: 100%;
-    max-width: none;
-    margin-left: 0;
-  }
-
-  body.viz-nav-collapsed .main-content {
+  body.docs-nav-collapsed .main-content {
     max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .side-bar,
-  .main {
-    transition: transform 180ms ease, margin-left 180ms ease, width 180ms ease, max-width 180ms ease;
   }
 
   .viz-video {
@@ -445,10 +439,11 @@ permalink: /visualizer/
     <div class="viz-count" id="viz-count">Loading episodes</div>
     <input class="viz-search" id="viz-search" type="search" placeholder="Search instructions or annotations">
     <div class="viz-toolbar-actions">
-      <button class="viz-button" id="viz-nav-toggle" type="button">Show navigation</button>
       <button class="viz-button" id="viz-resample" type="button">Resample</button>
     </div>
   </div>
+
+{% include docs-nav-collapse.html %}
 
   <div class="viz-layout">
     <section class="viz-grid" id="viz-grid" aria-live="polite"></section>
@@ -478,7 +473,7 @@ permalink: /visualizer/
     location.hostname === "localhost" ||
     location.hostname === "127.0.0.1" ||
     location.hostname === "[::1]";
-  const useRemoteAssets = Boolean(configuredAssetBase) && !isLocalHost;
+  const useRemoteAssets = Boolean(configuredAssetBase);
   const assetBaseUrl = useRemoteAssets ? configuredAssetBase : localAssetBase;
   const metadataUrl = useRemoteAssets
     ? `${configuredAssetBase.replace(/\/?$/, "/")}metadata.json`
@@ -500,14 +495,13 @@ permalink: /visualizer/
     { key: "severity", title: "Severity", idField: "severity_id", labelField: "severity_label" },
   ];
   const filterDefs = isPublicVisualizer
-    ? allFilterDefs.filter((filter) => filter.key !== "scene")
+    ? allFilterDefs.filter((filter) => filter.key !== "scene" && filter.key !== "camera")
     : allFilterDefs;
 
   const countEl = document.getElementById("viz-count");
   const filtersEl = document.getElementById("viz-filters");
   const gridEl = document.getElementById("viz-grid");
   const resampleButton = document.getElementById("viz-resample");
-  const navToggleButton = document.getElementById("viz-nav-toggle");
   const searchInput = document.getElementById("viz-search");
   const modalEl = document.getElementById("viz-modal");
   const modalBackdrop = document.getElementById("viz-modal-backdrop");
@@ -532,15 +526,6 @@ permalink: /visualizer/
       observer.unobserve(video);
     });
   }, { rootMargin: "240px" });
-
-  function setNavigationCollapsed(collapsed) {
-    document.body.classList.toggle("viz-nav-collapsed", collapsed);
-    navToggleButton.textContent = collapsed ? "Show navigation" : "Hide navigation";
-    localStorage.setItem("oopsieVisualizerNavCollapsed", collapsed ? "true" : "false");
-  }
-
-  const storedNavState = localStorage.getItem("oopsieVisualizerNavCollapsed");
-  setNavigationCollapsed(storedNavState === null ? true : storedNavState === "true");
 
   function shuffle(array) {
     for (let index = array.length - 1; index > 0; index -= 1) {
@@ -909,9 +894,7 @@ permalink: /visualizer/
     });
 
     gridEl.append(fragment);
-    countEl.textContent = visible.length === matches.length
-      ? `Showing ${matches.length} episodes`
-      : `Showing ${visible.length} episodes sampled from ${matches.length} matches`;
+    countEl.textContent = `Showing ${visible.length} randomly sampled episodes`;
     resampleButton.style.display = matches.length > maxVisibleVideos ? "" : "none";
 
     updateFilterCounts();
@@ -920,10 +903,6 @@ permalink: /visualizer/
   resampleButton.addEventListener("click", () => {
     shuffle(shuffledIndices);
     render();
-  });
-
-  navToggleButton.addEventListener("click", () => {
-    setNavigationCollapsed(!document.body.classList.contains("viz-nav-collapsed"));
   });
 
   modalCloseButton.addEventListener("click", closeDetails);
