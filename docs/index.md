@@ -5,13 +5,21 @@ nav_order: 1
 permalink: /
 ---
 
-# Oopsie Data
+<h1 class="home-title" id="oopsie-data">
+  <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="" aria-hidden="true">
+  <span>Oopsie Data</span>
+</h1>
 
 > All successful robots are alike; each unsuccessful robot is unsuccessful in its own way.
 >
 > <cite>L30 Tolstoy, Anna Kareni-Bot</cite>
 
-![Logo]({{ '/assets/images/logo.png' | relative_url }}){:style="float: right; margin:20px 20px 20px 20px; max-width:40%; min-width:300ptx;"}
+<figure class="home-teaser">
+  <img
+    src="{{ '/assets/images/teaser_image.svg' | relative_url }}"
+    alt="Overview of robot rollout examples—failures, suboptimal outcomes, and successes—flowing into the Oopsie Data dataset and its research applications."
+  >
+</figure>
 
 **Oopsie is a multi-lab effort to build the first large-scale dataset of *real* robot manipulation failures.**
 

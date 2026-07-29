@@ -1,5 +1,8 @@
 {% if site.announcement.enabled %}
 <aside class="announcement-banner" id="announcement-banner" role="region" aria-label="Announcement">
+  <a class="announcement-banner__logo" href="{{ '/' | relative_url }}" aria-label="Oopsie Data home">
+    <img src="{{ '/assets/images/logo.png' | relative_url }}" alt="" />
+  </a>
   {% if site.announcement.badge %}
   <span class="announcement-banner__badge">{{ site.announcement.badge }}</span>
   {% endif %}
