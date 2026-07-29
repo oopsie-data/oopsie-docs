@@ -45,3 +45,13 @@ exclude:
   - Dockerfile.full
   - docker-compose.yml
   - requirements-docs.txt
+  # Large local visualizer media (~11GB). Served via symlink under _site (see keep_files).
+  - assets/visualizer
+
+# Preserve the hand-linked visualizer tree across rebuilds.
+keep_files:
+  - assets/visualizer
+
+# Production visualizer media on Hugging Face (scrubbed 500-clip subset).
+# Local jekyll on localhost/127.0.0.1 still uses /assets/visualizer/ (full tree).
+visualizer_asset_base: "https://huggingface.co/datasets/OopsieData-Submissions/Visualizer_Previews/resolve/main/"

@@ -2,3 +2,10 @@ CLAUDE.md
 docs/_site/**
 .DS_Store
 **/Gemfile.lock
+docs/assets/data/internal/
+# Local visualizer previews (~11GB); not for GitHub. Production will load from HF.
+docs/assets/visualizer
+docs/assets/visualizer/
+# Scrubbed public subset prior to HF upload; do not commit.
+docs/assets/visualizer-public
+docs/assets/visualizer-public/

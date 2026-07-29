@@ -132,6 +132,29 @@ permalink: /visualizer/
     color: var(--viz-muted);
   }
 
+  .viz-bulk-toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    margin: 0 0 1rem;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 10px;
+    background: #f8fafc;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    color: #334155;
+    cursor: pointer;
+  }
+
+  .viz-bulk-toggle input {
+    margin-top: 0.15rem;
+  }
+
+  .viz-bulk-toggle span {
+    flex: 1;
+  }
+
   .viz-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -448,11 +471,22 @@ permalink: /visualizer/
 
 <script>
 (() => {
-  const metadataUrl = "{{ '/assets/visualizer/metadata.json' | relative_url }}";
-  const assetBaseUrl = "{{ '/assets/visualizer/' | relative_url }}";
+  const configuredAssetBase = "{{ site.visualizer_asset_base }}";
+  const localAssetBase = "{{ '/assets/visualizer/' | relative_url }}";
+  const localMetadataUrl = "{{ '/assets/visualizer/metadata.json' | relative_url }}";
+  const isLocalHost =
+    location.hostname === "localhost" ||
+    location.hostname === "127.0.0.1" ||
+    location.hostname === "[::1]";
+  const useRemoteAssets = Boolean(configuredAssetBase) && !isLocalHost;
+  const assetBaseUrl = useRemoteAssets ? configuredAssetBase : localAssetBase;
+  const metadataUrl = useRemoteAssets
+    ? `${configuredAssetBase.replace(/\/?$/, "/")}metadata.json`
+    : localMetadataUrl;
+  const isPublicVisualizer = useRemoteAssets;
   const maxVisibleVideos = 40;
-  const filterDefs = [
-    { key: "scene", title: "Labs", idField: "scene_id", labelField: "scene_label" },
+  const allFilterDefs = [
+    { key: "scene", title: "Datasets", idField: "scene_id", labelField: "scene_label" },
     { key: "camera", title: "Cameras", idField: "camera_id", labelField: "camera_label" },
     { key: "task", title: "Outcomes", idField: "task_id", labelField: "task_label" },
     { key: "annotation", title: "Annotations", idField: "annotation_id", labelField: "annotation_label" },
@@ -465,6 +499,9 @@ permalink: /visualizer/
     },
     { key: "severity", title: "Severity", idField: "severity_id", labelField: "severity_label" },
   ];
+  const filterDefs = isPublicVisualizer
+    ? allFilterDefs.filter((filter) => filter.key !== "scene")
+    : allFilterDefs;
 
   const countEl = document.getElementById("viz-count");
   const filtersEl = document.getElementById("viz-filters");
@@ -481,6 +518,8 @@ permalink: /visualizer/
   let videos = [];
   let shuffledIndices = [];
   let searchQuery = "";
+  let includeBulkImport = false;
+  let excludedRepos = new Set();
   const selected = {};
   const checkboxRefs = {};
 
@@ -587,14 +626,26 @@ permalink: /visualizer/
       severity_label: severityLabel,
       failure_description: video.failure_description || "",
       additional_notes: video.additional_notes || "",
+      dataset_repo: video.dataset_repo || "",
+      bulk_import: Boolean(video.bulk_import),
     };
+  }
+
+  function isBulkImport(video) {
+    if (video.bulk_import) return true;
+    return Boolean(video.dataset_repo) && excludedRepos.has(video.dataset_repo);
+  }
+
+  function isCorpusVisible(video) {
+    return includeBulkImport || !isBulkImport(video);
   }
 
   function searchText(video) {
     if (video._searchText) return video._searchText;
     const parts = [
       textFromHtml(video.info),
-      video.scene_label,
+      isPublicVisualizer ? null : video.scene_label,
+      isPublicVisualizer ? null : video.dataset_repo,
       video.camera_label,
       video.task_label,
       video.annotation_label,
@@ -625,7 +676,11 @@ permalink: /visualizer/
   }
 
   function matchesAll(video) {
-    return matchesSearch(video) && filterDefs.every((filter) => isSelected(video, filter));
+    return (
+      isCorpusVisible(video) &&
+      matchesSearch(video) &&
+      filterDefs.every((filter) => isSelected(video, filter))
+    );
   }
 
   function labelsForFilter(video, filter) {
@@ -637,6 +692,7 @@ permalink: /visualizer/
   function deriveFilterValues(filter) {
     const values = {};
     videos.forEach((video) => {
+      if (!isCorpusVisible(video)) return;
       const ids = filterValues(video, filter);
       const labels = labelsForFilter(video, filter);
       ids.forEach((id, index) => {
@@ -648,6 +704,23 @@ permalink: /visualizer/
 
   function buildFilters(metadata) {
     filtersEl.textContent = "";
+
+    if (!isPublicVisualizer) {
+      const bulkToggle = document.createElement("label");
+      bulkToggle.className = "viz-bulk-toggle";
+      const bulkInput = document.createElement("input");
+      bulkInput.type = "checkbox";
+      bulkInput.checked = includeBulkImport;
+      bulkInput.addEventListener("change", () => {
+        includeBulkImport = bulkInput.checked;
+        buildFilters(metadata);
+        render();
+      });
+      const bulkText = document.createElement("span");
+      bulkText.textContent = "Show bulk-import datasets (SOAR, etc.)";
+      bulkToggle.append(bulkInput, bulkText);
+      filtersEl.append(bulkToggle);
+    }
 
     filterDefs.forEach((filter) => {
       selected[filter.key] = new Set();
@@ -694,7 +767,7 @@ permalink: /visualizer/
       const counts = {};
 
       videos.forEach((video) => {
-        if (!matchesSearch(video)) return;
+        if (!isCorpusVisible(video) || !matchesSearch(video)) return;
 
         const matchesOtherFilters = filterDefs.every((otherFilter) => {
           return otherFilter.key === filter.key || isSelected(video, otherFilter);
@@ -716,9 +789,12 @@ permalink: /visualizer/
   }
 
   function previewHtml(video) {
+    const metaBits = isPublicVisualizer
+      ? [video.camera_label, video.task_label]
+      : [video.scene_label, video.camera_label, video.task_label];
     return [
       `<div class="viz-overlay-title">${escapeHtml(videoTitle(video))}</div>`,
-      `<div class="viz-overlay-meta">${escapeHtml(video.scene_label)} / ${escapeHtml(video.camera_label)} / ${escapeHtml(video.task_label)}</div>`,
+      `<div class="viz-overlay-meta">${escapeHtml(metaBits.filter(Boolean).join(" / "))}</div>`,
       `<div class="viz-overlay-chip">${escapeHtml(video.annotation_label)}</div>`,
       `<div class="viz-overlay-meta">${escapeHtml(video.failure_category_labels.join(", "))} / ${escapeHtml(video.severity_label)}</div>`,
     ].join("");
@@ -768,7 +844,7 @@ permalink: /visualizer/
       ${detailSection("Additional notes", video.additional_notes)}
       <div class="viz-detail-grid">
         ${detailItem("Episode", video.episode_id)}
-        ${detailItem("Lab", video.scene_label)}
+        ${isPublicVisualizer ? "" : detailItem("Dataset", video.scene_label)}
         ${detailItem("Camera", video.camera_label)}
         ${detailItem("Outcome", video.task_label)}
       </div>
@@ -869,6 +945,7 @@ permalink: /visualizer/
       return response.json();
     })
     .then((metadata) => {
+      excludedRepos = new Set(metadata.excluded_from_public_datasets || []);
       videos = (metadata.videos || []).map(normalizeVideo);
       shuffledIndices = Array.from({ length: videos.length }, (_, index) => index);
       shuffle(shuffledIndices);
