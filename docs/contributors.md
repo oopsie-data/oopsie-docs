@@ -9,12 +9,17 @@ permalink: /contributors/
 
 | Contributor | Affiliation |
 | --- | --- |
-| Ville Kuosmanen | |
 | Jagdeep Bhatia | UC Berkeley |
 | Andrew Wagenmaker | UC Berkeley |
 | Ken Nakamura | Carnegie Mellon University |
+| Andrew Z. Li  | Carnegie Mellon University |
+| Yilin Wu | Carnegie Mellon University |
+| Junwon Seo | Carnegie Mellon University |
+| Albert Zhan | Université de Montréal |
+| Jesse Silverberg | Université de Montréal |
 | Tenny Yin | Princeton University |
 | Mingtong Zhang | Princeton University |
+| Arya Paliwal | Princeton University |
 | Beining Han | Princeton University |
 | Perry Dong | Stanford University |
 | Kuo-Han Hung | Stanford University |
@@ -29,3 +34,12 @@ permalink: /contributors/
 | Chaoxiang Zhang | University of Washington |
 | Aaron Tsai | University of Washington |
 | Jinghao Liu | University of Washington |
+| Joshua Tran | University of Washington | 
+| Rosario Scalise | University of Washington |
+| Yuzhi Fan | University of Washington |
+| Skand Peri | University of Texas at Austin |
+
+## Industry contributors
+
+| Ville Kuosmanen | SafeRobotics |
+| Yue Yin | OpenArms |
