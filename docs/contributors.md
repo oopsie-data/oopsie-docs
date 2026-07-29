@@ -26,6 +26,8 @@ permalink: /contributors/
 | Zeyi Liu | Stanford University |
 | Jesse Silverberg | Université de Montréal |
 | Maria Attarian | University of Toronto |
+| Yifan Ruan | University of Toronto |
+| James Ross | University of Toronto |
 | Long Le | University of Pennsylvania |
 | Sagnik Anupam | University of Pennsylvania |
 | Jesse Zhang | University of Washington |
