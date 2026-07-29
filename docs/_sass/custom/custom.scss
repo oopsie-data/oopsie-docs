@@ -77,6 +77,14 @@
   .announcement-banner__cta {
     margin-left: 0;
   }
+
+  // Keep the mobile site title/menu row visible beneath the sticky banner.
+  .site-header {
+    position: sticky;
+    top: var(--announcement-h);
+    z-index: 900;
+    background-color: $sidebar-color;
+  }
 }
 
 // Custom blockquote styles
