@@ -17,6 +17,9 @@ This page provides a brief overview of all the necessary steps to contribute to 
 
 For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-data-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-data-tools) or contact the [team]({% link team.md %}).
 
+{: .note }
+> For people using coding agents, we have created a skill to help you quickly set up and integrate our toolkit. See [setting up a coding agent](#215-setting-up-a-coding-agent-optional) below.
+
 ---
 
 ## 1. Registration
@@ -40,27 +43,30 @@ The package is on PyPI, so to install `oopsie-data-tools`, simply activate your 
 pip install oopsie-data-tools
 # or, in a uv project: uv add oopsie-data-tools
 ```
+
+This will give you a CLI tool called `oopsie-data` that you can call to setup, collect, annotate, and submit your data.
+
 ### 2.1.5 Setting up a coding agent (optional)
 
-If you drive the toolkit through a coding agent such as
-[Claude Code](https://claude.com/claude-code), the package ships a skill that can help with integration and setup.
-Nothing else in the toolkit needs an agent, and no files are written anywhere unless you run:
+Nothing in the toolkit actually requires access to a coding agent.
+But if you drive the toolkit through a coding agent such as
+[Claude Code](https://claude.com/claude-code), [Cursor CLI](https://cursor.com/), or
+[Codex](https://developers.openai.com/codex/), the package ships a shared skill that can
+help with integration and setup. You can install the skill by running:
 
 ```bash
-oopsie-data install-skill          # into ./skills/oopsie-data/
-oopsie-data install-skill --user   # into ~/.claude/skills/, active in every project
+oopsie-data install-skill --agent all
+oopsie-data install-skill --agent [claude|cursor|codex]  # installs only for the specified agent
+
 ```
 
-The default installs into a plain `./skills/` directory in your project, so you can read and
-edit it before anything picks it up, and commit it for the rest of your lab. Claude Code only
-scans `.claude/skills/`, so the command prints the one-line symlink that activates it:
+This installs the same skill for the specified agent in the current project. To make the skill available to all agents in every project, install it under your home directory:
 
 ```bash
-mkdir -p .claude/skills && mv -r /skills/oopsie-data .claude/skills/
+oopsie-data install-skill --agent all --user    # installs into your home directory for all agents
 ```
-
-With `--user` it is active immediately in every project, after you start a new session.
-
+Re-running the command replaces the previously installed copy with the version bundled in your current package.
+You can also check the agent skill script [here](https://github.com/oopsie-data/oopsie-data-tools/blob/main/AI_CONTEXT.md).
 
 ### 2.2 Setting up the contributor config
 Run `oopsie-data init`. It prompts for the lab id and huggingface token you received after
