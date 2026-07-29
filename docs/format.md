@@ -13,7 +13,7 @@ Episodes are stored as **HDF5 files** (`.h5`), one file per episode. This is the
 
 We chose to use a file-per-episode format to make the annotation tool more flexible, as it allows us to group and bulk annotate episodes flexibly. For more details, see the [explanation of the data annotation tool]({% link annotator.md %}).
 
-Note that we save far more metadata than other projects such as the DROID dataset. This is on purpose, as our dataset is designed to make cross-embodiment training easier. For example, we explicitly collect information about joint names and rotation representation. For details, see the [Robot Setup]({% link data-collection.md %}#robot-setup).
+Note that we save far more metadata than other projects such as the DROID dataset. This is on purpose, as our dataset is designed to make cross-embodiment training easier. For example, we explicitly collect information about joint names and rotation representation. For details, see the [Robot & Policy Profile]({% link robot-profile.md %}).
 
 ---
 
@@ -33,12 +33,12 @@ episode.h5
 │
 ├── episode_annotations/           (group)      # written by annotation tool after rollout
 │   └── <annotator_name>/          (group)      # one subgroup per annotator
-│       ├── [attr] schema              (str)    # "oopsie_failure_taxonomy_v1"
+│       ├── [attr] schema              (str)    # "oopsie_failure_taxonomy_v2"
 │       ├── [attr] source              (str)    # e.g. "human"
 │       ├── [attr] timestamp           (str)    # ISO timestamp of annotation
 │       ├── [attr] success             (float)  # 1.0 = success, 0.0 = failure
-│       ├── [attr] failure_description (str)
-│       ├── [attr] taxonomy_schema     (str)    # "oopsiedata_taxonomy_schema_v1"
+│       ├── [attr] episode_description (str)
+│       ├── [attr] taxonomy_schema     (str)    # "oopsiedata_taxonomy_schema_v2"
 │       ├── [attr] taxonomy            (str)    # json, see below
 │       └── [attr] additional_notes    (str)
 │
@@ -92,12 +92,12 @@ The `episode_annotations/` group is written by the annotation tool after rollout
 
 | Field | Type | Description |
 |:------|:-----|:------------|
-| `schema` | str attr | Annotation schema version, `"oopsie_failure_taxonomy_v1"` |
+| `schema` | str attr | Annotation schema version, `"oopsie_failure_taxonomy_v2"` |
 | `source` | str attr | Annotation source, e.g. `"human"` |
 | `timestamp` | str attr | ISO timestamp of when the annotation was made |
 | `success` | float attr | `1.0` = success, `0.0` = failure |
-| `failure_description` | str attr | Free-text description of the failure |
-| `taxonomy_schema` | str attr | Taxonomy version, `"oopsiedata_taxonomy_schema_v1"` |
+| `episode_description` | str attr | Free-text description of what happened |
+| `taxonomy_schema` | str attr | Taxonomy version, `"oopsiedata_taxonomy_schema_v2"` |
 | `taxonomy` | str attr | JSON string with the structured labels (see below) |
 | `additional_notes` | str attr | Any other annotator notes |
 
@@ -151,21 +151,43 @@ If you want to contribute data on a different embodiment, and your policy does n
 
 ---
 
-## Failure Annotation Schema
+## Annotation Schema
 
 Annotations are written into the `episode_annotations/<annotator_name>/` subgroup by the annotation tool. The `taxonomy` attribute holds a JSON string with the structured labels:
 
 ```json
 {
-  "failure_category": ["<category>", "..."],
-  "severity": "<severity>",
-  "success_category": "<success_category>"
+  "outcome": "success_side_effect",
+  "side_effect_category": ["collision"],
+  "severity": "low"
 }
 ```
 
-`failure_category` is always a list, since an episode can exhibit several failure modes at once; it is empty for successes. `severity` applies to both failures (impact) and successes (side-effects), and is `""` when unset. `success_category` is only present when the episode was marked a success *and* a quality category was chosen.
+These values are **stable slugs**, not the prose the annotation form displays. The wording in
+the UI can be improved without changing what is already stored.
 
-The questionnaire driving these fields is defined in `oopsie_data_tools/annotation_tool/templates/questionnaire.yaml` and can be filled out using the [annotation tool]({% link annotator.md %}).
+`outcome` is the one required field, and is exactly one of:
+
+| Slug | `success` | Meaning |
+|:-----|:----------|:--------|
+| `success` | `1.0` | Task completed cleanly |
+| `success_suboptimal` | `1.0` | Task completed, but inefficiently or awkwardly |
+| `success_side_effect` | `1.0` | Task completed, but something unintended happened along the way |
+| `failure` | `0.0` | Task not completed |
+
+All three `success_*` outcomes store `success = 1.0`, so a consumer that only reads the float
+still sees every success as one; `outcome` is what distinguishes them.
+
+`side_effect_category` is always a list, since an episode can exhibit several modes at once.
+Valid slugs: `reaching`, `grasp`, `manipulation`, `sequencing_semantic`, `collision`,
+`hardware`, `not_attempted`, `other`.
+
+`severity` is one of `low`, `medium`, `catastrophic`.
+
+Both apply to failures and to successes with side-effects. Everything except `outcome` is
+optional — a partial annotation is valid, and absent fields are simply omitted. See the
+[annotation tool]({% link annotator.md %}) page for what each value means and how the form
+collects them.
 
 ---
 
@@ -202,9 +224,9 @@ The file paths of associated mp4 camera videos need to be saved in the hdf5 file
 
 ## Additional Data Format Constraints
 
-Enforced by `validate.py` (via `oopsie_data_tools/utils/validation/episode_validator.py`):
+Enforced by `oopsie-data validate` (via `oopsie_data_tools/utils/validation/episode_validator.py`):
 
-- **Episode duration**: 1–300 seconds, computed as `trajectory_length / control_freq`
+- **Episode duration**: 1–600 seconds, computed as `trajectory_length / control_freq`
 - **Video resolution**: 180–1280 px on each side
 - **Frame count**: each video must be within `max(5, 10%)` frames of the trajectory length
 - **Video duration**: must match `trajectory_length / control_freq` to within 0.5 s
