@@ -7,7 +7,7 @@ permalink: /quickstart/
 
 # Quickstart Guide
 
-To contribute data to the Oopsie Dataset, we ask that you collect recordings of your robot policy rollouts (e.g. policy evaluation, play data collection, online RL training), successes and failures. Our toolkit provides utilities for formatting such robot data in a consistent manner across different manipulator setups. Finally, use our annotation tool to quickly provide a brief description of each failed trajectory and upload your labeled data to the project repository.
+To contribute to OopsieData, collect real-world robot policy rollouts (e.g. policy evaluation, play data collection, online RL training) with both successes and failures and use our toolkit to format them into a consistent storage format. Each episode should be annotated with a success label, and can optionally be annotated with a brief failure description with our annotation tool. Finally, upload your data to the project repository.
 
 This page provides a brief overview of all the necessary steps to contribute to the project using our tooling:
 1. [Registration](#1-registration)

@@ -46,4 +46,4 @@ permalink: /contributors/
 ## Industry
 
 | Ville Kuosmanen | SafeRobotics |
-| Yue Yin | OpenArms |
+| Yue Yin | Enatic |

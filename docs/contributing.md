@@ -44,4 +44,19 @@ Open data and cross-lab collaboration are how academics take on ambitious roboti
 
 ## Contribution Requirements
 
-We welcome all levels of contribution from the community. For significant contributors, we will recognize you as a co-author on the public release and paper. Formal requirements coming soon!
+We are currently calling for the **first round** of contributions, which will run until **Oct 5th 2026**. We welcome data contributions from all robotic manipulators, especially common setups such as Franka, WidowX, YAM, and UR. Major contributors who meet the requirements below can qualify as authors of the dataset, and minor contributors will also get acknowledged for their contribution as well!
+
+### What to contribute
+
+Logged policy rollout data (image observations, actions, proprio states, etc.) on real robot manipulators, including both successes and failures. Episodes must be submitted in our required data format, and every episode must carry a success/failure label.
+
+### Requirements for authorship
+
+A contribution can qualify for authorship if it meets all of the following:
+- **Volume:** 750+ qualifying episodes of logged rollout data, with at least 350 of them being failures. These data should add up to no less than 5 hours of real robot time (which averages 24s per rollout for 750 rollouts, so submitting e.g. all 1-second rollouts will not qualify).
+- **Task diversity:** at least 4 distinct tasks, where “distinct” means a different language instruction or a completely different scene layout. In an effort to make the data more diverse, we encourage having 3 or more different initial object layouts within the same task.
+- **Per-task cap:** at most 200 episodes from any single task count toward the 750. Additional episodes of that task are still welcome and will be included in the dataset — they just don’t count toward the threshold.
+
+### Requirements for acknowledgement
+
+A contribution will be acknowledged if it has 200+ qualifying episodes of logged rollout data.
