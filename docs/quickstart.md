@@ -51,22 +51,26 @@ This will give you a CLI tool called `oopsie-data` that you can call to setup, c
 Nothing in the toolkit actually requires access to a coding agent.
 But if you drive the toolkit through a coding agent such as
 [Claude Code](https://claude.com/claude-code), [Cursor CLI](https://cursor.com/), or
-[Codex](https://developers.openai.com/codex/), the package ships a shared skill that can
+[Codex](https://developers.openai.com/codex/), the package ships a shared skill called "oopsie-data" that can
 help with integration and setup. You can install the skill by running:
 
 ```bash
-oopsie-data install-skill --agent all
-oopsie-data install-skill --agent [claude|cursor|codex]  # installs only for the specified agent
+oopsie-data install-skill --agent claude         # installs under .claude/skills/ for Claude Code
+oopsie-data install-skill --agent [cursor|codex] # installs under .agents/skills/ for Cursor and Codex
+oopsie-data install-skill --agent none           # installs under ./skills/ for copying onward yourself
 
 ```
 
 This installs the same skill for the specified agent in the current project. To make the skill available to all agents in every project, install it under your home directory:
-
 ```bash
-oopsie-data install-skill --agent all --user    # installs into your home directory for all agents
+oopsie-data install-skill --agent [claude|cursor|codex] --user    # installs into your home directory for all agents
 ```
-Re-running the command replaces the previously installed copy with the version bundled in your current package.
-You can also check the agent skill script [here](https://github.com/oopsie-data/oopsie-data-tools/blob/main/AI_CONTEXT.md).
+
+To update the skill to the latest version, run:
+```bash
+oopsie-data install-skill --check  # check whether installed skills are stale
+oopsie-data install-skill --agent [claude|cursor|codex] --force  # replaces the project-level skill
+```
 
 ### 2.2 Setting up the contributor config
 Run `oopsie-data init`. It prompts for the lab id and huggingface token you received after
