@@ -193,6 +193,30 @@ details.code-example {
   color: $body-text-color;
 }
 
+// Figure that body text wraps around, at every viewport width.
+.figure-right {
+  float: right;
+  width: 42%;
+  max-width: 20rem;
+  margin: 0.25rem 0 1rem 1.25rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  @include mq(sm) {
+    margin-left: 1.5rem;
+  }
+}
+
+// Keep a float from bleeding across a section break.
+.main-content hr {
+  clear: both;
+}
+
 .home-teaser {
   display: flex;
   justify-content: center;

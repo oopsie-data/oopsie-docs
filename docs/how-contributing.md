@@ -1,15 +1,17 @@
 ---
-title: Contributing
+title: How To Contribute
 layout: default
 nav_order: 3
 has_children: true
-permalink: /contributing/
+permalink: /how-contributing/
+parent: Contributing
 ---
 
 # Contributing
 
-![We want you]({{ '/assets/images/we_want_you.png' | relative_url }})
-
+<figure class="figure-right">
+  <img src="{{ '/assets/images/we_want_you.png' | relative_url }}" alt="Uncle-Sam-style recruitment poster reading &ldquo;We want you&rdquo;">
+</figure>
 
 The Oopsie Dataset is a **community effort**. We are collecting failure data from diverse robots, tasks, and environments.
 

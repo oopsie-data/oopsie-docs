@@ -16,7 +16,7 @@ permalink: /visualizer/
     --viz-surface-soft: #f8fafc;
     --viz-ink: #0f172a;
     --viz-muted: #64748b;
-    --viz-accent: #2563eb;
+    --viz-accent: #1b6e94;
   }
 
   .oopsie-visualizer * {
@@ -59,7 +59,7 @@ permalink: /visualizer/
   }
 
   .viz-search:focus {
-    outline: 2px solid rgba(37, 99, 235, 0.2);
+    outline: 2px solid rgba(27, 110, 148, 0.25);
     border-color: var(--viz-accent);
   }
 
@@ -296,10 +296,10 @@ permalink: /visualizer/
 
   .viz-error {
     padding: 0.85rem 1rem;
-    border: 1px solid #fecaca;
+    border: 1px solid #eec9c5;
     border-radius: 8px;
-    background: #fef2f2;
-    color: #991b1b;
+    background: #fdf3f2;
+    color: #aa1910;
   }
 
   .viz-modal {

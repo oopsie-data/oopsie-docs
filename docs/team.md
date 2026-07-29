@@ -1,8 +1,9 @@
 ---
-title: Team
+title: Organizing Team
 layout: default
 nav_order: 9
 permalink: /team/
+parent: Organizers & Contributors
 ---
 
 # Team overview
