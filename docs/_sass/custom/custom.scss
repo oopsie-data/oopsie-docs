@@ -1,17 +1,26 @@
 // Site-wide announcement banner (see _includes/announcement.html)
-// Sticky, full-width, above the whole layout. Because it's sticky (not fixed)
-// it reserves its own height in normal flow, so the sidebar and content are
-// pushed down automatically on every breakpoint — no JS/height math needed.
+// Fixed, full-width, above the whole layout, so it stays put during overscroll
+// bounce. Being out of flow it reserves no space, so `body` is padded by the
+// banner height below.
 :root {
-  // Only used to offset the fixed desktop sidebar (see below). On desktop the
-  // banner is a single line, so this constant matches its height; the include's
-  // script refines it for the rare case the banner wraps on a narrow desktop.
+  // Offsets everything that sits below the banner: the body padding, the fixed
+  // desktop sidebar, and the sticky headers. On desktop the banner is a single
+  // line, so this constant matches its height; the include's script refines it
+  // for the rare case the banner wraps on a narrow viewport.
   --announcement-h: 4.5rem;
+
+  scroll-padding-top: var(--announcement-h);
+}
+
+body:has(> .announcement-banner) {
+  padding-top: var(--announcement-h);
 }
 
 .announcement-banner {
-  position: sticky;
+  position: fixed;
   top: 0;
+  right: 0;
+  left: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -76,10 +85,9 @@
   }
 }
 
-// On desktop the sidebar is position: fixed, so it's taken out of flow and the
-// sticky banner can't push it — offset it down explicitly and trim its height.
-// (On mobile the sidebar is in normal flow, so the sticky banner pushes it for
-// free and no offset is needed.)
+// On desktop the sidebar is position: fixed, so the body padding doesn't move
+// it — offset it down explicitly and trim its height. (On mobile the sidebar is
+// in normal flow, so the body padding pushes it for free.)
 .side-bar {
   @include mq(md) {
     top: var(--announcement-h);
