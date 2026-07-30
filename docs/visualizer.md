@@ -583,7 +583,8 @@ permalink: /visualizer/
     : localMetadataUrl;
   const isPublicVisualizer = useRemoteAssets;
   const maxVisibleVideos = 40;
-  const maxPlayingPreviews = 8;
+  const maxPlayingPreviews = 20;
+  const maxCachedVideoBlobs = Math.max(maxPlayingPreviews, 16);
   const allFilterDefs = [
     { key: "scene", title: "Datasets", idField: "scene_id", labelField: "scene_label" },
     { key: "camera", title: "Cameras", idField: "camera_id", labelField: "camera_label" },
@@ -623,10 +624,12 @@ permalink: /visualizer/
   let excludedRepos = new Set();
   let isModalOpen = false;
   let modalRequestId = 0;
+  let modalVideoLoad = null;
   let pageScrollY = 0;
   const selected = {};
   const checkboxRefs = {};
   const previewCandidates = new Set();
+  const previewLoads = new WeakMap();
   const videoObjectUrls = new Map();
   const pendingVideoObjectUrls = new Map();
 
@@ -643,57 +646,121 @@ permalink: /visualizer/
     syncPreviewPlayback();
   }, { rootMargin: "120px", threshold: 0.1 });
 
-  /* Safari can reject byte-range playback across Hugging Face's signed Xet redirect.
-     These previews are small, so fetch each one once and play it from a local Blob URL. */
-  async function playableVideoUrl(sourceUrl) {
+  function cachedVideoUrl(sourceUrl) {
     if (videoObjectUrls.has(sourceUrl)) {
-      return videoObjectUrls.get(sourceUrl);
+      const objectUrl = videoObjectUrls.get(sourceUrl);
+      /* Refresh insertion order so the Map also serves as an LRU cache. */
+      videoObjectUrls.delete(sourceUrl);
+      videoObjectUrls.set(sourceUrl, objectUrl);
+      return objectUrl;
     }
+    return null;
+  }
 
-    if (!pendingVideoObjectUrls.has(sourceUrl)) {
-      const request = fetch(sourceUrl, {
+  function cacheVideoUrl(sourceUrl, objectUrl) {
+    const existingUrl = videoObjectUrls.get(sourceUrl);
+    if (existingUrl && existingUrl !== objectUrl) {
+      URL.revokeObjectURL(existingUrl);
+    }
+    videoObjectUrls.delete(sourceUrl);
+    videoObjectUrls.set(sourceUrl, objectUrl);
+
+    while (videoObjectUrls.size > maxCachedVideoBlobs) {
+      const oldestSourceUrl = videoObjectUrls.keys().next().value;
+      const oldestObjectUrl = videoObjectUrls.get(oldestSourceUrl);
+      videoObjectUrls.delete(oldestSourceUrl);
+      URL.revokeObjectURL(oldestObjectUrl);
+    }
+  }
+
+  function releaseVideoRequest(sourceUrl, consumer) {
+    const pending = pendingVideoObjectUrls.get(sourceUrl);
+    if (!pending) return;
+
+    pending.consumers.delete(consumer);
+    if (pending.consumers.size === 0) {
+      pendingVideoObjectUrls.delete(sourceUrl);
+      pending.controller.abort();
+    }
+  }
+
+  /* Safari can reject byte-range playback across Hugging Face's signed Xet redirect.
+     Fetch each selected video once, but keep only a bounded LRU of local Blob URLs. */
+  async function playableVideoUrl(sourceUrl, consumer) {
+    const cachedUrl = cachedVideoUrl(sourceUrl);
+    if (cachedUrl) return cachedUrl;
+
+    let pending = pendingVideoObjectUrls.get(sourceUrl);
+    if (!pending) {
+      const controller = new AbortController();
+      pending = {
+        controller,
+        consumers: new Set(),
+        request: null,
+      };
+      pending.request = fetch(sourceUrl, {
         mode: "cors",
         credentials: "omit",
         cache: "force-cache",
+        signal: controller.signal,
       })
         .then((response) => {
           if (!response.ok) throw new Error(`Video request failed with HTTP ${response.status}`);
           return Promise.all([response.arrayBuffer(), response.headers.get("content-type")]);
         })
         .then(([bytes, contentType]) => {
+          if (pending.consumers.size === 0) {
+            throw new DOMException("Video request is no longer needed", "AbortError");
+          }
           const mimeType = contentType && contentType.startsWith("video/")
             ? contentType.split(";", 1)[0]
             : "video/mp4";
           const objectUrl = URL.createObjectURL(new Blob([bytes], { type: mimeType }));
-          videoObjectUrls.set(sourceUrl, objectUrl);
+          cacheVideoUrl(sourceUrl, objectUrl);
           return objectUrl;
         })
         .finally(() => {
-          pendingVideoObjectUrls.delete(sourceUrl);
+          if (pendingVideoObjectUrls.get(sourceUrl) === pending) {
+            pendingVideoObjectUrls.delete(sourceUrl);
+          }
         });
-      pendingVideoObjectUrls.set(sourceUrl, request);
+      pendingVideoObjectUrls.set(sourceUrl, pending);
     }
 
-    return pendingVideoObjectUrls.get(sourceUrl);
+    pending.consumers.add(consumer);
+    return pending.request;
   }
 
   async function playPreview(media) {
     if (isModalOpen) return;
 
     if (!media.hasAttribute("src")) {
-      if (media.dataset.loading === "true") return;
-      media.dataset.loading = "true";
+      if (previewLoads.has(media)) return;
+      const load = {
+        sourceUrl: media.dataset.src,
+        consumer: {},
+      };
+      previewLoads.set(media, load);
 
       try {
-        const objectUrl = await playableVideoUrl(media.dataset.src);
-        if (isModalOpen || !media.isConnected || !previewCandidates.has(media)) return;
+        const objectUrl = await playableVideoUrl(load.sourceUrl, load.consumer);
+        if (
+          previewLoads.get(media) !== load ||
+          isModalOpen ||
+          !media.isConnected ||
+          !previewCandidates.has(media)
+        ) return;
         media.src = objectUrl;
         media.load();
       } catch (error) {
-        console.error("Preview video could not be loaded:", error);
+        if (error.name !== "AbortError") {
+          console.error("Preview video could not be loaded:", error);
+        }
         return;
       } finally {
-        delete media.dataset.loading;
+        if (previewLoads.get(media) === load) {
+          previewLoads.delete(media);
+        }
       }
     }
 
@@ -708,6 +775,11 @@ permalink: /visualizer/
   }
 
   function unloadPreview(media) {
+    const load = previewLoads.get(media);
+    if (load) {
+      previewLoads.delete(media);
+      releaseVideoRequest(load.sourceUrl, load.consumer);
+    }
     media.pause();
     if (media.hasAttribute("src")) {
       media.removeAttribute("src");
@@ -1027,6 +1099,7 @@ permalink: /visualizer/
 
   async function showDetails(video) {
     const requestId = ++modalRequestId;
+    cancelModalVideoLoad();
     isModalOpen = true;
     pageScrollY = window.scrollY;
     document.body.style.top = `-${pageScrollY}px`;
@@ -1060,8 +1133,14 @@ permalink: /visualizer/
     modalEl.setAttribute("aria-hidden", "false");
     modalCloseButton.focus();
 
+    const load = {
+      sourceUrl: assetUrl(video.src),
+      consumer: {},
+    };
+    modalVideoLoad = load;
+
     try {
-      const objectUrl = await playableVideoUrl(assetUrl(video.src));
+      const objectUrl = await playableVideoUrl(load.sourceUrl, load.consumer);
       if (!isModalOpen || requestId !== modalRequestId) return;
 
       modalVideo.src = objectUrl;
@@ -1070,6 +1149,7 @@ permalink: /visualizer/
       if (playback) await playback;
     } catch (error) {
       if (!isModalOpen || requestId !== modalRequestId) return;
+      if (error.name === "AbortError") return;
       if (error.name === "NotAllowedError") {
         console.debug("Modal autoplay was blocked; native controls remain available:", error);
         return;
@@ -1081,11 +1161,22 @@ permalink: /visualizer/
       playbackError.textContent =
         "This video could not be loaded. Reload the page and try again.";
       modalDetails.prepend(playbackError);
+    } finally {
+      if (modalVideoLoad === load) {
+        modalVideoLoad = null;
+      }
     }
+  }
+
+  function cancelModalVideoLoad() {
+    if (!modalVideoLoad) return;
+    releaseVideoRequest(modalVideoLoad.sourceUrl, modalVideoLoad.consumer);
+    modalVideoLoad = null;
   }
 
   function closeDetails() {
     modalRequestId += 1;
+    cancelModalVideoLoad();
     isModalOpen = false;
     modalEl.classList.remove("is-visible");
     modalEl.setAttribute("aria-hidden", "true");
@@ -1100,7 +1191,7 @@ permalink: /visualizer/
 
   function render() {
     observer.disconnect();
-    previewCandidates.forEach(unloadPreview);
+    gridEl.querySelectorAll("video").forEach(unloadPreview);
     previewCandidates.clear();
     gridEl.textContent = "";
 
@@ -1188,6 +1279,9 @@ permalink: /visualizer/
   });
 
   window.addEventListener("pagehide", () => {
+    cancelModalVideoLoad();
+    pendingVideoObjectUrls.forEach((pending) => pending.controller.abort());
+    pendingVideoObjectUrls.clear();
     videoObjectUrls.forEach((objectUrl) => URL.revokeObjectURL(objectUrl));
     videoObjectUrls.clear();
   });
