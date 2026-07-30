@@ -42,6 +42,7 @@ parent: Organizers & Contributors
 | Rosario Scalise | University of Washington |
 | Yuzhi Fan | University of Washington |
 | Skand Peri | University of Texas at Austin |
+| Jiafei Duan | National University of Singapore |
 
 ## Industry
 
