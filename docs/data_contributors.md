@@ -189,6 +189,7 @@ parent: Organizers & Contributors
       <h4>PIs</h4>
       <ul>
         <li>Igor Gilitschenski</li>
+        <li>Florian Shkurti</li>
       </ul>
     </div>
   </div>
