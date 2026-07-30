@@ -19,17 +19,6 @@ Currently, we focus on **single-arm and bi-arm manipulator robots**. To ensure t
 However, if you have other systems that you believe will be useful for the community, please also submit your data!
 Failure data on non-standard systems is still very useful for many research directions.
 
----
-
-## Who can contribute?
-
-**Anyone who rolls out a policy on a real robot.** If the robot is moving under a policy, you are already generating the data we need:
-
-- **Policy evaluation.** Every eval run produces exactly the mix of successes and failures we are after.
-- **RL experiments.** Online training rollouts are full of the suboptimal behavior that is missing from every other dataset.
-- **Play data collection.** Unscripted interaction, including the parts that go wrong.
-
-You do not necessarily have to run anything extra; you just have to keep what you would otherwise throw away.
 
 ---
 
@@ -39,7 +28,7 @@ Open data and cross-lab collaboration are how academics take on ambitious roboti
 
 - **A say in the dataset.** Take part in shaping the dataset and adapting the tooling, the data format, and the utilities we build around it for your use-case.
 - **Early access.** Contributors get pre-release versions of the dataset for their research. Having your own robot in the dataset also means future work built on it comes with lab-specific fine-tuning data for free.
-- **Co-authorship.** Everyone who collects a substantial amount of data and gives us feedback is invited as a co-author on the public release.
+- **Co-authorship.** Everyone who collects a substantial amount of data and gives us feedback can qualify as a co-author on the public dataset release.
 
 
 ---
@@ -62,3 +51,15 @@ A contribution can qualify for authorship if it meets all of the following:
 ### Requirements for acknowledgement
 
 A contribution will be acknowledged if it has 200+ qualifying episodes of logged rollout data.
+
+---
+
+## Who can contribute?
+
+**Anyone who rolls out a policy on a real robot.** If the robot is moving under a policy, you are already generating the data we need:
+
+- **Policy evaluation.** Every eval run produces exactly the mix of successes and failures we are after.
+- **RL experiments.** Online training rollouts are full of the suboptimal behavior that is missing from every other dataset.
+- **Play data collection.** Unscripted interaction, including the parts that go wrong.
+
+You do not necessarily have to run anything extra; you just have to keep what you would otherwise throw away.
