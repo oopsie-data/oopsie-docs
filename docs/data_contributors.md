@@ -113,6 +113,7 @@ parent: Organizers & Contributors
       <ul>
         <li>Shuran Song</li>
         <li>Chelsea Finn</li>
+        <li>Dorsa Sadigh</li>
       </ul>
     </div>
   </div>
