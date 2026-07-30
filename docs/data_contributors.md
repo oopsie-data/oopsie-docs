@@ -19,7 +19,6 @@ parent: Organizers & Contributors
 | Yilin Wu | Carnegie Mellon University |
 | Junwon Seo | Carnegie Mellon University |
 | Albert Zhan | Université de Montréal |
-| Jesse Silverberg | Université de Montréal |
 | Tenny Yin | Princeton University |
 | Mingtong Zhang | Princeton University |
 | Arya Paliwal | Princeton University |

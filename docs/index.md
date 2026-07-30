@@ -27,7 +27,7 @@ Today's robotics datasets contain only successes. But a policy that has only see
 
 We want to stop throwing them away. Real failures and suboptimal behavior are the missing ingredient for reinforcement learning, reward modeling, failure prediction, and world modeling, and no amount of synthetic noise injection substitutes for them. Getting there takes data spanning many robots, tasks, and setups, which is more than any single lab can collect.
 
-**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide a [quickstart]({% link quickstart.md %}) to get going as soon as you sign up, and contributing labs get early access to the dataset and co-authorship on the public release.
+**So here is our ask: next time you rollout a policy on the real robot (e.g. policy evaluation, play data collection, online RL training, etc.), keep the rollouts and send them to us, failures and successes alike.** We provide a [quickstart]({% link quickstart.md %}) to get going as soon as you sign up, and contributing labs get early access to the dataset and can qualify for co-authorship on the public release.
 
 ---
 
