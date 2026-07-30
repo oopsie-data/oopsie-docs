@@ -57,19 +57,20 @@ help with integration and setup. You can install the skill by running:
 ```bash
 oopsie-data install-skill --agent claude         # installs under .claude/skills/ for Claude Code
 oopsie-data install-skill --agent [cursor|codex] # installs under .agents/skills/ for Cursor and Codex
+oopsie-data install-skill --agent agents         # installs under .agents/skills/ for any agent following the shared convention
 oopsie-data install-skill --agent none           # installs under ./skills/ for copying onward yourself
 
 ```
 
 This installs the same skill for the specified agent in the current project. To make the skill available to all agents in every project, install it under your home directory:
 ```bash
-oopsie-data install-skill --agent [claude|cursor|codex] --user    # installs into your home directory for all agents
+oopsie-data install-skill --agent [claude|cursor|codex|agents] --user    # installs into your home directory for all agents
 ```
 
 To update the skill to the latest version, run:
 ```bash
 oopsie-data install-skill --check  # check whether installed skills are stale
-oopsie-data install-skill --agent [claude|cursor|codex] --force  # replaces the project-level skill
+oopsie-data install-skill --agent [claude|cursor|codex|agents] --force  # replaces the project-level skill
 ```
 
 ### 2.2 Setting up the contributor config
