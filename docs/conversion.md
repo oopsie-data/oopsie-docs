@@ -86,6 +86,9 @@ write_video_paths(
 
 Camera keys must match `profile.camera_names` exactly.
 
+{: .note }
+> For MP4s, we recommend encoding with `libx264` with CRF 19 (lower CRF values mean higher quality) and `yuv420p`.
+
 ### `write_actions`
 
 Every canonical action key must exist as a dataset. The keys your profile declares in
