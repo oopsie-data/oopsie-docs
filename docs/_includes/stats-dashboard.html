@@ -260,6 +260,23 @@
   .stats-dataset-pie-cell {
     min-width: 0;
   }
+  .stats-dataset-robot-band {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+  .stats-dataset-pies-band {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.25rem 2rem;
+    align-items: start;
+    margin-top: 0.15rem;
+    padding-top: 1.35rem;
+    border-top: 1px solid var(--stats-border);
+  }
+  @media (max-width: 900px) {
+    .stats-dataset-pies-band { grid-template-columns: 1fr; }
+  }
   .stats-dataset-actions-band {
     grid-column: 1 / -1;
     margin-top: 0.15rem;
@@ -764,18 +781,25 @@
           <div class="stats-fold-body-inner">
             <h3>Composition</h3>
             <div class="stats-dataset-grid">
-              <div class="stats-lab-pie-col stats-dataset-pie-cell">
+              <div class="stats-lab-bar-col stats-dataset-robot-band">
                 <h4>Robot type</h4>
-                <canvas id="chart-robot" height="260"></canvas>
+                <p class="stats-bar-total" id="stats-bar-robot-total">&nbsp;</p>
+                <div class="stats-lab-bar-wrap">
+                  <canvas id="chart-robot"></canvas>
+                </div>
               </div>
-              <div class="stats-lab-pie-col stats-dataset-pie-cell">
-                <h4>Policy type</h4>
-                <canvas id="chart-policy" height="260"></canvas>
-              </div>
-              <div class="stats-dataset-actions-band">
-                <div class="stats-lab-pie-col stats-dataset-actions-inner">
-                  <h4>Action space</h4>
-                  <canvas id="chart-actions" height="260"></canvas>
+              <div class="stats-dataset-pies-band">
+                <div class="stats-lab-pie-col stats-dataset-pie-cell">
+                  <h4>Policy type</h4>
+                  <canvas id="chart-policy" height="260"></canvas>
+                </div>
+                <div class="stats-lab-pie-col stats-dataset-pie-cell">
+                  <h4>Arm action space</h4>
+                  <canvas id="chart-actions-arm" height="260"></canvas>
+                </div>
+                <div class="stats-lab-pie-col stats-dataset-pie-cell">
+                  <h4>Gripper action space</h4>
+                  <canvas id="chart-actions-gripper" height="260"></canvas>
                 </div>
               </div>
             </div>
@@ -890,8 +914,14 @@
    * the raw id (case-insensitive) wins. Add rows here as new hardware shows up.
    */
   var ROBOT_GROUP_RULES = [
-    { label: 'Franka Panda', keys: ['franka', 'panda'] },
+    { label: 'Franka', keys: ['franka', 'panda'] },
     { label: 'UR5', keys: ['ur5', 'ur_5'] },
+    { label: 'WidowX', keys: ['widow'] },
+    { label: 'ARX X5', keys: ['arx'] },
+    { label: 'Yam', keys: ['yam']},
+    { label: 'OpenArm 2.0', keys: ['openarm']},
+    { label: 'SO-100', keys: ['so100']},
+    { label: 'SO-101', keys: ['so-101']},
   ];
 
   /*
@@ -1598,7 +1628,19 @@
     const robotLabels = Object.keys(groupedRobots).sort(function (a, b) {
       return (groupedRobots[b] || 0) - (groupedRobots[a] || 0);
     });
-    pie('chart-robot', robotLabels, robotLabels.map(function (r) { return groupedRobots[r] || 0; }));
+    const robotValues = robotLabels.map(function (r) { return groupedRobots[r] || 0; });
+    labBarChart(
+      'chart-robot',
+      robotLabels,
+      robotValues,
+      labColorsForOrder(robotLabels),
+      function (v) { return fmt(v) + ' episodes'; }
+    );
+    var robotTotalEl = document.getElementById('stats-bar-robot-total');
+    if (robotTotalEl) {
+      var robotTotal = robotValues.reduce(function (a, v) { return a + v; }, 0);
+      robotTotalEl.textContent = fmt(robotTotal) + ' episodes total';
+    }
 
     const perPolicy = data.per_policy || {};
     const policyLabels = Object.keys(perPolicy).sort(function (a, b) {
@@ -1606,14 +1648,44 @@
     });
     pie('chart-policy', policyLabels, policyLabels.map(function (p) { return perPolicy[p].episodes || 0; }));
 
-    const canonical = ['joint_position', 'joint_velocity', 'cartesian_position', 'cartesian_velocity'];
+    const armCanonical = [
+      'joint_position',
+      'joint_velocity',
+      'cartesian_position',
+      'cartesian_velocity'
+    ];
+    const gripperCanonical = [
+      'gripper_position',
+      'gripper_binary',
+      'gripper_velocity'
+    ];
     const actionsRaw = data.action_spaces || {};
-    const actionLabels = canonical.slice();
-    const actionValues = canonical.map(function (k) { return actionsRaw[k] || 0; });
-    var other = 0;
-    Object.keys(actionsRaw).forEach(function (k) { if (canonical.indexOf(k) === -1) other += actionsRaw[k]; });
-    if (other > 0) { actionLabels.push('other'); actionValues.push(other); }
-    pie('chart-actions', actionLabels, actionValues);
+
+    const armLabels = armCanonical.filter(function (k) { return (actionsRaw[k] || 0) > 0; });
+    const armValues = armLabels.map(function (k) { return actionsRaw[k] || 0; });
+    if (armLabels.length) {
+      pie('chart-actions-arm', armLabels, armValues);
+    } else {
+      destroy('chart-actions-arm');
+    }
+
+    const gripperLabels = gripperCanonical.filter(function (k) { return (actionsRaw[k] || 0) > 0; });
+    const gripperValues = gripperLabels.map(function (k) { return actionsRaw[k] || 0; });
+    var gripperOther = 0;
+    Object.keys(actionsRaw).forEach(function (k) {
+      if (armCanonical.indexOf(k) !== -1) return;
+      if (gripperCanonical.indexOf(k) !== -1) return;
+      if (String(k).indexOf('gripper') === 0) gripperOther += actionsRaw[k] || 0;
+    });
+    if (gripperOther > 0) {
+      gripperLabels.push('other');
+      gripperValues.push(gripperOther);
+    }
+    if (gripperLabels.length) {
+      pie('chart-actions-gripper', gripperLabels, gripperValues);
+    } else {
+      destroy('chart-actions-gripper');
+    }
   }
 
   function renderLabFailureDescStackBars(perLab, mode) {

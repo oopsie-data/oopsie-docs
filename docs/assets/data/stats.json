@@ -1,25 +1,64 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "generated_at": {
-    "utc": "2026-07-15T05:44:29Z",
-    "cdt": "2026-07-15T00:44:29-05:00"
+    "utc": "2026-09-04T15:24:49Z",
+    "cdt": "2026-09-04T10:24:49-05:00"
   },
-  "dataset_repo": "local:/corral/utexas/IRI26024/oopsiedata",
+  "dataset_repo": "local:/media/arpit/ext_drive1/oopsiedata",
   "totals": {
-    "episodes": 4351,
-    "labs": 16,
-    "datasets": 14,
-    "robots": 15,
-    "policies": 81,
-    "tasks": 599,
-    "duration_hours": 27.655,
-    "annotated_episodes": 3017,
-    "successes": 1515,
-    "failures": 1502,
-    "failure_descriptions": 1506,
+    "episodes": 56677,
+    "labs": 54,
+    "datasets": 25,
+    "robots": 21,
+    "policies": 188,
+    "tasks": 3502,
+    "duration_hours": 424.902,
+    "annotated_episodes": 56614,
+    "successes": 18724,
+    "failures": 37890,
+    "failure_descriptions": 1517,
     "read_errors": 0
   },
   "per_lab": {
+    "AI2_MOLMOACT2": {
+      "episodes": 75,
+      "successes": 11,
+      "failures": 64,
+      "annotated_episodes": 75,
+      "failure_descriptions": 0,
+      "duration_hours": 0.829,
+      "robots": [
+        "bi_yam_follower"
+      ],
+      "policies": [
+        "molmoact2_eval"
+      ],
+      "task_count": 3,
+      "first_submission": "2026-05-26T20:49:38Z",
+      "last_submission": "2026-06-19T23:54:17Z"
+    },
+    "Araya": {
+      "episodes": 4802,
+      "successes": 2741,
+      "failures": 2061,
+      "annotated_episodes": 4802,
+      "failure_descriptions": 0,
+      "duration_hours": 21.675,
+      "robots": [
+        "franka_panda"
+      ],
+      "policies": [
+        "dit",
+        "flower",
+        "lap",
+        "mibot",
+        "pi0.5",
+        "xvla"
+      ],
+      "task_count": 4,
+      "first_submission": "2026-08-03T11:22:23Z",
+      "last_submission": "2026-09-01T06:55:23Z"
+    },
     "Armnet": {
       "episodes": 60,
       "successes": 0,
@@ -38,30 +77,108 @@
       "first_submission": "2026-06-18T21:57:47Z",
       "last_submission": "2026-06-18T22:09:02Z"
     },
+    "BERKELEY": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Berkeley": {
+      "episodes": 942,
+      "successes": 139,
+      "failures": 803,
+      "annotated_episodes": 942,
+      "failure_descriptions": 0,
+      "duration_hours": 9.91,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 152,
+      "first_submission": null,
+      "last_submission": null
+    },
     "Berkeley_RAIL": {
-      "episodes": 1499,
-      "successes": 460,
-      "failures": 169,
-      "annotated_episodes": 629,
-      "failure_descriptions": 170,
-      "duration_hours": 5.55,
+      "episodes": 33076,
+      "successes": 10549,
+      "failures": 22527,
+      "annotated_episodes": 33076,
+      "failure_descriptions": 169,
+      "duration_hours": 194.147,
       "robots": [
         "widow_x",
         "widowx_250_s"
       ],
       "policies": [
+        "calql",
+        "calql-explore",
+        "crl",
         "diffusion_policy_custom",
+        "gcbc",
+        "gcbc_for_round_1_collected_by_round_0",
+        "gcbc_for_round_2_collected_by_round_1",
+        "gcbc_for_round_3_collected_by_round_2",
+        "iql",
+        "mix_of_policies",
+        "mixed_policies",
         "steerable_pi0.5_finetune_bridge"
       ],
-      "task_count": 11,
+      "task_count": 343,
       "first_submission": "2025-04-22T16:39:04Z",
       "last_submission": "2026-06-16T04:29:32Z"
+    },
+    "CIIRC, CTU in Prague": {
+      "episodes": 34,
+      "successes": 3,
+      "failures": 31,
+      "annotated_episodes": 34,
+      "failure_descriptions": 0,
+      "duration_hours": 0.378,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 17,
+      "first_submission": null,
+      "last_submission": null
     },
     "CMU_Intent": {
       "episodes": 240,
       "successes": 72,
-      "failures": 155,
-      "annotated_episodes": 227,
+      "failures": 168,
+      "annotated_episodes": 240,
       "failure_descriptions": 155,
       "duration_hours": 1.297,
       "robots": [
@@ -78,6 +195,43 @@
       "task_count": 10,
       "first_submission": "2026-03-15T21:22:20Z",
       "last_submission": "2026-06-21T09:31:24Z"
+    },
+    "CoRL 2025 Seoul": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.006,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_vq_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "ETH_RK": {
+      "episodes": 1447,
+      "successes": 570,
+      "failures": 877,
+      "annotated_episodes": 1447,
+      "failure_descriptions": 0,
+      "duration_hours": 12.181,
+      "robots": [
+        "franka_panda"
+      ],
+      "policies": [
+        "egocentric",
+        "srl_il",
+        "teleop"
+      ],
+      "task_count": 8,
+      "first_submission": null,
+      "last_submission": null
     },
     "Enactic_OpenArm": {
       "episodes": 373,
@@ -97,6 +251,120 @@
       "first_submission": "2026-03-16T20:32:04Z",
       "last_submission": "2026-07-09T11:00:08Z"
     },
+    "Harvard_EML": {
+      "episodes": 814,
+      "successes": 454,
+      "failures": 360,
+      "annotated_episodes": 814,
+      "failure_descriptions": 0,
+      "duration_hours": 5.183,
+      "robots": [
+        "ARX X5 dual-arm manipulator mounted on a mobile base",
+        "ARX X5 dual-arm tabletop manipulator",
+        "ARX X5 single-arm mobile manipulator",
+        "ARX X5 single-arm tabletop manipulator"
+      ],
+      "policies": [
+        "clean_table/act_2x/episodes@20Hz@single-arm",
+        "clean_table/act_4x/episodes@40Hz@single-arm",
+        "clean_table/act_dino/episodes@10Hz@single-arm",
+        "clean_table/act_dino_bspline1x/episodes@100Hz@single-arm",
+        "clean_table/act_dino_bspline4x/episodes@100Hz@single-arm",
+        "clean_table/bspline_1x/episodes@100Hz@single-arm",
+        "clean_table/bspline_2x/episodes@100Hz@single-arm",
+        "clean_table/bspline_4x/episodes@100Hz@single-arm",
+        "clean_table/dp/episodes@10Hz@single-arm",
+        "clean_table/dp_2x/episodes@20Hz@single-arm",
+        "clean_table/dp_4x/episodes@40Hz@single-arm",
+        "clean_table/dp_bspline1x_ff/episodes@100Hz@single-arm",
+        "clean_table/dp_bspline2x_ff/episodes@100Hz@single-arm",
+        "clean_table/dp_bspline4x_ff/episodes@100Hz@single-arm",
+        "clean_table/dp_demospeedup_1_2x/episodes@10Hz@single-arm",
+        "clean_table/dp_demospeedup_1_3x/episodes@10Hz@single-arm",
+        "clean_table/dp_demospeedup_1_4x/episodes@10Hz@single-arm",
+        "clean_table/dp_interpolator/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator2x/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator2x_no_time_align_ff/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator4x/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator4x_2/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator4x_no_time_align/episodes@100Hz@single-arm",
+        "clean_table/dp_interpolator4x_no_time_align_ff/episodes@100Hz@single-arm",
+        "clean_table/dpfinal/episodes@10Hz@single-arm",
+        "mobile_pick_cloth@10Hz@mobile",
+        "mobile_pick_rigid_to_sink/dp/mobile-pick-rigid-to-sink-infer@10Hz@mobile",
+        "pack_cup/dp/stack_joint_infer@10Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_2x@20Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_3x@30Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_demospeedup@10Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_demospeedup_1_2@10Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_demospeedup_1_4@10Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_demospeedup_2_2@10Hz@single-arm",
+        "pack_cup/dp/stack_joint_infer_demospeedup_2_3@10Hz@single-arm",
+        "pick_cube/act/episodes@10Hz@single-arm",
+        "pick_cube/act_2x/episodes@20Hz@single-arm",
+        "pick_cube/act_2x/episodes@30Hz@biarm",
+        "pick_cube/act_4x/episodes@40Hz@single-arm",
+        "pick_cube/act_bspline1x/episodes@100Hz@single-arm",
+        "pick_cube/act_dino/episodes@10Hz@single-arm",
+        "pick_cube/act_dino_bspline1x/episodes@100Hz@single-arm",
+        "pick_cube/act_dino_bspline2x/episodes@100Hz@single-arm",
+        "pick_cube/act_dino_bspline4x/episodes@100Hz@single-arm",
+        "pick_cube/bspline_1x/episodes@100Hz@single-arm",
+        "pick_cube/bspline_2x/episodes@100Hz@single-arm",
+        "pick_cube/dp/episodes@10Hz@single-arm",
+        "pick_cube/dp_2x/episodes@20Hz@single-arm",
+        "pick_cube/dp_demospeedup_1_2x/episodes@10Hz@single-arm",
+        "pick_cube/dp_demospeedup_1_3x/episodes@10Hz@single-arm",
+        "pick_cube/dp_demospeedup_1_4x/episodes@10Hz@single-arm",
+        "speeding-stack-pack-cups/dp/episodes@10Hz@biarm",
+        "speeding-stack-pack-cups/dp_bspline_1x/episodes@100Hz@biarm",
+        "speeding-stack-pack-cups/dp_bspline_2x/episodes@100Hz@biarm",
+        "spreading fabric/logs/spread_frabic_1x/episodes@100Hz@biarm",
+        "stack_and_pack_cups_mobile_base/logs/stackup_bspline1x/episodes@10Hz@biarm",
+        "stack_and_pack_cups_mobile_base/logs/stackup_bspline2x_ff/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/act-2/episodes@10Hz@biarm",
+        "stack_unstack_bspline_1_2/act-bspline-1x/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/act-bspline-2x/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/act-bspline-3x/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/act_2x-2/episodes@20Hz@biarm",
+        "stack_unstack_bspline_1_2/act_4x-2/episodes@40Hz@biarm",
+        "stack_unstack_bspline_1_2/dp-2/episodes@10Hz@biarm",
+        "stack_unstack_bspline_1_2/dp-bspline-1x-2/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/dp-bspline-2x-2/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/dp-bspline-3x-2/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/dp-bspline-4x-2/episodes@100Hz@biarm",
+        "stack_unstack_bspline_1_2/dp_2x/episodes@20Hz@biarm",
+        "stack_unstack_bspline_1_2/dp_4x-2/episodes@40Hz@biarm"
+      ],
+      "task_count": 7,
+      "first_submission": "1970-01-01T00:26:22Z",
+      "last_submission": "1970-01-27T00:48:01Z"
+    },
+    "KAIST": {
+      "episodes": 64,
+      "successes": 5,
+      "failures": 59,
+      "annotated_episodes": 64,
+      "failure_descriptions": 0,
+      "duration_hours": 0.643,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 32,
+      "first_submission": null,
+      "last_submission": null
+    },
     "MILA": {
       "episodes": 62,
       "successes": 20,
@@ -114,11 +382,28 @@
       "first_submission": null,
       "last_submission": null
     },
+    "PSU_FMC": {
+      "episodes": 200,
+      "successes": 82,
+      "failures": 118,
+      "annotated_episodes": 200,
+      "failure_descriptions": 0,
+      "duration_hours": 2.441,
+      "robots": [
+        "so100_follower"
+      ],
+      "policies": [
+        "act"
+      ],
+      "task_count": 1,
+      "first_submission": "2026-08-21T12:44:01Z",
+      "last_submission": "2026-08-24T14:00:47Z"
+    },
     "Princeton_IRoM": {
       "episodes": 470,
       "successes": 244,
-      "failures": 0,
-      "annotated_episodes": 244,
+      "failures": 226,
+      "annotated_episodes": 470,
       "failure_descriptions": 0,
       "duration_hours": 2.774,
       "robots": [
@@ -147,6 +432,26 @@
       "task_count": 77,
       "first_submission": "2026-06-12T21:13:02Z",
       "last_submission": "2026-06-19T16:08:31Z"
+    },
+    "Princeton_PRPL": {
+      "episodes": 2890,
+      "successes": 1554,
+      "failures": 1336,
+      "annotated_episodes": 2890,
+      "failure_descriptions": 0,
+      "duration_hours": 54.58,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "human_teleop",
+        "pi0.5",
+        "tiptop",
+        "tiptop_and_teleop"
+      ],
+      "task_count": 53,
+      "first_submission": "2026-08-04T15:46:41Z",
+      "last_submission": "2026-08-30T20:12:16Z"
     },
     "Princeton_VLL": {
       "episodes": 54,
@@ -218,6 +523,30 @@
       "first_submission": "2026-06-17T03:58:46Z",
       "last_submission": "2026-06-17T03:58:57Z"
     },
+    "Stanford": {
+      "episodes": 592,
+      "successes": 105,
+      "failures": 487,
+      "annotated_episodes": 592,
+      "failure_descriptions": 0,
+      "duration_hours": 4.956,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 111,
+      "first_submission": null,
+      "last_submission": null
+    },
     "Stanford_Iris": {
       "episodes": 120,
       "successes": 106,
@@ -232,6 +561,23 @@
         "expo_pi_pi0.5"
       ],
       "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Stanford_MSL": {
+      "episodes": 450,
+      "successes": 342,
+      "failures": 108,
+      "annotated_episodes": 450,
+      "failure_descriptions": 0,
+      "duration_hours": 12.262,
+      "robots": [
+        "yam"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 2,
       "first_submission": null,
       "last_submission": null
     },
@@ -254,6 +600,46 @@
       "first_submission": "2026-06-16T23:05:59Z",
       "last_submission": "2026-06-19T18:16:25Z"
     },
+    "Toloka": {
+      "episodes": 35,
+      "successes": 16,
+      "failures": 19,
+      "annotated_episodes": 35,
+      "failure_descriptions": 0,
+      "duration_hours": 0.133,
+      "robots": [
+        "trossen_ai_follower_bimanual"
+      ],
+      "policies": [
+        "human"
+      ],
+      "task_count": 21,
+      "first_submission": "2026-08-21T15:47:55Z",
+      "last_submission": "2026-08-25T16:20:27Z"
+    },
+    "UPenn": {
+      "episodes": 637,
+      "successes": 55,
+      "failures": 582,
+      "annotated_episodes": 637,
+      "failure_descriptions": 0,
+      "duration_hours": 4.71,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 90,
+      "first_submission": null,
+      "last_submission": null
+    },
     "UPenn_PAL": {
       "episodes": 106,
       "successes": 20,
@@ -271,13 +657,72 @@
       "first_submission": "2026-05-17T19:32:25Z",
       "last_submission": "2026-06-10T23:03:26Z"
     },
+    "USP_MB": {
+      "episodes": 404,
+      "successes": 262,
+      "failures": 142,
+      "annotated_episodes": 404,
+      "failure_descriptions": 0,
+      "duration_hours": 3.971,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "teleoperation"
+      ],
+      "task_count": 37,
+      "first_submission": "2026-08-27T17:24:32Z",
+      "last_submission": "2026-09-03T20:14:51Z"
+    },
+    "UT Austin": {
+      "episodes": 1280,
+      "successes": 70,
+      "failures": 1210,
+      "annotated_episodes": 1280,
+      "failure_descriptions": 0,
+      "duration_hours": 11.235,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 347,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "UT_RobIn": {
+      "episodes": 2,
+      "successes": 1,
+      "failures": 1,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.001,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi0.5"
+      ],
+      "task_count": 2,
+      "first_submission": "2026-07-30T01:33:01Z",
+      "last_submission": "2026-07-30T01:36:32Z"
+    },
     "UW_REAL": {
-      "episodes": 562,
-      "successes": 105,
-      "failures": 457,
-      "annotated_episodes": 562,
-      "failure_descriptions": 460,
-      "duration_hours": 2.285,
+      "episodes": 582,
+      "successes": 110,
+      "failures": 472,
+      "annotated_episodes": 582,
+      "failure_descriptions": 472,
+      "duration_hours": 2.347,
       "robots": [
         "bi_yam_follower",
         "franka_droid",
@@ -302,8 +747,8 @@
     "UdeM_REAL": {
       "episodes": 77,
       "successes": 33,
-      "failures": 37,
-      "annotated_episodes": 70,
+      "failures": 44,
+      "annotated_episodes": 77,
       "failure_descriptions": 37,
       "duration_hours": 0.699,
       "robots": [
@@ -315,6 +760,98 @@
         "teleop"
       ],
       "task_count": 24,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University Montreal": {
+      "episodes": 707,
+      "successes": 112,
+      "failures": 595,
+      "annotated_episodes": 707,
+      "failure_descriptions": 0,
+      "duration_hours": 6.504,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 92,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University of Washginton": {
+      "episodes": 7,
+      "successes": 0,
+      "failures": 7,
+      "annotated_episodes": 7,
+      "failure_descriptions": 0,
+      "duration_hours": 0.078,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "University of Washington": {
+      "episodes": 147,
+      "successes": 4,
+      "failures": 143,
+      "annotated_episodes": 147,
+      "failure_descriptions": 0,
+      "duration_hours": 1.594,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 21,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "Unversity of Washington": {
+      "episodes": 7,
+      "successes": 2,
+      "failures": 5,
+      "annotated_episodes": 7,
+      "failure_descriptions": 0,
+      "duration_hours": 0.073,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
       "first_submission": null,
       "last_submission": null
     },
@@ -339,8 +876,8 @@
     "UofT_TISL": {
       "episodes": 275,
       "successes": 121,
-      "failures": 0,
-      "annotated_episodes": 121,
+      "failures": 154,
+      "annotated_episodes": 275,
       "failure_descriptions": 0,
       "duration_hours": 1.321,
       "robots": [
@@ -354,25 +891,374 @@
       "first_submission": "2026-05-09T03:10:03Z",
       "last_submission": "2026-06-18T16:37:29Z"
     },
-    "example_institution": {
-      "episodes": 1,
-      "successes": 0,
-      "failures": 0,
-      "annotated_episodes": 0,
+    "VUA_KL": {
+      "episodes": 24,
+      "successes": 22,
+      "failures": 2,
+      "annotated_episodes": 24,
       "failure_descriptions": 0,
-      "duration_hours": 0.013,
+      "duration_hours": 0.129,
+      "robots": [
+        "franka_panda"
+      ],
+      "policies": [
+        "human_teleoperation"
+      ],
+      "task_count": 21,
+      "first_submission": "2026-08-24T12:00:51Z",
+      "last_submission": "2026-08-25T09:53:37Z"
+    },
+    "Yonsei": {
+      "episodes": 700,
+      "successes": 115,
+      "failures": 585,
+      "annotated_episodes": 700,
+      "failure_descriptions": 0,
+      "duration_hours": 5.687,
       "robots": [
         "franka_research_3"
       ],
       "policies": [
-        "pi0_fast_droid_jointpos"
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 92,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeeley": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi05_droid",
+        "pi0_fast_droid"
       ],
       "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkekey": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_vq_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkele": {
+      "episodes": 4,
+      "successes": 1,
+      "failures": 3,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.038,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_specialist_droid",
+        "pi05_droid",
+        "pi0_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkelehy": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleu": {
+      "episodes": 20,
+      "successes": 3,
+      "failures": 17,
+      "annotated_episodes": 20,
+      "failure_descriptions": 0,
+      "duration_hours": 0.218,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 10,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleuy": {
+      "episodes": 6,
+      "successes": 3,
+      "failures": 3,
+      "annotated_episodes": 6,
+      "failure_descriptions": 0,
+      "duration_hours": 0.067,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "pi05_droid",
+        "pi0_droid"
+      ],
+      "task_count": 3,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeley": {
+      "episodes": 660,
+      "successes": 81,
+      "failures": 579,
+      "annotated_episodes": 660,
+      "failure_descriptions": 0,
+      "duration_hours": 7.244,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 324,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleyu": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.019,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkeleyy": {
+      "episodes": 4,
+      "successes": 2,
+      "failures": 2,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.044,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_binning_droid",
+        "paligemma_fast_droid",
+        "pi05_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkely": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkley": {
+      "episodes": 4,
+      "successes": 1,
+      "failures": 3,
+      "annotated_episodes": 4,
+      "failure_descriptions": 0,
+      "duration_hours": 0.044,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 2,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "berkreley": {
+      "episodes": 2,
+      "successes": 2,
+      "failures": 0,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "pi05_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "betkeley": {
+      "episodes": 2,
+      "successes": 0,
+      "failures": 2,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.022,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "paligemma_fast_droid",
+        "pi0_droid"
+      ],
+      "task_count": 1,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "frodobots": {
+      "episodes": 3586,
+      "successes": 331,
+      "failures": 3255,
+      "annotated_episodes": 3586,
+      "failure_descriptions": 0,
+      "duration_hours": 39.844,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dam",
+        "floppy_bagel_195k_temp1p0",
+        "floppy_bagel_285k_temp1p0",
+        "floppy_bagel_420k",
+        "floppy_bagel_525k_temp1p0",
+        "floppy_bagel_90k_temp1p0",
+        "paligemma_binning_droid",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 1061,
+      "first_submission": null,
+      "last_submission": null
+    },
+    "nvidia": {
+      "episodes": 168,
+      "successes": 26,
+      "failures": 142,
+      "annotated_episodes": 168,
+      "failure_descriptions": 0,
+      "duration_hours": 1.765,
+      "robots": [
+        "franka_research_3"
+      ],
+      "policies": [
+        "dreaming_zebra",
+        "floppy_bagel_195k_temp1p0",
+        "floppy_bagel_285k_temp1p0",
+        "floppy_bagel_420k",
+        "floppy_bagel_525k_temp1p0",
+        "floppy_bagel_90k_temp1p0",
+        "paligemma_diffusion_droid",
+        "paligemma_fast_droid",
+        "paligemma_fast_specialist_droid",
+        "paligemma_vq_droid",
+        "pi05_droid",
+        "pi0_droid",
+        "pi0_fast_droid"
+      ],
+      "task_count": 84,
       "first_submission": null,
       "last_submission": null
     }
   },
   "per_dataset": {
+    "OopsieData-Submissions/Araya": {
+      "episodes": 4802,
+      "successes": 2741,
+      "failures": 2061,
+      "annotated_episodes": 4802,
+      "failure_descriptions": 0,
+      "duration_hours": 21.675,
+      "lab_ids": {
+        "Araya": 4802
+      },
+      "bulk_import": false
+    },
     "OopsieData-Submissions/Armnet": {
       "episodes": 60,
       "successes": 0,
@@ -388,9 +1274,9 @@
     "OopsieData-Submissions/Berkeley_RAIL": {
       "episodes": 1499,
       "successes": 460,
-      "failures": 169,
-      "annotated_episodes": 629,
-      "failure_descriptions": 170,
+      "failures": 1039,
+      "annotated_episodes": 1499,
+      "failure_descriptions": 169,
       "duration_hours": 5.55,
       "lab_ids": {
         "Berkeley_RAIL": 1499
@@ -400,12 +1286,24 @@
     "OopsieData-Submissions/CMU_Intent": {
       "episodes": 240,
       "successes": 72,
-      "failures": 155,
-      "annotated_episodes": 227,
+      "failures": 168,
+      "annotated_episodes": 240,
       "failure_descriptions": 155,
       "duration_hours": 1.297,
       "lab_ids": {
         "CMU_Intent": 240
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/ETH_RK": {
+      "episodes": 1447,
+      "successes": 570,
+      "failures": 877,
+      "annotated_episodes": 1447,
+      "failure_descriptions": 0,
+      "duration_hours": 12.181,
+      "lab_ids": {
+        "ETH_RK": 1447
       },
       "bulk_import": false
     },
@@ -421,11 +1319,35 @@
       },
       "bulk_import": false
     },
+    "OopsieData-Submissions/Harvard_EML": {
+      "episodes": 814,
+      "successes": 454,
+      "failures": 360,
+      "annotated_episodes": 814,
+      "failure_descriptions": 0,
+      "duration_hours": 5.183,
+      "lab_ids": {
+        "Harvard_EML": 814
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/PSU_FMC": {
+      "episodes": 200,
+      "successes": 82,
+      "failures": 118,
+      "annotated_episodes": 200,
+      "failure_descriptions": 0,
+      "duration_hours": 2.441,
+      "lab_ids": {
+        "PSU_FMC": 200
+      },
+      "bulk_import": false
+    },
     "OopsieData-Submissions/Princeton_IRoM": {
       "episodes": 470,
       "successes": 244,
-      "failures": 0,
-      "annotated_episodes": 244,
+      "failures": 226,
+      "annotated_episodes": 470,
       "failure_descriptions": 0,
       "duration_hours": 2.774,
       "lab_ids": {
@@ -442,6 +1364,18 @@
       "duration_hours": 6.176,
       "lab_ids": {
         "Princeton_PRISM": 336
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Princeton_PRPL": {
+      "episodes": 2890,
+      "successes": 1554,
+      "failures": 1336,
+      "annotated_episodes": 2890,
+      "failure_descriptions": 0,
+      "duration_hours": 54.58,
+      "lab_ids": {
+        "Princeton_PRPL": 2890
       },
       "bulk_import": false
     },
@@ -469,6 +1403,18 @@
       },
       "bulk_import": false
     },
+    "OopsieData-Submissions/Stanford_MSL": {
+      "episodes": 450,
+      "successes": 342,
+      "failures": 108,
+      "annotated_episodes": 450,
+      "failure_descriptions": 0,
+      "duration_hours": 12.262,
+      "lab_ids": {
+        "Stanford_MSL": 450
+      },
+      "bulk_import": false
+    },
     "OopsieData-Submissions/Stanford_REAL": {
       "episodes": 53,
       "successes": 3,
@@ -478,6 +1424,18 @@
       "duration_hours": 0.547,
       "lab_ids": {
         "Stanford_REAL": 53
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/Toloka": {
+      "episodes": 35,
+      "successes": 16,
+      "failures": 19,
+      "annotated_episodes": 35,
+      "failure_descriptions": 0,
+      "duration_hours": 0.133,
+      "lab_ids": {
+        "Toloka": 35
       },
       "bulk_import": false
     },
@@ -493,29 +1451,52 @@
       },
       "bulk_import": false
     },
-    "OopsieData-Submissions/UW_REAL": {
-      "episodes": 562,
-      "successes": 105,
-      "failures": 457,
-      "annotated_episodes": 562,
-      "failure_descriptions": 460,
-      "duration_hours": 2.285,
+    "OopsieData-Submissions/USP_MB": {
+      "episodes": 404,
+      "successes": 262,
+      "failures": 142,
+      "annotated_episodes": 404,
+      "failure_descriptions": 0,
+      "duration_hours": 3.971,
       "lab_ids": {
-        "UW_REAL": 562
+        "USP_MB": 404
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UT_RobIn": {
+      "episodes": 2,
+      "successes": 1,
+      "failures": 1,
+      "annotated_episodes": 2,
+      "failure_descriptions": 0,
+      "duration_hours": 0.001,
+      "lab_ids": {
+        "UT_RobIn": 2
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/UW_REAL": {
+      "episodes": 582,
+      "successes": 110,
+      "failures": 472,
+      "annotated_episodes": 582,
+      "failure_descriptions": 472,
+      "duration_hours": 2.347,
+      "lab_ids": {
+        "UW_REAL": 582
       },
       "bulk_import": false
     },
     "OopsieData-Submissions/UdeM_REAL": {
-      "episodes": 140,
+      "episodes": 139,
       "successes": 53,
-      "failures": 79,
-      "annotated_episodes": 132,
+      "failures": 86,
+      "annotated_episodes": 139,
       "failure_descriptions": 79,
-      "duration_hours": 1.46,
+      "duration_hours": 1.447,
       "lab_ids": {
         "MILA": 62,
-        "UdeM_REAL": 77,
-        "example_institution": 1
+        "UdeM_REAL": 77
       },
       "bulk_import": false
     },
@@ -534,17 +1515,90 @@
     "OopsieData-Submissions/UofT_TISL": {
       "episodes": 275,
       "successes": 121,
-      "failures": 0,
-      "annotated_episodes": 121,
+      "failures": 154,
+      "annotated_episodes": 275,
       "failure_descriptions": 0,
       "duration_hours": 1.321,
       "lab_ids": {
         "UofT_TISL": 275
       },
       "bulk_import": false
+    },
+    "OopsieData-Submissions/VUA_KL": {
+      "episodes": 24,
+      "successes": 22,
+      "failures": 2,
+      "annotated_episodes": 24,
+      "failure_descriptions": 0,
+      "duration_hours": 0.129,
+      "lab_ids": {
+        "VUA_KL": 24
+      },
+      "bulk_import": false
+    },
+    "OopsieData-Submissions/oopsiedata-converted-v0.1": {
+      "episodes": 41239,
+      "successes": 11160,
+      "failures": 30079,
+      "annotated_episodes": 41239,
+      "failure_descriptions": 0,
+      "duration_hours": 284.64,
+      "lab_ids": {
+        "AI2_MOLMOACT2": 75,
+        "BERKELEY": 2,
+        "Berkeley": 942,
+        "Berkeley_RAIL": 31577,
+        "CIIRC, CTU in Prague": 34,
+        "CoRL 2025 Seoul": 2,
+        "KAIST": 64,
+        "Stanford": 592,
+        "UPenn": 637,
+        "UT Austin": 1280,
+        "University Montreal": 707,
+        "University of Washginton": 7,
+        "University of Washington": 147,
+        "Unversity of Washington": 7,
+        "Yonsei": 700,
+        "berkeeley": 2,
+        "berkekey": 2,
+        "berkele": 4,
+        "berkelehy": 2,
+        "berkeleu": 20,
+        "berkeleuy": 6,
+        "berkeley": 660,
+        "berkeleyu": 2,
+        "berkeleyy": 4,
+        "berkely": 2,
+        "berkley": 4,
+        "berkreley": 2,
+        "betkeley": 2,
+        "frodobots": 3586,
+        "nvidia": 168
+      },
+      "bulk_import": false
     }
   },
   "per_robot": {
+    "ARX X5 dual-arm manipulator mounted on a mobile base": {
+      "episodes": 47,
+      "labs": 1,
+      "duration_hours": 0.178
+    },
+    "ARX X5 dual-arm tabletop manipulator": {
+      "episodes": 201,
+      "labs": 1,
+      "duration_hours": 0.823
+    },
+    "ARX X5 single-arm mobile manipulator": {
+      "episodes": 14,
+      "labs": 1,
+      "duration_hours": 0.176
+    },
+    "ARX X5 single-arm tabletop manipulator": {
+      "episodes": 552,
+      "labs": 1,
+      "duration_hours": 4.007
+    },
     "OpenArm_2.0": {
       "episodes": 78,
       "labs": 1,
@@ -556,9 +1610,9 @@
       "duration_hours": 1.248
     },
     "bi_yam_follower": {
-      "episodes": 386,
-      "labs": 2,
-      "duration_hours": 6.388
+      "episodes": 461,
+      "labs": 3,
+      "duration_hours": 7.217
     },
     "egoverse_bimanual": {
       "episodes": 53,
@@ -566,19 +1620,19 @@
       "duration_hours": 0.547
     },
     "franka_droid": {
-      "episodes": 264,
+      "episodes": 284,
       "labs": 2,
-      "duration_hours": 1.432
+      "duration_hours": 1.495
     },
     "franka_panda": {
-      "episodes": 63,
-      "labs": 1,
-      "duration_hours": 1.5
+      "episodes": 6336,
+      "labs": 4,
+      "duration_hours": 35.485
     },
     "franka_research_3": {
-      "episodes": 1020,
-      "labs": 7,
-      "duration_hours": 5.967
+      "episodes": 13902,
+      "labs": 37,
+      "duration_hours": 159.721
     },
     "franka_xhand": {
       "episodes": 54,
@@ -589,6 +1643,16 @@
       "episodes": 60,
       "labs": 1,
       "duration_hours": 0.767
+    },
+    "so100_follower": {
+      "episodes": 200,
+      "labs": 1,
+      "duration_hours": 2.441
+    },
+    "trossen_ai_follower_bimanual": {
+      "episodes": 35,
+      "labs": 1,
+      "duration_hours": 0.133
     },
     "ur5e": {
       "episodes": 100,
@@ -606,9 +1670,9 @@
       "duration_hours": 1.321
     },
     "widow_x": {
-      "episodes": 1080,
+      "episodes": 32657,
       "labs": 1,
-      "duration_hours": 3.236
+      "duration_hours": 191.833
     },
     "widowx_250_s": {
       "episodes": 419,
@@ -616,9 +1680,9 @@
       "duration_hours": 2.314
     },
     "yam": {
-      "episodes": 154,
-      "labs": 1,
-      "duration_hours": 0.578
+      "episodes": 604,
+      "labs": 2,
+      "duration_hours": 12.84
     }
   },
   "per_policy": {
@@ -629,7 +1693,7 @@
       "episodes": 62
     },
     "act": {
-      "episodes": 30
+      "episodes": 230
     },
     "act_layup": {
       "episodes": 50
@@ -640,11 +1704,98 @@
     "bag_grocery_cotrain": {
       "episodes": 23
     },
+    "calql": {
+      "episodes": 2061
+    },
+    "calql-explore": {
+      "episodes": 2088
+    },
+    "clean_table/act_2x/episodes@20Hz@single-arm": {
+      "episodes": 11
+    },
+    "clean_table/act_4x/episodes@40Hz@single-arm": {
+      "episodes": 4
+    },
+    "clean_table/act_dino/episodes@10Hz@single-arm": {
+      "episodes": 19
+    },
+    "clean_table/act_dino_bspline1x/episodes@100Hz@single-arm": {
+      "episodes": 20
+    },
+    "clean_table/act_dino_bspline4x/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "clean_table/bspline_1x/episodes@100Hz@single-arm": {
+      "episodes": 18
+    },
+    "clean_table/bspline_2x/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "clean_table/bspline_4x/episodes@100Hz@single-arm": {
+      "episodes": 3
+    },
+    "clean_table/dp/episodes@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "clean_table/dp_2x/episodes@20Hz@single-arm": {
+      "episodes": 10
+    },
+    "clean_table/dp_4x/episodes@40Hz@single-arm": {
+      "episodes": 7
+    },
+    "clean_table/dp_bspline1x_ff/episodes@100Hz@single-arm": {
+      "episodes": 19
+    },
+    "clean_table/dp_bspline2x_ff/episodes@100Hz@single-arm": {
+      "episodes": 7
+    },
+    "clean_table/dp_bspline4x_ff/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "clean_table/dp_demospeedup_1_2x/episodes@10Hz@single-arm": {
+      "episodes": 18
+    },
+    "clean_table/dp_demospeedup_1_3x/episodes@10Hz@single-arm": {
+      "episodes": 14
+    },
+    "clean_table/dp_demospeedup_1_4x/episodes@10Hz@single-arm": {
+      "episodes": 12
+    },
+    "clean_table/dp_interpolator/episodes@100Hz@single-arm": {
+      "episodes": 20
+    },
+    "clean_table/dp_interpolator2x/episodes@100Hz@single-arm": {
+      "episodes": 6
+    },
+    "clean_table/dp_interpolator2x_no_time_align_ff/episodes@100Hz@single-arm": {
+      "episodes": 5
+    },
+    "clean_table/dp_interpolator4x/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "clean_table/dp_interpolator4x_2/episodes@100Hz@single-arm": {
+      "episodes": 3
+    },
+    "clean_table/dp_interpolator4x_no_time_align/episodes@100Hz@single-arm": {
+      "episodes": 9
+    },
+    "clean_table/dp_interpolator4x_no_time_align_ff/episodes@100Hz@single-arm": {
+      "episodes": 6
+    },
+    "clean_table/dpfinal/episodes@10Hz@single-arm": {
+      "episodes": 19
+    },
+    "crl": {
+      "episodes": 1524
+    },
     "cup_on_saucer_robot_only": {
       "episodes": 25
     },
     "custom_diffusion": {
       "episodes": 120
+    },
+    "dam": {
+      "episodes": 60
     },
     "diffusion": {
       "episodes": 30
@@ -655,11 +1806,59 @@
     "diffusion_policy_custom": {
       "episodes": 1186
     },
+    "dit": {
+      "episodes": 800
+    },
+    "dreaming_zebra": {
+      "episodes": 58
+    },
+    "egocentric": {
+      "episodes": 291
+    },
     "expo_pi_pi0.5": {
       "episodes": 120
     },
     "factory_v2_rgb_dagger_student": {
       "episodes": 50
+    },
+    "floppy_bagel_195k_temp1p0": {
+      "episodes": 8
+    },
+    "floppy_bagel_285k_temp1p0": {
+      "episodes": 12
+    },
+    "floppy_bagel_420k": {
+      "episodes": 29
+    },
+    "floppy_bagel_525k_temp1p0": {
+      "episodes": 33
+    },
+    "floppy_bagel_90k_temp1p0": {
+      "episodes": 10
+    },
+    "flower": {
+      "episodes": 802
+    },
+    "gcbc": {
+      "episodes": 16627
+    },
+    "gcbc_for_round_1_collected_by_round_0": {
+      "episodes": 686
+    },
+    "gcbc_for_round_2_collected_by_round_1": {
+      "episodes": 1148
+    },
+    "gcbc_for_round_3_collected_by_round_2": {
+      "episodes": 475
+    },
+    "human": {
+      "episodes": 35
+    },
+    "human_teleop": {
+      "episodes": 120
+    },
+    "human_teleoperation": {
+      "episodes": 24
     },
     "human_teleoperation_failure_collection_coffee_bag": {
       "episodes": 21
@@ -673,14 +1872,32 @@
     "human_teleoperation_safety_filter": {
       "episodes": 22
     },
+    "iql": {
+      "episodes": 4448
+    },
     "lap": {
-      "episodes": 22
+      "episodes": 822
     },
     "memmelma/mnm_oopsie": {
       "episodes": 50
     },
+    "mibot": {
+      "episodes": 800
+    },
+    "mix_of_policies": {
+      "episodes": 1047
+    },
+    "mixed_policies": {
+      "episodes": 1473
+    },
+    "mobile_pick_cloth@10Hz@mobile": {
+      "episodes": 6
+    },
+    "mobile_pick_rigid_to_sink/dp/mobile-pick-rigid-to-sink-infer@10Hz@mobile": {
+      "episodes": 8
+    },
     "molmoact2_eval": {
-      "episodes": 336
+      "episodes": 411
     },
     "mouse_dexhand_mouse_franka_v6_vision_v0_ckpt:2026-06-05_13-06-25_dexhand_mouse_franka_dapg_v6_step20.0_contact4.0_model:4175_noise:0.4_model_800.pt_2026-06-10-18:45:16": {
       "episodes": 1
@@ -760,17 +1977,113 @@
     "obj_in_container_robot_only": {
       "episodes": 5
     },
+    "pack_cup/dp/stack_joint_infer@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "pack_cup/dp/stack_joint_infer_2x@20Hz@single-arm": {
+      "episodes": 20
+    },
+    "pack_cup/dp/stack_joint_infer_3x@30Hz@single-arm": {
+      "episodes": 15
+    },
+    "pack_cup/dp/stack_joint_infer_demospeedup@10Hz@single-arm": {
+      "episodes": 3
+    },
+    "pack_cup/dp/stack_joint_infer_demospeedup_1_2@10Hz@single-arm": {
+      "episodes": 1
+    },
+    "pack_cup/dp/stack_joint_infer_demospeedup_1_4@10Hz@single-arm": {
+      "episodes": 1
+    },
+    "pack_cup/dp/stack_joint_infer_demospeedup_2_2@10Hz@single-arm": {
+      "episodes": 19
+    },
+    "pack_cup/dp/stack_joint_infer_demospeedup_2_3@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "paligemma_binning_droid": {
+      "episodes": 1068
+    },
+    "paligemma_diffusion_droid": {
+      "episodes": 1171
+    },
+    "paligemma_fast_droid": {
+      "episodes": 1386
+    },
+    "paligemma_fast_specialist_droid": {
+      "episodes": 1392
+    },
+    "paligemma_vq_droid": {
+      "episodes": 1198
+    },
     "pi0.5": {
-      "episodes": 974
+      "episodes": 3114
     },
     "pi0.5_lora_sft": {
       "episodes": 155
     },
+    "pi05_droid": {
+      "episodes": 564
+    },
+    "pi0_droid": {
+      "episodes": 1430
+    },
     "pi0_droid_dsrl": {
-      "episodes": 158
+      "episodes": 178
+    },
+    "pi0_fast_droid": {
+      "episodes": 1168
     },
     "pi0_fast_droid_jointpos": {
-      "episodes": 63
+      "episodes": 62
+    },
+    "pick_cube/act/episodes@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/act_2x/episodes@20Hz@single-arm": {
+      "episodes": 9
+    },
+    "pick_cube/act_2x/episodes@30Hz@biarm": {
+      "episodes": 1
+    },
+    "pick_cube/act_4x/episodes@40Hz@single-arm": {
+      "episodes": 3
+    },
+    "pick_cube/act_bspline1x/episodes@100Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/act_dino/episodes@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/act_dino_bspline1x/episodes@100Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/act_dino_bspline2x/episodes@100Hz@single-arm": {
+      "episodes": 2
+    },
+    "pick_cube/act_dino_bspline4x/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "pick_cube/bspline_1x/episodes@100Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/bspline_2x/episodes@100Hz@single-arm": {
+      "episodes": 1
+    },
+    "pick_cube/dp/episodes@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/dp_2x/episodes@20Hz@single-arm": {
+      "episodes": 5
+    },
+    "pick_cube/dp_demospeedup_1_2x/episodes@10Hz@single-arm": {
+      "episodes": 18
+    },
+    "pick_cube/dp_demospeedup_1_3x/episodes@10Hz@single-arm": {
+      "episodes": 20
+    },
+    "pick_cube/dp_demospeedup_1_4x/episodes@10Hz@single-arm": {
+      "episodes": 20
     },
     "roller_dexhand_roller_franka_v6_distill_v0_ckpt:2026-05-16_22-49-27_dexhand_roller_franka_dapg_v6_contact0.9_model:3875_noise:0.1_model_1500.pt_2026-06-10-16:14:46": {
       "episodes": 1
@@ -853,110 +2166,182 @@
     "scoop_dexhand_scoop_franka_v6_vision_v1_ckpt:2026-05-27_08-41-39_dexhand_scoop_franka_dapg_v6_task10.0_model:7800_noise:0.1_model_2500.pt_2026-06-10-11:31:56": {
       "episodes": 1
     },
+    "speeding-stack-pack-cups/dp/episodes@10Hz@biarm": {
+      "episodes": 20
+    },
+    "speeding-stack-pack-cups/dp_bspline_1x/episodes@100Hz@biarm": {
+      "episodes": 20
+    },
+    "speeding-stack-pack-cups/dp_bspline_2x/episodes@100Hz@biarm": {
+      "episodes": 4
+    },
     "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:33:26": {
       "episodes": 1
     },
     "spray_dexhand_spray_franka_v6_distill_v0_ckpt:2026-05-18_02-26-58_dexhand_spray_franka_dapg_v6_model:7050_noise:0.1_model_4000.pt_2026-06-10-14:36:04": {
       "episodes": 1
     },
+    "spreading fabric/logs/spread_frabic_1x/episodes@100Hz@biarm": {
+      "episodes": 11
+    },
+    "srl_il": {
+      "episodes": 944
+    },
+    "stack_and_pack_cups_mobile_base/logs/stackup_bspline1x/episodes@10Hz@biarm": {
+      "episodes": 21
+    },
+    "stack_and_pack_cups_mobile_base/logs/stackup_bspline2x_ff/episodes@100Hz@biarm": {
+      "episodes": 15
+    },
+    "stack_unstack_bspline_1_2/act-2/episodes@10Hz@biarm": {
+      "episodes": 20
+    },
+    "stack_unstack_bspline_1_2/act-bspline-1x/episodes@100Hz@biarm": {
+      "episodes": 17
+    },
+    "stack_unstack_bspline_1_2/act-bspline-2x/episodes@100Hz@biarm": {
+      "episodes": 9
+    },
+    "stack_unstack_bspline_1_2/act-bspline-3x/episodes@100Hz@biarm": {
+      "episodes": 9
+    },
+    "stack_unstack_bspline_1_2/act_2x-2/episodes@20Hz@biarm": {
+      "episodes": 17
+    },
+    "stack_unstack_bspline_1_2/act_4x-2/episodes@40Hz@biarm": {
+      "episodes": 9
+    },
+    "stack_unstack_bspline_1_2/dp-2/episodes@10Hz@biarm": {
+      "episodes": 20
+    },
+    "stack_unstack_bspline_1_2/dp-bspline-1x-2/episodes@100Hz@biarm": {
+      "episodes": 16
+    },
+    "stack_unstack_bspline_1_2/dp-bspline-2x-2/episodes@100Hz@biarm": {
+      "episodes": 3
+    },
+    "stack_unstack_bspline_1_2/dp-bspline-3x-2/episodes@100Hz@biarm": {
+      "episodes": 9
+    },
+    "stack_unstack_bspline_1_2/dp-bspline-4x-2/episodes@100Hz@biarm": {
+      "episodes": 8
+    },
+    "stack_unstack_bspline_1_2/dp_2x/episodes@20Hz@biarm": {
+      "episodes": 11
+    },
+    "stack_unstack_bspline_1_2/dp_4x-2/episodes@40Hz@biarm": {
+      "episodes": 8
+    },
     "steerable_pi0.5_finetune_bridge": {
       "episodes": 419
     },
     "teleop": {
-      "episodes": 184
+      "episodes": 396
+    },
+    "teleoperation": {
+      "episodes": 404
+    },
+    "tiptop": {
+      "episodes": 940
+    },
+    "tiptop_and_teleop": {
+      "episodes": 942
+    },
+    "xvla": {
+      "episodes": 800
     }
   },
   "top_tasks": [
     {
-      "instruction": "Move the left stuffed toy to the largest bowl.",
-      "episodes": 318
+      "instruction": "put the green block in the brown bowl",
+      "episodes": 3279
     },
     {
-      "instruction": "Pick up the spoon and place it into the box.",
-      "episodes": 295
+      "instruction": "remove the green block from inside the brown bowl and put it on the table",
+      "episodes": 2486
+    },
+    {
+      "instruction": "Open the drawer",
+      "episodes": 1214
+    },
+    {
+      "instruction": "Open the oven",
+      "episodes": 1202
+    },
+    {
+      "instruction": "Close the oven",
+      "episodes": 1200
+    },
+    {
+      "instruction": "Put the spoon in the drawer",
+      "episodes": 1200
+    },
+    {
+      "instruction": "put the red object in the metal pot",
+      "episodes": 1184
+    },
+    {
+      "instruction": "put green stick into wooden bowl",
+      "episodes": 1010
+    },
+    {
+      "instruction": "open the drawer",
+      "episodes": 852
+    },
+    {
+      "instruction": "put the mushroom in the blue bowl",
+      "episodes": 820
+    },
+    {
+      "instruction": "move the red object from the metal pot to the table",
+      "episodes": 780
+    },
+    {
+      "instruction": "move the red fruit to the left",
+      "episodes": 717
+    },
+    {
+      "instruction": "put the green object in the silver pot",
+      "episodes": 690
     },
     {
       "instruction": "close the drawer",
-      "episodes": 236
+      "episodes": 655
     },
     {
-      "instruction": "put the corn on the green cloth",
-      "episodes": 189
+      "instruction": "move the red object to the left side of the table",
+      "episodes": 653
     },
     {
-      "instruction": "stack the yellow block on the blue blocks",
-      "episodes": 173
+      "instruction": "remove the green block from the brown bowl and put it on the table",
+      "episodes": 635
     },
     {
-      "instruction": "remove the blue cloth from the yellow block",
-      "episodes": 141
+      "instruction": "move the red object to the right side of the table",
+      "episodes": 618
     },
     {
-      "instruction": "pick up the cube",
-      "episodes": 120
+      "instruction": "Pick scissors and cut the tape",
+      "episodes": 604
     },
     {
-      "instruction": "put the corn in the pot",
-      "episodes": 100
+      "instruction": "put the green stick in the brown bowl",
+      "episodes": 567
     },
     {
-      "instruction": "set the mushroom on the green cloth",
-      "episodes": 89
-    },
-    {
-      "instruction": "pick up the corn",
-      "episodes": 82
-    },
-    {
-      "instruction": "put the sushi in the pot",
-      "episodes": 72
-    },
-    {
-      "instruction": "stack the blue block on the yellow block",
-      "episodes": 70
-    },
-    {
-      "instruction": "Push the Displayport cable into the cable holder on the white block",
-      "episodes": 60
-    },
-    {
-      "instruction": "Pick up the green cup and stack it on the purple",
-      "episodes": 60
-    },
-    {
-      "instruction": "Pick up the pen cap with the right hand and the cap with the left and insert it on the pen",
-      "episodes": 60
-    },
-    {
-      "instruction": "put the purple mug in the basket",
-      "episodes": 58
-    },
-    {
-      "instruction": "put the bowl on the table",
-      "episodes": 57
-    },
-    {
-      "instruction": "pick up the bottle",
-      "episodes": 55
-    },
-    {
-      "instruction": "Pick up the ball and place it in the bowl",
-      "episodes": 55
-    },
-    {
-      "instruction": "stack the cups",
-      "episodes": 54
+      "instruction": "Place the toys on the plate with no collisions",
+      "episodes": 554
     }
   ],
   "failure_categories": {
-    "['Manipulation failure (post contact)']": 451,
-    "['Grasp failure (at contact)']": 223,
-    "['Sequencing or semantic failure']": 177,
-    "['Reaching failure (pre contact)']": 167,
+    "['Manipulation failure (post contact)']": 454,
+    "['Grasp failure (at contact)']": 233,
+    "['Sequencing or semantic failure']": 179,
+    "['Reaching failure (pre contact)']": 166,
     "['Task not attempted']": 162,
-    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 49,
+    "['Grasp failure (at contact)', 'Manipulation failure (post contact)']": 46,
     "['Manipulation failure (post contact)', 'Sequencing or semantic failure']": 33,
-    "['Grasp failure (at contact)', 'Collision failure']": 24,
+    "['Grasp failure (at contact)', 'Collision failure']": 23,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)']": 23,
     "['Manipulation failure (post contact)', 'Collision failure']": 19,
     "['Grasp failure (at contact)', 'Sequencing or semantic failure']": 17,
@@ -967,14 +2352,14 @@
     "['Sequencing or semantic failure', 'Manipulation failure (post contact)']": 9,
     "['Grasp failure (at contact)', 'Manipulation failure (post contact)', 'Collision failure']": 8,
     "['Other']": 8,
+    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 7,
     "['Hardware/mechanical issue']": 7,
+    "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 7,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Manipulation failure (post contact)']": 6,
     "['Collision failure']": 6,
     "['Manipulation failure (post contact)', 'Sequencing or semantic failure', 'Collision failure']": 6,
     "['Reaching failure (pre contact)', 'Grasp failure (at contact)', 'Sequencing or semantic failure']": 5,
     "['Grasp failure (at contact)', 'Task not attempted']": 5,
-    "['Reaching failure (pre contact)', 'Sequencing or semantic failure']": 5,
-    "['Reaching failure (pre contact)', 'Manipulation failure (post contact)']": 4,
     "['Manipulation failure (post contact)', 'Task not attempted']": 4,
     "['Task not attempted', 'Sequencing or semantic failure']": 4,
     "['Grasp failure (at contact)', 'Hardware/mechanical issue']": 3,
@@ -995,36 +2380,45 @@
     "['Collision failure', 'Hardware/mechanical issue']": 1
   },
   "severity_distribution": {
-    "Low severity - no damage, can be reset and reattempted": 1184,
-    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 311,
+    "Low severity - no damage, can be reset and reattempted": 1192,
+    "Medium severity - some damage or risk of damage or significant reset required, but can be reattempted": 318,
     "Catastrophic - significant damage or risk of damage, cannot be reattempted without repair": 7
   },
   "action_spaces": {
-    "gripper_position": 3452,
-    "cartesian_position": 2103,
-    "joint_position": 1523,
-    "gripper_binary": 779,
-    "joint_velocity": 659,
-    "cartesian_velocity": 120,
-    "gripper_velocity": 120
+    "gripper_position": 52862,
+    "cartesian_position": 40371,
+    "joint_velocity": 13162,
+    "joint_position": 5093,
+    "gripper_binary": 3695,
+    "cartesian_velocity": 179,
+    "gripper_velocity": 120,
+    "base_velocity": 14
   },
   "camera_setups": {
+    "main": 31577,
+    "image, left_ego_image, wrist_image": 4802,
+    "left, right, wrist": 4537,
+    "right, wrist": 3545,
+    "overhead_cam, wrist_cam": 2914,
+    "left, wrist": 1878,
     "right_shoulder_cam": 1080,
+    "left, right, top": 861,
+    "oakd_front_view, oakd_wrist_bottom_view, oakd_wrist_top_view": 816,
+    "base_image": 814,
     "left_base_cam, right_base_cam, wrist_cam": 470,
+    "front, top, wrist": 464,
     "image_primary": 419,
-    "left, right, top": 336,
+    "oakd_front_view, oakd_left_wrist_view, oakd_right_wrist_view": 340,
     "ceiling, wrist_left, wrist_right": 295,
-    "left, wrist": 205,
-    "head, left_wrist, right_wrist": 204,
+    "oakd_front_view, oakd_side_view": 291,
+    "head, left_wrist, right_wrist": 239,
+    "front, top": 200,
     "camera_high, camera_wrist_left, camera_wrist_right": 155,
     "exterior_image_1_left, wrist_image_left": 120,
     "left_wrist, right_wrist, top": 120,
     "left, overhead, right, wrist": 106,
-    "left, right, wrist": 84,
     "ceiling, head_left, head_right, wrist_left, wrist_right": 78,
-    "right, wrist": 63,
     "external, wrist": 63,
-    "front, top, wrist": 60,
     "exterior, wrist": 58,
     "tactile, zed": 55,
     "exterior": 54,
@@ -1039,172 +2433,507 @@
   },
   "submission_timeline": [
     {
+      "date": "1970-01-01",
+      "episodes": 114,
+      "cumulative": 114
+    },
+    {
+      "date": "1970-01-02",
+      "episodes": 12,
+      "cumulative": 126
+    },
+    {
+      "date": "1970-01-03",
+      "episodes": 9,
+      "cumulative": 135
+    },
+    {
+      "date": "1970-01-04",
+      "episodes": 15,
+      "cumulative": 150
+    },
+    {
+      "date": "1970-01-06",
+      "episodes": 55,
+      "cumulative": 205
+    },
+    {
+      "date": "1970-01-10",
+      "episodes": 170,
+      "cumulative": 375
+    },
+    {
+      "date": "1970-01-11",
+      "episodes": 69,
+      "cumulative": 444
+    },
+    {
+      "date": "1970-01-12",
+      "episodes": 19,
+      "cumulative": 463
+    },
+    {
+      "date": "1970-01-13",
+      "episodes": 20,
+      "cumulative": 483
+    },
+    {
+      "date": "1970-01-14",
+      "episodes": 47,
+      "cumulative": 530
+    },
+    {
+      "date": "1970-01-15",
+      "episodes": 58,
+      "cumulative": 588
+    },
+    {
+      "date": "1970-01-16",
+      "episodes": 22,
+      "cumulative": 610
+    },
+    {
+      "date": "1970-01-20",
+      "episodes": 40,
+      "cumulative": 650
+    },
+    {
+      "date": "1970-01-21",
+      "episodes": 91,
+      "cumulative": 741
+    },
+    {
+      "date": "1970-01-22",
+      "episodes": 24,
+      "cumulative": 765
+    },
+    {
+      "date": "1970-01-26",
+      "episodes": 26,
+      "cumulative": 791
+    },
+    {
+      "date": "1970-01-27",
+      "episodes": 23,
+      "cumulative": 814
+    },
+    {
       "date": "2025-04-22",
       "episodes": 189,
-      "cumulative": 189
+      "cumulative": 1003
     },
     {
       "date": "2025-04-24",
       "episodes": 196,
-      "cumulative": 385
+      "cumulative": 1199
     },
     {
       "date": "2025-04-25",
       "episodes": 251,
-      "cumulative": 636
+      "cumulative": 1450
     },
     {
       "date": "2025-04-28",
       "episodes": 173,
-      "cumulative": 809
+      "cumulative": 1623
     },
     {
       "date": "2025-05-09",
       "episodes": 89,
-      "cumulative": 898
+      "cumulative": 1712
     },
     {
       "date": "2025-11-26",
       "episodes": 82,
-      "cumulative": 980
+      "cumulative": 1794
     },
     {
       "date": "2025-12-03",
       "episodes": 100,
-      "cumulative": 1080
+      "cumulative": 1894
     },
     {
       "date": "2026-03-15",
       "episodes": 22,
-      "cumulative": 1102
+      "cumulative": 1916
     },
     {
       "date": "2026-03-16",
       "episodes": 18,
-      "cumulative": 1120
+      "cumulative": 1934
     },
     {
       "date": "2026-03-18",
       "episodes": 243,
-      "cumulative": 1363
+      "cumulative": 2177
     },
     {
       "date": "2026-03-19",
       "episodes": 34,
-      "cumulative": 1397
+      "cumulative": 2211
     },
     {
       "date": "2026-04-30",
       "episodes": 1,
-      "cumulative": 1398
+      "cumulative": 2212
     },
     {
       "date": "2026-05-09",
       "episodes": 120,
-      "cumulative": 1518
+      "cumulative": 2332
     },
     {
       "date": "2026-05-17",
       "episodes": 28,
-      "cumulative": 1546
+      "cumulative": 2360
     },
     {
       "date": "2026-05-19",
       "episodes": 22,
-      "cumulative": 1568
+      "cumulative": 2382
+    },
+    {
+      "date": "2026-05-26",
+      "episodes": 25,
+      "cumulative": 2407
     },
     {
       "date": "2026-06-08",
       "episodes": 101,
-      "cumulative": 1669
+      "cumulative": 2508
     },
     {
       "date": "2026-06-10",
       "episodes": 55,
-      "cumulative": 1724
+      "cumulative": 2563
     },
     {
       "date": "2026-06-11",
       "episodes": 2,
-      "cumulative": 1726
+      "cumulative": 2565
     },
     {
       "date": "2026-06-12",
       "episodes": 204,
-      "cumulative": 1930
+      "cumulative": 2769
     },
     {
       "date": "2026-06-13",
       "episodes": 29,
-      "cumulative": 1959
+      "cumulative": 2798
     },
     {
       "date": "2026-06-14",
       "episodes": 226,
-      "cumulative": 2185
+      "cumulative": 3024
     },
     {
       "date": "2026-06-15",
       "episodes": 201,
-      "cumulative": 2386
+      "cumulative": 3225
     },
     {
       "date": "2026-06-16",
       "episodes": 182,
-      "cumulative": 2568
+      "cumulative": 3407
     },
     {
       "date": "2026-06-17",
-      "episodes": 352,
-      "cumulative": 2920
+      "episodes": 372,
+      "cumulative": 3779
     },
     {
       "date": "2026-06-18",
       "episodes": 309,
-      "cumulative": 3229
+      "cumulative": 4088
     },
     {
       "date": "2026-06-19",
-      "episodes": 535,
-      "cumulative": 3764
+      "episodes": 585,
+      "cumulative": 4673
     },
     {
       "date": "2026-06-20",
       "episodes": 116,
-      "cumulative": 3880
+      "cumulative": 4789
     },
     {
       "date": "2026-06-21",
       "episodes": 30,
-      "cumulative": 3910
+      "cumulative": 4819
     },
     {
       "date": "2026-06-22",
       "episodes": 50,
-      "cumulative": 3960
+      "cumulative": 4869
     },
     {
       "date": "2026-06-24",
       "episodes": 3,
-      "cumulative": 3963
+      "cumulative": 4872
     },
     {
       "date": "2026-06-25",
       "episodes": 50,
-      "cumulative": 4013
+      "cumulative": 4922
     },
     {
       "date": "2026-07-09",
       "episodes": 78,
-      "cumulative": 4091
+      "cumulative": 5000
     },
     {
-      "date": "unrecorded",
-      "episodes": 260,
-      "cumulative": 4351
+      "date": "2026-07-30",
+      "episodes": 2,
+      "cumulative": 5002
+    },
+    {
+      "date": "2026-08-03",
+      "episodes": 4800,
+      "cumulative": 9802
+    },
+    {
+      "date": "2026-08-04",
+      "episodes": 28,
+      "cumulative": 9830
+    },
+    {
+      "date": "2026-08-05",
+      "episodes": 26,
+      "cumulative": 9856
+    },
+    {
+      "date": "2026-08-06",
+      "episodes": 28,
+      "cumulative": 9884
+    },
+    {
+      "date": "2026-08-07",
+      "episodes": 84,
+      "cumulative": 9968
+    },
+    {
+      "date": "2026-08-08",
+      "episodes": 83,
+      "cumulative": 10051
+    },
+    {
+      "date": "2026-08-09",
+      "episodes": 82,
+      "cumulative": 10133
+    },
+    {
+      "date": "2026-08-10",
+      "episodes": 60,
+      "cumulative": 10193
+    },
+    {
+      "date": "2026-08-11",
+      "episodes": 139,
+      "cumulative": 10332
+    },
+    {
+      "date": "2026-08-12",
+      "episodes": 140,
+      "cumulative": 10472
+    },
+    {
+      "date": "2026-08-13",
+      "episodes": 83,
+      "cumulative": 10555
+    },
+    {
+      "date": "2026-08-14",
+      "episodes": 146,
+      "cumulative": 10701
+    },
+    {
+      "date": "2026-08-15",
+      "episodes": 81,
+      "cumulative": 10782
+    },
+    {
+      "date": "2026-08-16",
+      "episodes": 152,
+      "cumulative": 10934
+    },
+    {
+      "date": "2026-08-17",
+      "episodes": 130,
+      "cumulative": 11064
+    },
+    {
+      "date": "2026-08-18",
+      "episodes": 167,
+      "cumulative": 11231
+    },
+    {
+      "date": "2026-08-19",
+      "episodes": 138,
+      "cumulative": 11369
+    },
+    {
+      "date": "2026-08-20",
+      "episodes": 63,
+      "cumulative": 11432
+    },
+    {
+      "date": "2026-08-21",
+      "episodes": 148,
+      "cumulative": 11580
+    },
+    {
+      "date": "2026-08-22",
+      "episodes": 153,
+      "cumulative": 11733
+    },
+    {
+      "date": "2026-08-23",
+      "episodes": 142,
+      "cumulative": 11875
+    },
+    {
+      "date": "2026-08-24",
+      "episodes": 333,
+      "cumulative": 12208
+    },
+    {
+      "date": "2026-08-25",
+      "episodes": 217,
+      "cumulative": 12425
+    },
+    {
+      "date": "2026-08-26",
+      "episodes": 127,
+      "cumulative": 12552
+    },
+    {
+      "date": "2026-08-27",
+      "episodes": 73,
+      "cumulative": 12625
+    },
+    {
+      "date": "2026-08-28",
+      "episodes": 203,
+      "cumulative": 12828
+    },
+    {
+      "date": "2026-08-29",
+      "episodes": 147,
+      "cumulative": 12975
+    },
+    {
+      "date": "2026-08-30",
+      "episodes": 114,
+      "cumulative": 13089
+    },
+    {
+      "date": "2026-08-31",
+      "episodes": 69,
+      "cumulative": 13158
+    },
+    {
+      "date": "2026-09-01",
+      "episodes": 73,
+      "cumulative": 13231
+    },
+    {
+      "date": "2026-09-02",
+      "episodes": 63,
+      "cumulative": 13294
+    },
+    {
+      "date": "2026-09-03",
+      "episodes": 63,
+      "cumulative": 13357
     }
   ],
   "submission_timeline_per_lab": [
+    {
+      "date": "1970-01-01",
+      "lab_id": "Harvard_EML",
+      "episodes": 114
+    },
+    {
+      "date": "1970-01-02",
+      "lab_id": "Harvard_EML",
+      "episodes": 12
+    },
+    {
+      "date": "1970-01-03",
+      "lab_id": "Harvard_EML",
+      "episodes": 9
+    },
+    {
+      "date": "1970-01-04",
+      "lab_id": "Harvard_EML",
+      "episodes": 15
+    },
+    {
+      "date": "1970-01-06",
+      "lab_id": "Harvard_EML",
+      "episodes": 55
+    },
+    {
+      "date": "1970-01-10",
+      "lab_id": "Harvard_EML",
+      "episodes": 170
+    },
+    {
+      "date": "1970-01-11",
+      "lab_id": "Harvard_EML",
+      "episodes": 69
+    },
+    {
+      "date": "1970-01-12",
+      "lab_id": "Harvard_EML",
+      "episodes": 19
+    },
+    {
+      "date": "1970-01-13",
+      "lab_id": "Harvard_EML",
+      "episodes": 20
+    },
+    {
+      "date": "1970-01-14",
+      "lab_id": "Harvard_EML",
+      "episodes": 47
+    },
+    {
+      "date": "1970-01-15",
+      "lab_id": "Harvard_EML",
+      "episodes": 58
+    },
+    {
+      "date": "1970-01-16",
+      "lab_id": "Harvard_EML",
+      "episodes": 22
+    },
+    {
+      "date": "1970-01-20",
+      "lab_id": "Harvard_EML",
+      "episodes": 40
+    },
+    {
+      "date": "1970-01-21",
+      "lab_id": "Harvard_EML",
+      "episodes": 91
+    },
+    {
+      "date": "1970-01-22",
+      "lab_id": "Harvard_EML",
+      "episodes": 24
+    },
+    {
+      "date": "1970-01-26",
+      "lab_id": "Harvard_EML",
+      "episodes": 26
+    },
+    {
+      "date": "1970-01-27",
+      "lab_id": "Harvard_EML",
+      "episodes": 23
+    },
     {
       "date": "2025-04-22",
       "lab_id": "Berkeley_RAIL",
@@ -1279,6 +3008,11 @@
       "date": "2026-05-19",
       "lab_id": "UPenn_PAL",
       "episodes": 22
+    },
+    {
+      "date": "2026-05-26",
+      "lab_id": "AI2_MOLMOACT2",
+      "episodes": 25
     },
     {
       "date": "2026-06-08",
@@ -1378,7 +3112,7 @@
     {
       "date": "2026-06-17",
       "lab_id": "UW_REAL",
-      "episodes": 157
+      "episodes": 177
     },
     {
       "date": "2026-06-17",
@@ -1409,6 +3143,11 @@
       "date": "2026-06-18",
       "lab_id": "UofT_TISL",
       "episodes": 55
+    },
+    {
+      "date": "2026-06-19",
+      "lab_id": "AI2_MOLMOACT2",
+      "episodes": 50
     },
     {
       "date": "2026-06-19",
@@ -1476,40 +3215,256 @@
       "episodes": 78
     },
     {
-      "date": "unrecorded",
-      "lab_id": "MILA",
-      "episodes": 62
+      "date": "2026-07-30",
+      "lab_id": "UT_RobIn",
+      "episodes": 2
     },
     {
-      "date": "unrecorded",
-      "lab_id": "Stanford_Iris",
-      "episodes": 120
+      "date": "2026-08-03",
+      "lab_id": "Araya",
+      "episodes": 4800
     },
     {
-      "date": "unrecorded",
-      "lab_id": "UdeM_REAL",
-      "episodes": 77
+      "date": "2026-08-04",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 28
     },
     {
-      "date": "unrecorded",
-      "lab_id": "example_institution",
+      "date": "2026-08-05",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 26
+    },
+    {
+      "date": "2026-08-06",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 28
+    },
+    {
+      "date": "2026-08-07",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 84
+    },
+    {
+      "date": "2026-08-08",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 83
+    },
+    {
+      "date": "2026-08-09",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 82
+    },
+    {
+      "date": "2026-08-10",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 60
+    },
+    {
+      "date": "2026-08-11",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 139
+    },
+    {
+      "date": "2026-08-12",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 140
+    },
+    {
+      "date": "2026-08-13",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 83
+    },
+    {
+      "date": "2026-08-14",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 146
+    },
+    {
+      "date": "2026-08-15",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 81
+    },
+    {
+      "date": "2026-08-16",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 152
+    },
+    {
+      "date": "2026-08-17",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 130
+    },
+    {
+      "date": "2026-08-18",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 167
+    },
+    {
+      "date": "2026-08-19",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 138
+    },
+    {
+      "date": "2026-08-20",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 63
+    },
+    {
+      "date": "2026-08-21",
+      "lab_id": "PSU_FMC",
+      "episodes": 63
+    },
+    {
+      "date": "2026-08-21",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 78
+    },
+    {
+      "date": "2026-08-21",
+      "lab_id": "Toloka",
+      "episodes": 7
+    },
+    {
+      "date": "2026-08-22",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 147
+    },
+    {
+      "date": "2026-08-22",
+      "lab_id": "Toloka",
+      "episodes": 6
+    },
+    {
+      "date": "2026-08-23",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 142
+    },
+    {
+      "date": "2026-08-24",
+      "lab_id": "PSU_FMC",
+      "episodes": 137
+    },
+    {
+      "date": "2026-08-24",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 179
+    },
+    {
+      "date": "2026-08-24",
+      "lab_id": "Toloka",
+      "episodes": 9
+    },
+    {
+      "date": "2026-08-24",
+      "lab_id": "VUA_KL",
+      "episodes": 8
+    },
+    {
+      "date": "2026-08-25",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 188
+    },
+    {
+      "date": "2026-08-25",
+      "lab_id": "Toloka",
+      "episodes": 13
+    },
+    {
+      "date": "2026-08-25",
+      "lab_id": "VUA_KL",
+      "episodes": 16
+    },
+    {
+      "date": "2026-08-26",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 127
+    },
+    {
+      "date": "2026-08-27",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 72
+    },
+    {
+      "date": "2026-08-27",
+      "lab_id": "USP_MB",
       "episodes": 1
+    },
+    {
+      "date": "2026-08-28",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 155
+    },
+    {
+      "date": "2026-08-28",
+      "lab_id": "USP_MB",
+      "episodes": 48
+    },
+    {
+      "date": "2026-08-29",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 58
+    },
+    {
+      "date": "2026-08-29",
+      "lab_id": "USP_MB",
+      "episodes": 89
+    },
+    {
+      "date": "2026-08-30",
+      "lab_id": "Princeton_PRPL",
+      "episodes": 114
+    },
+    {
+      "date": "2026-08-31",
+      "lab_id": "USP_MB",
+      "episodes": 69
+    },
+    {
+      "date": "2026-09-01",
+      "lab_id": "Araya",
+      "episodes": 2
+    },
+    {
+      "date": "2026-09-01",
+      "lab_id": "USP_MB",
+      "episodes": 71
+    },
+    {
+      "date": "2026-09-02",
+      "lab_id": "USP_MB",
+      "episodes": 63
+    },
+    {
+      "date": "2026-09-03",
+      "lab_id": "USP_MB",
+      "episodes": 63
     }
   ],
   "datasets_included": [
+    "OopsieData-Submissions/Araya",
     "OopsieData-Submissions/Armnet",
     "OopsieData-Submissions/Berkeley_RAIL",
     "OopsieData-Submissions/CMU_Intent",
+    "OopsieData-Submissions/ETH_RK",
     "OopsieData-Submissions/Enatic_OpenArm",
+    "OopsieData-Submissions/Harvard_EML",
+    "OopsieData-Submissions/PSU_FMC",
     "OopsieData-Submissions/Princeton_IRoM",
     "OopsieData-Submissions/Princeton_PRISM",
+    "OopsieData-Submissions/Princeton_PRPL",
     "OopsieData-Submissions/Princeton_VLL",
     "OopsieData-Submissions/Stanford_Iris",
+    "OopsieData-Submissions/Stanford_MSL",
     "OopsieData-Submissions/Stanford_REAL",
+    "OopsieData-Submissions/Toloka",
     "OopsieData-Submissions/UPenn_PAL",
+    "OopsieData-Submissions/USP_MB",
+    "OopsieData-Submissions/UT_RobIn",
     "OopsieData-Submissions/UW_REAL",
     "OopsieData-Submissions/UdeM_REAL",
     "OopsieData-Submissions/UofT_RVL",
-    "OopsieData-Submissions/UofT_TISL"
+    "OopsieData-Submissions/UofT_TISL",
+    "OopsieData-Submissions/VUA_KL",
+    "OopsieData-Submissions/oopsiedata-converted-v0.1"
   ]
 }
