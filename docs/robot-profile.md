@@ -24,6 +24,10 @@ oopsie-data new-profile --name my_robot      # writes ./robot_profiles/my_robot.
 
 Pass `--dir` to write it somewhere else. The skeleton's required fields are deliberately
 left blank, so it will **not load** until you fill them in.
+Since it is difficult to foresee the exact details of your robot embodiment, the `new-profile` wizard
+will not be able to walk you through the setup, but the following documentation contains all necessary information.
+If you are using the [AI agent skill]({% link quickstart.md %}#215-setting-up-a-coding-agent-optional) it
+is also able to walk you through the setup step-by-step.
 
 We also provide example files for several common embodiments and policy setups in [config/robot_profiles](https://github.com/oopsie-data/oopsie-data-tools/tree/main/configs/robot_profiles). We encourage you to use those and adapt them to your use-case.  We are also happy to accept pull requests for additional common robot configurations!
 

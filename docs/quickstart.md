@@ -1,13 +1,13 @@
 ---
 title: Quickstart
 layout: default
-nav_order: 4
+nav_order: 3
 permalink: /quickstart/
 ---
 
 # Quickstart Guide
 
-To contribute data to the Oopsie Dataset, we ask that you collect recordings of your robot policy rollouts (e.g. policy evaluation, play data collection, online RL training), successes and failures. Our toolkit provides utilities for formatting such robot data in a consistent manner across different manipulator setups. Finally, use our annotation tool to quickly provide a brief description of each failed trajectory and upload your labeled data to the project repository.
+To contribute to OopsieData, collect real-world robot policy rollouts (e.g. policy evaluation, play data collection, online RL training) with both successes and failures and use our toolkit to format them into a consistent storage format. Each episode should be annotated with a success label, and can optionally be annotated with a brief failure description with our annotation tool. Finally, upload your data to the project repository.
 
 This page provides a brief overview of all the necessary steps to contribute to the project using our tooling:
 1. [Registration](#1-registration)
@@ -16,6 +16,9 @@ This page provides a brief overview of all the necessary steps to contribute to 
 4. [Data submission](#4-data-submission)
 
 For each step, we provide a quick overview below; more detailed instructions and code examples are provided in the [Oopsie Toolkit]({% link oopsie-data-tools.md %}) section of this website. If you run into any issues, please reference it for any additional information and check the [FAQ]({% link faq.md %}) as well. If you still have questions, do not hesitate to open an issue on [github](https://github.com/oopsie-data/oopsie-data-tools) or contact the [team]({% link team.md %}).
+
+{: .note }
+> For people using coding agents, we have created a skill to help you quickly set up and integrate our toolkit. See [setting up a coding agent](#215-setting-up-a-coding-agent-optional) below.
 
 ---
 
@@ -40,27 +43,35 @@ The package is on PyPI, so to install `oopsie-data-tools`, simply activate your 
 pip install oopsie-data-tools
 # or, in a uv project: uv add oopsie-data-tools
 ```
+
+This will give you a CLI tool called `oopsie-data` that you can call to setup, collect, annotate, and submit your data.
+
 ### 2.1.5 Setting up a coding agent (optional)
 
-If you drive the toolkit through a coding agent such as
-[Claude Code](https://claude.com/claude-code), the package ships a skill that can help with integration and setup.
-Nothing else in the toolkit needs an agent, and no files are written anywhere unless you run:
+Nothing in the toolkit actually requires access to a coding agent.
+But if you drive the toolkit through a coding agent such as
+[Claude Code](https://claude.com/claude-code), [Cursor CLI](https://cursor.com/), or
+[Codex](https://developers.openai.com/codex/), the package ships a shared skill called "oopsie-data" that can
+help with integration and setup. You can install the skill by running:
 
 ```bash
-oopsie-data install-skill          # into ./skills/oopsie-data/
-oopsie-data install-skill --user   # into ~/.claude/skills/, active in every project
+oopsie-data install-skill --agent claude         # installs under .claude/skills/ for Claude Code
+oopsie-data install-skill --agent [cursor|codex] # installs under .agents/skills/ for Cursor and Codex
+oopsie-data install-skill --agent agents         # installs under .agents/skills/ for any agent following the shared convention
+oopsie-data install-skill --agent none           # installs under ./skills/ for copying onward yourself
+
 ```
 
-The default installs into a plain `./skills/` directory in your project, so you can read and
-edit it before anything picks it up, and commit it for the rest of your lab. Claude Code only
-scans `.claude/skills/`, so the command prints the one-line symlink that activates it:
-
+This installs the same skill for the specified agent in the current project. To make the skill available to all agents in every project, install it under your home directory:
 ```bash
-mkdir -p .claude/skills && mv -r /skills/oopsie-data .claude/skills/
+oopsie-data install-skill --agent [claude|cursor|codex|agents] --user    # installs into your home directory for all agents
 ```
 
-With `--user` it is active immediately in every project, after you start a new session.
-
+To update the skill to the latest version, run:
+```bash
+oopsie-data install-skill --check  # check whether installed skills are stale
+oopsie-data install-skill --agent [claude|cursor|codex|agents] --force  # replaces the project-level skill
+```
 
 ### 2.2 Setting up the contributor config
 Run `oopsie-data init`. It prompts for the lab id and huggingface token you received after

@@ -3,6 +3,7 @@ title: Privacy and Licensing
 layout: default
 nav_order: 11
 permalink: /license/
+parent: Contributing
 ---
 
 # Data Contribution Terms
@@ -79,7 +80,7 @@ Contributing laboratories will be credited in every public dataset release that 
 - ORCID iDs of individual contributors listed in the release notes.
 - A dedicated contributors page on this website.
 
-Labs which contribute a significant amount of data will be invited to become co-authors on an eventual publication of this dataset at a conference or journal.
+Labs which contribute a significant amount of data can qualify for co-authorship on an eventual publication of this dataset at a conference or journal.
 
 ---
 

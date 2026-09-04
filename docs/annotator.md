@@ -47,13 +47,13 @@ For instructions on launching the web tool for in-the-loop annotation, see our [
 
 ### Overview
 
-<img src="{{ '/assets/images/annotator/overview-colored.png' | relative_url }}" alt="Annotation tool overview" style="float: right; width: 100%; margin: 0 0 1rem 1.5rem;" />
+<img src="{{ '/assets/images/annotation_overview.png' | relative_url }}" alt="Annotation tool overview" style="float: right; width: 100%; margin: 0 0 1rem 1.5rem;" />
 
 The main view has the following components:
-- **<span style="color:#FF0000">(1)</span> Video Panel**: Video playback controls
-- **<span style="color:#66CC00">(2)</span> Navigation Panel**: Controls for navigating between episodes
-- **<span style="color:#00FFFF">(3)</span> Annotation Panel**: Annotation questionnaire
-- **<span style="color:#FF8000">(4)</span> Info Panel**: Information on the current trajectory
+- **<span style="color:#A91910">(1)</span> Video Panel**: Video playback controls
+- **<span style="color:#3E801E">(2)</span> Navigation Panel**: Overview of episodes and annotation status
+- **<span style="color:#1B6E94">(3)</span> Annotation Panel**: Annotation questionnaire
+- **<span style="color:#D96F02">(4)</span> Quick Navigation**: Controls for navigating between episodes
 
 The info panel summarizes the episode as it was recorded: the task instruction, the robot profile, and the logged state and action fields with their shapes. Fields that were not recorded are marked as empty, which makes it easy to spot a mis-configured robot profile before you upload. The task instruction can be corrected in place if it was recorded wrongly.
 
@@ -63,9 +63,9 @@ The interface follows your system light/dark preference and can be toggled manua
 
 ---
 
-### **<span style="color:#FF0000">(1)</span> Video Panel**
+### **<span style="color:#A91910">(1)</span> Video Panel**
 
-<img src="{{ '/assets/images/annotator/videos.png' | relative_url }}" alt="Video panel" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+<img src="{{ '/assets/images/video_control.png' | relative_url }}" alt="Video panel" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 
 The video panel displays MP4 footage from all cameras recorded during the episode. Use the playback controls to review the rollout before annotating.
 
@@ -81,9 +81,9 @@ These settings persist across episodes and sessions.
 
 ---
 
-### **<span style="color:#66CC00">(2)</span> Navigation Panel**
+### **<span style="color:#3E801E">(2)</span> Navigation Panel**
 
-<img src="{{ '/assets/images/annotator/navigation.png' | relative_url }}" alt="Metadata" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+<img src="{{ '/assets/images/navigation.png' | relative_url }}" alt="Metadata" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 
 The navigation panels allows for navigation between different episodes. The files are arranged according to the directory structure of your samples directory. If you are using the data recording tools, they are arranged by session.
 
@@ -106,9 +106,9 @@ To work through a large session efficiently:
 
 ---
 
-### **<span style="color:#00FFFF">(3)</span> Annotation Panel**
+### **<span style="color:#1B6E94">(3)</span> Annotation Panel**
 
-<img src="{{ '/assets/images/annotator/questionnaire.png' | relative_url }}" alt="Questionnaire" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
+<img src="{{ '/assets/images/annotation.png' | relative_url }}" alt="Questionnaire" style="float: right; width: 50%; margin: 0 0 1rem 1.5rem;" />
 
 After reviewing the video, use the annotation panel to record how the episode ended. 
 
@@ -132,30 +132,33 @@ determines which of the remaining fields appear:
 | **Severity** | Radio | side-effect and failure | How bad the side-effect or failure was |
 | **Additional notes** | Text | always | Free-form field for any extra context |
 
-**Only the outcome is required.** Every other field is optional, in every branch — a failure
-with just a severity, or a side-effect with only a description, saves and validates
-normally. Fill in what you can actually judge from the video and leave the rest blank.
+**Only the outcome is required.** Every other field is optional and can be used to provide more information
+on the specific type of failure or side-effect that was observed. 
+Fill in everything that you can provide. When in doubt, feel free to select multiple types of failures
+and add details in the free-text field.
 
 To speed up repetitive labelling, **Copy from a previous annotation** offers your own recent,
-distinct annotations for reuse — anything that is not a clean success, so suboptimal
-executions and side-effects are offered alongside failures. Picking one fills in its
-categories, severity and description, which you can then edit.
+distinct annotations for reuse. Anything that is not a clean success can serve as a template.
+Picking one fills in its categories, severity and description, which you can then edit.
+**Please only use this option if the failure is legitimately similar.** It is almost always
+better to provide a new, specific annotation.
 
 #### Outcomes
 
-Not every success is clean, and the difference matters for training data. The four outcomes
-are:
+Not every success is clean, and the difference can matter depending on the downstream use-case. 
+We differentiate between four possible outcomes:
 
 | Outcome | Meaning |
 |:--------|:--------|
 | **Success** | Task completed correctly, efficiently, and with no unwanted side-effects. Nothing further is asked. |
 | **Success, suboptimal execution** | Task completed, but inefficiently or awkwardly (e.g. many retries, a very indirect path, near-misses). Nothing in the scene was disturbed and nothing was at risk. |
-| **Success, unwanted side-effect** | Task completed, but something unintended happened along the way (e.g. knocked over a nearby object, minor collision) that did not prevent completion. |
+| **Success, unwanted side-effect** | Task completed, but something unintended happened along the way (e.g. the robot knocked over a nearby object, minor collision) that did not prevent completion. |
 | **Failure** | The task was not completed. |
 
-The distinction between the two qualified successes is about risk: a suboptimal execution is
-a *clean* run that simply is not gold-star, so it is not asked for a category or a severity.
-A side-effect disturbed something, so it is.
+The distinction between the two qualified successes is about side-effects. A suboptimal execution is
+a *clean* run that you might for example not use for behavior cloning, but that has otherwise no issues. 
+Therefore the tool will also not ask for a category or a severity.
+A side-effect disturbed something, so it requires some additional context for later analysis and use, for example for models that predict mistakes.
 
 #### Side-effect categories
 
@@ -173,11 +176,11 @@ used for both failures and successes with side-effects:
 | **Task not attempted** | The robot made no discernible attempt at the task, e.g. by stalling. |
 | **Other** | A side-effect or failure mode not covered by the categories above. Please describe it in the free-text field. |
 
-Multiple categories can be selected simultaneously.
+Multiple categories can  and often **should** be selected simultaneously.
 
 #### Severity
 
-The severity rating helps downstream filtering. It applies to failures (how bad the failure
+The severity rating helps downstream filtering and risk- or damage-aware training. It applies to failures (how bad the failure
 was) and to successes with side-effects (how bad the side-effects were):
 
 - **Low** — no damage; the scene can be reset and the task reattempted

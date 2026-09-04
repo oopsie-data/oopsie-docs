@@ -16,7 +16,7 @@ permalink: /visualizer/
     --viz-surface-soft: #f8fafc;
     --viz-ink: #0f172a;
     --viz-muted: #64748b;
-    --viz-accent: #2563eb;
+    --viz-accent: #1b6e94;
   }
 
   .oopsie-visualizer * {
@@ -59,7 +59,7 @@ permalink: /visualizer/
   }
 
   .viz-search:focus {
-    outline: 2px solid rgba(37, 99, 235, 0.2);
+    outline: 2px solid rgba(27, 110, 148, 0.25);
     border-color: var(--viz-accent);
   }
 
@@ -86,12 +86,60 @@ permalink: /visualizer/
     align-items: start;
   }
 
+  /* Filters come first in the DOM so they sit above the grid on narrow
+     viewports; on desktop they are placed back into the right-hand column. */
+  .viz-grid {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
   .viz-filters {
-    position: sticky;
-    top: 1rem;
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
+  /* Distance from the viewport top to the first free pixel: the fixed
+     announcement plus the sticky docs header (both published by script). */
+  .oopsie-visualizer {
+    --viz-sticky-top: calc(var(--announcement-h, 0px) + var(--viz-header-h, 0px) + 0.75rem);
+  }
+
+  .viz-filters-body {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+  }
+
+  .viz-filters-toggle {
+    display: none;
+    width: 100%;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    padding: 0.6rem 0.85rem;
+    border: 1px solid var(--viz-border-strong);
+    border-radius: 8px;
+    background: var(--viz-surface);
+    color: var(--viz-ink);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .viz-filters-toggle-count {
+    color: var(--viz-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  .viz-filters-toggle-chevron {
+    margin-left: auto;
+    transition: transform 150ms ease;
+  }
+
+  .viz-filters.is-open .viz-filters-toggle-chevron {
+    transform: rotate(180deg);
   }
 
   .viz-filter-group {
@@ -248,23 +296,35 @@ permalink: /visualizer/
 
   .viz-error {
     padding: 0.85rem 1rem;
-    border: 1px solid #fecaca;
+    border: 1px solid #eec9c5;
     border-radius: 8px;
-    background: #fef2f2;
-    color: #991b1b;
+    background: #fdf3f2;
+    color: #aa1910;
   }
 
   .viz-modal {
     position: fixed;
-    inset: 0;
-    z-index: 100;
+    top: var(--announcement-h, 0px);
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 950;
     display: none;
     place-items: center;
     padding: 1.25rem;
+    overscroll-behavior: contain;
   }
 
   .viz-modal.is-visible {
     display: grid;
+  }
+
+  body.viz-modal-open {
+    position: fixed;
+    right: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
   }
 
   .viz-modal-backdrop {
@@ -279,8 +339,9 @@ permalink: /visualizer/
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
     width: min(1120px, 100%);
-    max-height: calc(100vh - 2.5rem);
+    max-height: calc(100% - 2.5rem);
     overflow: hidden;
+    overscroll-behavior: contain;
     border: 1px solid var(--viz-border);
     border-radius: 10px;
     background: var(--viz-surface);
@@ -399,18 +460,52 @@ permalink: /visualizer/
     line-height: 1;
   }
 
+  /* Pin the filter column and let it scroll inside itself, so the page always
+     scrolls as one and the column never slides out of reach. */
+  @media (min-width: 901px) {
+    .viz-filters {
+      position: sticky;
+      top: var(--viz-sticky-top);
+      max-height: calc(100vh - var(--viz-sticky-top) - 0.75rem);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+    }
+  }
+
   @media (max-width: 900px) {
     .viz-layout {
       grid-template-columns: 1fr;
     }
 
+    .viz-grid,
     .viz-filters {
-      position: static;
+      grid-column: 1;
+      grid-row: auto;
+    }
+
+    .viz-filters-toggle {
+      display: flex;
+    }
+
+    .viz-filters-body {
+      display: none;
+      max-height: 65vh;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .viz-filters.is-open .viz-filters-body {
+      display: flex;
     }
 
     .viz-modal-panel {
       grid-template-columns: 1fr;
+      height: 100%;
+      max-height: 100%;
       overflow: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
 
     .viz-modal-media {
@@ -422,6 +517,7 @@ permalink: /visualizer/
     }
 
     .viz-modal-details {
+      overflow: visible;
       border-left: 0;
       border-top: 1px solid var(--viz-border);
     }
@@ -446,8 +542,15 @@ permalink: /visualizer/
 {% include docs-nav-collapse.html %}
 
   <div class="viz-layout">
+    <aside class="viz-filters" id="viz-filters-panel" aria-label="Dataset filters">
+      <button class="viz-filters-toggle" id="viz-filters-toggle" type="button" aria-expanded="false" aria-controls="viz-filters">
+        <span>Filters</span>
+        <span class="viz-filters-toggle-count" id="viz-filters-toggle-count"></span>
+        <span class="viz-filters-toggle-chevron" aria-hidden="true">&#9662;</span>
+      </button>
+      <div class="viz-filters-body" id="viz-filters"></div>
+    </aside>
     <section class="viz-grid" id="viz-grid" aria-live="polite"></section>
-    <aside class="viz-filters" id="viz-filters" aria-label="Dataset filters"></aside>
   </div>
 
   <div class="viz-modal" id="viz-modal" aria-hidden="true">
@@ -457,7 +560,7 @@ permalink: /visualizer/
         <span aria-hidden="true">&times;</span>
       </button>
       <div class="viz-modal-media">
-        <video class="viz-modal-video" id="viz-modal-video" controls muted loop playsinline></video>
+        <video class="viz-modal-video" id="viz-modal-video" controls muted loop playsinline webkit-playsinline preload="metadata"></video>
       </div>
       <div class="viz-modal-details" id="viz-modal-details"></div>
     </section>
@@ -480,6 +583,8 @@ permalink: /visualizer/
     : localMetadataUrl;
   const isPublicVisualizer = useRemoteAssets;
   const maxVisibleVideos = 40;
+  const maxPlayingPreviews = 20;
+  const maxCachedVideoBlobs = Math.max(maxPlayingPreviews, 16);
   const allFilterDefs = [
     { key: "scene", title: "Datasets", idField: "scene_id", labelField: "scene_label" },
     { key: "camera", title: "Cameras", idField: "camera_id", labelField: "camera_label" },
@@ -500,6 +605,9 @@ permalink: /visualizer/
 
   const countEl = document.getElementById("viz-count");
   const filtersEl = document.getElementById("viz-filters");
+  const filtersPanel = document.getElementById("viz-filters-panel");
+  const filtersToggle = document.getElementById("viz-filters-toggle");
+  const filtersToggleCount = document.getElementById("viz-filters-toggle-count");
   const gridEl = document.getElementById("viz-grid");
   const resampleButton = document.getElementById("viz-resample");
   const searchInput = document.getElementById("viz-search");
@@ -514,18 +622,189 @@ permalink: /visualizer/
   let searchQuery = "";
   let includeBulkImport = false;
   let excludedRepos = new Set();
+  let isModalOpen = false;
+  let modalRequestId = 0;
+  let modalVideoLoad = null;
+  let pageScrollY = 0;
   const selected = {};
   const checkboxRefs = {};
+  const previewCandidates = new Set();
+  const previewLoads = new WeakMap();
+  const videoObjectUrls = new Map();
+  const pendingVideoObjectUrls = new Map();
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const video = entry.target;
-      video.src = video.dataset.src;
-      video.load();
-      observer.unobserve(video);
+      const media = entry.target;
+      if (entry.isIntersecting) {
+        previewCandidates.add(media);
+      } else {
+        previewCandidates.delete(media);
+        unloadPreview(media);
+      }
     });
-  }, { rootMargin: "240px" });
+    syncPreviewPlayback();
+  }, { rootMargin: "120px", threshold: 0.1 });
+
+  function cachedVideoUrl(sourceUrl) {
+    if (videoObjectUrls.has(sourceUrl)) {
+      const objectUrl = videoObjectUrls.get(sourceUrl);
+      /* Refresh insertion order so the Map also serves as an LRU cache. */
+      videoObjectUrls.delete(sourceUrl);
+      videoObjectUrls.set(sourceUrl, objectUrl);
+      return objectUrl;
+    }
+    return null;
+  }
+
+  function cacheVideoUrl(sourceUrl, objectUrl) {
+    const existingUrl = videoObjectUrls.get(sourceUrl);
+    if (existingUrl && existingUrl !== objectUrl) {
+      URL.revokeObjectURL(existingUrl);
+    }
+    videoObjectUrls.delete(sourceUrl);
+    videoObjectUrls.set(sourceUrl, objectUrl);
+
+    while (videoObjectUrls.size > maxCachedVideoBlobs) {
+      const oldestSourceUrl = videoObjectUrls.keys().next().value;
+      const oldestObjectUrl = videoObjectUrls.get(oldestSourceUrl);
+      videoObjectUrls.delete(oldestSourceUrl);
+      URL.revokeObjectURL(oldestObjectUrl);
+    }
+  }
+
+  function releaseVideoRequest(sourceUrl, consumer) {
+    const pending = pendingVideoObjectUrls.get(sourceUrl);
+    if (!pending) return;
+
+    pending.consumers.delete(consumer);
+    if (pending.consumers.size === 0) {
+      pendingVideoObjectUrls.delete(sourceUrl);
+      pending.controller.abort();
+    }
+  }
+
+  /* Safari can reject byte-range playback across Hugging Face's signed Xet redirect.
+     Fetch each selected video once, but keep only a bounded LRU of local Blob URLs. */
+  async function playableVideoUrl(sourceUrl, consumer) {
+    const cachedUrl = cachedVideoUrl(sourceUrl);
+    if (cachedUrl) return cachedUrl;
+
+    let pending = pendingVideoObjectUrls.get(sourceUrl);
+    if (!pending) {
+      const controller = new AbortController();
+      pending = {
+        controller,
+        consumers: new Set(),
+        request: null,
+      };
+      pending.request = fetch(sourceUrl, {
+        mode: "cors",
+        credentials: "omit",
+        cache: "force-cache",
+        signal: controller.signal,
+      })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Video request failed with HTTP ${response.status}`);
+          return Promise.all([response.arrayBuffer(), response.headers.get("content-type")]);
+        })
+        .then(([bytes, contentType]) => {
+          if (pending.consumers.size === 0) {
+            throw new DOMException("Video request is no longer needed", "AbortError");
+          }
+          const mimeType = contentType && contentType.startsWith("video/")
+            ? contentType.split(";", 1)[0]
+            : "video/mp4";
+          const objectUrl = URL.createObjectURL(new Blob([bytes], { type: mimeType }));
+          cacheVideoUrl(sourceUrl, objectUrl);
+          return objectUrl;
+        })
+        .finally(() => {
+          if (pendingVideoObjectUrls.get(sourceUrl) === pending) {
+            pendingVideoObjectUrls.delete(sourceUrl);
+          }
+        });
+      pendingVideoObjectUrls.set(sourceUrl, pending);
+    }
+
+    pending.consumers.add(consumer);
+    return pending.request;
+  }
+
+  async function playPreview(media) {
+    if (isModalOpen) return;
+
+    if (!media.hasAttribute("src")) {
+      if (previewLoads.has(media)) return;
+      const load = {
+        sourceUrl: media.dataset.src,
+        consumer: {},
+      };
+      previewLoads.set(media, load);
+
+      try {
+        const objectUrl = await playableVideoUrl(load.sourceUrl, load.consumer);
+        if (
+          previewLoads.get(media) !== load ||
+          isModalOpen ||
+          !media.isConnected ||
+          !previewCandidates.has(media)
+        ) return;
+        media.src = objectUrl;
+        media.load();
+      } catch (error) {
+        if (error.name !== "AbortError") {
+          console.error("Preview video could not be loaded:", error);
+        }
+        return;
+      } finally {
+        if (previewLoads.get(media) === load) {
+          previewLoads.delete(media);
+        }
+      }
+    }
+
+    const playback = media.play();
+    if (playback) {
+      playback.catch((error) => {
+        if (error.name !== "AbortError") {
+          console.debug("Preview playback was blocked:", error);
+        }
+      });
+    }
+  }
+
+  function unloadPreview(media) {
+    const load = previewLoads.get(media);
+    if (load) {
+      previewLoads.delete(media);
+      releaseVideoRequest(load.sourceUrl, load.consumer);
+    }
+    media.pause();
+    if (media.hasAttribute("src")) {
+      media.removeAttribute("src");
+      media.load();
+    }
+  }
+
+  function syncPreviewPlayback() {
+    const viewportCenter = window.innerHeight / 2;
+    const candidates = Array.from(previewCandidates)
+      .filter((media) => media.isConnected)
+      .sort((left, right) => {
+        const leftBounds = left.getBoundingClientRect();
+        const rightBounds = right.getBoundingClientRect();
+        const leftCenter = leftBounds.top + leftBounds.height / 2;
+        const rightCenter = rightBounds.top + rightBounds.height / 2;
+        return Math.abs(leftCenter - viewportCenter) - Math.abs(rightCenter - viewportCenter);
+      });
+    const playing = new Set(isModalOpen ? [] : candidates.slice(0, maxPlayingPreviews));
+
+    candidates.forEach((media) => {
+      if (playing.has(media)) playPreview(media);
+      else unloadPreview(media);
+    });
+  }
 
   function shuffle(array) {
     for (let index = array.length - 1; index > 0; index -= 1) {
@@ -747,6 +1026,14 @@ permalink: /visualizer/
     });
   }
 
+  function updateFilterSummary() {
+    const active = filterDefs.reduce(
+      (total, filter) => total + (selected[filter.key] ? selected[filter.key].size : 0),
+      0,
+    );
+    filtersToggleCount.textContent = active === 0 ? "" : `${active} selected`;
+  }
+
   function updateFilterCounts() {
     filterDefs.forEach((filter) => {
       const counts = {};
@@ -810,13 +1097,20 @@ permalink: /visualizer/
     return `<span class="viz-chip">${escapeHtml(value)}</span>`;
   }
 
-  function showDetails(video) {
+  async function showDetails(video) {
+    const requestId = ++modalRequestId;
+    cancelModalVideoLoad();
+    isModalOpen = true;
+    pageScrollY = window.scrollY;
+    document.body.style.top = `-${pageScrollY}px`;
+    document.body.classList.add("viz-modal-open");
+    gridEl.querySelectorAll("video").forEach(unloadPreview);
+
     modalVideo.pause();
+    modalVideo.removeAttribute("src");
+    modalVideo.load();
     if (video.poster) modalVideo.poster = assetUrl(video.poster);
     else modalVideo.removeAttribute("poster");
-    modalVideo.src = assetUrl(video.src);
-    modalVideo.load();
-    modalVideo.play().catch(() => {});
 
     modalDetails.innerHTML = `
       <h2 class="viz-modal-title" id="viz-modal-title">${escapeHtml(videoTitle(video))}</h2>
@@ -838,18 +1132,67 @@ permalink: /visualizer/
     modalEl.classList.add("is-visible");
     modalEl.setAttribute("aria-hidden", "false");
     modalCloseButton.focus();
+
+    const load = {
+      sourceUrl: assetUrl(video.src),
+      consumer: {},
+    };
+    modalVideoLoad = load;
+
+    try {
+      const objectUrl = await playableVideoUrl(load.sourceUrl, load.consumer);
+      if (!isModalOpen || requestId !== modalRequestId) return;
+
+      modalVideo.src = objectUrl;
+      modalVideo.load();
+      const playback = modalVideo.play();
+      if (playback) await playback;
+    } catch (error) {
+      if (!isModalOpen || requestId !== modalRequestId) return;
+      if (error.name === "AbortError") return;
+      if (error.name === "NotAllowedError") {
+        console.debug("Modal autoplay was blocked; native controls remain available:", error);
+        return;
+      }
+
+      console.error("Modal video playback failed:", error, modalVideo.error);
+      const playbackError = document.createElement("div");
+      playbackError.className = "viz-error";
+      playbackError.textContent =
+        "This video could not be loaded. Reload the page and try again.";
+      modalDetails.prepend(playbackError);
+    } finally {
+      if (modalVideoLoad === load) {
+        modalVideoLoad = null;
+      }
+    }
+  }
+
+  function cancelModalVideoLoad() {
+    if (!modalVideoLoad) return;
+    releaseVideoRequest(modalVideoLoad.sourceUrl, modalVideoLoad.consumer);
+    modalVideoLoad = null;
   }
 
   function closeDetails() {
+    modalRequestId += 1;
+    cancelModalVideoLoad();
+    isModalOpen = false;
     modalEl.classList.remove("is-visible");
     modalEl.setAttribute("aria-hidden", "true");
     modalVideo.pause();
     modalVideo.removeAttribute("src");
     modalVideo.load();
+    document.body.classList.remove("viz-modal-open");
+    document.body.style.removeProperty("top");
+    window.scrollTo(0, pageScrollY);
+    syncPreviewPlayback();
   }
 
   function render() {
     observer.disconnect();
+    gridEl.querySelectorAll("video").forEach(unloadPreview);
+    previewCandidates.clear();
     gridEl.textContent = "";
 
     const matches = [];
@@ -877,10 +1220,14 @@ permalink: /visualizer/
 
       const media = document.createElement("video");
       media.muted = true;
+      media.defaultMuted = true;
       media.loop = true;
-      media.autoplay = true;
       media.playsInline = true;
+      media.preload = "metadata";
       media.controls = false;
+      media.setAttribute("muted", "");
+      media.setAttribute("playsinline", "");
+      media.setAttribute("webkit-playsinline", "");
       if (video.poster) media.poster = assetUrl(video.poster);
       media.dataset.src = assetUrl(video.src);
 
@@ -898,7 +1245,25 @@ permalink: /visualizer/
     resampleButton.style.display = matches.length > maxVisibleVideos ? "" : "none";
 
     updateFilterCounts();
+    updateFilterSummary();
   }
+
+  /* The docs header is sticky under the announcement; publish its height so the
+     filter column can stick just below it. */
+  function syncStickyOffset() {
+    const header = document.getElementById("main-header");
+    const height = header && getComputedStyle(header).position === "sticky" ? header.offsetHeight : 0;
+    document.documentElement.style.setProperty("--viz-header-h", height + "px");
+  }
+
+  syncStickyOffset();
+  window.addEventListener("load", syncStickyOffset);
+  window.addEventListener("resize", syncStickyOffset);
+
+  filtersToggle.addEventListener("click", () => {
+    const open = filtersPanel.classList.toggle("is-open");
+    filtersToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
 
   resampleButton.addEventListener("click", () => {
     shuffle(shuffledIndices);
@@ -911,6 +1276,14 @@ permalink: /visualizer/
     if (event.key === "Escape" && modalEl.classList.contains("is-visible")) {
       closeDetails();
     }
+  });
+
+  window.addEventListener("pagehide", () => {
+    cancelModalVideoLoad();
+    pendingVideoObjectUrls.forEach((pending) => pending.controller.abort());
+    pendingVideoObjectUrls.clear();
+    videoObjectUrls.forEach((objectUrl) => URL.revokeObjectURL(objectUrl));
+    videoObjectUrls.clear();
   });
 
   searchInput.addEventListener("input", () => {

@@ -9,8 +9,8 @@
     --stats-ink-soft: #334155;
     --stats-ink-muted: #64748b;
     --stats-ink-faint: #94a3b8;
-    --stats-accent: #0ea5e9;
-    --cat-0: #0ea5e9;
+    --stats-accent: #1b6e94;
+    --cat-0: #1b6e94;
     --cat-1: #8b5cf6;
     --cat-2: #f59e0b;
     --cat-3: #10b981;
@@ -72,9 +72,9 @@
     margin: 0.5rem 0;
     padding: 0.85rem 1rem;
     border-radius: var(--radius-sm);
-    border: 1px solid #fecaca;
-    background: #fef2f2;
-    color: #991b1b;
+    border: 1px solid #eec9c5;
+    background: #fdf3f2;
+    color: #aa1910;
     font-size: 0.9rem;
   }
 
@@ -501,7 +501,7 @@
     height: 100%;
   }
   .stats-lab-desc-stack-seg.is-desc {
-    background: var(--stats-success, #16a34a);
+    background: var(--stats-success, #3e801e);
   }
   .stats-lab-desc-stack-seg.is-other {
     background: #cbd5e1;
@@ -536,7 +536,7 @@
     flex-shrink: 0;
   }
   .stats-lab-desc-stack-swatch.is-desc {
-    background: #16a34a;
+    background: #3e801e;
   }
   .stats-lab-desc-stack-swatch.is-other {
     background: #cbd5e1;
@@ -957,14 +957,14 @@
   const dashEl = document.getElementById('stats-dashboard');
 
   /* Categorical palette (replaces HSL rainbow). */
-  const CAT = ['#0ea5e9', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444',
+  const CAT = ['#1b6e94', '#8b5cf6', '#f59e0b', '#10b981', '#ef4444',
                '#6366f1', '#14b8a6', '#f97316', '#ec4899', '#84cc16'];
   function hue(i) { return CAT[((i % CAT.length) + CAT.length) % CAT.length]; }
 
   const palette = {
-    accent:  '#0ea5e9',
-    success: '#16a34a',
-    failure: '#ef4444',
+    accent:  '#1b6e94',
+    success: '#3e801e',
+    failure: '#aa1910',
     neutral: '#475569',
     muted:   '#cbd5e1',
     grid:    '#eef2f7',
@@ -1420,10 +1420,10 @@
     function gradientFill(ctx) {
       var chart = ctx.chart;
       var area = chart.chartArea;
-      if (!area) return 'rgba(14,165,233,0.18)';
+      if (!area) return 'rgba(27,110,148,0.18)';
       var g = chart.ctx.createLinearGradient(0, area.top, 0, area.bottom);
-      g.addColorStop(0, 'rgba(14,165,233,0.22)');
-      g.addColorStop(1, 'rgba(14,165,233,0)');
+      g.addColorStop(0, 'rgba(27,110,148,0.22)');
+      g.addColorStop(1, 'rgba(27,110,148,0)');
       return g;
     }
 

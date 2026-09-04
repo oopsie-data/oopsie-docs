@@ -1,8 +1,9 @@
 ---
-title: Team
+title: Organizing Team
 layout: default
 nav_order: 9
 permalink: /team/
+parent: Organizers & Contributors
 ---
 
 # Team overview
@@ -114,6 +115,15 @@ Please use the team mail for all inquiries. This simplifies communication for us
 		<div>
 			<div style="font-weight: 600;">Max Rudolph</div>
 			<div><a href="https://maxrudolph1.github.io/">Website</a></div>
+			<img src="{{ '/assets/images/institutions/ut_austin.svg.png' | relative_url }}" alt="UT Austin logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
+		</div>
+	</div>
+
+	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
+		<img src="{{ '/assets/images/team/sriniket.jpg' | relative_url }}" alt="Sriniket Ambatipudi" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
+		<div>
+			<div style="font-weight: 600;">Sriniket Ambatipudi</div>
+			<div><a href="https://www.linkedin.com/in/asriniket">Website</a></div>
 			<img src="{{ '/assets/images/institutions/ut_austin.svg.png' | relative_url }}" alt="UT Austin logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
 		</div>
 	</div>
