@@ -77,6 +77,8 @@ for _ in range(num_eval_episodes):
             action={
                 "<action_key>": action_array,
             },
+            # Only if the robot profile declares additional_data, one value per key:
+            # additional_data={"<sensor_key>": sensor_array},
         )
 
     # wrap up policy rollout
@@ -137,6 +139,8 @@ for _ in range(num_eval_episodes):
             action={
                 "<action_key>": action_array,
             },
+            # Only if the robot profile declares additional_data, one value per key:
+            # additional_data={"<sensor_key>": sensor_array},
         )
 
     # wrap up policy rollout
@@ -169,6 +173,7 @@ WebRolloutAnnotator(
     wait_for_annotation: bool = True,
     open_browser: bool = True,
     resume_session_name: str | None = None,
+    additional_data_nan_policy: str = "warn",
 )
 ```
 
@@ -182,11 +187,12 @@ WebRolloutAnnotator(
 | `wait_for_annotation` | `bool` | `True` | Block `finish_rollout()` until a human annotation is submitted |
 | `open_browser` | `bool` | `True` | Automatically open the annotation UI in the default browser |
 | `resume_session_name` | `str | None` | `None` | Resume a previous session by name instead of starting a new one |
+| `additional_data_nan_policy` | `str` | `"warn"` | `"ignore"` records data as NaN, `"warn"` records it and logs a warning, `"error"` rejects the step |
 
 To collect important robot and policy specific metadata, the `EpisodeRecorder` and `WebRolloutAnnotator` require a `RobotProfile` config dataclass. This dataclass is automatically generated from the robot profile YAML file with the `load_robot_profile` function.
 
 
-### `record_step(observation, action)`
+### `record_step(observation, action, additional_data=None)`
 
 Append one rollout timestep to the in-memory buffers. No data is written to disk; the buffers are only persisted when you call `finish_rollout()` at the end of the episode. Call `reset_episode_recorder()` before each new episode to clear them.
 
@@ -238,11 +244,44 @@ Dictionary of actions commanded at this timestep. The keys must match `robot_pro
 
 ---
 
+**`additional_data: dict[str, Any] | None`**
+
+Required when the robot profile includes an
+[`additional_data`]({% link robot-profile.md %}#additional-sensor-data) key. If the key doesn't exist, the tool will not record any other modalities. The dict must contain **exactly** the keys recorded in the robot profile on **every** step, with the same shape each time.
+
+| Declared `format` | Value per step | Recorded as |
+|---|---|---|
+| `array` (default) | array-like of numbers, any fixed shape | `(N, ...)` dataset, dtype preserved |
+| `video` | `uint8` RGB frame of shape `(H, W, 3)`, at least 16x16 | an MP4 next to the episode |
+
+```python
+recorder.record_step(
+    observation=obs,
+    action=action,
+    additional_data={
+        "wrist_ft": ft_reading,       # e.g. shape (6,), format: array
+        "tactile_left": tactile_rgb,  # shape (H, W, 3) uint8, format: video
+    },
+)
+```
+
+Array data may contain `NaN` to mark a dropped reading. By default this is recorded and logged
+as a warning,; pass
+`additional_data_nan_policy="ignore"` or `"error"` to the recorder to silence this warning or to reject
+the step. The data recorded in all h5 arrays must not exceed 100 MB.
+
+{: .warning }
+> Adding additional keys in `robot_state` or `image_observation` that the
+> profile does not specify are **ignored without an error**, so any data recorded in `robot_state` or `image_observation` is silently dropped.
+
+---
+
 #### Raises
 
 - `ValueError` — if `observation` is not a dict, required observation keys are missing, `robot_state` is missing profile-required keys, or `image_observation` is missing a camera named in the profile.
 - `ValueError` — if `action` is empty, contains a key outside the table above, does not match `robot_profile.action_space` exactly, or contains a `None` value.
 - `ValueError` — if `cartesian_position` is present but not shaped `(7,)` or `(14,)` (after rotation conversion).
+- `ValueError` — if `additional_data` does not carry exactly the keys declared in the profile, if a value changes shape between steps, if an array holds `±inf` (or `NaN` under `additional_data_nan_policy="error"`), if a `format: video` value is not a `(H, W, 3)` `uint8` frame of at least 16x16, or if the array data of the episode exceeds 100 MiB.
 
 ---
 

@@ -50,6 +50,7 @@ from oopsie_data_tools.utils.conversion_utils import (
     write_video_paths,
     write_actions,
     write_episode_annotations,
+    write_additional_data,
 )
 from oopsie_data_tools.utils.robot_profile.robot_profile import load_robot_profile
 ```
@@ -105,6 +106,26 @@ write_actions(
 
 It raises if `action_space` holds a key the schema does not recognise, or if you declared a
 key but supplied no array for it.
+
+### `write_additional_data`
+
+Only needed if your robot profile declares
+[`additional_data`]({% link robot-profile.md %}#additional-sensor-data). Writes the
+`/additional_data` group.
+
+```python
+write_additional_data(
+    f,
+    profile,
+    {"wrist_ft": ft_array},                                   # (T, ...) per array key
+    {"tactile_left": "/abs/path/to/000000_tactile_left.mp4"}, # one path per video key
+    h5_path=out,
+)
+```
+
+Arrays keep the dtype you pass. 
+Their leading axis must be the number of timesteps. 
+`h5_path` is required as soon as you pass video paths as the relative path is set based on the h5 file location.
 
 ### `write_episode_annotations`
 
@@ -218,6 +239,11 @@ within `max(5, 10%)` of the trajectory length, and its duration within 0.5 s of
 
 **Episode length.** 1–600 seconds, computed as `trajectory_length / control_freq`. Very
 short or very long source episodes are rejected.
+
+**Additional sensor data.** If the profile declares it, every declared key must be present in
+the file, and a key in the file that the profile does not declare is rejected too. `NaN` is
+accepted as a dropped reading, `±inf` is not, and a video-format key must hold the MP4's path
+rather than the frames themselves.
 
 **Rotation representation.** Both `actions/cartesian_position` and
 `robot_states/cartesian_position` must be scalar-last quaternions by the time they are

@@ -44,9 +44,18 @@ The command will:
 1. Check the folder size, aborting if any directory exceeds 10,000 files (see below)
 2. Validate the episode(s), aborting on the first failure
 3. Check task and annotation diversity (advisory, unless `--strict-diversity`)
-4. Log in to HuggingFace and check that your lab's submissions repo exists
-5. Upload all files
+4. Log the total size of the upload, and the share of it taken by additional sensor data
+5. Log in to HuggingFace and check that your lab's submissions repo exists
+6. Upload all files
 
+{: .note }
+> The size log is advisory. Above 200 GB in a single upload you get a warning, but the upload
+> still goes ahead. A surprisingly large session usually means raw sensor data recorded as
+> arrays instead of `format: video`, a duplicated session, or a leftover `_restructured` copy
+> inside `--path`.
+> In rare cases, a large upload may be rejected by the server if the Oopsie-Data team limits have been reached. Please ping the coordination team immediately if this happens.
+
+{: .note }
 > Uploads are **additive**. Existing episodes in the repo are not deleted, but uploading the same file path twice will override existing data.
 
 ### All `oopsie-data upload` flags

@@ -77,8 +77,55 @@ At least one arm command from `["cartesian_position", "cartesian_velocity", "joi
 | `gains` | `dict` | Nested dictionary mapping the active `controller` to its respective gain values. Structure depends on the controller used: for `joint_position` provide `kp` and `kd` arrays; for `joint_velocity` provide `kv` array; for `osc` provide `kp_pos`, `kd_pos`, `kp_ori`, and `kd_ori` arrays. |
 | `intrinsic_calibration_matrix` | `dict[str, list[list[float]]]` | Dictionary mapping camera names to their $3 \times 3$ intrinsic camera matrices. |
 | `extrinsic_calibration_matrix` | `dict[str, list[list[float]]]` | Dictionary mapping camera names to their $4 \times 4$ extrinsic camera matrices. |
+| `additional_data` | `dict` | Sensor streams recorded in addition to robot state and cameras, e.g. force/torque, IMU or tactile sensors. See [Additional sensor data](#additional-sensor-data) below. |
 
 Note that the orientation representation is set by two separate keys: `orientation_representation` covers `action_space`, and `robot_state_orientation_representation` covers `robot_state_keys`. Set whichever applies when the corresponding space contains `cartesian_position`.
+
+
+### Additional sensor data
+
+If your setup records sensors beyond those required for robot joint states and camera images, declare those streams under
+`additional_data`. Each entry will be added to the recorded episodes under the name specified here.
+In addition, please describe
+which sensor produced it.
+
+```yaml
+additional_data:
+  wrist_ft:
+    sensor: ATI Mini45                # required: the device recording the data
+    sensor_info:                      # optional: free-form, a string or a mapping
+      units: N, Nm
+      frame: sensor
+  tactile_left:
+    sensor: GelSight Mini
+    sensor_info: left finger
+    format: video                     # "array" (the default) or "video"
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `sensor` | `str` | **Required.** The device recording this stream |
+| `sensor_info` | `str` or `dict` | Optional and free-form: units, reference frame, mounting, native rate, calibration date |
+| `format` | `str` | `"array"` (the default) or `"video"` |
+
+`format: array` stores the per-step values as a `(N, ...)` dataset, keeping their numeric
+dtype. Across all array-like keys, one episode may hold at most **100 MiB** of such data
+(uncompressed).
+
+`format: video` takes one `(H, W, 3)` `uint8` frame per step and stores it as an MP4 next to
+the episode, exactly like a camera. Use it for anything image-like, such as tactile images or
+depth maps. Frames must be at
+least 16x16, for coarser grids, prefer array-like data.
+
+Keys may contain letters, digits, `_` and `-`. They must not repeat a camera name and be unique. Keys are case-**in**sensitive.
+
+{: .important }
+> Every declared key must be passed on **every** step, with the same shape each time:
+> `record_step(..., additional_data={"wrist_ft": ft, "tactile_left": frame})`. 
+
+See [Data Collection]({% link data-collection.md %}) for how the readings are passed, and the
+[Dataset Format]({% link format.md %}#additional-sensor-data-per-timestep) page for how they are
+stored.
 
 
 ### Example

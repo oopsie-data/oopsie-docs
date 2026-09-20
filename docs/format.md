@@ -50,6 +50,10 @@ episode.h5
 │       ├── cartesian_position     (dataset, float64, shape [N, D])
 │       └── joint_position         (dataset, float64, shape [N, D])
 │
+├── additional_data/               (group)      # only if the robot profile declares any
+│   ├── <array_sensor_key>         (dataset, shape [N, ...])   # dtype as recorded
+│   └── <video_sensor_key>         (dataset, str)              # relative path to .mp4 file
+│
 └── actions/                       (group)
     ├── joint_position             (dataset, float64, shape [N, D])
     ├── joint_velocity             (dataset, float64, shape [N, D])
@@ -128,6 +132,28 @@ Stored under `observations/robot_states/`.
 | `cartesian_position` | float64 | (N, D) | End-effector Cartesian pose; shape depends on robot profile |
 | `joint_position` | float64 | (N, D) | Joint position state |
 
+### Additional Sensor Data (per timestep)
+
+Optional. Present only when the robot profile declares `additional_data`, see [Robot & Policy Profile]({% link robot-profile.md %}#additional-sensor-data).
+Each key should correspond to an additional sensor.
+
+We support logging both array-like and video-like data. Prefer
+video like data for sensors which produce very large outputs such as force sensors which record a camera stream.
+
+| `format` | Stored as | Description |
+|:------------------|:----------|:------------|
+| `array` (default) | dataset, shape `(N, ...)` | The per-step numerical data, keeping the dtype they were recorded in. The leading axis is the number of timesteps |
+| `video` | dataset, str | Relative path to an MP4 written next to the HDF5 file, exactly like a camera video |
+
+Example: 
+```
+additional_data/
+├── wrist_ft        (dataset, float32, shape [N, 6])   # force/torque, format: array
+└── tactile_left    (dataset, str)                     # "000000_tactile_left.mp4", format: video
+```
+
+All array-like data in one episode may be at most 100 MiB (uncompressed) large. If your sensors produce more data, please use `format: video` if possible, or contact the maintainers.
+
 ### Actions (per timestep)
 
 Stored under `actions/`. Unused fields are written as empty HDF5 datasets.
@@ -201,6 +227,7 @@ samples_directory
 │   ├── episode_1.hdf5
 │   ├── episode_1_camera1.mp4
 │   ├── episode_1_camera2.mp4
+│   ├── episode_1_tactile_left.mp4      # only with a "format: video" sensor
 │   ├── episode_2.hdf5
 │   ├── episode_2_camera1.mp4
 │   ├── episode_2_camera2.mp4
@@ -222,7 +249,7 @@ The file paths of associated mp4 camera videos need to be saved in the hdf5 file
 
 ---
 
-## Additional Data Format Constraints
+## Other Format Constraints
 
 Enforced by `oopsie-data validate` (via `oopsie_data_tools/utils/validation/episode_validator.py`):
 
@@ -231,6 +258,10 @@ Enforced by `oopsie-data validate` (via `oopsie_data_tools/utils/validation/epis
 - **Frame count**: each video must be within `max(5, 10%)` frames of the trajectory length
 - **Video duration**: must match `trajectory_length / control_freq` to within 0.5 s
 - **Multi-camera consistency**: frame counts across cameras may differ by at most 1
+- **Additional sensor data**: at most 100 MiB per episode across all `format: array` keys
+  (uncompressed), `NaN` allowed but `±inf` rejected, and the leading axis must be the number of
+  timesteps. `format: video` sensors follow the video rules above, except that the 180 px
+  minimum does not apply to them — only a 16 px one
 
 Videos must also be in a browser-compatible encoding so the annotation tool can play them; `EpisodeRecorder` handles this for you.
 
