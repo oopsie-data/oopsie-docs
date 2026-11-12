@@ -132,7 +132,7 @@ Please use the team mail for all inquiries. This simplifies communication for us
 
 ---
 
-## Faculty
+## Advisors
 
 <div id="faculty-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0 1rem;">
 
@@ -169,6 +169,15 @@ Please use the team mail for all inquiries. This simplifies communication for us
 			<div style="font-weight: 600;">Sergey Levine</div>
 			<div><a href="https://people.eecs.berkeley.edu/~svlevine/">Website</a></div>
 			<img src="{{ '/assets/images/institutions/berkeley.png' | relative_url }}" alt="UC Berkeley logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: cover;">
+		</div>
+	</div>
+
+	<div style="border-radius: 10px; padding: 0.9rem; display: flex; gap: 0.9rem; align-items: center; background: var(--body-background-color, #fff);">
+		<img src="{{ '/assets/images/team/masha.jpg' | relative_url }}" alt="Masha Itkina" style="width: 92px; height: 92px; object-fit: cover; border-radius: 8px;">
+		<div>
+			<div style="font-weight: 600;">Masha Itkina</div>
+			<div><a href="https://mashaitkina.weebly.com/">Website</a></div>
+			<img src="{{ '/assets/images/institutions/tri.png' | relative_url }}" alt="Toyota Research Institute logo" style="height: 30px; width: auto; margin-top: 0.35rem; object-fit: contain;">
 		</div>
 	</div>
 
